@@ -55,9 +55,11 @@ def recover():
         definitions=definitions, initial_inventory=initial,
         inventory_row_sha256=hashlib.sha256(inventory).hexdigest(), initial_loot_row_sha256=hashlib.sha256(start).hexdigest(),
         limitations=['Value storage only; subtype effects, resource caps, crafting/consumable/event behavior remain incomplete',
-            'These recovered starting values are not yet added to live profiles. Recipe level delta is retained; player creation passes its player level into GenerateLoot',
+            'Rust v9 stores the 23 non-XP starting entries, including recipe values and level delta. Pre-v9 migrations use level-one initial values; native player creation passes its player level into GenerateLoot',
             'Experience and gold remain owned by the dedicated profile fields; initial XP=1 is retained as evidence but is not newly granted to existing saves'])
     (ROOT/'content/resources.json').write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    from build_resource_runtime import generate, OUTPUT
+    OUTPUT.write_text(generate(), encoding='utf-8')
     print('Recovered', len(definitions), 'resource definitions and', len(initial), 'starting values')
 
 

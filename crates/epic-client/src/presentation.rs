@@ -1,12 +1,12 @@
 //! Replay deterministic combat snapshots using the recovered original clips.
 //! Melee Impact releases the native attack wait. Projectile travel, support
-//! timing, player equipment and full native pacing remain unfinished.
+//! timing and full native pacing remain unfinished.
 use crate::animation::{AnimationLibrary, ClipTiming};
 use crate::projectiles::{self, ProjectileDefinition};
 use epic_core::{
     combat_events::{BattleSnapshot, CombatEvent, SkillKind},
     effects::{Side, Source},
-    equipment::{pig_loadout, EQUIPMENT},
+    equipment::{pig_loadout, EquipmentDefinition, EQUIPMENT},
     Battle, Fighter, PIGS, SKILLS,
 };
 use std::collections::VecDeque;
@@ -89,34 +89,46 @@ fn is_melee(
     snapshot: &BattleSnapshot,
     source: Source,
     targets: &[Source],
-    timing: ClipTiming,
+    _timing: ClipTiming,
 ) -> bool {
     // AttackSkillTemplate.IsMeeleAttack rejects multiple targets, then tests
     // the source's main hand IsRanged (even when using an off-hand animation).
     if targets.len() > 1 {
         return false;
     }
-    if let Some(loadout) = fighter(snapshot, source)
-        .and_then(|unit| unit.pig)
-        .and_then(|pig| pig_loadout(PIGS[pig].id))
-    {
-        return loadout
-            .main_hand
-            .map(|index| !EQUIPMENT[index].is_ranged)
-            .unwrap_or(true);
+    weapon(snapshot, source, false).is_none_or(|(equipment, _)| !equipment.is_ranged)
+}
+
+fn weapon(
+    snapshot: &BattleSnapshot,
+    source: Source,
+    off_hand: bool,
+) -> Option<(&'static EquipmentDefinition, i32)> {
+    let unit = fighter(snapshot, source)?;
+    if let Some(gear) = unit.gear {
+        let gear = gear[usize::from(off_hand)];
+        return Some((EQUIPMENT.get(gear.definition)?, gear.state.level));
     }
-    // Player equipment is not restored yet; preserve its provisional cue rule.
-    timing.projectile.is_none()
+    let loadout = pig_loadout(PIGS[unit.pig?].id)?;
+    let index = if off_hand {
+        loadout.off_hand?
+    } else {
+        loadout.main_hand?
+    };
+    Some((EQUIPMENT.get(index)?, unit.level))
 }
 
 fn attack_name(snapshot: &BattleSnapshot, source: Source, skill: usize) -> String {
-    let index = fighter(snapshot, source)
-        .and_then(|unit| unit.pig)
-        .and_then(|pig| pig_loadout(PIGS[pig].id))
-        .map(|loadout| {
-            loadout.attack_animation_index(SKILLS[skill].has_parameter("use_offhandanim"))
-        })
-        .unwrap_or(1);
+    let index = if weapon(snapshot, source, false).is_some() {
+        weapon(
+            snapshot,
+            source,
+            SKILLS[skill].has_parameter("use_offhandanim"),
+        )
+        .map_or(1, |(equipment, _)| equipment.animation_index)
+    } else {
+        1
+    };
     format!("Action_Attack_{index}")
 }
 
@@ -129,24 +141,20 @@ fn plan_flight(
     timing: ClipTiming,
     started: f32,
 ) -> Option<Flight> {
-    // Direct original pig weapon IDs are known. Player levels/loadouts, skill
-    // overrides, multiple-target routing and repeated launches are pending.
+    // Weapon IDs and level variants are known. Skill overrides, multiple-target
+    // routing and repeated launches are still pending.
     if targets.len() != 1 || is_melee(before, source, targets, timing) {
         return None;
     }
     let cue_time = timing.projectile?;
-    let pig = fighter(before, source)?.pig?;
-    let loadout = pig_loadout(PIGS[pig].id)?;
     let off_hand = SKILLS[skill].has_parameter("use_offhandanim");
-    let equipment = &EQUIPMENT[if off_hand {
-        loadout.off_hand?
-    } else {
-        loadout.main_hand?
-    }];
-    if !equipment.direct_projectile || !equipment.is_ranged {
+    let (equipment, level) = weapon(before, source, off_hand)?;
+    // Pig level-cycled variants need their native sentinel-level routing traced.
+    if !equipment.is_ranged || (source.side == Side::Pigs && !equipment.direct_projectile) {
         return None;
     }
-    let projectile = projectiles::definition(equipment.projectile_asset_id)?;
+    let id = equipment.projectile_asset(level)?;
+    let projectile = projectiles::definition(&id)?;
     if !projectile.visible() {
         return None;
     }
@@ -390,6 +398,134 @@ impl Presentation {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn owned_bomb_selects_original_attack_three_and_level_cycled_projectile() {
+        let library = AnimationLibrary::embedded();
+        let mut profile = epic_core::Profile {
+            unlocked: 3,
+            party: [3, 4, 0],
+            ..Default::default()
+        };
+        let bomb = profile
+            .inventory
+            .add(
+                "bird_weapon_black_bomb_01",
+                epic_core::stats::EquipmentStats {
+                    level: 4,
+                    ..Default::default()
+                },
+            )
+            .unwrap();
+        profile.equip_gear(3, bomb).unwrap();
+        let mut battle = Battle::new(&profile, 3).unwrap();
+        for enemy in &mut battle.enemies {
+            enemy.hp = 10000;
+            enemy.max_hp = 10000;
+        }
+        battle.enable_presentation_trace();
+        let mut presentation = Presentation::default();
+        presentation.reset(battle.snapshot());
+        battle.act(0, epic_core::Action::Attack(0)).unwrap();
+        // Change the current camp selection before replaying the queued action.
+        let pistol = profile
+            .inventory
+            .add("bird_weapon_black_pistol_01", Default::default())
+            .unwrap();
+        profile.equip_gear(3, pistol).unwrap();
+        presentation.enqueue(battle.take_presentation_events());
+        presentation.tick(0., &library);
+        assert_eq!(
+            presentation.clip_for(Source::bird(0), 0.).unwrap().0,
+            "Action_Attack_3"
+        );
+        let timing = library
+            .actor("BlackBird")
+            .unwrap()
+            .timing("Action_Attack_3")
+            .unwrap();
+        let cue = timing.projectile.expect("Recovered bomb launch cue");
+        assert_eq!(presentation.flights(cue - 0.001).count(), 0);
+        presentation.tick(cue + 0.1, &library);
+        let flight = presentation
+            .flights(cue + 0.1)
+            .next()
+            .expect("Player bomb in flight");
+        assert_eq!(flight.projectile.id, "Projectile_BlackBird_Bomb_02");
+        assert_eq!(flight.source, Source::bird(0));
+        assert_eq!(flight.target, Source::pig(0));
+        assert!(!flight.off_hand);
+        presentation.tick(cue + 0.2, &library);
+        assert_eq!(presentation.flights(cue + 0.2).count(), 0);
+    }
+
+    #[test]
+    fn player_ranged_flag_and_offhand_animation_follow_captured_equipment() {
+        let mut profile = epic_core::Profile {
+            unlocked: 3,
+            party: [4, 3, 0],
+            ..Default::default()
+        };
+        let battle = Battle::new(&profile, 3).unwrap();
+        let before = battle.snapshot();
+        let library = AnimationLibrary::embedded();
+        let blue_timing = library
+            .actor("BlueBirds")
+            .unwrap()
+            .timing("Action_Attack_1")
+            .unwrap();
+        let blue = plan_flight(
+            &before,
+            Source::bird(0),
+            &[Source::pig(0)],
+            epic_core::HATS[before.heroes[0].hat].attack,
+            "Action_Attack_1",
+            blue_timing,
+            0.,
+        )
+        .expect("Original starter bow projectile");
+        assert_eq!(blue.projectile.id, "Projectile_BlueBirds_Bow_01");
+        let timing = ClipTiming {
+            duration: 2.,
+            impact: Some(0.3),
+            projectile: None,
+        };
+        assert!(!is_melee(
+            &before,
+            Source::bird(0),
+            &[Source::pig(0)],
+            timing
+        ));
+        assert_eq!(action_timing(SkillKind::Attack, timing, false), (2., 2.));
+        let skill = SKILLS
+            .iter()
+            .position(|s| s.has_parameter("use_offhandanim"))
+            .unwrap();
+        let index = before.heroes[0].gear.unwrap()[1].definition;
+        assert_eq!(
+            attack_name(&before, Source::bird(0), skill),
+            format!("Action_Attack_{}", EQUIPMENT[index].animation_index)
+        );
+        let glove = profile
+            .inventory
+            .add("bird_weapon_black_punching_glove_start", Default::default())
+            .unwrap();
+        profile.equip_gear(3, glove).unwrap();
+        let next = Battle::new(&profile, 3).unwrap().snapshot();
+        assert!(is_melee(&next, Source::bird(1), &[Source::pig(0)], timing));
+        assert!(plan_flight(
+            &next,
+            Source::bird(1),
+            &[Source::pig(0)],
+            skill,
+            "Action_Attack_1",
+            ClipTiming {
+                projectile: Some(0.1),
+                ..timing
+            },
+            0.
+        )
+        .is_none());
+    }
     use epic_core::{Action, Profile};
     #[test]
     fn ranged_weapon_without_projectile_cue_waits_for_clip_completion() {

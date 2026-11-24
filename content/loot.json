@@ -117485,8 +117485,8 @@
   ],
   "campaign_unsupported_wheel_tables": [],
   "limitations": [
-    "Wheel selection/forced start implemented; live wheel UI/reward delivery and preview paths remain unfinished",
-    "Campaign XP is delivered once per defeated pig at action boundaries; original gold/mastery samples are retained in battle drops but not applied to a native inventory",
-    "Unity RNG implementation/global ordering, live modifiers, exact kill/callback order, level-up visual timing/temporary-health and perk stages, non-XP persistence and original loot UI remain unfinished"
+    "Base campaign wheel selection/delivery is implemented in victory_rewards.rs; bonus modifiers, rerolls and original previews/presentation remain unfinished",
+    "Campaign XP and current-party mastery are settled once per defeated pig; original defeat gold remains replaced by the easier victory-gold override. Base wheel gold/resources/gear now persist separately",
+    "Unity RNG/global ordering, bonus modifiers, additional story loot, chest-opening/subtype effects/caps, equipment perks/source/scrap, exact kill/callback and level-up sequencing remain unfinished"
   ]
 }

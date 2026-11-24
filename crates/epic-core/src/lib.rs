@@ -15,10 +15,12 @@ pub mod enemy;
 pub mod loot;
 pub mod mastery;
 pub mod progression;
+pub mod resources;
 pub mod retaliation;
 pub mod revival;
 pub mod scoring;
 pub mod stats;
+pub mod victory_rewards;
 use retaliation::Retaliation;
 
 pub const BIRD_NAMES: [&str; 5] = ["Red", "Chuck", "Matilda", "Bomb", "The Blues"];
@@ -118,6 +120,7 @@ pub struct Profile {
     pub stars: [u8; ENCOUNTERS.len()],
     pub mastery: [mastery::Progress; mastery::CLASSES.len()],
     pub inventory: inventory::Inventory,
+    pub resources: resources::Resources,
     /// Highest unlocked stage, always inside STAGE_NAMES.
     pub unlocked: usize,
     pub owned: [bool; HATS.len()],
@@ -138,6 +141,7 @@ impl Default for Profile {
             stars: [0; ENCOUNTERS.len()],
             mastery: [mastery::Progress::default(); mastery::CLASSES.len()],
             inventory: inventory::Inventory::default(),
+            resources: resources::Resources::starting(),
             unlocked: 0,
             owned,
             equipped: STARTER_HATS,
@@ -160,16 +164,32 @@ impl Profile {
         bird: usize,
         hat_index: usize,
     ) -> Option<stats::BaseStats> {
+        let hands = self.inventory.hands(bird)?;
+        self.bird_stats_with_gear(
+            bird,
+            hat_index,
+            [
+                *self.inventory.items().get(hands[0])?,
+                *self.inventory.items().get(hands[1])?,
+            ],
+        )
+    }
+
+    pub(crate) fn bird_stats_with_gear(
+        &self,
+        bird: usize,
+        hat_index: usize,
+        gear: [inventory::Gear; 2],
+    ) -> Option<stats::BaseStats> {
         let definition = stats::BIRDS.get(bird)?;
         let hat = HATS.get(hat_index)?;
         if hat.bird != bird {
             return None;
         }
-        let hands = self.inventory.hands(bird)?;
         definition.base_stats(
             self.level() as i32,
-            self.inventory.items().get(hands[0])?.main_stat(),
-            self.inventory.items().get(hands[1])?.main_stat(),
+            gear[0].main_stat(),
+            gear[1].main_stat(),
             self.mastery_for_hat(hat_index)?.rank as usize,
             hat,
         )
@@ -203,7 +223,7 @@ impl Profile {
 
     pub fn encode(&self) -> String {
         format!(
-            "EPIC_RUST_8\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n",
+            "EPIC_RUST_9\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n",
             self.gold,
             self.experience.points,
             self.experience.level,
@@ -229,20 +249,24 @@ impl Profile {
             self.encode_stars(),
             self.encode_mastery(),
             self.inventory.encode_items(),
-            self.inventory.encode_hands()
+            self.inventory.encode_hands(),
+            self.resources.encode()
         )
     }
 
     pub fn decode(text: &str) -> Result<Self, &'static str> {
         let lines: Vec<_> = text.lines().collect();
         let version = lines.first().copied().ok_or("Empty save")?;
-        let inventoried = version == "EPIC_RUST_8";
+        let resourced = version == "EPIC_RUST_9";
+        let inventoried = resourced || version == "EPIC_RUST_8";
         let mastered = inventoried || version == "EPIC_RUST_7";
         let collected = mastered || version == "EPIC_RUST_6";
         let revival = collected || version == "EPIC_RUST_5";
         let modern = revival || version == "EPIC_RUST_4";
         if lines.len()
-            != if inventoried {
+            != if resourced {
+                14
+            } else if inventoried {
                 13
             } else if mastered {
                 11
@@ -264,6 +288,7 @@ impl Profile {
                 "EPIC_RUST_6",
                 "EPIC_RUST_7",
                 "EPIC_RUST_8",
+                "EPIC_RUST_9",
             ]
             .contains(&version)
         {
@@ -374,6 +399,11 @@ impl Profile {
             } else {
                 inventory::Inventory::default()
             },
+            resources: if resourced {
+                resources::Resources::decode(lines[13])?
+            } else {
+                resources::Resources::starting()
+            },
             experience,
             unlocked,
             owned,
@@ -385,6 +415,9 @@ impl Profile {
 
 #[derive(Clone, Debug)]
 pub struct Fighter {
+    /// Bird equipment captured at battle entry, including each owned copy's
+    /// level. Pig loadouts continue to resolve from their recovered definition.
+    pub gear: Option<[inventory::Gear; 2]>,
     pub level: i32,
     pub mastery_rank: u32,
     /// Bird knockout remains separate from health (a stat refresh can refill HP).
@@ -456,6 +489,8 @@ pub struct Battle {
     presentation_events: Option<Vec<combat_events::CombatEvent>>,
     defeat_rewards: defeat_rewards::DefeatRewards,
     scoring: scoring::Ledger,
+    victory_rewards: Option<victory_rewards::VictoryRewards>,
+    wheel_random: loot::SeededLoot,
 }
 
 impl Battle {
@@ -479,6 +514,13 @@ impl Battle {
                 // exact native damage/HP precision remains separate work.
                 let max_hp = (stats.health.round_ties_even() as i32).max(1);
                 Fighter {
+                    gear: Some(
+                        profile
+                            .inventory
+                            .hands(bird)
+                            .unwrap()
+                            .map(|index| profile.inventory.items()[index]),
+                    ),
                     mastery_rank: profile
                         .mastery_for_hat(hat)
                         .expect("Original party class")
@@ -512,6 +554,8 @@ impl Battle {
             presentation_events: None,
             defeat_rewards: defeat_rewards::DefeatRewards::new(seed ^ 0x4c4f4f545f455049),
             scoring: scoring::Ledger::default(),
+            victory_rewards: None,
+            wheel_random: loot::SeededLoot::new(seed ^ 0x574845454c5f4550),
             log: vec![format!(
                 "{}: choose a bird, then a target.",
                 STAGE_NAMES[stage]
@@ -533,6 +577,7 @@ impl Battle {
                 let stats = pig.character_stats(level);
                 let max_hp = (stats.health as i32).max(1);
                 (0..spawn.amount).map(move |_| Fighter {
+                    gear: None,
                     mastery_rank: 0,
                     knocked_out: false,
                     level,
@@ -1068,17 +1113,41 @@ impl Battle {
         if self.outcome != Outcome::Won {
             return Err("No unclaimed victory");
         }
-        let gold = self.reward();
-        profile.gold = profile.gold.saturating_add(gold);
-        self.settle_experience(profile);
-        self.settle_mastery(profile);
-        let stars = self.result_score().expect("Won battle score").stars;
-        profile.stars[self.stage] = profile.stars[self.stage].max(stars);
-        profile.unlocked = profile
+        // Commit all reward/progression changes together. Capacity or invalid
+        // reward errors must not pay gold, consume RNG, or lose the victory.
+        let mut completed = self.clone();
+        let mut updated = profile.clone();
+        completed.settle_experience(&mut updated);
+        completed.settle_mastery(&mut updated);
+        let stars = completed.result_score().expect("Won battle score").stars;
+        let receipt = victory_rewards::VictoryRewards::roll(
+            self.stage,
+            stars,
+            updated.level() as i32,
+            &mut completed.wheel_random,
+        )?;
+        let wheel_gold = receipt.deposit(&mut updated)?;
+        let gold = self
+            .reward()
+            .checked_add(wheel_gold)
+            .ok_or("Reward gold overflow")?;
+        updated.gold = updated
+            .gold
+            .checked_add(self.reward())
+            .ok_or("Gold wallet full")?;
+        updated.stars[self.stage] = updated.stars[self.stage].max(stars);
+        updated.unlocked = updated
             .unlocked
             .max((self.stage + 1).min(STAGE_NAMES.len() - 1));
-        self.outcome = Outcome::Claimed;
+        completed.victory_rewards = Some(receipt);
+        completed.outcome = Outcome::Claimed;
+        *profile = updated;
+        *self = completed;
         Ok(gold)
+    }
+
+    pub fn victory_rewards(&self) -> Option<&victory_rewards::VictoryRewards> {
+        self.victory_rewards.as_ref()
     }
 }
 

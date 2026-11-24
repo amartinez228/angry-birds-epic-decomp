@@ -302,6 +302,80 @@ mod tests {
     }
 
     #[test]
+    fn battle_captures_owned_hands_across_camp_changes_and_level_refresh() {
+        let mut profile = Profile {
+            unlocked: 3,
+            party: [3, 4, 0],
+            ..Default::default()
+        };
+        let bomb = profile
+            .inventory
+            .add(
+                "bird_weapon_black_bomb_01",
+                EquipmentStats {
+                    level: 4,
+                    quality: 2,
+                    ..Default::default()
+                },
+            )
+            .unwrap();
+        profile.equip_gear(3, bomb).unwrap();
+        let mut battle = crate::Battle::new(&profile, 3).unwrap();
+        let captured = battle.heroes[0].gear.unwrap();
+        assert_eq!(captured[0], profile.inventory.items()[bomb]);
+        assert_eq!(battle.snapshot().heroes[0].gear, Some(captured));
+        assert!(battle.enemies.iter().all(|pig| pig.gear.is_none()));
+        let pistol = profile
+            .inventory
+            .add(
+                "bird_weapon_black_pistol_01",
+                EquipmentStats {
+                    level: 9,
+                    ancient: true,
+                    ..Default::default()
+                },
+            )
+            .unwrap();
+        profile.equip_gear(3, pistol).unwrap();
+        profile.experience.grant(35);
+        battle.refresh_bird_stats(&profile);
+        let expected = profile
+            .bird_stats_with_gear(3, battle.heroes[0].hat, captured)
+            .unwrap();
+        assert_eq!(battle.heroes[0].level, 2);
+        assert_eq!(battle.heroes[0].gear, Some(captured));
+        assert_eq!(
+            battle.heroes[0].attack,
+            expected.attack.round_ties_even() as i32
+        );
+        assert_ne!(
+            battle.heroes[0].attack,
+            profile.bird_stats(3).unwrap().attack.round_ties_even() as i32
+        );
+        let class = crate::mastery::CLASSES
+            .iter()
+            .position(|class| class.id == crate::HATS[battle.heroes[0].hat].class_id)
+            .unwrap();
+        profile.mastery[class].rank = 2;
+        battle.refresh_bird_stats(&profile);
+        let expected = profile
+            .bird_stats_with_gear(3, battle.heroes[0].hat, captured)
+            .unwrap();
+        assert_eq!(battle.heroes[0].gear, Some(captured));
+        assert_eq!(battle.heroes[0].mastery_rank, 2);
+        assert_eq!(
+            battle.heroes[0].attack,
+            expected.attack.round_ties_even() as i32
+        );
+        let next = crate::Battle::new(&profile, 3).unwrap();
+        assert_eq!(
+            next.heroes[0].gear.unwrap()[0],
+            profile.inventory.items()[pistol]
+        );
+        assert_eq!(Profile::decode(&profile.encode()), Ok(profile));
+    }
+
+    #[test]
     fn version_seven_migrates_to_initial_hands_without_changing_progress() {
         let mut profile = Profile {
             gold: 4321,

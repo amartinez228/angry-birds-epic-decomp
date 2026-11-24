@@ -3,7 +3,8 @@
 This is an unfinished Rust reconstruction of Angry Birds Epic build
 com.rovio.gold 3.0.27463.4821. Read README.md, RECONSTRUCTION.json and
 THIRD_PARTY_NOTICES.md before working. The overall recreation is not complete;
-only Windows x86_64 has been verified.
+Windows x86_64 was verified in the previous handoff. The current resource
+source also builds and runs on macOS arm64, including recovered original music.
 
 ## Build and play
 
@@ -16,10 +17,15 @@ cargo build -p epic-client --release --locked
 ```
 
 On Windows, launch `target/release/epic-client.exe` from the directory where you
-want its `local.data` save to live. Save format is EPIC_RUST_8. Saves and build
+want its `local.data` save to live. Save format is EPIC_RUST_9. Saves and build
 outputs are deliberately not committed. Cargo.lock and the runtime assets are
 committed; Git LFS is not required for this snapshot. On the original machine,
 dependencies are cached and the commands also work with `--offline`.
+
+On macOS, the same Cargo commands work. Run `./target/release/epic-client`
+from this directory, or use its absolute path from a separate save directory.
+The executable stores `local.data` in its working directory. A distributable
+macOS app bundle is not yet implemented. Music uses the native NSSound backend.
 
 The existing Desktop launcher/package is separate from this checkout. Run
 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/package_desktop.ps1`
@@ -28,19 +34,54 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
-- Latest verified baseline: 139 Rust tests, 38 Python recovery tests, Clippy,
-  Windows release build, and native UI/save checks passed.
-- Owned equipment and loadouts persist. Level/mastery refresh retains selected
-  gear and the captured battle skin.
-- Wheel selection logic is recovered and tested. Live wheel reward delivery,
-  resource persistence, crafting and many original systems remain unfinished.
+- Current baseline: 152 Rust tests, Clippy and macOS arm64 release build pass.
+  The audio follow-up adds native Mac music: all nine buffers pass NSSound
+  decoding/playback/loop checks, with mute/unmute, track changes, silent captures
+  and object cleanup verified through `python3 tools/smoke_audio.py`. It writes
+  no play save; brief snippets can be audible. Speaker audibility and original
+  mixer equivalence are not established by API acceptance.
+  Native UI/save checks cover v9 resources, exact v8 backup and changed-stack
+  persistence in addition to the existing shop/combat/gear/revival checks
+  (836 captures across 22 launches, including player bomb/bow launch, flight and
+  expiry). Inventory screens, wheel and player projectiles visually reviewed.
+  Claims save the tutorial sword, vial and seashell
+  once, with unchanged loadouts and read-only reopening.
+  The previous Windows baseline had 139 Rust tests and 38 recovery tests;
+  original-input Python recovery tests cannot run on this source-only checkout.
+- Owned equipment and loadouts persist. Birds now capture both owned hands at
+  battle entry, including item levels, for stats, attack clips, melee/ranged
+  timing and supported static projectiles. Level/mastery refresh and queued
+  snapshots retain those copies even if Camp changes equipment. The next battle
+  uses the updated selection. Native capture verifies Bomb's level-four bomb
+  selects Attack_3 and Bomb_02, and the Blues' starter bow launches Bow_01.
+  Full actor weapon-art swaps, skill overrides, repeated/multiple-target launches
+  and animated/missing projectile visuals remain unfinished. No save bump.
+- Base wheel reward delivery is live through Spin & collect rewards. All 167
+  imported roots use eight slots, with stars determining the wrapped slot count
+  and pending XP settled before choosing equipment level. Equipment copies,
+  resource stacks and wheel gold persist; claims fail atomically on capacity
+  errors. Replays earn a new wheel but reopening never repeats a claimed win.
+  Bonus-wheel modifiers, rerolls, additional story loot, chest opening,
+  equipment perks/source/scrap, resource subtype effects/caps, crafting and
+  original wheel artwork/choreography remain unfinished. Chest markers are
+  stored without executing their effects. Save format remains v9.
 - `content/resources.json` preserves 617 resource definitions and 24 merged
-  starting values, including recipe level deltas. It is recovered configuration,
-  not a working resource inventory.
+  starting values, including recipe level deltas. `tools/build_resource_runtime.py`
+  generates Rust definitions from this committed manifest and localization;
+  `--check` verifies that generated data is current, without original inputs.
+  Profiles now store the 23 non-XP starting entries and expose Materials,
+  Consumables, Recipes and Other under Camp > Inventory. Pre-v9 saves gain
+  level-one starting entries once; XP/gold and selected gear remain unchanged.
+  Existing v9 quantities (including an empty inventory) are never reseeded.
+  Stored story/unlock entries do not yet execute native subtype effects.
 - Keep the requested easier gold and all 116 bundled player hats purchasable
   with earned gold. Current overrides are documented in RECONSTRUCTION.json.
-- The main agent was paused at the user's request. Do not interpret this
-  document as an instruction to resume automatically.
+- Work resumed at the user's request on November 23, 2026.
+- Crafting investigation: the committed recipe rows retain ResultLoot, but do
+  not include the equipment/consumable material-cost and quality rules. Only
+  recipe generation/addition bodies are in the selected native disassembly;
+  crafting execution still needs original inputs. Do not invent costs or
+  interpret CraftingItemBalancingData.ValueOfBaseItem as a complete recipe cost.
 
 The full remaining scope and next steps are in RECONSTRUCTION.json. A rough
 previous scope estimate was 30–35%; it is not a measured completion statistic.

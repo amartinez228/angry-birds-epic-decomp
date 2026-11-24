@@ -127,7 +127,7 @@ impl Battle {
             hero.knocked_out |= !hero.alive();
             let bird = hero.bird.expect("Bird combatant identity");
             let stats = profile
-                .bird_stats_for_hat(bird, hero.hat)
+                .bird_stats_with_gear(bird, hero.hat, hero.gear.expect("Captured bird equipment"))
                 .expect("Valid saved mastery rank");
             hero.level = level as i32;
             hero.mastery_rank = rank;

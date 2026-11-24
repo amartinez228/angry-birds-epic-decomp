@@ -2,6 +2,8 @@
 
 This is an unfinished standalone reconstruction prototype, not a complete port
 of Angry Birds Epic. A Windows release executable has been built successfully.
+The current source also builds and runs on macOS arm64. See the macOS commands
+below. Recovered original music now plays on Windows and macOS.
 
 In the Desktop package, double-click `Play Epic Rust.cmd` to launch the game.
 The launcher keeps save data (`local.data`) beside the executable. The packaged
@@ -48,14 +50,21 @@ material slots, skinned scenery, CHMeshSprite generation, animation, particles,
 native shaders and runtime camera adjustments still need reconstruction.
 The current battle actor layout also remains provisional.
 
-The Windows build now plays recovered original world-map, camp, battle,
+The Windows and macOS builds now play recovered original world-map, camp, battle,
 victory and defeat music. Basic battles choose among their four original tracks;
 special battles use `Battle_05`. The Music button or **M** toggles music, and the
 preference is saved separately from campaign progress. Track selection uses
 separate cosmetic randomness, so it cannot change battle outcomes. Muting stops
 playback; unmuting currently restarts the selected track. Camp and the current
 hat shop share camp music. This first backend uses Windows WinMM and embedded
-PCM buffers. Other platform audio, original channel gains, secondary music,
+PCM buffers. macOS uses Apple's [NSSound](https://developer.apple.com/documentation/appkit/nssound)
+with the same embedded WAVE buffers, retaining its Cocoa sound/data objects
+until replacement, mute or player shutdown. It creates no temporary audio files
+and uses the existing saved mute preference. Native checks accepted all nine
+buffers and verified positive decoded durations, playing state, original loop
+flags, repeated requests, mute/unmute, track changes, silent capture and cleanup.
+This verifies the native API path rather than speaker audibility or original
+FMOD mixer equivalence. Linux/mobile/browser audio, original channel gains, secondary music,
 crossfades, sound effects and exact screen/cue timing remain unfinished.
 
 `tools/recover_audio.py` recovers all 622 bundled AudioClips and 460 serialized
@@ -104,7 +113,7 @@ Native code confirms that the event integer indexes this table. The attack
 override clears a stop flag on `Impact`; its melee coroutine waits for that
 flag or a pacing timeout before continuing toward damage. The renderer now
 publishes melee damage at this cue. Complete projectile presentation, multiple-hit
-cadence, player equipment selection and support/rage timing remain provisional;
+cadence and support/rage timing remain provisional;
 those non-melee actions currently publish at clip completion. The `EPICAN03`
 runtime pack includes user cue times and executes sprite visibility,
 material, texture/UV, pivot geometry and depth changes at the recovered frame
@@ -137,15 +146,31 @@ root pose reset by native instantiation, preserving the child geometry, tint,
 quad alignment and UVs. Main-hand/off-hand/body-center attachment paths are
 bound from each original asset controller to recovered rig nodes.
 
-Single-target attacks with identified direct pig weapon projectiles now launch
+Single-target attacks with recovered bird weapon or direct pig weapon projectiles now launch
 their static sprite at the original Projectile cue, follow authored per-axis
 Hermite curves (including the native X/Y progress swap for leftward travel),
 and expire after the original duration. The Ninja Bowman arrow's 0.25-second
 flight is verified in unit tests and rendered captures. Projectile travel does
 not change the simulation's damage clock. Endpoints use the current battle
-layout and target rest pose; original focus movement/camera, player projectiles,
+layout and target rest pose; original focus movement/camera,
 skill overrides, repeated/multiple-target launches, trails/particles and animated
 projectile visuals remain unfinished. Missing original art is not substituted.
+
+Birds now capture both owned equipment copies when entering battle. The saved
+weapon animation index selects their original attack clip, including off-hand
+selection from the presence of `use_offhandanim`. The main hand's ranged flag
+controls melee timing for birds as well as pigs. Supported single-target bird
+weapons resolve their projectile through the native level/offset/variant formula
+using the captured item's level, then launch its recovered static sprite at the
+clip's Projectile cue. Bomb's level-four bomb uses `Action_Attack_3` and
+`Projectile_BlackBird_Bomb_02`; the Blues' starter bow uses its original first
+arrow. Both are verified before launch, during travel and after expiry in native
+captures. Projectile travel retains the existing separate damage clock.
+Queued snapshots and later level/mastery stat refreshes keep those captured
+items even if Camp chooses different equipment. The next battle uses the new
+selection. No save format change is needed. Full actor weapon-art swaps,
+skill-specific projectile overrides, repeated launches and missing/animated
+projectile visuals remain unfinished.
 
 `tools/recover_equipment.py` imports all 312 original equipment definitions
 and default loadouts for the 140 campaign pigs into `content/equipment.json`
@@ -163,9 +188,20 @@ battle stats; perks and visual equipment swaps remain unfinished.
 recipe and event item definitions in `content/resources.json`, with original
 English names where present, raw fields and source hashes. It also recovers
 24 merged starting inventory values, including duplicate recipe entries and
-the lance recipe's level delta. These are recovered data; they are not yet
-deposited in live profiles. Native item subtype behavior, resource persistence
-and wheel reward delivery remain unfinished.
+the lance recipe's level delta. Save v9 now stores the 23 non-XP starting
+entries. New profiles and pre-v9 migrations receive these at their original
+level-one values without changing the existing XP/gold wallet. The lance recipe
+starts at level two; the merged vial recipe count is two. Camp > Inventory shows
+paginated Materials, Consumables, Recipes and Other, with recovered names and
+recipe product labels. Stable IDs, quantities and first-deposit levels persist;
+unknown/duplicate/invalid saved entries and quantity overflow are rejected.
+Existing v9 stacks and empty inventories are never reseeded. Migrating a v8
+profile preserves its exact source under `epic-rust-profile-backup-v8` on the
+first changed save. Stored story/unlock entries do not execute native effects.
+Base wheel rewards now deposit into this inventory. Subtype behavior/caps,
+crafting and consumable use remain unfinished.
+`python3 tools/build_resource_runtime.py --check` verifies the Rust
+data against the committed manifest/localization without original game inputs.
 
 `tools/recover_stats.py` recovers all 47 bird balancing rows, the five primary
 birds' exact starting hands, 100 mastery ranks, 121 enchantment rows and the
@@ -213,8 +249,28 @@ wheel selection now uses the traced integer start plus consecutive wrapped slots
 Type 4 uses the supplied fixed start, and a forced-start override is available
 for type 3. Nested wheels clear the parent override. Entry quantity/span draws
 still run, including fixed quantities. Original battle wheel roots are retained.
-The live rewards screen, wheel animation/reroll flow and reward delivery remain
-unimplemented; this evaluator is not yet an extra source of gameplay rewards.
+Winning now offers **Spin & collect rewards**. The base wheel uses the original
+first root, performance star count and level after pending XP settlement.
+Type-4 tutorial wheels retain their fixed starting slot; ordinary wheels use a
+dedicated deterministic RNG that cannot change combat choices. One to three
+consecutive wrapped slots resolve through the recovered graph. Materials,
+consumables, lucky coins and chest markers go into saved resource stacks; original
+wheel gold goes to the gold wallet in addition to the existing easier battle
+gold. The two tutorial equipment rewards become separate owned copies with
+their rolled level/quality/ancient state and no enchantment. Chosen loadouts do
+not change. The provisional reward screen animates the selected slots and lists
+the collected items; original artwork/choreography remain unfinished.
+
+Claims update the profile and mark the battle claimed together. Unknown rewards,
+quantity overflow or a full equipment inventory leave the whole profile, RNG
+and unclaimed victory unchanged. Reopening cannot replay the payout; a new
+victory in a replay legitimately earns another wheel. The existing v9 format
+already stores these rewards, so no new save migration is needed.
+Bonus-wheel substitution (`CheckForBonusLoot`), level-range placeholder routing
+outside these imported roots, rerolls, additional story loot, chest-opening
+effects, resource caps/subtype callbacks, equipment perks/source/scrap and the
+original Unity RNG stream remain unfinished. Depositing a chest marker does
+not yet open its original chest or execute its story effects.
 
 The provisional flat 50-XP victory award has been replaced by original pig XP
 drops. XP uses the recovered level-difference lookup and truncation; 112 campaign
@@ -320,12 +376,12 @@ list reuse, broader participation rules and remaining effect hooks are unfinishe
 
 Combat presentation events now carry explicit living targets, including attacks
 that deal zero damage. The melee timing decision rejects multiple targets and
-uses recovered pig main-hand ranged flags; it no longer treats a ranged weapon
+uses recovered bird/pig main-hand ranged flags; it no longer treats a ranged weapon
 as melee merely because its clip lacks a Projectile cue. Native coroutine field
 offsets identify the half-length wait as the illusion path; normal ranged attacks
 yield the attack animation length before continuing through impact actions.
 `tools/native_field_layout.py 36525 36516` reproduces the declared native field
-layout evidence, including separate static-field storage. Player equipment,
+layout evidence, including separate static-field storage. Native
 cached melee-state behavior, additional action hooks, off-hand length selection
 and multihit pacing still need reconstruction and original-game comparison.
 
@@ -397,6 +453,24 @@ stable original hat and encounter IDs. Numeric old progress is retained as an
 unlocked encounter count because the old invented stages have no exact original
 equivalent. The first write after migration preserves the previous profile under
 `epic-rust-profile-backup-v1` or `epic-rust-profile-backup-v2` in local storage.
+
+## Build on macOS
+
+From this directory with Rust and the Xcode command-line tools installed:
+
+```sh
+cargo test --workspace --locked
+cargo clippy --workspace --all-targets --locked -- -D warnings
+cargo run -p epic-client --release --locked
+```
+
+The native release executable is `target/release/epic-client`. Saves live in
+`local.data` in the launch working directory. macOS arm64 compilation and native
+UI/save checks and native music-backend checks pass; app-bundle packaging and a
+full campaign playthrough remain unverified or unfinished. `python3 tools/smoke_client.py`
+uses fresh isolated save directories and briefly opens native windows.
+`python3 tools/smoke_audio.py` checks all nine music buffers and player controls
+in an isolated folder without writing a save; brief audio snippets may be audible.
 
 ## Build on Windows
 
@@ -511,6 +585,31 @@ Extracted game files and generated evidence are local inputs, excluded by
 `.gitignore`.
 
 ## Verification so far
+
+Current equipment-presentation milestone on macOS arm64: 152 Rust tests,
+Clippy and the release build pass. The native UI/save suite produces 836 captures
+across 22 launches, including Bomb's level-cycled projectile and the Blues'
+starter arrow before launch, in flight and after expiry. Those captures were
+visually reviewed. Tests cover captured loadout/level/mastery refresh, equipped
+attack clips, off-hand selection and ranged timing without a projectile cue.
+
+The preceding base-wheel milestone on macOS arm64 passed 149 Rust tests, Clippy,
+release build and the source-only resource-generation check pass. Native UI
+checks extend the previous fixtures with exact v8 backup, v9 resource migration,
+recipe quantities/levels, changed-stack persistence and read-only reopening.
+The run produces 660 captures across 22 launches; inventory screens and the
+spinning/landed reward wheel were visually reviewed. The original tutorial
+wheel's sword, vial and seashell persist with the loadout unchanged and no
+duplicate payout on reopening. Core tests cover every campaign wheel slot at
+one/two/three stars, transactional capacity failures and end-level gear stats.
+The macOS music follow-up also passes all 149 tests, Clippy and the release
+build. `python3 tools/smoke_audio.py` verifies all nine embedded tracks through
+NSSound plus mute/unmute, track changes, loop flags, silent mode and cleanup;
+no play save is written. The newer equipment-presentation UI suite above also
+retains silent capture mode while checking the existing save/gear/reward paths.
+The historical Windows/recovery checks below describe the previous baseline;
+the original APK/native binary are absent from this checkout, so the 38 original
+recovery tests have not been rerun here.
 
 - `cargo check -p epic-core --offline --locked`: passed.
 - `cargo clippy --workspace --all-targets --offline --locked -- -D warnings`: passed.

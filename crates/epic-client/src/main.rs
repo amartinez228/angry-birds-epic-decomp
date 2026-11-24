@@ -7,6 +7,7 @@ mod characters;
 mod music;
 mod presentation;
 mod projectiles;
+mod rewards;
 mod scenery;
 use characters::{Actor, CharacterArt};
 use epic_core::effects::{Side, Source};
@@ -35,6 +36,8 @@ enum Screen {
     Map,
     Camp,
     Equipment,
+    Resources,
+    Rewards,
     Shop,
     Battle,
 }
@@ -355,6 +358,11 @@ fn save(profile: &Profile) -> Result<(), &'static str> {
         .lock()
         .map_err(|_| "Save storage unavailable")?;
     if let Some(previous) = storage.get(SAVE_KEY) {
+        if previous.starts_with("EPIC_RUST_8\n")
+            && storage.get("epic-rust-profile-backup-v8").is_none()
+        {
+            storage.set("epic-rust-profile-backup-v8", &previous);
+        }
         if previous.starts_with("EPIC_RUST_7\n")
             && storage.get("epic-rust-profile-backup-v7").is_none()
         {
@@ -459,6 +467,10 @@ async fn main() {
     let mut camp_slot = 0usize;
     let mut gear_bird = 0usize;
     let mut gear_page = 0usize;
+    let mut resource_tab = 0usize;
+    let mut resource_page = 0usize;
+    let mut reward_page = 0usize;
+    let mut reward_started_at = 0.;
     let mut mode = Mode::Attack;
     let target = render_target(W as u32, H as u32);
     target.texture.set_filter(FilterMode::Linear);
@@ -495,6 +507,8 @@ async fn main() {
     };
     #[cfg(not(target_arch = "wasm32"))]
     let mut capture_index = 0usize;
+    #[cfg(not(target_arch = "wasm32"))]
+    let mut capture_opened_resources = false;
     #[cfg(not(target_arch = "wasm32"))]
     let exercise_save = std::env::args().any(|arg| arg == "--exercise-save");
     #[cfg(not(target_arch = "wasm32"))]
@@ -541,6 +555,35 @@ async fn main() {
                         + 0.125
                 }
                 21 => 5.,
+                31..=33 | 35..=37 => {
+                    let (asset, clip, id) = if capture_index < 34 {
+                        (
+                            "BlackBird",
+                            "Action_Attack_3",
+                            "Projectile_BlackBird_Bomb_02",
+                        )
+                    } else {
+                        (
+                            "BlueBirds",
+                            "Action_Attack_1",
+                            "Projectile_BlueBirds_Bow_01",
+                        )
+                    };
+                    let cue = hat_art
+                        .animations()
+                        .actor(asset)
+                        .unwrap()
+                        .timing(clip)
+                        .unwrap()
+                        .projectile
+                        .unwrap();
+                    let duration = projectiles::definition(id).unwrap().duration;
+                    match (capture_index - 30) % 4 {
+                        1 => cue - 0.001,
+                        2 => cue + duration / 2.,
+                        _ => cue + duration + 0.001,
+                    }
+                }
                 _ => 0.,
             }
         } else {
@@ -563,6 +606,73 @@ async fn main() {
                 0 => screen = Screen::Map,
                 1 => screen = Screen::Camp,
                 22 => screen = Screen::Equipment,
+                23 => {
+                    if !capture_opened_resources {
+                        screen = Screen::Camp;
+                    }
+                }
+                24..=27 => {
+                    screen = Screen::Resources;
+                    resource_tab = match capture_index {
+                        24 => 2,
+                        25 => 3,
+                        26 => 2,
+                        _ => 1,
+                    };
+                    resource_page = 0;
+                }
+                28..=29 => {
+                    let mut fixture_profile = profile.clone();
+                    let mut fixture = Battle::new_with_seed(&fixture_profile, 0, 7).unwrap();
+                    fixture.enemies[0].hp = 1;
+                    fixture.enemies[1].hp = 0;
+                    fixture.act(0, Action::Attack(0)).unwrap();
+                    fixture.claim(&mut fixture_profile).unwrap();
+                    battle = Some(fixture);
+                    screen = Screen::Rewards;
+                    reward_page = 0;
+                    reward_started_at = get_time() - if capture_index == 28 { 2. } else { 0.5 };
+                }
+                30 | 34 => {
+                    let mut fixture = profile.clone();
+                    fixture.unlocked = 3;
+                    fixture.party = [if capture_index == 30 { 3 } else { 4 }, 1, 0];
+                    if capture_index == 30 {
+                        let gear = fixture
+                            .inventory
+                            .add(
+                                "bird_weapon_black_bomb_01",
+                                epic_core::stats::EquipmentStats {
+                                    level: 4,
+                                    ..Default::default()
+                                },
+                            )
+                            .unwrap();
+                        fixture.equip_gear(3, gear).unwrap();
+                    } else {
+                        // Use the original level-one starter bow even in captures
+                        // of a later player save, so the expected asset is fixed.
+                        let gear = fixture
+                            .inventory
+                            .add("bird_weapon_blue_bow_start", Default::default())
+                            .unwrap();
+                        fixture.equip_gear(4, gear).unwrap();
+                    }
+                    let mut fight = Battle::new(&fixture, 3).unwrap();
+                    for enemy in &mut fight.enemies {
+                        enemy.hp = 10000;
+                        enemy.max_hp = 10000;
+                    }
+                    fight.enable_presentation_trace();
+                    presentation.reset(fight.snapshot());
+                    fight.act(0, Action::Attack(0)).unwrap();
+                    presentation.enqueue(fight.take_presentation_events());
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                    selected = 0;
+                    mode = Mode::Attack;
+                }
+                31..=33 | 35..=37 => {}
                 2 => {
                     screen = Screen::Shop;
                     shop_bird = 0;
@@ -763,6 +873,17 @@ async fn main() {
             pointer: (vec2(mx, my) - origin) / scale,
             pressed: is_mouse_button_pressed(MouseButton::Left),
         };
+        #[cfg(not(target_arch = "wasm32"))]
+        if capture_dir.is_some()
+            && ((capture_index == 23 && !capture_opened_resources) || capture_index == 26)
+        {
+            ui.pointer = if capture_index == 23 {
+                vec2(430., 590.) // Open Inventory through the Camp button.
+            } else {
+                vec2(290., 650.) // Advance the recovered recipe list.
+            };
+            ui.pressed = true;
+        }
         #[cfg(not(target_arch = "wasm32"))]
         if capture_dir.is_some() && exercise_equipment && capture_index == 22 {
             ui.pointer = vec2(930., 485.);
@@ -992,7 +1113,125 @@ async fn main() {
                     gear_page = 0;
                     screen = Screen::Equipment;
                 }
-                text("Change classes in the hat shop.", 310., 598., 23., INK);
+                if ui.button(Rect::new(310., 570., 240., 43.), "Inventory", true) {
+                    resource_tab = 0;
+                    resource_page = 0;
+                    screen = Screen::Resources;
+                }
+                text("Change classes in the hat shop.", 580., 598., 23., INK);
+            }
+            Screen::Resources => {
+                text("INVENTORY", 45., 140., 32., INK);
+                text(
+                    "Collected materials, recipes and other items.",
+                    45.,
+                    173.,
+                    22.,
+                    INK,
+                );
+                for (tab, label) in ["Materials", "Consumables", "Recipes", "Other"]
+                    .iter()
+                    .enumerate()
+                {
+                    if ui.button(
+                        Rect::new(45. + tab as f32 * 257., 192., 240., 42.),
+                        label,
+                        resource_tab != tab,
+                    ) {
+                        resource_tab = tab;
+                        resource_page = 0;
+                    }
+                }
+                let choices: Vec<_> = profile
+                    .resources
+                    .items()
+                    .filter_map(|(id, stack)| {
+                        let item =
+                            epic_core::resources::definition(id).expect("Stored resource identity");
+                        let tab = match item.item_type {
+                            1 | 2 => 0,
+                            5 => 1,
+                            12 => 2,
+                            _ => 3,
+                        };
+                        (tab == resource_tab).then_some((item, stack))
+                    })
+                    .collect();
+                let pages = choices.len().div_ceil(6).max(1);
+                resource_page = resource_page.min(pages - 1);
+                if ui.button(
+                    Rect::new(45., 630., 155., 42.),
+                    "Previous",
+                    resource_page > 0,
+                ) {
+                    resource_page -= 1;
+                }
+                if ui.button(
+                    Rect::new(220., 630., 155., 42.),
+                    "Next",
+                    resource_page + 1 < pages,
+                ) {
+                    resource_page += 1;
+                }
+                text(
+                    &format!("Page {} / {}", resource_page + 1, pages),
+                    455.,
+                    658.,
+                    22.,
+                    INK,
+                );
+                for (row, (item, stack)) in
+                    choices.iter().skip(resource_page * 6).take(6).enumerate()
+                {
+                    let y = 251. + row as f32 * 60.;
+                    panel(45., y, 1010., 53.);
+                    let name = item.label;
+                    let size = (22. * 650. / measure_ui(name, 22).width.max(1.)).min(22.);
+                    text(name, 62., y + 23., size, INK);
+                    let category = match item.item_type {
+                        1 | 2 => "Crafting material",
+                        5 => "Consumable",
+                        12 => "Crafting recipe",
+                        _ => "Collected item",
+                    };
+                    text(category, 62., y + 43., 13., INK);
+                    let value = if item.item_type == 12 {
+                        format!("Owned: {} / Level {}", stack.value, stack.level)
+                    } else {
+                        format!("Owned: {}", stack.value)
+                    };
+                    text(
+                        &value,
+                        1028. - measure_ui(&value, 21).width,
+                        y + 33.,
+                        21.,
+                        INK,
+                    );
+                }
+                if choices.is_empty() {
+                    text("No items collected yet.", 65., 286., 23., INK);
+                }
+                if ui.button(Rect::new(850., 630., 205., 42.), "Back to camp", true) {
+                    screen = Screen::Camp;
+                }
+            }
+            Screen::Rewards => {
+                if let Some((fight, receipt)) = battle
+                    .as_ref()
+                    .and_then(|fight| fight.victory_rewards().map(|receipt| (fight, receipt)))
+                {
+                    if rewards::draw(
+                        &mut ui,
+                        receipt,
+                        fight.reward(),
+                        (get_time() - reward_started_at) as f32,
+                        &mut reward_page,
+                    ) {
+                        screen = Screen::Camp;
+                    }
+                } else {
+                    screen = Screen::Camp;
+                }
             }
             Screen::Equipment => {
                 text("EQUIPMENT", 45., 140., 32., INK);
@@ -1475,7 +1714,7 @@ async fn main() {
                         if ui.button(
                             Rect::new(345., if won { 372. } else { 442. }, 410., 55.),
                             if won {
-                                "Collect & continue"
+                                "Spin & collect rewards"
                             } else {
                                 "Return to camp"
                             },
@@ -1486,11 +1725,15 @@ async fn main() {
                                     Ok(_) => {
                                         changed = true;
                                         map_page = profile.unlocked / 12;
+                                        reward_page = 0;
+                                        reward_started_at = get_time();
+                                        screen = Screen::Rewards;
                                     }
                                     Err(error) => notice = error.into(),
                                 }
+                            } else {
+                                screen = Screen::Camp;
                             }
-                            screen = Screen::Camp;
                         }
                     }
                 } else {
@@ -1556,7 +1799,8 @@ async fn main() {
             assert_eq!(hero.max_hp, 150);
         }
         let music_id = match screen {
-            Screen::Camp | Screen::Equipment | Screen::Shop => "music_camp",
+            Screen::Rewards => "music_battle_win",
+            Screen::Camp | Screen::Equipment | Screen::Resources | Screen::Shop => "music_camp",
             Screen::Map => "music_worldmap",
             Screen::Battle => battle
                 .as_ref()
@@ -1616,6 +1860,14 @@ async fn main() {
         next_frame().await;
         #[cfg(not(target_arch = "wasm32"))]
         if let Some(directory) = &capture_dir {
+            if capture_index == 23 && !capture_opened_resources {
+                assert!(
+                    screen == Screen::Resources,
+                    "Camp Inventory button must open resources"
+                );
+                capture_opened_resources = true;
+                continue; // Render the destination after exercising the real button.
+            }
             std::fs::create_dir_all(directory).expect("Create UI capture directory");
             target.texture.get_texture_data().export_png(
                 directory
@@ -1672,7 +1924,36 @@ async fn main() {
                     );
                 }
             }
-            if capture_index == 23 {
+            if matches!(capture_index, 32 | 36) {
+                assert_eq!(
+                    presentation.flights(presentation_now).count(),
+                    0,
+                    "No player projectile before its cue"
+                );
+            }
+            if matches!(capture_index, 33 | 37) {
+                let flight = presentation
+                    .flights(presentation_now)
+                    .next()
+                    .expect("Player projectile in native capture");
+                assert_eq!(flight.source, Source::bird(0));
+                assert_eq!(
+                    flight.projectile.id,
+                    if capture_index == 33 {
+                        "Projectile_BlackBird_Bomb_02"
+                    } else {
+                        "Projectile_BlueBirds_Bow_01"
+                    }
+                );
+            }
+            if matches!(capture_index, 34 | 38) {
+                assert_eq!(
+                    presentation.flights(presentation_now).count(),
+                    0,
+                    "Player projectile expires after original travel duration"
+                );
+            }
+            if capture_index == 38 {
                 break;
             }
         }

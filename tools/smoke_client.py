@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    binary = ROOT / "target/release/epic-client.exe"
+    binary = ROOT / "target/release" / ("epic-client.exe" if os.name == "nt" else "epic-client")
     directory = ROOT / "analysis" / ("smoke-client-" + str(time.time_ns()))
     directory.mkdir(parents=True)
     old = "EPIC_RUST_1\n500\n0\n0\n100000100000100000100000100000\n0,6,12,18,24\n0,1,2\n"
@@ -43,20 +43,26 @@ def main():
         if result.returncode or result.stderr:
             raise AssertionError(f"Client failed: {result.returncode} {result.stderr.decode(errors='replace')}")
         images = sorted(folder.glob("screen-*.png"))
-        assert len(images) == 23
+        assert len(images) == 38
         hashes = set()
         for image in images:
             data = image.read_bytes()
             assert data.startswith(b"\x89PNG\r\n\x1a\n")
             assert struct.unpack_from(">II", data, 16) == (1100, 720)
             hashes.add(hashlib.sha256(data).digest())
-        assert len(hashes) == 23, "Expected distinct screens including attack windup, Impact, recovery and original arrow flight"
+        assert len(hashes) == 38, "Expected distinct battle, inventory, wheel and player-projectile screens"
 
     run(directory / "first-launch", exercise=True)
     saved = (directory / "local.data").read_bytes()
     local = json.loads(saved)["local"]
     profile = local["epic-rust-profile-v1"].splitlines()
-    assert profile[0] == "EPIC_RUST_8"
+    assert profile[0] == "EPIC_RUST_9"
+    resources = dict((row.split(':')[0], tuple(map(int, row.split(':')[1:]))) for row in profile[13].split(','))
+    assert len(resources) == 23
+    assert resources['resource_wood'] == (6, 1)
+    assert resources['recipe_vial'] == (2, 1)
+    assert resources['recipe_weapon_red_lance_01'] == (1, 2)
+    assert 'gold' not in resources and 'experience' not in resources
     assert profile[8] == '0'
     assert profile[9] == '-'
     assert profile[10] == '-'
@@ -82,7 +88,7 @@ def main():
     migrated = latest['epic-rust-profile-v1'].splitlines()
     assert latest['epic-rust-profile-backup-v3'] == previous
     assert latest['epic-rust-music-muted'] == '1'
-    assert migrated[:4] == ['EPIC_RUST_8', '350', '37', '3']
+    assert migrated[:4] == ['EPIC_RUST_9', '350', '37', '3']
     assert migrated[4:] == profile[4:], 'Migration changed campaign, ownership, hats or party'
     run(directory/'single-bird-revival', revival=True)
     revived_save = (directory/'local.data').read_bytes()
@@ -105,7 +111,7 @@ def main():
     free_local = json.loads(free_save)['local']
     free = free_local['epic-rust-profile-v1'].splitlines()
     assert free_local['epic-rust-profile-backup-v4'] == old_v4
-    assert free[0] == 'EPIC_RUST_8' and free[1] == '345' and free[8] == '1'
+    assert free[0] == 'EPIC_RUST_9' and free[1] == '345' and free[8] == '1'
     assert free[2:8] == revived[2:8], 'Free party revival changed progression'
     run(directory/'free-party-reload')
     assert (directory/'local.data').read_bytes() == free_save
@@ -129,10 +135,16 @@ def main():
     score_local=json.loads(score_save)['local']
     scored=score_local['epic-rust-profile-v1'].splitlines()
     assert score_local['epic-rust-profile-backup-v5']==old_v5
-    assert scored[:4]==['EPIC_RUST_8','535','42','3']
+    assert scored[:4]==['EPIC_RUST_9','535','42','3']
     assert scored[4]=='hotspot_003_battleground'
     assert scored[8]=='1' and scored[9]=='hotspot_002_battleground=3'
     assert scored[5:8]==paid[5:8]
+    assert len(scored[11].split(',')) == 11, 'Victory wheel must add a separately owned sword'
+    assert scored[12] == profile[12], 'Wheel gear must not replace the chosen loadout'
+    score_resources = dict((row.split(':')[0], tuple(map(int, row.split(':')[1:]))) for row in scored[13].split(','))
+    assert scored[11].split(',')[-1] == 'bird_weapon_red_sword_introwheel:3:0:0:0'
+    assert score_resources['ingredient_vial'] == (9, 1)
+    assert score_resources['resource_seashell'] == (5, 1)
     run(directory/'score-reload')
     assert (directory/'local.data').read_bytes()==score_save, 'Reopening duplicated victory gold, XP or stars'
     old_v6=scored[:10]
@@ -145,7 +157,8 @@ def main():
     mastery_local=json.loads((directory/'local.data').read_bytes())['local']
     assert mastery_local['epic-rust-profile-backup-v6']==old_v6
     mastery_profile=mastery_local['epic-rust-profile-v1'].splitlines()
-    assert mastery_profile==scored
+    assert mastery_profile[:11]==scored[:11]
+    assert mastery_profile[11:] == profile[11:], 'Legacy v6 initializes absent gear/resources from starters'
     encounters=json.loads((ROOT/'content/campaign.json').read_text())['encounters']
     mastery_profile[4]=encounters[33]['id']
     mastery_profile[9]=','.join(f'{row["id"]}=3' for row in encounters[:33])+f',{encounters[33]["id"]}=1'
@@ -156,7 +169,7 @@ def main():
     mastery_save=(directory/'local.data').read_bytes()
     ranked_local=json.loads(mastery_save)['local']
     ranked=ranked_local['epic-rust-profile-v1'].splitlines()
-    assert ranked[:4]==['EPIC_RUST_8','535','47','3']
+    assert ranked[:4]==['EPIC_RUST_9','535','47','3']
     assert ranked[4:10]==mastery_profile[4:10]
     assert ranked[10]=='class_knight=2:0'
     assert ranked_local['epic-rust-profile-backup-v6']==old_v6
@@ -196,7 +209,33 @@ def main():
     assert equipped_local['epic-rust-profile-backup-v7']==old_v7
     run(directory/'equipment-reload')
     assert (directory/'local.data').read_bytes()==equipped_save, 'Reopening changed equipped gear or rewards'
-    print("PASS: purchase through UI, original skin equipped, gold deducted, v1/v3/v4/v5/v6 backups retained, v8 saved and reloaded.")
+    # v8 migration preserves owned/equipped gear and backs up its exact source.
+    old_v8 = equipped[:13]
+    old_v8[0] = 'EPIC_RUST_8'
+    old_v8 = '\n'.join(old_v8) + '\n'
+    equipped_local['epic-rust-profile-v1'] = old_v8
+    (directory/'local.data').write_text(json.dumps({'local':equipped_local}))
+    run(directory/'v8-resource-migration', migration=True)
+    resource_save = (directory/'local.data').read_bytes()
+    resource_local = json.loads(resource_save)['local']
+    assert resource_local['epic-rust-profile-backup-v8'] == old_v8
+    assert resource_local['epic-rust-profile-v1'].splitlines() == equipped
+    run(directory/'v8-resource-reload')
+    assert (directory/'local.data').read_bytes() == resource_save
+    # A changed saved stack remains changed on both read-only and later writes.
+    stored = resource_local['epic-rust-profile-v1'].splitlines()
+    stored[13] = stored[13].replace('resource_wood:6:1', 'resource_wood:15:1')
+    resource_local['epic-rust-profile-v1'] = '\n'.join(stored) + '\n'
+    (directory/'local.data').write_text(json.dumps({'local':resource_local}))
+    used_save = (directory/'local.data').read_bytes()
+    run(directory/'resource-values-reload')
+    assert (directory/'local.data').read_bytes() == used_save, 'Reopening reseeded resources'
+    run(directory/'resource-values-save', migration=True)
+    persisted = json.loads((directory/'local.data').read_bytes())['local']
+    assert persisted['epic-rust-profile-v1'].splitlines() == stored
+    assert persisted['epic-rust-profile-backup-v8'] == old_v8
+    print("PASS: v8 exact backup, v9 resource migration, recipe values/levels and persisted changed stacks without reseeding.")
+    print("PASS: purchase through UI, original skin equipped, gold deducted, v1/v3/v4/v5/v6 backups retained, v9 saved and reloaded.")
     print("PASS: music muted through the UI; saved preference survives a read-only second launch.")
     print("PASS: original defeat XP and once-only battle-clear bonus saved as 7 XP; reopening does not duplicate rewards.")
     print("PASS: v3 level-three progress migrated with 37 / 74 XP; exact prior save retained.")
@@ -204,7 +243,8 @@ def main():
     print("PASS: free first full-party revive, persisted entitlement, later ten-gold revive, exact v4 migration backup and read-only reloads.")
     print("PASS: original 24,000-point victory, three stars claimed through UI, v5 migration and read-only reload without duplicate gold/XP/stars.")
     print("PASS: v6 mastery migration preserves stars/revive entitlement; real attack after 100 stars ranks Knight up, updates HP and saves shared class progress exactly once.")
-    print("PASS: 414 captures across eighteen launches, including all recovered actors, live attack timing and original arrow launch/flight/expiry.")
+    print("PASS: 836 captures across twenty-two launches, including player bomb/bow launch, flight and expiry, inventory and reward-wheel presentation.")
+    print("PASS: original tutorial wheel sword, vial and seashell saved with unchanged loadout; read-only reload does not duplicate victory rewards.")
     print("PASS: exact v7 backup, ten original starter instances, real Equipment button saves a separately owned copy, read-only reload preserves loadout and progress.")
     print("Evidence:", directory)
 

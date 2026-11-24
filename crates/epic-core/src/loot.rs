@@ -1,5 +1,6 @@
 //! Original loot graph evaluation, separate from live reward application.
-//! Wheel UI/reward application, previews, Unity RNG and inventory timing pending.
+//! Base campaign wheel delivery lives in victory_rewards; bonus modifiers,
+//! rerolls, previews, Unity RNG and exact inventory timing remain pending.
 #[derive(Debug)]
 pub struct LootEntry {
     pub id: &'static str,

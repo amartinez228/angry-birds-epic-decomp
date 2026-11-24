@@ -1,4 +1,4 @@
-//! Recovered primary music bindings and the initial Windows PCM backend.
+//! Recovered primary music bindings and Windows/macOS PCM playback.
 //! Fades, mixer buses, sound effects and other platform backends are pending.
 include!("music_generated.rs");
 
@@ -31,7 +31,10 @@ mod backend {
         }
     }
 }
-#[cfg(not(target_os = "windows"))]
+#[cfg(target_os = "macos")]
+#[path = "music_macos.rs"]
+mod backend;
+#[cfg(not(any(target_os = "windows", target_os = "macos")))]
 mod backend {
     use super::MusicTrack;
     pub fn play(track: &MusicTrack, _: bool) -> bool {
@@ -116,6 +119,8 @@ pub fn check_backend() -> bool {
     for sound in MUSIC {
         for track in sound.tracks {
             let accepted = backend::play(track, sound.looping);
+            #[cfg(target_os = "macos")]
+            let accepted = accepted && backend::playback_matches(sound.looping);
             println!(
                 "{} / {}: {}",
                 sound.id,
@@ -125,6 +130,54 @@ pub fn check_backend() -> bool {
             backend::stop();
             okay &= accepted;
         }
+    }
+    #[cfg(target_os = "macos")]
+    {
+        // Exercise the real MusicPlayer path, not just individual WAV loading.
+        let controls_okay = check_macos_controls();
+        println!(
+            "music controls: {}",
+            if controls_okay {
+                "accepted"
+            } else {
+                "unavailable"
+            }
+        );
+        okay &= controls_okay;
+    }
+    okay
+}
+
+#[cfg(target_os = "macos")]
+fn check_macos_controls() -> bool {
+    let mut okay = true;
+    {
+        let mut player = MusicPlayer::new(false, false, 7);
+        player.request("music_worldmap");
+        okay &= !player.failed && backend::playback_matches(true);
+        let random = player.random;
+        player.request("music_worldmap");
+        okay &= player.random == random && backend::playback_matches(true);
+        player.toggle();
+        okay &= player.muted() && backend::stopped();
+        player.request("music_camp");
+        okay &= backend::stopped();
+        let random = player.random;
+        player.toggle();
+        okay &= !player.muted()
+            && !player.failed
+            && player.random == random
+            && backend::playback_matches(true);
+        player.request("music_battle_win");
+        okay &= !player.failed && backend::playback_matches(false);
+    }
+    okay &= backend::stopped(); // Drop stops/relinquishes the owned NSSound.
+    {
+        let mut silent = MusicPlayer::new(true, false, 7);
+        silent.request("music_worldmap");
+        silent.toggle();
+        silent.toggle();
+        okay &= backend::stopped();
     }
     okay
 }
