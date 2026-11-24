@@ -1,0 +1,263 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 31610,
+      "declaring_type_index": 4123,
+      "declaring_type": "CharacterAssetController",
+      "fields": [
+        {
+          "metadata_index": 17341,
+          "name": "Model",
+          "offset": 20,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 17342,
+          "name": "MainHandBone",
+          "offset": 24,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 17343,
+          "name": "OffHandBone",
+          "offset": 28,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 17344,
+          "name": "HeadGearBone",
+          "offset": 32,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 17345,
+          "name": "BodyCenter",
+          "offset": 36,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 17346,
+          "name": "BodyRoot",
+          "offset": 40,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 17347,
+          "name": "HealthBarPosition",
+          "offset": 44,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 17348,
+          "name": "CombatTextPosition",
+          "offset": 56,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 17349,
+          "name": "BubblePosition",
+          "offset": 68,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 17350,
+          "name": "ColliderSize",
+          "offset": 80,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 17351,
+          "name": "ColliderOffset",
+          "offset": 92,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 17352,
+          "name": "MinMaxTimeForBlink",
+          "offset": 104,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 17353,
+          "name": "OffsetFromEnemyX",
+          "offset": 112,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 17354,
+          "name": "m_IsWorldMap",
+          "offset": 116,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 17355,
+          "name": "m_IsIllusion",
+          "offset": 117,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 17356,
+          "name": "TextureName",
+          "offset": 120,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 17357,
+          "name": "m_EquipmentSetOnce",
+          "offset": 124,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 17358,
+          "name": "m_LoadingAtlasNames",
+          "offset": 128,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 17359,
+          "name": "m_ShowEquipment",
+          "offset": 132,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 17360,
+          "name": "m_IsLite",
+          "offset": 133,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 17361,
+          "name": "m_AssetFaction",
+          "offset": 136,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        }
+      ]
+    },
+    {
+      "method_index": 39217,
+      "declaring_type_index": 5088,
+      "declaring_type": "CHMeshSprite",
+      "fields": [
+        {
+          "metadata_index": 22977,
+          "name": "m_SmoothMovesAtlas",
+          "offset": 12,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 22978,
+          "name": "m_NguiAtlas",
+          "offset": 16,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 22979,
+          "name": "m_AtlasType",
+          "offset": 20,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 22980,
+          "name": "m_SpriteName",
+          "offset": 24,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 22981,
+          "name": "m_Width",
+          "offset": 28,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 22982,
+          "name": "m_Height",
+          "offset": 32,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 22983,
+          "name": "m_Color",
+          "offset": 36,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 22984,
+          "name": "m_XAlignment",
+          "offset": 52,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 22985,
+          "name": "m_YAlignment",
+          "offset": 56,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "format": "EPICAN03: original curves, hierarchy, sprite frame changes and user cue times; little-endian float32",
+  "sha256": "c2c042881f1e008562f4cdbceab586f7fc584374643d9a27cc58b7a65a1d7aca",
+  "bytes": 13251734,
+  "actors": 22,
+  "keys": 237427,
+  "source_manifest_sha256": "948769111d884bd1d69853a6d06cec7a93ebdfa6ae74221695edab794894abde",
+  "source_rigs_sha256": "f0c83fe18ef342d13bff9db8e0b3688fac1c47bb3b727592e5ac93f729cd5339",
+  "source_characters_sha256": "e63e8083f7ba439684e24798db56110848d59c5f9c40d9d760745ab355c0adf9",
+  "key_order": "Runtime uses a stable sort by key time. Original order is preserved in analysis/animations JSON.",
+  "limitations": [
+    "Single-clip transforms and sprite frame changes; blend/mixing, user callbacks, collider changes, audio/VFX and original unsorted-key behavior remain separate."
+  ]
+}

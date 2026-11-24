@@ -1,0 +1,592 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 34764,
+      "declaring_type_index": 4474,
+      "declaring_type": "ABH.GameDatas.Battle.BattleGameData",
+      "fields": [
+        {
+          "metadata_index": 19934,
+          "name": "CallbackWhenDone",
+          "offset": 8,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19935,
+          "name": "m_Balancing",
+          "offset": 12,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19936,
+          "name": "m_PossibleFollowUpBattles",
+          "offset": 16,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19937,
+          "name": "m_BattleEndData",
+          "offset": 20,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19938,
+          "name": "m_ChronicleCaveBattle",
+          "offset": 24,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19939,
+          "name": "<CurrentWaveIndex>k__BackingField",
+          "offset": 28,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19940,
+          "name": "m_CurrentTurn",
+          "offset": 32,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19941,
+          "name": "m_CurrentWaveTurn",
+          "offset": 36,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19942,
+          "name": "m_NextInitiativeIndex",
+          "offset": 40,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19943,
+          "name": "m_RandomBattleGenerator",
+          "offset": 44,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19944,
+          "name": "m_SumOfInitalHealth",
+          "offset": 48,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19945,
+          "name": "m_PigsStartTurn",
+          "offset": 52,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19946,
+          "name": "m_BirdTurnCheated",
+          "offset": 53,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19947,
+          "name": "m_PigTurnCheated",
+          "offset": 54,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19948,
+          "name": "m_PvPBirds",
+          "offset": 56,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19949,
+          "name": "<m_AccumulatedStrengthPoints>k__BackingField",
+          "offset": 60,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19950,
+          "name": "<CurrentCombatant>k__BackingField",
+          "offset": 64,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19951,
+          "name": "<NextCombatant>k__BackingField",
+          "offset": 68,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19952,
+          "name": "m_BirdBanner",
+          "offset": 72,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19953,
+          "name": "m_PigBanner",
+          "offset": 76,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19954,
+          "name": "m_BirdsByInitiative",
+          "offset": 80,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19955,
+          "name": "m_PigsByInitiative",
+          "offset": 84,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19956,
+          "name": "m_CombatantsByInitiative",
+          "offset": 88,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19957,
+          "name": "m_CombatantsOutOfInitiativeOrder",
+          "offset": 92,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19958,
+          "name": "m_CombatantsNotActed",
+          "offset": 96,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19959,
+          "name": "m_AppliedXPModifiers",
+          "offset": 100,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19960,
+          "name": "m_CombatantsPerFaction",
+          "offset": 104,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19961,
+          "name": "m_FactionBuffs",
+          "offset": 108,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19962,
+          "name": "m_EnvironmentalEffects",
+          "offset": 112,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19963,
+          "name": "m_PotionsUsed",
+          "offset": 116,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19964,
+          "name": "m_ControllerInventory",
+          "offset": 120,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19965,
+          "name": "m_ControllerLevel",
+          "offset": 124,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19966,
+          "name": "m_BattleStartTime",
+          "offset": 128,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 19967,
+          "name": "m_LastUsedConsumable",
+          "offset": 140,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19968,
+          "name": "m_CoinsAtBattleStart",
+          "offset": 144,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19969,
+          "name": "m_DamageLastTurn",
+          "offset": 148,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19970,
+          "name": "m_EnvEffectTriggered",
+          "offset": 152,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19971,
+          "name": "m_IsConsumableBlocked",
+          "offset": 153,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19972,
+          "name": "m_DefeatedPvPBirds",
+          "offset": 156,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19973,
+          "name": "m_CurrentOpponentId",
+          "offset": 160,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19974,
+          "name": "<IsPvP>k__BackingField",
+          "offset": 164,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19975,
+          "name": "<IsBossBattle>k__BackingField",
+          "offset": 165,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19976,
+          "name": "<IsHardMode>k__BackingField",
+          "offset": 166,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19977,
+          "name": "<IsDungeon>k__BackingField",
+          "offset": 167,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19978,
+          "name": "<IsChronicleCave>k__BackingField",
+          "offset": 168,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19979,
+          "name": "<m_dodgeValue>k__BackingField",
+          "offset": 172,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19980,
+          "name": "<m_ironCladValue>k__BackingField",
+          "offset": 176,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19981,
+          "name": "WaveDone",
+          "offset": 180,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19982,
+          "name": "WaveDoneForEffect",
+          "offset": 184,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19983,
+          "name": "EnvironmentalEffectTriggered",
+          "offset": 188,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19984,
+          "name": "RageIncreased",
+          "offset": 192,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19985,
+          "name": "RageDecreasedByOpponent",
+          "offset": 196,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19986,
+          "name": "RageUsed",
+          "offset": 200,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19987,
+          "name": "InitiativeChanged",
+          "offset": 204,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19988,
+          "name": "CombatantsOutOfInitiativeDone",
+          "offset": 208,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19989,
+          "name": "SummonCombatant",
+          "offset": 212,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19990,
+          "name": "BirdsTurnStarted",
+          "offset": 216,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19991,
+          "name": "PigsTurnStarted",
+          "offset": 220,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19992,
+          "name": "BattleEndedWithWinner",
+          "offset": 224,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19993,
+          "name": "m_lastPigTurn",
+          "offset": 228,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19994,
+          "name": "m_CurrentRage",
+          "offset": 232,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19995,
+          "name": "m_CurrentPvPEnemyRage",
+          "offset": 236,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19996,
+          "name": "m_AllBirdDamageInCurrentTurn",
+          "offset": 240,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19997,
+          "name": "m_AllPigDamageInCurrentTurn",
+          "offset": 244,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19998,
+          "name": "m_BattleGroundName",
+          "offset": 248,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19999,
+          "name": "m_CurrentVictoryCondition",
+          "offset": 252,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20000,
+          "name": "m_IsRageAvailiablePigs",
+          "offset": 256,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20001,
+          "name": "m_IsRageAvailiableBirds",
+          "offset": 257,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20002,
+          "name": "m_SponsoredEnvironmentalEffect",
+          "offset": 260,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20003,
+          "name": "m_CachedTurnEnd",
+          "offset": 264,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20004,
+          "name": "m_hotSpotBalancing",
+          "offset": 268,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20005,
+          "name": "<InjectedParticipantTable>k__BackingField",
+          "offset": 272,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}

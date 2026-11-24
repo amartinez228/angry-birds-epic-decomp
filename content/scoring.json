@@ -1,0 +1,1692 @@
+{
+  "settings": {
+    "score_per_star": 15000,
+    "full_birds": 30000,
+    "full_pigs": 30000,
+    "loss_per_turn_percent": 5,
+    "minimum_bird_percent": 50,
+    "minimum_pig_percent": 25,
+    "per_strength": 2000,
+    "per_bird": 10000
+  },
+  "score_row_sha256": "9d09a4d85b233be3ae08262769560c3b198e1811c650b3d098a4fe2eaf66afdb",
+  "raw_score_fields": [
+    {
+      "field": 1,
+      "wire": 2,
+      "text": "default_score"
+    },
+    {
+      "field": 2,
+      "wire": 0,
+      "value": 15000
+    },
+    {
+      "field": 3,
+      "wire": 0,
+      "value": 30000
+    },
+    {
+      "field": 4,
+      "wire": 0,
+      "value": 30000
+    },
+    {
+      "field": 5,
+      "wire": 0,
+      "value": 5
+    },
+    {
+      "field": 6,
+      "wire": 0,
+      "value": 50
+    },
+    {
+      "field": 7,
+      "wire": 0,
+      "value": 25
+    },
+    {
+      "field": 8,
+      "wire": 0,
+      "value": 2000
+    },
+    {
+      "field": 9,
+      "wire": 0,
+      "value": 10000
+    },
+    {
+      "field": 11,
+      "wire": 0,
+      "value": 15000
+    },
+    {
+      "field": 12,
+      "wire": 0,
+      "value": 8
+    },
+    {
+      "field": 13,
+      "wire": 0,
+      "value": 2000
+    },
+    {
+      "field": 14,
+      "wire": 0,
+      "value": 15000
+    },
+    {
+      "field": 15,
+      "wire": 0,
+      "value": 30000
+    },
+    {
+      "field": 16,
+      "wire": 0,
+      "value": 250
+    },
+    {
+      "field": 17,
+      "wire": 0,
+      "value": 5
+    },
+    {
+      "field": 18,
+      "wire": 0,
+      "value": 15
+    },
+    {
+      "field": 19,
+      "wire": 0,
+      "value": 2
+    },
+    {
+      "field": 20,
+      "wire": 0,
+      "value": 8
+    },
+    {
+      "field": 21,
+      "wire": 0,
+      "value": 20
+    },
+    {
+      "field": 22,
+      "wire": 0,
+      "value": 20
+    }
+  ],
+  "battles": [
+    {
+      "id": "battle_001",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "32373ec2bd507f7adca656ac0c57a537bc3293c7b3731ddc4986d3c15267cd0e"
+    },
+    {
+      "id": "battle_002",
+      "strategy": 1,
+      "bonus": 4000,
+      "row_sha256": "fd8312527b5160d10d9ecf59d189a426145affdb788d819048a925ae5ab8d44c"
+    },
+    {
+      "id": "battle_003",
+      "strategy": 1,
+      "bonus": 7500,
+      "row_sha256": "f065f77f4d99cf8be99266a2f70a956977b6af032199768c18e328e48df220e0"
+    },
+    {
+      "id": "battle_004",
+      "strategy": 1,
+      "bonus": 7000,
+      "row_sha256": "ccde6d9e60af334c9800bb346c644740f6cb0e2a40197d99123bef4835bc8f8d"
+    },
+    {
+      "id": "battle_005",
+      "strategy": 1,
+      "bonus": 22500,
+      "row_sha256": "cc00f263fa29037c50db774dc5b52008e476c2de911669d84c1888e7184018e8"
+    },
+    {
+      "id": "battle_005_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "6e9b090338a18ce4c7e83c6ca4cbe5e4fff5b9aa8ee1b941ce91ffa051650964"
+    },
+    {
+      "id": "battle_006",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "7096b503d333a37d110c12d4c59a344bfd15b690c1ad3e1ec6dd0387a59f1acf"
+    },
+    {
+      "id": "battle_007",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "3e40818125a91cb68745ae2850eb7395f5b00f93a4d4b4f6f01a622bda48e121"
+    },
+    {
+      "id": "battle_008",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "b8ef090266191e0d122b088e0df1fccd9b916bc86cf38b309c2497165fa9908c"
+    },
+    {
+      "id": "battle_009",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "fb725b2f2f5fc0572977797020038dd0b1d582a43fdd0f308e4b04fe473808e5"
+    },
+    {
+      "id": "battle_010",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "5a8a73e8cad983ad3ec2ff99f4f362a6ec5c0006d9465343c800be4e3bb2e329"
+    },
+    {
+      "id": "battle_011",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "23aa7670074c139891841282b631c35992e89b7bfaa45c3868eb19c8ebd8c914"
+    },
+    {
+      "id": "battle_012",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "a237c4fac7b282407266bea63d6f841d2b425e340dee540c22a1c3b677c45cbe"
+    },
+    {
+      "id": "battle_013",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "e7b33b3c8faabaea26bec4ab31953c63d46eb86c0b37c6d86650d19acb27bc29"
+    },
+    {
+      "id": "battle_014",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "324d101bca28587e3117ead860c1d58ac07ed32d3ad83685aafab4ae7030b3f1"
+    },
+    {
+      "id": "battle_014_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "b42b57725a42c1fb0d327e4ff97ea75b32f7bd78629034e6ec394c09c25f84c4"
+    },
+    {
+      "id": "battle_014_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "249e777940a91eb50b933fa140986fa55bacca7f4f964c0a4a59b14f7e7b3522"
+    },
+    {
+      "id": "battle_015",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "561c8e0648389b825d931bc25e38f73eec28ef898c4c6198e33ae3308983c276"
+    },
+    {
+      "id": "battle_015_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "2b826fface4789d72a5c4321011e84ce9e330ba8cb699631206c0d8a03d0a143"
+    },
+    {
+      "id": "battle_015_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "979a52e14fa9573a4d4cc588c6d72de574df59491ffc6e3f3edfff1146c907a4"
+    },
+    {
+      "id": "battle_015_3",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "d0d2832b715878716193fc1541e64fc024e65c93548e065810a97c2221f72b1c"
+    },
+    {
+      "id": "battle_015_4",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "9d281cbbd1753906cacc7634aaa1db1e94f508b6310d6ca8bd767ef282cbc9a3"
+    },
+    {
+      "id": "battle_015_5",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "9a82150afcdc4c4708ca97634bc6ef45faad5f56a32e5e6787fd11fad2c30134"
+    },
+    {
+      "id": "battle_015_6",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "0c81dd5d343a6430952b6fa1aa0f219af570b97f9ad46e370dc223e6e734dc51"
+    },
+    {
+      "id": "battle_015_7",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "30a8f863ec88c68a789d7bb4d12d073095fee5ada2f02cde59dad44603f745d1"
+    },
+    {
+      "id": "battle_016",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "99e75105515f6060b3639254cbfcac524b9b76866ae3f1c8c9aeeaaa923ee482"
+    },
+    {
+      "id": "battle_017",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "bc600846e966393656b714f801e20a3e8f80ebec0b27275bc570f22888421d61"
+    },
+    {
+      "id": "battle_017_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "5c46724529ddffe58fa6d5f3272daf80d057b0cc580c894c1d8fe2a89627ecc7"
+    },
+    {
+      "id": "battle_018",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "4ff0fe42db8b55d3d6ee97e51255d46ec8bc7658349a499ec2e91b4a9909a6b8"
+    },
+    {
+      "id": "battle_019",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "a12c3b36736eb76443f578dce02c48bc6f41e6f0289f4068b6a5f5f697b63778"
+    },
+    {
+      "id": "battle_020",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "b4cb19aecddd87d0c77969bba096a4bd5840a815415fac21b4032050e4ce06f9"
+    },
+    {
+      "id": "battle_021_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "2118a808a2728c36ae43cfcedac9ceb21443e6f9c05ef7f9b3c35e288331ab76"
+    },
+    {
+      "id": "battle_021_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "db482835703540fb02a2835de137a89efbad722341256aad0a67bc6e84c20e3a"
+    },
+    {
+      "id": "battle_021",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "9c633592c37cf0375f982598717d0e77a409ef89f8a87fce39b80e43d97d7c45"
+    },
+    {
+      "id": "battle_022",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2c8472410b0c2faf8311dc200310df5f5b205aadd762a5169983c6353ec0d423"
+    },
+    {
+      "id": "battle_023",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "99df2a993d5e0161b5eb4f28d76e81130af552a0c08749a4795e9b7df80df0b4"
+    },
+    {
+      "id": "battle_023_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "d52d841f762e801cf6567818eec78e584780dd0668b6e8ec1d5cf2b3597106d8"
+    },
+    {
+      "id": "battle_024",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "7e33ffd7586a5e8c4dcb4e12159a69a83b4b913a1bd23611861693213b4681f0"
+    },
+    {
+      "id": "battle_025",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2f3cbdfa9ecbfba45c32a69858605774b272c3ebd9a17e6fb86f2e76b1816f33"
+    },
+    {
+      "id": "battle_025_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "e4d1dacab5fb8c09dc28362b1f5274f4f9f9234d42c9c73d9b8ea972cf488197"
+    },
+    {
+      "id": "battle_026",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "297db1ea1166145249ebac7c093ca6baefcd2e9a5257a0c237e29d104218502a"
+    },
+    {
+      "id": "battle_027",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "cec31afaa22cdeb626c7094faeb2c610c85c1f479b639032c8c55728bde319fc"
+    },
+    {
+      "id": "battle_028",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "524a5472243eda9dfd3ad4b67a9ad266efc30499a1736e772bc7a2ab776539c2"
+    },
+    {
+      "id": "battle_029",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "ccc25c4a4726ffe091429be74dc461fb69c66775217e3ead4238639a013e6d3c"
+    },
+    {
+      "id": "battle_030",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2d2a4b81cda4a6c6b250690eb5eeb6ce9a1e9325621b5b6e1ce7a1ea1349e930"
+    },
+    {
+      "id": "battle_030_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "14340894316e5bcb4375fff6c1a151000da113bb6d102ab3892407d250cd2649"
+    },
+    {
+      "id": "battle_031",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "b933fdd9a74d923a2064340d4d8b43c72f3d48c3d52f216d2d833f1df2b7ed8c"
+    },
+    {
+      "id": "battle_032",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "24ceabcc93439e4ad30596266ba5502d47590c10e0588baf505add2eb1018496"
+    },
+    {
+      "id": "battle_033",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "34073faf536547029edcbb8a9df971786e57f995d421a4b6798152b19ca67b49"
+    },
+    {
+      "id": "battle_033_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "67c80f564950348186c735202952ff7b9a59565a17d4c02afaaf24310c4720c4"
+    },
+    {
+      "id": "battle_034",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "372b418a0c9fe4a75fa3ed2f70f584c58975c6afa9fefab6ddb3786213a42697"
+    },
+    {
+      "id": "battle_035",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "f20651f87f53f42ca72023b0ad84f962d102d61fbd7e2a30958ac3d632f322b6"
+    },
+    {
+      "id": "battle_035_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "c7bf67973a0d3cd2f570048dbe7eb786c6f79e2dabd7950d1667e0a5db87f2c7"
+    },
+    {
+      "id": "battle_036",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "1a595f6ad013ad07432d92c42bccf6a1c0357d71ee897d13aadbcfaca0efbf9c"
+    },
+    {
+      "id": "battle_037",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "88938906b7ead4d1bea6aeb40cea7df0a8b5ec6391e9c7962f51f7cc7cd798c6"
+    },
+    {
+      "id": "battle_038",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "18b16dda17788ab0bb7e9e198db83475554c19a2eb6a86bd31d6644cd8a82d55"
+    },
+    {
+      "id": "battle_039",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "0855e596e56f3f86931e98fb0015775b619ba838f41f9f7ff58760833274447c"
+    },
+    {
+      "id": "battle_040",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "5a8a3b270e6e4b47f633255f2ad5a69daea8957d31b7ce49d426e12bbf99b8a9"
+    },
+    {
+      "id": "battle_041",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "695ab27693628b4da888eaf875ffa4f5c23f306b20a69e800fd980ecd52a0b36"
+    },
+    {
+      "id": "battle_041_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "e22f79b42960d074467d8cc94d8ef64ba907ba332d57bacf3f2434ff02b9e0d3"
+    },
+    {
+      "id": "battle_041_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "a5445b51fd5667d3d37cac99a238182593a4fd1b50b38849d90c4e69c0636466"
+    },
+    {
+      "id": "battle_042",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "32f8852450adac45dcce081eb155adc5044b82a2ce1d044e62cbf9f34f5055a8"
+    },
+    {
+      "id": "battle_043",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "862fe1a2e73778d9abd25cca7890dadc93b85170034cc526f34746c4a7e48a6c"
+    },
+    {
+      "id": "battle_044",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2bd96a4519e1266add726d32057129a0be5722cf8a39fac0dd2a6f7f771216e3"
+    },
+    {
+      "id": "battle_045",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "556d54653c04e15956fb7fff6fbe6a356467f9b16d13691ce4909d5aaceda3ea"
+    },
+    {
+      "id": "battle_045_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "076563fd86771fd274ab20941a38c50e3367701c95338249fb7709a1afda7b87"
+    },
+    {
+      "id": "battle_046",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "f030240dd838c321cb0f95c4c9c8afe3d545de2c9294d2b7f2d418ed7ea729e2"
+    },
+    {
+      "id": "battle_046_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "6207596356deb081663c6df6887a721beb6688e4c3226fa14a935df70df2dd45"
+    },
+    {
+      "id": "battle_046_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "367e024460c64d6a7baf741cb07944e971bd3533169e90520e55e6c7d0eb4172"
+    },
+    {
+      "id": "battle_046_3",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "14e56f1bbea7f44d50fa6a7fd0afea25d9990ad38c1319a28c44586d2fe3678b"
+    },
+    {
+      "id": "battle_046_4",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "50c56f785bed9cb5a2d8b139f5510965272d44469796c3878de8db1b4def8d08"
+    },
+    {
+      "id": "battle_047",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "e4b04daffca226bac8d3ae7e51300abb2ade622e6dd2da66cf11abaf80144d14"
+    },
+    {
+      "id": "battle_048",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "cc31a451ed253fea7fb4e6279d2ac97bef5b1248e9f53777840823d0e7dfe3f5"
+    },
+    {
+      "id": "battle_049",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "447ec6f2ce4219fc1497749d112ed0ae059ccca9b1853da0531cca707a858bf9"
+    },
+    {
+      "id": "battle_050",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "fc050d0ecf9f66efd7c33cc3fd231525319ad4926e24315a0fc8235cecb5868f"
+    },
+    {
+      "id": "battle_051",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2b25ba7be26454b70c576a93e214ce384cbcebe236ffd5534a1a97080b61201d"
+    },
+    {
+      "id": "battle_052",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "c18d72e9b0258edc7d460a06f819eda273e049e46f94e1bc594809e2083d9eae"
+    },
+    {
+      "id": "battle_053",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "d1e23504b86eec025659ffd5e08f5426f6655265471e0ff260601c14fe60e235"
+    },
+    {
+      "id": "battle_054",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "a15a8ee65fbd78921b1fe5233412f34a4bb7be4a1ffb116673e34b1f31aad629"
+    },
+    {
+      "id": "battle_055",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "a0ada097446eef70a63d280ede3a04a808308a85003d4d5d8535c9474bf9f6b9"
+    },
+    {
+      "id": "battle_056",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "37d47222ce6ebd6f4436bac180764e330309f7f7435ba0313ec1cb3dd3ffc92b"
+    },
+    {
+      "id": "battle_057",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "95b984d564211e3f1aa2415c664170134fe2039bd4cb975fd9a130f7e4869bca"
+    },
+    {
+      "id": "battle_058",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "972bf7ac0700fe2e136398802ff1a0e4e8e8f7430ed0b861f66fc580426aebaf"
+    },
+    {
+      "id": "battle_058_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "5af91f1c4edad93fee67d4d17a242b01d8c4a4f65912e8365e1a521178f82f47"
+    },
+    {
+      "id": "battle_059",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "1b4c6261cc140892607b78662a6d1bab697f850321e69d4af61ef4261f93afae"
+    },
+    {
+      "id": "battle_060",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "f200e2cfe9cad52253e5630d02b5afb22ca3e61379d2e11e0e113ef68fabcdcf"
+    },
+    {
+      "id": "battle_060_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "fa8e8b3cc1bdb163e214e812a1191d5269726d64720281f3682dc390cbb3d281"
+    },
+    {
+      "id": "battle_060_2",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "3775a88c331baa489dea558cc3077328dad80dd4e36c8860a041bb255f8e4913"
+    },
+    {
+      "id": "battle_061",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "109abfd73748bfaeb03fce809aec017608be22bc27cbaf8988948cc9426b696e"
+    },
+    {
+      "id": "battle_062",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "5d9d4654c01048fea8270069759fea7e201f018a5041d40840d0efe82b595f37"
+    },
+    {
+      "id": "battle_063",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "8c9dac569e1274ce4076392bc84614091ef264a5054b54937f137a58fc181e7b"
+    },
+    {
+      "id": "battle_064",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "af6e3570937c0559a07a422188897d43141058ac59d5fa621dfd6607bcbce3ef"
+    },
+    {
+      "id": "battle_065",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "94b38770b448451ba8491cb2053ee79d7cc9bb5199baef6e4743b104f7bc548b"
+    },
+    {
+      "id": "battle_065_1",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "a94dac0657753257402cd3f60aa9c1a5ee6cbadad3169d8168b57c36dffdd059"
+    },
+    {
+      "id": "battle_065_2",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "4cd31c04c7c9679d9781c8af7bba140e6d7a59c7f5145862c9182e80912deb0e"
+    },
+    {
+      "id": "battle_066",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "9e664d69edeee8ae94bbe8056c0e4f93d519f1f0ecdb8b79f6f8bda77d510135"
+    },
+    {
+      "id": "battle_067",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "25f6c9ea38114f2f75c80cfbb41a04ab32bbdc0298220267a221c8e9220fec50"
+    },
+    {
+      "id": "battle_068",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "957546e6d68fda7a9e6ce9d7ef93530b78b4bb7d3e55ce97dd508b975c60bc11"
+    },
+    {
+      "id": "battle_069",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "faf0da9b4efb751d3550053081896e0bd6cfff4d3b583a692a1a13b182e6a591"
+    },
+    {
+      "id": "battle_069_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "80333c7832b5e6bcc544065e4af5e3c6f813cafe76a6ee0f7021755ef5013c3a"
+    },
+    {
+      "id": "battle_069_3",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "8546f0bccd295a2fc35f7a8f7fc4a2e5b06938b4b7cee254c0ddbac7e1bfe1a0"
+    },
+    {
+      "id": "battle_069_4",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "0f975f57a46aae48d1a925fdb8a952e925c5bde9bec5a796650ed092bb44c8a0"
+    },
+    {
+      "id": "battle_069_5",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "50b2ee08ddb21885bd30ba160d78a8df42628fed66bd8d2e6cf11ebae4f11c47"
+    },
+    {
+      "id": "battle_069_6",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "f4e1c1d2f39c039d2329631357bdc9e7a3c16ebd8df31cc4f99e8b541b179040"
+    },
+    {
+      "id": "battle_069_7",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "d594510a957a19dd4414ecbca9c6b8598680fb23f5423c448646d1e0d9940702"
+    },
+    {
+      "id": "battle_069_9",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "ead7aceb2b7c83601b692cb1442f9e5981e85cebb2bfd68dd032f3843352dc42"
+    },
+    {
+      "id": "battle_069_10",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2d7957fcbbf8cfd30f7bd023031b29e2c58825ec9e292279832919fda38d4873"
+    },
+    {
+      "id": "battle_069_11",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "393753ef94408a549513ffac9effbab0277cfcba83f39e581363cf87560aec2b"
+    },
+    {
+      "id": "battle_069_12",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "7bbf20bbde8ac6df13eb194b6463867f5a72fb5a20bee9e905d1abe3e9def066"
+    },
+    {
+      "id": "battle_070",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "3916888ee5520dc49649d6c5d3e040808dc21e85d7d948d26fdc5a1b8fa79a94"
+    },
+    {
+      "id": "battle_070_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "d9eb87b74010017ef40e5f3612f1492a176080fd94de4ca617391a05b5aa0088"
+    },
+    {
+      "id": "battle_070_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "68ac84475b0750945a68c8be5485cc264431c2069093aeb83a2fe15d6b1d6818"
+    },
+    {
+      "id": "battle_070_3",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "484551fd67173924f335f95f111ccc75b9eb7a5c933b4cff26024d3c1ef91b7b"
+    },
+    {
+      "id": "battle_070_4",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "bd9829ac1dfdb11eb7320546cff878bd427425a265849f03f9f372493b67086c"
+    },
+    {
+      "id": "battle_070_5",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "ef7f1316ee8bbccad711042052238b17986836b18037cdf080f0b44d203fc359"
+    },
+    {
+      "id": "battle_071",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "b5561d04cd612e4a00344dcb7a8fe1b58adfa052f0b252dbd710b74c33e746f5"
+    },
+    {
+      "id": "battle_072",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "c25d637cb27854a2b25ef5bd8953e7de4f9169e80f07f7dfc03b723d355c3897"
+    },
+    {
+      "id": "battle_073",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2fa4b4625457a403239fa36eae18cb30741f9245caa31e2cc8501d4481d08992"
+    },
+    {
+      "id": "battle_074",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "fea5f95f78c09bd7fb91a4a6120c0a8c3bb517b82d3325771b20f1a92427a8b4"
+    },
+    {
+      "id": "battle_075",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "60c429d4927d1028a6cb96f7523570a2b1490e2aec36e70d2b1caae58e5eed63"
+    },
+    {
+      "id": "battle_076",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2a6a616256e2e7b9547110810043e9ced9182ab00ead4fe35a7b5d79d8c8a024"
+    },
+    {
+      "id": "battle_077",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "942bde104f2d472f851c63f40abe01c28265a955103baa1d5a0e7f6c1745449b"
+    },
+    {
+      "id": "battle_078",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "f472e5cf5062e8d77d837425a07946a7f74389157ae5dcc93ad0a4cf6243c09c"
+    },
+    {
+      "id": "battle_079",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "67406b166db7daf5d6c20ce834eb3ca05eca467e00bf9f8e1deb569aec5faa91"
+    },
+    {
+      "id": "battle_080",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "720079c144e7eccaf2ed28412f1d0539dbf970e01e9a9b067380acea413218a9"
+    },
+    {
+      "id": "battle_081",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "44a9445c7a8be7713d84ae095ee26dada3533d09971dfe753ecf50c99c142acc"
+    },
+    {
+      "id": "battle_082",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "13c24551a975ab93fb08c9e0a7e1c14bb5a57ad239fff078454edc24c42791ae"
+    },
+    {
+      "id": "battle_082_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "08c44fdfa5ee02a64d5e64a44d18730bd36d879ac0fee03e38f15b5fe07695cb"
+    },
+    {
+      "id": "battle_082_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "72fc96e6736e0a664513da265afa9d05d43e84a5ddb76f483ea0c835b9fb5b8f"
+    },
+    {
+      "id": "battle_082_3",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "8f4ab52827d647634d79be68ef4ec95893873bf72d7fa94b1cd64ff2360483c0"
+    },
+    {
+      "id": "battle_082_4",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "b3a47aec7ede09cf2538b52c1dbe584a91eed839b765eaee7c01c2129339a096"
+    },
+    {
+      "id": "battle_082_5",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "99ada98d9133bcb01fa9c8e615dcac0f463c0e9ec1319ee5e30f77cedc801370"
+    },
+    {
+      "id": "battle_082_8",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "455690ef324625874c71a63fce29ff32ffadabf1ac266142fc831205e0ef243a"
+    },
+    {
+      "id": "battle_082_6",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "1627a339eb2c34d697c04a6f97a689c2b0c74ca4b7f2aa130451d797dcfd2352"
+    },
+    {
+      "id": "battle_082_7",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "0f9a83809ccf31b8891e81fd879531a7e6f88a9f1423b3d354b704c13b39fbf8"
+    },
+    {
+      "id": "battle_083",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "076b28a7344fdb2cd8db5167e1690519ecb6369cb7eb7c23709c632c6cb0d871"
+    },
+    {
+      "id": "battle_084",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "03ed4e13daa03f195188d13163b169b22aba13c3974e6cfc483febeda53adbcb"
+    },
+    {
+      "id": "battle_085",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "d5dd2781ced7b63d11824e98b38516bc1d3f0681c75466d0a6777df28f746314"
+    },
+    {
+      "id": "battle_086",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "e2c4911de886f3f4ad3879d236fd2eb0de4c8ba5a81cfa35e555e32e457a5f28"
+    },
+    {
+      "id": "battle_086_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "e24218b31acd60cf5a9c86263f501870e1ac83b8726ab1e790e30e463f6afa20"
+    },
+    {
+      "id": "battle_086_3",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "93710a8c23f160708041a96bdeb187a9e0faeecbaf2cf049aef6cf9af9e75b71"
+    },
+    {
+      "id": "battle_086_4",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "4c0d56120aeb1ad66df0430172140a07b0b4acf93308f209c58f4967e28c6a17"
+    },
+    {
+      "id": "battle_086_5",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "af3d8656d26b786f3262c1b3156561948a8e6a7f8ac7175a5625a82fe982a545"
+    },
+    {
+      "id": "battle_086_6",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "205ddccdcecb712ba9c1f2348876ec9246e492ea56ff87d51ea965892c3412a9"
+    },
+    {
+      "id": "battle_086_7",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "2e50a840a23f877b3ff9ea5b792e8d6ea629430a918d53a2a4a67c936572110e"
+    },
+    {
+      "id": "battle_086_8",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "c1b751a8a9b9e987dc0ccc436c194b2a6b56c32dd08cb743929b683bf76c9b76"
+    },
+    {
+      "id": "battle_086_9",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "6c8c04e16e0d76a9538a01dd7eaf04dbf17107f15f7e057538c77336344c2371"
+    },
+    {
+      "id": "battle_086_10",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "e68ef282e26421d77855ea139ddba0356a9fbe0494e0b42f64e9777056037ffb"
+    },
+    {
+      "id": "battle_087",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "c02c0f2f5df205b0907e4b32e0f62c7d89f9487c39d198e79ad8540afc2cfd20"
+    },
+    {
+      "id": "battle_088",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "8ca6433b8bd7f04a913aa41a7b43ffa6505e268e6edcd0b0c82e3063471faecb"
+    },
+    {
+      "id": "battle_089",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "9d00acc37fbdffd3e20102c2dea78b15c7c8128f85619ef860e352ddf9186c41"
+    },
+    {
+      "id": "battle_090",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "401ea7c4c3d43d12c50e984f6657a94dc95195663a55511a0309bf0b46048f8e"
+    },
+    {
+      "id": "battle_091",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "24881740d12e6b185cb6a7bc046708b0aab54a4dea74fd747025cb6da3e1c1e2"
+    },
+    {
+      "id": "battle_092",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "eeab201dab2ee4ff5f9260cb7747d8b97bcb9aed9a6ae963e7449d30b167ebcb"
+    },
+    {
+      "id": "battle_093",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "b2f57a2302bfd1aa8d892f0a18581b8b602a9d607bf47595c01a96c7f4981372"
+    },
+    {
+      "id": "battle_094",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "0be70aaa990eca010e82024ec620495cc526cb8e436e9ee29f2f18e08237e5b1"
+    },
+    {
+      "id": "battle_094_1",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "f9d5ec596396ffbfdb121b9b7574f59808499fa5953fee339d5364c8483b5c07"
+    },
+    {
+      "id": "battle_094_2",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "c57c050658ec3a85ec6219aa64efe003f849136c7624b6467aa791de1a76b523"
+    },
+    {
+      "id": "battle_094_3",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "5f9d61051a110fc56d6fbd2786ec49643c31c4193f181705087813526c94f8d3"
+    },
+    {
+      "id": "battle_094_4",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "f01e437e1287a1cd39ee86663a8d95e927ee05c3726d56e67ab3a7344acf99b4"
+    },
+    {
+      "id": "battle_094_5",
+      "strategy": 0,
+      "bonus": 0,
+      "row_sha256": "d8fdff43b4d7d0fd83c9aa17d4dc333611fae58262b2e675200ba512f60a98db"
+    },
+    {
+      "id": "battle_095",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "d6d6ed2672be8de641a0f4847f9a8d81f64860a58abf41100a8c4cd49f2ebf29"
+    },
+    {
+      "id": "battle_096",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "a917d317e4e7a208e1c46c41787116b5480e8c9541e58d6507e1e99e2bd2041d"
+    },
+    {
+      "id": "battle_097",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "f5da807aa42732542ff6e89dae87603c7446241cc8d41440327e1df181279402"
+    },
+    {
+      "id": "battle_098",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "2e0dccd77de3c0a6917c04c2a428187be4979f6bcc895f60bbca226a3538db97"
+    },
+    {
+      "id": "battle_099",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "56429c25e08b0210b44cd2c750385724959f64378a7f272320f27adf8968c472"
+    },
+    {
+      "id": "battle_100",
+      "strategy": 1,
+      "bonus": 0,
+      "row_sha256": "7c3ee41c217eab1a161cfa73dcecb523a5d5538b5c3534877050416359840227"
+    }
+  ],
+  "pigs": [
+    {
+      "id": "pig_minion_rogue_bird1_1hit",
+      "strength": 4
+    },
+    {
+      "id": "pig_minion_stickpig_bird1_1hit",
+      "strength": 3
+    },
+    {
+      "id": "pig_brute_brute_bird1",
+      "strength": 6
+    },
+    {
+      "id": "pig_brute_brute_bird1_tut",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_guard_bird1",
+      "strength": 4
+    },
+    {
+      "id": "pig_yellow_cage",
+      "strength": 1
+    },
+    {
+      "id": "pig_knight_guard_captain_bird1",
+      "strength": 6
+    },
+    {
+      "id": "pig_moustache_pirate_captain_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_pirate_pirate",
+      "strength": 3
+    },
+    {
+      "id": "pig_minion_stickpig_bird2",
+      "strength": 3
+    },
+    {
+      "id": "pig_minion_rogue_bird1",
+      "strength": 4
+    },
+    {
+      "id": "pig_minion_rogue_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_prince_porky_firstencounter",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_rogue_bird2",
+      "strength": 4
+    },
+    {
+      "id": "pig_minion_bird_catcher",
+      "strength": 2
+    },
+    {
+      "id": "pig_brute_brute_boss_tut",
+      "strength": 8
+    },
+    {
+      "id": "pig_minion_bird_catcher_bird2",
+      "strength": 3
+    },
+    {
+      "id": "pig_minion_rogue_leader_bird2",
+      "strength": 4
+    },
+    {
+      "id": "pig_minion_guard_bird2_castle",
+      "strength": 5
+    },
+    {
+      "id": "pig_brute_brute_bird2",
+      "strength": 6
+    },
+    {
+      "id": "pig_moustache_big_boss_bird2_castle",
+      "strength": 5
+    },
+    {
+      "id": "pig_prince_porky_secondencounter",
+      "strength": 7
+    },
+    {
+      "id": "pig_caster_pyropig_bird2",
+      "strength": 6
+    },
+    {
+      "id": "pig_pirate_matey",
+      "strength": 2
+    },
+    {
+      "id": "pig_moustache_big_boss",
+      "strength": 5
+    },
+    {
+      "id": "pig_caster_pyropig_bird2_harder",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_rogue",
+      "strength": 3
+    },
+    {
+      "id": "pig_minion_stickpig",
+      "strength": 2
+    },
+    {
+      "id": "pig_brute_brute",
+      "strength": 7
+    },
+    {
+      "id": "pig_minion_rogue_leader",
+      "strength": 3
+    },
+    {
+      "id": "pig_knight_guard_captain",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_soldier",
+      "strength": 2
+    },
+    {
+      "id": "pig_minion_guard",
+      "strength": 4
+    },
+    {
+      "id": "pig_minion_corporal",
+      "strength": 6
+    },
+    {
+      "id": "pig_caster_lightningpig",
+      "strength": 6
+    },
+    {
+      "id": "pig_bomb_dud",
+      "strength": 1
+    },
+    {
+      "id": "pig_knight_royal_guard",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_turban",
+      "strength": 3
+    },
+    {
+      "id": "pig_minion_turban_boss",
+      "strength": 3
+    },
+    {
+      "id": "pig_knight_cactus",
+      "strength": 6
+    },
+    {
+      "id": "pig_zombie_mummy",
+      "strength": 3
+    },
+    {
+      "id": "pig_zombie_mummy_wet",
+      "strength": 2
+    },
+    {
+      "id": "pig_caster_naturepig",
+      "strength": 6
+    },
+    {
+      "id": "pig_brute_pirate",
+      "strength": 7
+    },
+    {
+      "id": "pig_moustache_pirate_captain_redbeard",
+      "strength": 6
+    },
+    {
+      "id": "pig_moustache_foreman_bird2",
+      "strength": 5
+    },
+    {
+      "id": "pig_caster_pyropig_bird2_hardest",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_rogue_miniboss",
+      "strength": 3
+    },
+    {
+      "id": "pig_caster_pyropig",
+      "strength": 6
+    },
+    {
+      "id": "pig_caster_pyropig_boss_coins",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_corporal_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_farmer",
+      "strength": 2
+    },
+    {
+      "id": "pig_minion_worker",
+      "strength": 2
+    },
+    {
+      "id": "pig_moustache_foreman",
+      "strength": 5
+    },
+    {
+      "id": "pig_pirate_airpirate",
+      "strength": 3
+    },
+    {
+      "id": "pig_moustache_pilotpig",
+      "strength": 5
+    },
+    {
+      "id": "pig_pirate_veteran",
+      "strength": 6
+    },
+    {
+      "id": "pig_pigmies_forest",
+      "strength": 4
+    },
+    {
+      "id": "pig_pigmies_shooters",
+      "strength": 4
+    },
+    {
+      "id": "pig_pirate_adventurer",
+      "strength": 7
+    },
+    {
+      "id": "pig_ghost_shipkobold",
+      "strength": 2
+    },
+    {
+      "id": "pig_brute_pirate_boss",
+      "strength": 8
+    },
+    {
+      "id": "pig_shaman_smutje",
+      "strength": 5
+    },
+    {
+      "id": "pig_ghost_shipkobold_boss",
+      "strength": 15
+    },
+    {
+      "id": "pig_moustache_pirate_captain",
+      "strength": 6
+    },
+    {
+      "id": "pig_moustache_pirate_captain_silva",
+      "strength": 6
+    },
+    {
+      "id": "pig_zombie_zombie",
+      "strength": 4
+    },
+    {
+      "id": "pig_ghost_ghost",
+      "strength": 2
+    },
+    {
+      "id": "pig_ghost_willowhisp",
+      "strength": 3
+    },
+    {
+      "id": "pig_ghost_banshee",
+      "strength": 5
+    },
+    {
+      "id": "pig_zombie_stinky",
+      "strength": 4
+    },
+    {
+      "id": "pig_moustache_pirate_captain_undead",
+      "strength": 6
+    },
+    {
+      "id": "pig_bomb_royal",
+      "strength": 1
+    },
+    {
+      "id": "pig_prince_porky_secondencounter_normal",
+      "strength": 7
+    },
+    {
+      "id": "pig_knight_cactus_boss",
+      "strength": 10
+    },
+    {
+      "id": "pig_prince_porky_thirdencounter",
+      "strength": 7
+    },
+    {
+      "id": "pig_pigmies_forest_small",
+      "strength": 2
+    },
+    {
+      "id": "pig_zombie_berserk",
+      "strength": 7
+    },
+    {
+      "id": "pig_shaman_witch_doctor",
+      "strength": 5
+    },
+    {
+      "id": "pig_zombie_berserk_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_brute_brawler",
+      "strength": 7
+    },
+    {
+      "id": "pig_shaman_shaman",
+      "strength": 6
+    },
+    {
+      "id": "pig_pirate_adventurer_boss",
+      "strength": 7
+    },
+    {
+      "id": "pig_shaman_witch_doctor_boss_03",
+      "strength": 10
+    },
+    {
+      "id": "pig_ghost_banshee_boss",
+      "strength": 5
+    },
+    {
+      "id": "pig_ghost_poltergeist",
+      "strength": 4
+    },
+    {
+      "id": "pig_zombie_knight",
+      "strength": 5
+    },
+    {
+      "id": "pig_brute_frankenpig",
+      "strength": 7
+    },
+    {
+      "id": "pig_caster_necromancer",
+      "strength": 6
+    },
+    {
+      "id": "pig_wiz_pig_01",
+      "strength": 7
+    },
+    {
+      "id": "pig_ninja_black",
+      "strength": 3
+    },
+    {
+      "id": "pig_ninja_red",
+      "strength": 3
+    },
+    {
+      "id": "pig_knight_shogun_boss_02",
+      "strength": 7
+    },
+    {
+      "id": "pig_ninja_bowman",
+      "strength": 3
+    },
+    {
+      "id": "pig_moustache_mandarin",
+      "strength": 5
+    },
+    {
+      "id": "pig_ninja_master",
+      "strength": 5
+    },
+    {
+      "id": "pig_knight_shogun",
+      "strength": 6
+    },
+    {
+      "id": "pig_ninja_master_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_lancer",
+      "strength": 2
+    },
+    {
+      "id": "pig_brute_frosthog",
+      "strength": 7
+    },
+    {
+      "id": "pig_shaman_brute",
+      "strength": 7
+    },
+    {
+      "id": "pig_brute_brawler_fat",
+      "strength": 15
+    },
+    {
+      "id": "pig_moustache_chieftain",
+      "strength": 5
+    },
+    {
+      "id": "pig_brute_navy",
+      "strength": 8
+    },
+    {
+      "id": "pig_pirate_airpirate_sub",
+      "strength": 3
+    },
+    {
+      "id": "pig_bomb_royal_water",
+      "strength": 2
+    },
+    {
+      "id": "pig_moustache_pilotpig_boss_sub",
+      "strength": 10
+    },
+    {
+      "id": "pig_minion_snowpig_small",
+      "strength": 2
+    },
+    {
+      "id": "pig_minion_snowpig",
+      "strength": 3
+    },
+    {
+      "id": "pig_pigmies_ice",
+      "strength": 4
+    },
+    {
+      "id": "pig_shaman_ice",
+      "strength": 5
+    },
+    {
+      "id": "pig_brute_frosthog_boss",
+      "strength": 15
+    },
+    {
+      "id": "pig_caster_frostpig",
+      "strength": 6
+    },
+    {
+      "id": "pig_knight_ice",
+      "strength": 6
+    },
+    {
+      "id": "pig_bomb_royal_02",
+      "strength": 1
+    },
+    {
+      "id": "pig_wiz_pig_02",
+      "strength": 7
+    },
+    {
+      "id": "pig_caster_necromancer_trick",
+      "strength": 6
+    },
+    {
+      "id": "pig_minion_lumberjack",
+      "strength": 2
+    },
+    {
+      "id": "pig_pigmies_shooters_boss",
+      "strength": 15
+    },
+    {
+      "id": "pig_knight_royal_guard_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_knight_navy",
+      "strength": 3
+    },
+    {
+      "id": "pig_minion_smuggler",
+      "strength": 2
+    },
+    {
+      "id": "pig_minion_worker_expedition",
+      "strength": 2
+    },
+    {
+      "id": "pig_bird_red",
+      "strength": 5
+    },
+    {
+      "id": "pig_minion_rogue_boss_nest_01",
+      "strength": 3
+    },
+    {
+      "id": "pig_minion_apprentice",
+      "strength": 2
+    },
+    {
+      "id": "pig_king_01",
+      "strength": 7
+    },
+    {
+      "id": "pig_wiz_pig_03",
+      "strength": 7
+    },
+    {
+      "id": "pig_minion_phat_loot",
+      "strength": 1
+    },
+    {
+      "id": "pig_caster_necromancer_boss_redkey_01",
+      "strength": 1
+    },
+    {
+      "id": "pig_caster_necromancer_boss_redkey_02",
+      "strength": 3
+    },
+    {
+      "id": "pig_caster_pyropig_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_caster_lightningpig_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_caster_naturepig_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_caster_frostpig_boss",
+      "strength": 6
+    },
+    {
+      "id": "pig_caster_necromancer_boss_mountain",
+      "strength": 6
+    },
+    {
+      "id": "pig_zombie_knight_wizpig",
+      "strength": 5
+    },
+    {
+      "id": "pig_zombie_stinky_wizpig",
+      "strength": 4
+    },
+    {
+      "id": "pig_wiz_pig_04",
+      "strength": 7
+    },
+    {
+      "id": "pig_wiz_pig_05",
+      "strength": 4
+    }
+  ],
+  "source_sha256": "b98293b8e7d8376a38063e0d64076534e2e24569e40d3150fd4abe3172541c0a",
+  "limitations": [
+    "Fixed original campaign waves only; spawned/summoned units, NPC/PvP/banners and special scoring remain unfinished",
+    "Score uses current core action-boundary death collection and native round/wave counter mapping; exact coroutine/initiative order and native fractional HP precision still need comparison",
+    "Star collection outside the imported main-island encounters remains unfinished"
+  ]
+}

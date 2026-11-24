@@ -1,0 +1,1281 @@
+{
+  "extracted": [
+    {
+      "skin_id": "skin_knight",
+      "asset_id": "Headgear_Knight",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        486,
+        686,
+        176,
+        152
+      ]
+    },
+    {
+      "skin_id": "skin_eliteknight",
+      "asset_id": "Headgear_EliteKnight",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        0,
+        238,
+        178,
+        190
+      ]
+    },
+    {
+      "skin_id": "skin_ronin",
+      "asset_id": "Headgear_Ronin",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        0,
+        72,
+        186,
+        164
+      ]
+    },
+    {
+      "skin_id": "skin_eliteronin",
+      "asset_id": "Headgear_EliteKnight",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        0,
+        238,
+        178,
+        190
+      ]
+    },
+    {
+      "skin_id": "skin_eliteknight_ronin",
+      "asset_id": "Headgear_Ronin",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        0,
+        72,
+        186,
+        164
+      ]
+    },
+    {
+      "skin_id": "skin_eliteknight_superhero",
+      "asset_id": "Headgear_SuperheroKnight",
+      "texture": "RedBird_Atlas_03_HR",
+      "rect": [
+        181,
+        314,
+        200,
+        198
+      ]
+    },
+    {
+      "skin_id": "skin_guardian",
+      "asset_id": "Headgear_Guardian",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        326,
+        662,
+        158,
+        176
+      ]
+    },
+    {
+      "skin_id": "skin_eliteguardian",
+      "asset_id": "Headgear_EliteGuardian",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        241,
+        325,
+        160,
+        198
+      ]
+    },
+    {
+      "skin_id": "skin_eliteguardian_xmas",
+      "asset_id": "Headgear_HolidayGuardian",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        241,
+        124,
+        150,
+        200
+      ]
+    },
+    {
+      "skin_id": "skin_eliteguardian_4thofjuly",
+      "asset_id": "Headgear_4thOfJulyGuardian",
+      "texture": "RedBird_Atlas_03_HR",
+      "rect": [
+        181,
+        143,
+        198,
+        170
+      ]
+    },
+    {
+      "skin_id": "skin_samurai",
+      "asset_id": "Headgear_Samurai",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        0,
+        430,
+        168,
+        204
+      ]
+    },
+    {
+      "skin_id": "skin_elitesamurai",
+      "asset_id": "Headgear_EliteSamurai",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        0,
+        171,
+        176,
+        228
+      ]
+    },
+    {
+      "skin_id": "skin_elitesamurai_scifi",
+      "asset_id": "Headgear_ScifiSamurai",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        251,
+        824,
+        222,
+        200
+      ]
+    },
+    {
+      "skin_id": "skin_elitesamurai_challenger",
+      "asset_id": "Headgear_ChallengerSamurai",
+      "texture": "RedBird_Atlas_03_HR",
+      "rect": [
+        0,
+        282,
+        180,
+        230
+      ]
+    },
+    {
+      "skin_id": "skin_avenger",
+      "asset_id": "Headgear_Avenger",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        682,
+        848,
+        204,
+        176
+      ]
+    },
+    {
+      "skin_id": "skin_eliteavenger",
+      "asset_id": "Headgear_EliteAvenger",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        0,
+        636,
+        210,
+        202
+      ]
+    },
+    {
+      "skin_id": "skin_eliteavenger_sport",
+      "asset_id": "Headgear_SportsAvenger",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        241,
+        524,
+        202,
+        174
+      ]
+    },
+    {
+      "skin_id": "skin_paladin",
+      "asset_id": "Headgear_Paladin",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        466,
+        848,
+        214,
+        176
+      ]
+    },
+    {
+      "skin_id": "skin_elitepaladin",
+      "asset_id": "Headgear_ElitePaladin",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        0,
+        400,
+        228,
+        216
+      ]
+    },
+    {
+      "skin_id": "skin_elitepaladin_halloween",
+      "asset_id": "Headgear_HalloweenPaladin",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        0,
+        824,
+        250,
+        200
+      ]
+    },
+    {
+      "skin_id": "skin_elitepaladin_winter",
+      "asset_id": "Headgear_WinterPaladin",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        0,
+        617,
+        240,
+        206
+      ]
+    },
+    {
+      "skin_id": "skin_stoneguard",
+      "asset_id": "Headgear_StoneGuard",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        252,
+        846,
+        212,
+        178
+      ]
+    },
+    {
+      "skin_id": "skin_elitestoneguard",
+      "asset_id": "Headgear_EliteStoneGuard",
+      "texture": "RedBird_Atlas_01_HR",
+      "rect": [
+        0,
+        840,
+        250,
+        184
+      ]
+    },
+    {
+      "skin_id": "skin_elitestoneguard_challenger",
+      "asset_id": "Headgear_ArenaStoneGuard",
+      "texture": "RedBird_Atlas_02_HR",
+      "rect": [
+        743,
+        852,
+        208,
+        172
+      ]
+    },
+    {
+      "skin_id": "skin_mage",
+      "asset_id": "Headgear_Mage",
+      "texture": "YellowBird_Atlas_01_HR",
+      "rect": [
+        0,
+        701,
+        216,
+        160
+      ]
+    },
+    {
+      "skin_id": "skin_elitemage",
+      "asset_id": "Headgear_EliteMage",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        0,
+        450,
+        222,
+        168
+      ]
+    },
+    {
+      "skin_id": "skin_nerd",
+      "asset_id": "Headgear_ArchMage",
+      "texture": "YellowBird_Atlas_01_HR",
+      "rect": [
+        0,
+        862,
+        250,
+        162
+      ]
+    },
+    {
+      "skin_id": "skin_elitenerd",
+      "asset_id": "Headgear_EliteMage",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        0,
+        450,
+        222,
+        168
+      ]
+    },
+    {
+      "skin_id": "skin_elitemage_nerd",
+      "asset_id": "Headgear_ArchMage",
+      "texture": "YellowBird_Atlas_01_HR",
+      "rect": [
+        0,
+        862,
+        250,
+        162
+      ]
+    },
+    {
+      "skin_id": "skin_elitemage_scifi",
+      "asset_id": "Headgear_ScifiMage",
+      "texture": "YellowBird_Atlas_03_HR",
+      "rect": [
+        0,
+        523,
+        230,
+        238
+      ]
+    },
+    {
+      "skin_id": "skin_lightningbird",
+      "asset_id": "Headgear_LightningBird",
+      "texture": "YellowBird_Atlas_01_HR",
+      "rect": [
+        398,
+        415,
+        162,
+        282
+      ]
+    },
+    {
+      "skin_id": "skin_elitelightningbird",
+      "asset_id": "Headgear_EliteLightningBird",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        649,
+        88,
+        176,
+        287
+      ]
+    },
+    {
+      "skin_id": "skin_elitelightningbird_winter",
+      "asset_id": "Headgear_WinterLightningBird",
+      "texture": "YellowBird_Atlas_03_HR",
+      "rect": [
+        0,
+        762,
+        244,
+        262
+      ]
+    },
+    {
+      "skin_id": "skin_wizard",
+      "asset_id": "Headgear_Wizard",
+      "texture": "YellowBird_Atlas_01_HR",
+      "rect": [
+        217,
+        698,
+        193,
+        163
+      ]
+    },
+    {
+      "skin_id": "skin_elitewizard",
+      "asset_id": "Headgear_EliteWizard",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        681,
+        653,
+        206,
+        170
+      ]
+    },
+    {
+      "skin_id": "skin_elitewizard_xmas",
+      "asset_id": "Headgear_HolidayWizard",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        0,
+        235,
+        221,
+        214
+      ]
+    },
+    {
+      "skin_id": "skin_elitewizard_superhero",
+      "asset_id": "Headgear_SuperheroWizard",
+      "texture": "YellowBird_Atlas_03_HR",
+      "rect": [
+        245,
+        788,
+        266,
+        236
+      ]
+    },
+    {
+      "skin_id": "skin_rainbird",
+      "asset_id": "Headgear_Rainbird",
+      "texture": "YellowBird_Atlas_01_HR",
+      "rect": [
+        251,
+        870,
+        236,
+        154
+      ]
+    },
+    {
+      "skin_id": "skin_eliterainbird",
+      "asset_id": "Headgear_EliteRainbird",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        279,
+        842,
+        276,
+        182
+      ]
+    },
+    {
+      "skin_id": "skin_eliterainbird_halloween",
+      "asset_id": "Headgear_HalloweenRainbird",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        263,
+        613,
+        208,
+        210
+      ]
+    },
+    {
+      "skin_id": "skin_thunderbird",
+      "asset_id": "Headgear_Thunderbird",
+      "texture": "YellowBird_Atlas_01_HR",
+      "rect": [
+        217,
+        314,
+        178,
+        198
+      ]
+    },
+    {
+      "skin_id": "skin_elitethunderbird",
+      "asset_id": "Headgear_EliteThunderbird",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        263,
+        109,
+        194,
+        204
+      ]
+    },
+    {
+      "skin_id": "skin_elitethunderbird_sport",
+      "asset_id": "Headgear_SportsThunderbird",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        556,
+        861,
+        236,
+        163
+      ]
+    },
+    {
+      "skin_id": "skin_elitethunderbird_challenger",
+      "asset_id": "Headgear_ChallengerThunderBird",
+      "texture": "YellowBird_Atlas_03_HR",
+      "rect": [
+        245,
+        521,
+        228,
+        266
+      ]
+    },
+    {
+      "skin_id": "skin_illusionist",
+      "asset_id": "Headgear_Illusionist",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        826,
+        191,
+        168,
+        184
+      ]
+    },
+    {
+      "skin_id": "skin_eliteillusionist",
+      "asset_id": "Headgear_EliteIllusionist",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        263,
+        410,
+        204,
+        202
+      ]
+    },
+    {
+      "skin_id": "skin_eliteillusionist_challenger",
+      "asset_id": "Headgear_ArenaIllusionist",
+      "texture": "YellowBird_Atlas_02_HR",
+      "rect": [
+        0,
+        619,
+        262,
+        204
+      ]
+    },
+    {
+      "skin_id": "skin_cleric",
+      "asset_id": "Headgear_Cleric",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        507,
+        756,
+        182,
+        268
+      ]
+    },
+    {
+      "skin_id": "skin_elitecleric",
+      "asset_id": "Headgear_EliteCleric",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        0,
+        459,
+        205,
+        294
+      ]
+    },
+    {
+      "skin_id": "skin_moonpriest",
+      "asset_id": "Headgear_MoonPriest",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        206,
+        543,
+        182,
+        210
+      ]
+    },
+    {
+      "skin_id": "skin_elitemoonpriest",
+      "asset_id": "Headgear_EliteCleric",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        0,
+        459,
+        205,
+        294
+      ]
+    },
+    {
+      "skin_id": "skin_elitecleric_moonpriest",
+      "asset_id": "Headgear_MoonPriest",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        206,
+        543,
+        182,
+        210
+      ]
+    },
+    {
+      "skin_id": "skin_elitecleric_scifi",
+      "asset_id": "Headgear_ScifiCleric",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        735,
+        575,
+        228,
+        266
+      ]
+    },
+    {
+      "skin_id": "skin_druid",
+      "asset_id": "Headgear_Druid",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        206,
+        336,
+        182,
+        206
+      ]
+    },
+    {
+      "skin_id": "skin_elitedruid",
+      "asset_id": "Headgear_EliteDruid",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        0,
+        577,
+        262,
+        264
+      ]
+    },
+    {
+      "skin_id": "skin_elitedruid_winter",
+      "asset_id": "Headgear_WinterDruid",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        263,
+        549,
+        236,
+        292
+      ]
+    },
+    {
+      "skin_id": "skin_elitedruid_easter",
+      "asset_id": "Headgear_EasterDruid",
+      "texture": "WhiteBird_Atlas_04_HR",
+      "rect": [
+        0,
+        752,
+        250,
+        272
+      ]
+    },
+    {
+      "skin_id": "skin_princess",
+      "asset_id": "Headgear_Princess",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        389,
+        577,
+        175,
+        176
+      ]
+    },
+    {
+      "skin_id": "skin_eliteprincess",
+      "asset_id": "Headgear_ElitePrincess",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        486,
+        310,
+        206,
+        238
+      ]
+    },
+    {
+      "skin_id": "skin_eliteprincess_sport",
+      "asset_id": "Headgear_SportsPrincess",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        265,
+        844,
+        205,
+        180
+      ]
+    },
+    {
+      "skin_id": "skin_eliteprincess_challenger",
+      "asset_id": "Headgear_ChallengerPrincess",
+      "texture": "WhiteBird_Atlas_04_HR",
+      "rect": [
+        251,
+        796,
+        240,
+        228
+      ]
+    },
+    {
+      "skin_id": "skin_bard",
+      "asset_id": "Headgear_Bard",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        0,
+        258,
+        199,
+        200
+      ]
+    },
+    {
+      "skin_id": "skin_elitebard",
+      "asset_id": "Headgear_EliteBard",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        500,
+        595,
+        234,
+        246
+      ]
+    },
+    {
+      "skin_id": "skin_elitebard_xmas",
+      "asset_id": "Headgear_HolidayBard",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        0,
+        21,
+        237,
+        244
+      ]
+    },
+    {
+      "skin_id": "skin_elitebard_superhero",
+      "asset_id": "Headgear_SuperheroBard",
+      "texture": "WhiteBird_Atlas_04_HR",
+      "rect": [
+        0,
+        549,
+        196,
+        202
+      ]
+    },
+    {
+      "skin_id": "skin_priest",
+      "asset_id": "Headgear_Priest",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        0,
+        33,
+        177,
+        224
+      ]
+    },
+    {
+      "skin_id": "skin_elitepriest",
+      "asset_id": "Headgear_ElitePriest",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        263,
+        306,
+        222,
+        242
+      ]
+    },
+    {
+      "skin_id": "skin_elitepriest_halloween",
+      "asset_id": "Headgear_HalloweenPriest",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        486,
+        87,
+        192,
+        222
+      ]
+    },
+    {
+      "skin_id": "skin_witch",
+      "asset_id": "Headgear_Witch",
+      "texture": "WhiteBird_Atlas_01_HR",
+      "rect": [
+        690,
+        788,
+        178,
+        236
+      ]
+    },
+    {
+      "skin_id": "skin_elitewitch",
+      "asset_id": "Headgear_EliteWitch",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        263,
+        13,
+        218,
+        292
+      ]
+    },
+    {
+      "skin_id": "skin_elitewitch_challenger",
+      "asset_id": "Headgear_ArenaWitch",
+      "texture": "WhiteBird_Atlas_03_HR",
+      "rect": [
+        0,
+        266,
+        242,
+        310
+      ]
+    },
+    {
+      "skin_id": "skin_pirate",
+      "asset_id": "Headgear_Pirate",
+      "texture": "PigPirate_Atlas_01_HR",
+      "rect": [
+        248,
+        411,
+        254,
+        101
+      ]
+    },
+    {
+      "skin_id": "skin_elitepirate",
+      "asset_id": "Headgear_ElitePirate",
+      "texture": "BlackBird_Atlas_02_HR",
+      "rect": [
+        247,
+        599,
+        252,
+        154
+      ]
+    },
+    {
+      "skin_id": "skin_corsair",
+      "asset_id": "Headgear_Corsair",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        0,
+        9,
+        247,
+        199
+      ]
+    },
+    {
+      "skin_id": "skin_elitecorsair",
+      "asset_id": "Headgear_ElitePirate",
+      "texture": "BlackBird_Atlas_02_HR",
+      "rect": [
+        247,
+        599,
+        252,
+        154
+      ]
+    },
+    {
+      "skin_id": "skin_elitepirate_corsair",
+      "asset_id": "Headgear_Corsair",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        0,
+        9,
+        247,
+        199
+      ]
+    },
+    {
+      "skin_id": "skin_elitepirate_superhero",
+      "asset_id": "Headgear_SuperheroPirate",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        805,
+        780,
+        218,
+        244
+      ]
+    },
+    {
+      "skin_id": "skin_cannoneer",
+      "asset_id": "Headgear_Cannoneer",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        442,
+        877,
+        245,
+        147
+      ]
+    },
+    {
+      "skin_id": "skin_elitecannoneer",
+      "asset_id": "Headgear_EliteCannoneer",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        538,
+        800,
+        266,
+        224
+      ]
+    },
+    {
+      "skin_id": "skin_elitecannoneer_sport",
+      "asset_id": "Headgear_SportsCannoneer",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        518,
+        332,
+        186,
+        188
+      ]
+    },
+    {
+      "skin_id": "skin_elitecannoneer_valentine",
+      "asset_id": "Headgear_ValentineCannoneer",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        283,
+        312,
+        234,
+        208
+      ]
+    },
+    {
+      "skin_id": "skin_berserk",
+      "asset_id": "Headgear_Berserk",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        688,
+        862,
+        213,
+        162
+      ]
+    },
+    {
+      "skin_id": "skin_eliteberserk",
+      "asset_id": "Headgear_EliteBerserk",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        759,
+        551,
+        228,
+        228
+      ]
+    },
+    {
+      "skin_id": "skin_eliteberserk_halloween",
+      "asset_id": "Headgear_HalloweenBerserk",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        516,
+        557,
+        242,
+        222
+      ]
+    },
+    {
+      "skin_id": "skin_captn",
+      "asset_id": "Headgear_Captain",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        249,
+        778,
+        192,
+        246
+      ]
+    },
+    {
+      "skin_id": "skin_elitecaptn",
+      "asset_id": "Headgear_EliteCaptain",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        0,
+        443,
+        258,
+        278
+      ]
+    },
+    {
+      "skin_id": "skin_elitecaptn_winter",
+      "asset_id": "Headgear_WinterCaptain",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        0,
+        186,
+        253,
+        256
+      ]
+    },
+    {
+      "skin_id": "skin_elitecaptn_scifi",
+      "asset_id": "Headgear_ScifiCaptain",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        283,
+        521,
+        232,
+        258
+      ]
+    },
+    {
+      "skin_id": "skin_seadog",
+      "asset_id": "Headgear_SeaDog",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        0,
+        209,
+        207,
+        247
+      ]
+    },
+    {
+      "skin_id": "skin_eliteseadog",
+      "asset_id": "Headgear_EliteSeaDog",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        0,
+        712,
+        248,
+        312
+      ]
+    },
+    {
+      "skin_id": "skin_eliteseadog_xmas",
+      "asset_id": "Headgear_HolidaySeaDog",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        0,
+        722,
+        282,
+        302
+      ]
+    },
+    {
+      "skin_id": "skin_eliteseadog_challenger",
+      "asset_id": "Headgear_ChallengerSeaDog",
+      "texture": "BlackBird_Atlas_04_HR",
+      "rect": [
+        0,
+        212,
+        220,
+        300
+      ]
+    },
+    {
+      "skin_id": "skin_winterfighter",
+      "asset_id": "Headgear_WinterWarrior",
+      "texture": "BlackBird_Atlas_01_HR",
+      "rect": [
+        0,
+        457,
+        218,
+        254
+      ]
+    },
+    {
+      "skin_id": "skin_elitewinterfighter",
+      "asset_id": "Headgear_EliteWinterWarrior",
+      "texture": "BlackBird_Atlas_02_HR",
+      "rect": [
+        0,
+        754,
+        300,
+        270
+      ]
+    },
+    {
+      "skin_id": "skin_elitewinterfighter_challenger",
+      "asset_id": "Headgear_ArenaWinterWarrior",
+      "texture": "BlackBird_Atlas_03_HR",
+      "rect": [
+        283,
+        780,
+        254,
+        244
+      ]
+    },
+    {
+      "skin_id": "skin_tricksters",
+      "asset_id": "Headgear_Trickster",
+      "texture": "BlueBirds_Atlas_01_HR",
+      "rect": [
+        633,
+        661,
+        140,
+        136
+      ]
+    },
+    {
+      "skin_id": "skin_elitetricksters",
+      "asset_id": "Headgear_EliteTrickster",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        0,
+        31,
+        160,
+        158
+      ]
+    },
+    {
+      "skin_id": "skin_elitetricksters_legacy",
+      "asset_id": "Headgear_LegacyTrickster",
+      "texture": "BlueBirds_Atlas_03_HR",
+      "rect": [
+        458,
+        792,
+        192,
+        232
+      ]
+    },
+    {
+      "skin_id": "skin_elitetricksters_superhero",
+      "asset_id": "Headgear_SuperheroTrickster",
+      "texture": "BlueBirds_Atlas_03_HR",
+      "rect": [
+        0,
+        116,
+        164,
+        316
+      ]
+    },
+    {
+      "skin_id": "skin_rogues",
+      "asset_id": "Headgear_Rogue",
+      "texture": "MinionPig_Atlas_02_HR",
+      "rect": [
+        740,
+        758,
+        148,
+        99
+      ]
+    },
+    {
+      "skin_id": "skin_eliterogues",
+      "asset_id": "Headgear_EliteRogue",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        245,
+        489,
+        158,
+        282
+      ]
+    },
+    {
+      "skin_id": "skin_eliterogues_sport",
+      "asset_id": "Headgear_SportsRogue",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        704,
+        824,
+        178,
+        200
+      ]
+    },
+    {
+      "skin_id": "skin_eliterogues_scifi",
+      "asset_id": "Headgear_ScifiRogue",
+      "texture": "BlueBirds_Atlas_03_HR",
+      "rect": [
+        0,
+        433,
+        172,
+        312
+      ]
+    },
+    {
+      "skin_id": "skin_skulkers",
+      "asset_id": "Headgear_Skulker",
+      "texture": "BlueBirds_Atlas_01_HR",
+      "rect": [
+        0,
+        503,
+        198,
+        294
+      ]
+    },
+    {
+      "skin_id": "skin_eliteskulkers",
+      "asset_id": "Headgear_EliteSkulker",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        0,
+        190,
+        228,
+        298
+      ]
+    },
+    {
+      "skin_id": "skin_eliteskulkers_halloween",
+      "asset_id": "Headgear_HalloweenSkulker",
+      "texture": "BlueBirds_Atlas_03_HR",
+      "rect": [
+        651,
+        788,
+        186,
+        236
+      ]
+    },
+    {
+      "skin_id": "skin_spies",
+      "asset_id": "Headgear_Spy",
+      "texture": "BlueBirds_Atlas_01_HR",
+      "rect": [
+        0,
+        67,
+        141,
+        232
+      ]
+    },
+    {
+      "skin_id": "skin_elitespies",
+      "asset_id": "Headgear_EliteSpy",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        245,
+        230,
+        150,
+        258
+      ]
+    },
+    {
+      "skin_id": "skin_elitespies_xmas",
+      "asset_id": "Headgear_HolidaySpy",
+      "texture": "BlueBirds_Atlas_03_HR",
+      "rect": [
+        838,
+        780,
+        146,
+        244
+      ]
+    },
+    {
+      "skin_id": "skin_elitespies_challenger",
+      "asset_id": "Headgear_ChallengerSpy",
+      "texture": "BlueBirds_Atlas_03_HR",
+      "rect": [
+        257,
+        501,
+        160,
+        268
+      ]
+    },
+    {
+      "skin_id": "skin_marksmen",
+      "asset_id": "Headgear_Marksman",
+      "texture": "BlueBirds_Atlas_01_HR",
+      "rect": [
+        0,
+        798,
+        283,
+        226
+      ]
+    },
+    {
+      "skin_id": "skin_elitemarksmen",
+      "asset_id": "Headgear_EliteMarksman",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        0,
+        772,
+        292,
+        252
+      ]
+    },
+    {
+      "skin_id": "skin_elitemarksmen_winter",
+      "asset_id": "Headgear_WinterMarksman",
+      "texture": "BlueBirds_Atlas_03_HR",
+      "rect": [
+        0,
+        746,
+        256,
+        278
+      ]
+    },
+    {
+      "skin_id": "skin_treasurehunters",
+      "asset_id": "Headgear_TreasureHunters",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        293,
+        810,
+        209,
+        214
+      ]
+    },
+    {
+      "skin_id": "skin_elitetreasurehunters",
+      "asset_id": "Headgear_EliteTreasureHunters",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        503,
+        806,
+        200,
+        218
+      ]
+    },
+    {
+      "skin_id": "skin_elitetreasurehunters_challenger",
+      "asset_id": "Headgear_ArenaTreasureHunters",
+      "texture": "BlueBirds_Atlas_02_HR",
+      "rect": [
+        0,
+        489,
+        244,
+        282
+      ]
+    }
+  ],
+  "missing": []
+}

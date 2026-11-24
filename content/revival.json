@@ -1,0 +1,31 @@
+{
+  "requirements": [
+    {
+      "id": "ReviveBirdsRequirement",
+      "resource": "lucky_coin",
+      "amount": 10,
+      "row_sha256": "acaf5046cd16c27d3a205ef56f4739e485da99e314779e526385b23f21667574"
+    },
+    {
+      "id": "ReviveBirdsPvpRequirement",
+      "resource": "lucky_coin",
+      "amount": 15,
+      "row_sha256": "9e0563283b373fe66bb3788ec77ff133cb272227b73ac7d484db306901f93dfd"
+    },
+    {
+      "id": "ReviveSingleBirdsRequirement",
+      "resource": "lucky_coin",
+      "amount": 5,
+      "row_sha256": "d862ab94379cda43e184d07cf0ecdb2628e5f35d00ab520479590bf08b2b0ecb"
+    }
+  ],
+  "source_sha256": "b98293b8e7d8376a38063e0d64076534e2e24569e40d3150fd4abe3172541c0a",
+  "runtime": [
+    "Single-bird revival spends five coins from the recreation shared gold wallet",
+    "Native ReviveBird requests 100 percent health and rearms KnockOutOnDefeat",
+    "First full-party revive is free; subsequent non-PvP party revives cost ten coins, preserving the player entitlement flag"
+  ],
+  "limitations": [
+    "Original separate currency inventory, PvP revive execution, original popup/timer, full initiative/trigger/consumable/perk flow remain unfinished"
+  ]
+}

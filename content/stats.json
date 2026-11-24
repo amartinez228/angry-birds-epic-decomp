@@ -1,0 +1,2654 @@
+{
+  "source_sha256": "b98293b8e7d8376a38063e0d64076534e2e24569e40d3150fd4abe3172541c0a",
+  "birds": [
+    {
+      "id": "bird_red",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_start",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "8a3ca0d51fb10e6c6bec07362bdcdd1625bc58de03bf08179f27e19ea6df7eb9"
+    },
+    {
+      "id": "bird_yellow",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_start",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 18,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "2c84e5626dca774eef01b56a52324b679f18c52e119e18de264c42ac6cc16712"
+    },
+    {
+      "id": "bird_white",
+      "asset_id": "WhiteBird",
+      "loca_id": "bird_white",
+      "inventory_id": "white_bird_start",
+      "rage_skill_id": "bird_rage_whitebird",
+      "pvp_rage_skill_id": "bird_rage_whitebird_pvp",
+      "base_health": 28,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 2,
+      "row_sha256": "9a7d22821184ed7042093b327cc94a90015f91faba409321ee0c38829e8778f4"
+    },
+    {
+      "id": "bird_black",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "black_bird_start",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 29,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 3,
+      "row_sha256": "5a2e4c31fe15e3a5e1c712f05f52176ee29a6e2db448999153e244b3ccced87e"
+    },
+    {
+      "id": "bird_blue",
+      "asset_id": "BlueBirds",
+      "loca_id": "bird_blue",
+      "inventory_id": "blue_bird_start",
+      "rage_skill_id": "bird_rage_bluebird",
+      "pvp_rage_skill_id": "bird_rage_bluebird_pvp",
+      "base_health": 23,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 4,
+      "row_sha256": "324c6b7b2c8da444465c9d0756b25c4d6ce8351aa957f14dcacf9db866244e0a"
+    },
+    {
+      "id": "bird_yellow_archmage",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_archmage",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 18,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "5f517ed9b3a9367e007e0ce1cc561dd3f92561e341e51db1e8d33fa45b0edbd0"
+    },
+    {
+      "id": "bird_white_moonpriest",
+      "asset_id": "WhiteBird",
+      "loca_id": "bird_white",
+      "inventory_id": "white_bird_moonpriest",
+      "rage_skill_id": "bird_rage_whitebird",
+      "pvp_rage_skill_id": "bird_rage_whitebird_pvp",
+      "base_health": 28,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 2,
+      "row_sha256": "13afe86d8149228281419d80bcbb8e6d9544612a3d6e1e34fed0b0af8afbc582"
+    },
+    {
+      "id": "bird_red_knight",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_start_knight",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "aeec4f144323e917c3d6a029f0ad0815013409ace455864780c484cc674c64a6"
+    },
+    {
+      "id": "bird_red_knight2star",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_start_knight2star",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "f1f4adb410ecbb8c7c32a2c0a8ed2ccebc7b40e82b30fc899fc3f32ab02d17a1"
+    },
+    {
+      "id": "bird_red_guardian",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_start_guardian",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "b27813e7946f6cfe8d3f6f3d11fcbff5b89fc25517af187df4569696692d5d1b"
+    },
+    {
+      "id": "bird_red_samurai",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_start_samurai",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "1f23a80c63482f7184246d72ab550797aae7f652a3d91eb1aa60017f7e6b49a7"
+    },
+    {
+      "id": "bird_red_stoneguard",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_teaser_stoneguard",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "d374dd1b34cc010671cd172128b0a75d6c69bf370cb7aca6c2a9e8c3101dad97"
+    },
+    {
+      "id": "bird_yellow_illusionist",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_teaser_illusionist",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "7a4ac7df1c17b997ea78d6797a225a60df1a08ceb52e4e133222028beb959b39"
+    },
+    {
+      "id": "bird_white_witch",
+      "asset_id": "WhiteBird",
+      "loca_id": "bird_white",
+      "inventory_id": "white_bird_teaser_witch",
+      "rage_skill_id": "bird_rage_whitebird",
+      "pvp_rage_skill_id": "bird_rage_whitebird_pvp",
+      "base_health": 28,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 2,
+      "row_sha256": "546eebc91f6dbae706616c6ae5e47daa1e6e0631b0ca79be8650467199d872fb"
+    },
+    {
+      "id": "bird_white_elitewitch",
+      "asset_id": "WhiteBird",
+      "loca_id": "bird_white",
+      "inventory_id": "white_bird_teaser_elitewitch",
+      "rage_skill_id": "bird_rage_whitebird",
+      "pvp_rage_skill_id": "bird_rage_whitebird_pvp",
+      "base_health": 28,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 2,
+      "row_sha256": "68737e1f21ade6547875e811abcb3656b3b3b7602cd13493dc3032dc98cf5d10"
+    },
+    {
+      "id": "bird_black_winterfighter",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "black_bird_teaser_winterfighter",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "4e68ff148aa73380d5e9ea60e1192dae69667cb55b3b1dca2cd297b69849686a"
+    },
+    {
+      "id": "bird_blue_treasurehunters",
+      "asset_id": "BlueBirds",
+      "loca_id": "bird_blue",
+      "inventory_id": "blue_bird_teaser_treasurehunters",
+      "rage_skill_id": "bird_rage_bluebird",
+      "pvp_rage_skill_id": "bird_rage_bluebird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "e144e87f1905490839d8a1cc73102f93868d4a79b39cf175b36b0201618c9061"
+    },
+    {
+      "id": "bird_red_eliteknight",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_teaser_eliteknight",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "dda92a34d0e899c24e7e7ce84cdb872869b99963108c8d1356e45b95c60d83a2"
+    },
+    {
+      "id": "bird_yellow_elitemage",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_teaser_elitemage",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "5872a7a31caf95e38dfe185361fc8cf210122e147e2e29ab15ed034a93919514"
+    },
+    {
+      "id": "bird_white_elitecleric",
+      "asset_id": "WhiteBird",
+      "loca_id": "bird_white",
+      "inventory_id": "white_bird_teaser_elitecleric",
+      "rage_skill_id": "bird_rage_whitebird",
+      "pvp_rage_skill_id": "bird_rage_whitebird_pvp",
+      "base_health": 28,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 2,
+      "row_sha256": "e380b745007387d3317e8dc8965c4dd677ecc5c1defa3db88bdd90ba81739026"
+    },
+    {
+      "id": "bird_black_elitepirate",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "black_bird_teaser_elitepirate",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 29,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 3,
+      "row_sha256": "87523acd95286b656ebb54a4ad383d5e8cb457c151bc8fcebed0d3c99de7c823"
+    },
+    {
+      "id": "bird_red_eliteguardian",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_teaser_eliteguardian",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "894d35c563e3dd88db4928e3540943231c4bd6fb1f5bd6b6707cb3ebdc5a06e6"
+    },
+    {
+      "id": "bird_red_elitestoneguard",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_teaser_elitestoneguard",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "efb4b2507528be492643f6300d505eb1975640ce7649bda32fbe28a6b87dd16e"
+    },
+    {
+      "id": "bird_blue_elitetricksters",
+      "asset_id": "BlueBirds",
+      "loca_id": "bird_blue",
+      "inventory_id": "blue_bird_teaser_elitetricksters",
+      "rage_skill_id": "bird_rage_bluebird",
+      "pvp_rage_skill_id": "bird_rage_bluebird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "c8badae72cb1492e24fa3fb352c157878224c4f3549d431ee0a0c99c25c3389f"
+    },
+    {
+      "id": "bird_yellow_eliteillusionist",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_teaser_eliteillusionist",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "48e55eb453a29e2144b4ef043d8d801fc32eef7e72c089d27725a9b3c6966c84"
+    },
+    {
+      "id": "bird_black_elitewinterfighter",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "black_bird_teaser_elitewinterfighter",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "d01493aba1fdd80c6f455e3aaf6b3c2b33a281fb0058a4091f4a1827533d846c"
+    },
+    {
+      "id": "bird_blue_elitetreasurehunters",
+      "asset_id": "BlueBirds",
+      "loca_id": "bird_blue",
+      "inventory_id": "blue_bird_teaser_elitetreasurehunters",
+      "rage_skill_id": "bird_rage_bluebird",
+      "pvp_rage_skill_id": "bird_rage_bluebird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "c2139d30ad79dc3858fe5d6cb828a36384f8180af1affbb546d1f2cf3cb52c26"
+    },
+    {
+      "id": "bird_yellow_captured",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_captured_start",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "a9c7ca9adb28d44f61aa31879f26ce0a82cf71473c5b90928836c5d1bf0c19ef"
+    },
+    {
+      "id": "bird_red_captured",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_captured_start",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "9bd97172f71d362adc4fe5b399ad04e9bee5d7c6bf9678fe009d33992fac08b7"
+    },
+    {
+      "id": "bird_black_captured",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "black_bird_captured_start",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 20,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "1e6090a1935e8b75433e2fba7e268fb67da319d419a11a92d66aa52d1e359412"
+    },
+    {
+      "id": "bird_instructor",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_captured_start",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": -1,
+      "base_attack": 0,
+      "per_level_health_percent": 0,
+      "per_level_attack_percent": 0,
+      "size_type": 1,
+      "sort_priority": 99,
+      "row_sha256": "4e6c2efb515e7250939edbe5015c90ece587ff0d5d0155931ee51ac2c72042e0"
+    },
+    {
+      "id": "bird_prince_porky",
+      "asset_id": "PrincePorky",
+      "loca_id": "bird_prince_porky",
+      "inventory_id": "bird_prince_porky",
+      "rage_skill_id": "bird_rage_prince_porky",
+      "pvp_rage_skill_id": "bird_rage_prince_porky",
+      "base_health": 65,
+      "base_attack": 17,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 5,
+      "row_sha256": "aba00e82fca7b1cce25a009980571e1651aea6a8c55da01853a100b2b6770d1f"
+    },
+    {
+      "id": "bird_merchant",
+      "asset_id": "MerchantPig",
+      "loca_id": "bird_merchant",
+      "inventory_id": "bird_merchant",
+      "rage_skill_id": "bird_rage_minion_merchant",
+      "pvp_rage_skill_id": "bird_rage_minion_merchant",
+      "base_health": 65,
+      "base_attack": 14,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 5,
+      "row_sha256": "c7c7804709ab76575d70714b1dac5005c24329e8ff9504f0bdb2f7990544a501"
+    },
+    {
+      "id": "bird_adventurer",
+      "asset_id": "PigPirate",
+      "loca_id": "bird_adventurer",
+      "inventory_id": "bird_adventurer",
+      "rage_skill_id": "bird_rage_pirate_adventurer",
+      "pvp_rage_skill_id": "bird_rage_pirate_adventurer",
+      "base_health": 74,
+      "base_attack": 12,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 5,
+      "row_sha256": "e174d87ce66734075497e435bcb453910c933df51f9ef9f4004cabccc41e6c44"
+    },
+    {
+      "id": "bird_mighty_eagle",
+      "asset_id": "MightyEagle",
+      "loca_id": "bird_mighty_eagle",
+      "inventory_id": "bird_mighty_eagle",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 1,
+      "base_attack": 1,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 5,
+      "row_sha256": "ae7cd8527e9d20c3ee1c32f548c88b82948f1fd428b6fe411f40686e0b04fc52"
+    },
+    {
+      "id": "bird_valkyrie",
+      "asset_id": "Piglette",
+      "loca_id": "bird_valkyrie",
+      "inventory_id": "bird_valkyrie",
+      "rage_skill_id": "bird_rage_piglet_valkyrie",
+      "pvp_rage_skill_id": "bird_rage_piglet_valkyrie",
+      "base_health": 55,
+      "base_attack": 23,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 5,
+      "row_sha256": "2a820c82b8053b9d143a0aa1b42f9fe54c44c74f666c8603868de1c24288b08e"
+    },
+    {
+      "id": "npc_bird_red",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "npc_red_bird_start",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "c6934b6ea64f657b56c3550171be90ba5f1b3e2069cc946df333b62e8cbfab6a"
+    },
+    {
+      "id": "npc_bird_yellow",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "npc_yellow_bird_start",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 18,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "9093a7eba8ab7bbe516f1e876141ff43d53f9ab58d5c55683bcff1a8fdeb73a6"
+    },
+    {
+      "id": "npc_bird_white",
+      "asset_id": "WhiteBird",
+      "loca_id": "bird_white",
+      "inventory_id": "npc_white_bird_start",
+      "rage_skill_id": "bird_rage_whitebird",
+      "pvp_rage_skill_id": "bird_rage_whitebird_pvp",
+      "base_health": 28,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 2,
+      "row_sha256": "5e5d578ce79edcaf3034b8c2851f576859807bf95e57a8c534412c92fa8683f8"
+    },
+    {
+      "id": "npc_bird_black",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "npc_black_bird_start",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 29,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 3,
+      "row_sha256": "d5ec07c7eda4464d4c046f6ef21281664d65097a73c37fc25be7d7874beb4990"
+    },
+    {
+      "id": "npc_bird_blue",
+      "asset_id": "BlueBirds",
+      "loca_id": "bird_blue",
+      "inventory_id": "npc_blue_bird_start",
+      "rage_skill_id": "bird_rage_bluebird",
+      "pvp_rage_skill_id": "bird_rage_bluebird_pvp",
+      "base_health": 23,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 4,
+      "row_sha256": "b47f71e31e08a3614c85f6b32594ed31a73d0ce0318745ae4e9c13a6a59c7711"
+    },
+    {
+      "id": "pvptut_bird_red",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "pvptut_npc_bird_red_01",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "03a43a5a29b8a5d4506d171524124794ff4a8a75ce47b1180936c2d7ae990499"
+    },
+    {
+      "id": "pvptut_bird_yellow",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "npc_yellow_bird_start",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 18,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "ca2f72d55153bcb32d92aec6de66f132781f154a2c869b8ad10e107e6a746cfb"
+    },
+    {
+      "id": "pvptut_bird_black",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "npc_black_bird_start",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 29,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 3,
+      "row_sha256": "9f348470baefcc9054606e3adf14f60899938fa0222e1570a9939af553378b4e"
+    },
+    {
+      "id": "bird_sonic",
+      "asset_id": "SonicDash_Sonic",
+      "loca_id": "bird_sonic",
+      "inventory_id": "bird_sonic_01",
+      "rage_skill_id": "bird_rage_sonic",
+      "pvp_rage_skill_id": "bird_rage_sonic",
+      "base_health": 23,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 4,
+      "row_sha256": "363615c03cf20946e4df54bf1f16141c62dcaefe6333b5dd29c4f35b32aa5e54"
+    },
+    {
+      "id": "bird_red_cinematic",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_cinematic",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 264,
+      "base_attack": 48,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "e66c35da59d26b6a5a1fbb34fea6bb01366bab02fd47da5b10ff2ce2ec117547"
+    },
+    {
+      "id": "bird_yellow_cinematic",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_cinematic",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 154,
+      "base_attack": 55,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "3cfd1b4242eb62a941eb5ced41ba895351d4090b959e9f1860b9b42d0eed173c"
+    }
+  ],
+  "primary_birds": [
+    {
+      "id": "bird_red",
+      "asset_id": "RedBird",
+      "loca_id": "bird_red",
+      "inventory_id": "red_bird_start",
+      "rage_skill_id": "bird_rage_redbird",
+      "pvp_rage_skill_id": "bird_rage_redbird_pvp",
+      "base_health": 36,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 0,
+      "row_sha256": "8a3ca0d51fb10e6c6bec07362bdcdd1625bc58de03bf08179f27e19ea6df7eb9",
+      "main_hand": 1,
+      "off_hand": 13,
+      "inventory_initial_level": 1,
+      "inventory_entries": [
+        {
+          "id": "bird_weapon_red_sword_0star",
+          "amount": 1
+        },
+        {
+          "id": "bird_offhand_red_shield_start",
+          "amount": 1
+        },
+        {
+          "id": "class_knight",
+          "amount": 1
+        },
+        {
+          "id": "skin_knight",
+          "amount": 1
+        }
+      ],
+      "inventory_row_sha256": "892c6228e74cad1588281fdb4e1cbfd862d3f73b5332318c572798d9ed576ba4"
+    },
+    {
+      "id": "bird_yellow",
+      "asset_id": "YellowBird",
+      "loca_id": "bird_yellow",
+      "inventory_id": "yellow_bird_start",
+      "rage_skill_id": "bird_rage_yellowbird",
+      "pvp_rage_skill_id": "bird_rage_yellowbird_pvp",
+      "base_health": 18,
+      "base_attack": 10,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 1,
+      "row_sha256": "2c84e5626dca774eef01b56a52324b679f18c52e119e18de264c42ac6cc16712",
+      "main_hand": 24,
+      "off_hand": 36,
+      "inventory_initial_level": 0,
+      "inventory_entries": [
+        {
+          "id": "bird_weapon_yellow_staff_start",
+          "amount": 1
+        },
+        {
+          "id": "bird_offhand_yellow_book_start",
+          "amount": 1
+        },
+        {
+          "id": "class_mage",
+          "amount": 1
+        },
+        {
+          "id": "skin_mage",
+          "amount": 1
+        }
+      ],
+      "inventory_row_sha256": "5ecb6552c95b717c3a64725b6692655dff9fe3f5346a5c771c1f815ae25cfe74"
+    },
+    {
+      "id": "bird_white",
+      "asset_id": "WhiteBird",
+      "loca_id": "bird_white",
+      "inventory_id": "white_bird_start",
+      "rage_skill_id": "bird_rage_whitebird",
+      "pvp_rage_skill_id": "bird_rage_whitebird_pvp",
+      "base_health": 28,
+      "base_attack": 7,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 2,
+      "row_sha256": "9a7d22821184ed7042093b327cc94a90015f91faba409321ee0c38829e8778f4",
+      "main_hand": 52,
+      "off_hand": 62,
+      "inventory_initial_level": 0,
+      "inventory_entries": [
+        {
+          "id": "bird_weapon_white_harp_start",
+          "amount": 1
+        },
+        {
+          "id": "bird_offhand_white_handbag_start",
+          "amount": 1
+        },
+        {
+          "id": "class_cleric",
+          "amount": 1
+        },
+        {
+          "id": "skin_cleric",
+          "amount": 1
+        }
+      ],
+      "inventory_row_sha256": "59fca13c24cefb34c698c345cc9b719d6cd3c48a042eac2f63230d54b32a3211"
+    },
+    {
+      "id": "bird_black",
+      "asset_id": "BlackBird",
+      "loca_id": "bird_black",
+      "inventory_id": "black_bird_start",
+      "rage_skill_id": "bird_rage_blackbird",
+      "pvp_rage_skill_id": "bird_rage_blackbird_pvp",
+      "base_health": 29,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 2,
+      "sort_priority": 3,
+      "row_sha256": "5a2e4c31fe15e3a5e1c712f05f52176ee29a6e2db448999153e244b3ccced87e",
+      "main_hand": 70,
+      "off_hand": 87,
+      "inventory_initial_level": 0,
+      "inventory_entries": [
+        {
+          "id": "bird_weapon_black_punching_glove_start",
+          "amount": 1
+        },
+        {
+          "id": "bird_offhand_black_treasure_map_start",
+          "amount": 1
+        },
+        {
+          "id": "class_pirate",
+          "amount": 1
+        },
+        {
+          "id": "skin_pirate",
+          "amount": 1
+        }
+      ],
+      "inventory_row_sha256": "2132c300568ef115d91ca9d41eb47c021b780002d66a09730d03a99dad42a8fc"
+    },
+    {
+      "id": "bird_blue",
+      "asset_id": "BlueBirds",
+      "loca_id": "bird_blue",
+      "inventory_id": "blue_bird_start",
+      "rage_skill_id": "bird_rage_bluebird",
+      "pvp_rage_skill_id": "bird_rage_bluebird_pvp",
+      "base_health": 23,
+      "base_attack": 11,
+      "per_level_health_percent": 20,
+      "per_level_attack_percent": 20,
+      "size_type": 1,
+      "sort_priority": 4,
+      "row_sha256": "324c6b7b2c8da444465c9d0756b25c4d6ce8351aa957f14dcacf9db866244e0a",
+      "main_hand": 91,
+      "off_hand": 101,
+      "inventory_initial_level": 0,
+      "inventory_entries": [
+        {
+          "id": "bird_weapon_blue_bow_start",
+          "amount": 1
+        },
+        {
+          "id": "bird_offhand_blue_warhorn_start",
+          "amount": 1
+        },
+        {
+          "id": "class_tricksters",
+          "amount": 1
+        },
+        {
+          "id": "skin_tricksters",
+          "amount": 1
+        }
+      ],
+      "inventory_row_sha256": "0db201f039bfa9cc765e310548bef3ba5a054bad765f0760940915f8294b920b"
+    }
+  ],
+  "mastery": [
+    {
+      "id": "Level_01",
+      "rank": 1,
+      "experience": 14,
+      "old_experience": 25,
+      "ancient_experience": 25,
+      "stat_bonus_percent": 0,
+      "row_sha256": "cb86cb11227b277ffa983041a6b0ba017255afd8cc1c293b03029881bee4bf44"
+    },
+    {
+      "id": "Level_02",
+      "rank": 2,
+      "experience": 28,
+      "old_experience": 5730,
+      "ancient_experience": 1200,
+      "stat_bonus_percent": 2,
+      "row_sha256": "c50e65dd5cfd629c40c2dbe0eb01a0ffc38b3460556810b35f8d0dded8f1384c"
+    },
+    {
+      "id": "Level_03",
+      "rank": 3,
+      "experience": 48,
+      "old_experience": 8595,
+      "ancient_experience": 2500,
+      "stat_bonus_percent": 4,
+      "row_sha256": "5687a6ce914b525b9c95db8dd7af79ddbcca029c0d15054bc46b34372600b416"
+    },
+    {
+      "id": "Level_04",
+      "rank": 4,
+      "experience": 66,
+      "old_experience": 11460,
+      "ancient_experience": 6100,
+      "stat_bonus_percent": 6,
+      "row_sha256": "78739b7772170f515beed2c73b85c49d2eaa65ff52f7cac2f65bfd421f9d5275"
+    },
+    {
+      "id": "Level_05",
+      "rank": 5,
+      "experience": 80,
+      "old_experience": 14325,
+      "ancient_experience": 10000,
+      "stat_bonus_percent": 8,
+      "row_sha256": "9273de424735b582c04999ef62dc6b965ef54a7879b3f3204dc387e07e99b36b"
+    },
+    {
+      "id": "Level_06",
+      "rank": 6,
+      "experience": 84,
+      "old_experience": 17190,
+      "ancient_experience": 15000,
+      "stat_bonus_percent": 10,
+      "row_sha256": "a3b8077578d093bae06bd2fca9615f69bf4711e86de52f20ed411cfd214262ae"
+    },
+    {
+      "id": "Level_07",
+      "rank": 7,
+      "experience": 90,
+      "old_experience": 20055,
+      "ancient_experience": 20000,
+      "stat_bonus_percent": 12,
+      "row_sha256": "fe3d5f1356cfbd051f047b54195b707258b9f346fcd96c5ca8ce93870cdf5c46"
+    },
+    {
+      "id": "Level_08",
+      "rank": 8,
+      "experience": 97,
+      "old_experience": 22920,
+      "ancient_experience": 32000,
+      "stat_bonus_percent": 14,
+      "row_sha256": "52e24b6aa2d990d7e78ee7f74488fab5d114e1989d8da971bd3c9a81cd9ab84a"
+    },
+    {
+      "id": "Level_09",
+      "rank": 9,
+      "experience": 105,
+      "old_experience": 25785,
+      "ancient_experience": 50000,
+      "stat_bonus_percent": 16,
+      "row_sha256": "74b361200063471b1f514b638f9bb9e6a9ba13d07833d7aadcb13a7252b380dd"
+    },
+    {
+      "id": "Level_10",
+      "rank": 10,
+      "experience": 139,
+      "old_experience": 28650,
+      "ancient_experience": 50000,
+      "stat_bonus_percent": 18,
+      "row_sha256": "b563ebb9043998ad71aa988e2c9f5a3545292b4a8787848ee811d6be178b6257"
+    },
+    {
+      "id": "Level_11",
+      "rank": 11,
+      "experience": 177,
+      "old_experience": 31515,
+      "ancient_experience": 50000,
+      "stat_bonus_percent": 20,
+      "row_sha256": "382b4b1b62c6bd6787499b8ac612fa26652adfb33a4b28b3d6d8f2584eac8bee"
+    },
+    {
+      "id": "Level_12",
+      "rank": 12,
+      "experience": 219,
+      "old_experience": 34380,
+      "ancient_experience": 32500,
+      "stat_bonus_percent": 22,
+      "row_sha256": "9be21963db42c76189cd7d55d432104b0a3d7cc9388282cdb75c903ac8ef70d3"
+    },
+    {
+      "id": "Level_13",
+      "rank": 13,
+      "experience": 267,
+      "old_experience": 37445,
+      "ancient_experience": 37500,
+      "stat_bonus_percent": 24,
+      "row_sha256": "e56df4fcc320a5df5a9ff50e82a1db22f91f2296228e76b6f4ff7ed0bd40d0f7"
+    },
+    {
+      "id": "Level_14",
+      "rank": 14,
+      "experience": 319,
+      "old_experience": 42750,
+      "ancient_experience": 50000,
+      "stat_bonus_percent": 26,
+      "row_sha256": "554d468d2dd72bf1f4de520eeaa43d5dc0afce9250e2dd54feadfba629109728"
+    },
+    {
+      "id": "Level_15",
+      "rank": 15,
+      "experience": 374,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 28,
+      "row_sha256": "3d05440a150929c50d224f3aed59895210ca252cee859708e0ec7e26b8d4b136"
+    },
+    {
+      "id": "Level_16",
+      "rank": 16,
+      "experience": 437,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 30,
+      "row_sha256": "7e87a8ae698c72aab68c630c07132319ff79ac3ad276a2176b163231dbd9a0ef"
+    },
+    {
+      "id": "Level_17",
+      "rank": 17,
+      "experience": 499,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 32,
+      "row_sha256": "12a8544001027467f12837c0e1c9b2616946796b1b02a677d85494f976681712"
+    },
+    {
+      "id": "Level_18",
+      "rank": 18,
+      "experience": 569,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 34,
+      "row_sha256": "c7d0bcd38713896ea5be28fdbfdc04675803f64ad4665559c8dea7f2a4cfc325"
+    },
+    {
+      "id": "Level_19",
+      "rank": 19,
+      "experience": 638,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 36,
+      "row_sha256": "08c6bd115318c0efb3567d2a379fb7e238a158a3708e3af4fabe2a55060ad41b"
+    },
+    {
+      "id": "Level_20",
+      "rank": 20,
+      "experience": 714,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 38,
+      "row_sha256": "48efd5da602e874d87c2478b90474fd6b30bfaf87c72efdffe1d72cb723c05e2"
+    },
+    {
+      "id": "Level_21",
+      "rank": 21,
+      "experience": 794,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 40,
+      "row_sha256": "0a45d3be5c9603b060e8001c66b3cbad27ce1586bc032358530fbdf61342917c"
+    },
+    {
+      "id": "Level_22",
+      "rank": 22,
+      "experience": 873,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 42,
+      "row_sha256": "3e959494df76f8660f8ec58db29e32bef707471d8c189f59a2092eb1aea88016"
+    },
+    {
+      "id": "Level_23",
+      "rank": 23,
+      "experience": 960,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 44,
+      "row_sha256": "d2fe435c13b6de81cb864bc1922c7fbbb2224cf5ed2ad859c8b534edc0da264c"
+    },
+    {
+      "id": "Level_24",
+      "rank": 24,
+      "experience": 1046,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 46,
+      "row_sha256": "24c64093ad673dfe93d12abb6989b0a0be9fcc48f2c782c2bf6f8ec21331dc6e"
+    },
+    {
+      "id": "Level_25",
+      "rank": 25,
+      "experience": 1136,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 48,
+      "row_sha256": "756bc2f4b9e49dc6918282154cbc50e15ea619370337cb427b65711a1ca44f18"
+    },
+    {
+      "id": "Level_26",
+      "rank": 26,
+      "experience": 1233,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 50,
+      "row_sha256": "67efa9d89a50a36072d8f1b582c0a4a3d70bf7b39a91936be73301d43492798a"
+    },
+    {
+      "id": "Level_27",
+      "rank": 27,
+      "experience": 1328,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 52,
+      "row_sha256": "35affa7136f3fb0af053233919af4d6c0e40ca6f4960c9fd2dc80baf6533424d"
+    },
+    {
+      "id": "Level_28",
+      "rank": 28,
+      "experience": 1428,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 54,
+      "row_sha256": "bee9bb696ebf3bc4169fd5ca9190b67bfd5b64b20c12130636ef8aaef54f1923"
+    },
+    {
+      "id": "Level_29",
+      "rank": 29,
+      "experience": 1529,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 56,
+      "row_sha256": "8ba1698877df4ba6593117962c62250cba9b6f45feeb36d2903b87a0824db6f0"
+    },
+    {
+      "id": "Level_30",
+      "rank": 30,
+      "experience": 1632,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 58,
+      "row_sha256": "7e856b91283399e984cbdf643e18bb1fded756680887ee306e7d2071799f4d7e"
+    },
+    {
+      "id": "Level_31",
+      "rank": 31,
+      "experience": 1739,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 60,
+      "row_sha256": "be4ac2fdce7c6f4d6d60e1bbb0d1cc364be6a0accfc0b7b01d05aac703ce5ff0"
+    },
+    {
+      "id": "Level_32",
+      "rank": 32,
+      "experience": 1850,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 62,
+      "row_sha256": "dc9cdad049206775c63b274a36225b356ff6fcce484c531ddfdca8fd21d5fe74"
+    },
+    {
+      "id": "Level_33",
+      "rank": 33,
+      "experience": 1958,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 64,
+      "row_sha256": "1a113c9179980a9f0beacf9d4f25547c4f5ee9dab50d560b21fecd792db5dd4e"
+    },
+    {
+      "id": "Level_34",
+      "rank": 34,
+      "experience": 2072,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 66,
+      "row_sha256": "aa0a9621d603fe02b232b254774cea96fabbca7ba318624b63e14bc20eec1aed"
+    },
+    {
+      "id": "Level_35",
+      "rank": 35,
+      "experience": 2187,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 68,
+      "row_sha256": "ded69b3aa0ae8f2e3768921bcddcdbd1cb3e8659291d25c2d1df55e812e05c94"
+    },
+    {
+      "id": "Level_36",
+      "rank": 36,
+      "experience": 2305,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 70,
+      "row_sha256": "7511c282a7a34fab8f7bc07d9ca56cda9d5a302643135564d7d69e844eac4bf2"
+    },
+    {
+      "id": "Level_37",
+      "rank": 37,
+      "experience": 2422,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 72,
+      "row_sha256": "d9753db080e62deaa2b097b5d1f2b7d627965f34ce47b05c601f73191f915e29"
+    },
+    {
+      "id": "Level_38",
+      "rank": 38,
+      "experience": 2540,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 74,
+      "row_sha256": "a5f8c7162d2fc131f13c58db12547918b18bb223aaccf5cdd68c5ce83ccfb29f"
+    },
+    {
+      "id": "Level_39",
+      "rank": 39,
+      "experience": 2661,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 76,
+      "row_sha256": "c335ce7b780bfb27c5e5e2da7182d996d4e322e972bf517ad714f05b3514b162"
+    },
+    {
+      "id": "Level_40",
+      "rank": 40,
+      "experience": 2783,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 78,
+      "row_sha256": "c9feb109f8d9d98a1837ecf4478daed982b267aa2268175ad1a4b6037b9b6bba"
+    },
+    {
+      "id": "Level_41",
+      "rank": 41,
+      "experience": 2904,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 80,
+      "row_sha256": "7bca224cf72352badbd8a97df5b222c9239f20993299f86ea690f2020d2dd474"
+    },
+    {
+      "id": "Level_42",
+      "rank": 42,
+      "experience": 3028,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 82,
+      "row_sha256": "e9458ecf7f25ac31cc5c442f3b56f7e491451540225cfb15d97022eaacdc52d5"
+    },
+    {
+      "id": "Level_43",
+      "rank": 43,
+      "experience": 3154,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 84,
+      "row_sha256": "be7a2c4b7d6e930f80e6b2a7720779fb62bc3082dadc91fd7f47fa7db67d5222"
+    },
+    {
+      "id": "Level_44",
+      "rank": 44,
+      "experience": 3281,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 86,
+      "row_sha256": "2d31d2c1b2836e19606e323d045e8204a34054c88c12907f4297f261d5dff521"
+    },
+    {
+      "id": "Level_45",
+      "rank": 45,
+      "experience": 3407,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 88,
+      "row_sha256": "0c7281400da6687eab10544d103db5e324bdb0d7bc6205ab9bc630321ee23729"
+    },
+    {
+      "id": "Level_46",
+      "rank": 46,
+      "experience": 3534,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 90,
+      "row_sha256": "a587785b64e2129f561efeb268236be8a169941b3a50ea101561c023543d29a8"
+    },
+    {
+      "id": "Level_47",
+      "rank": 47,
+      "experience": 3663,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 92,
+      "row_sha256": "9cdb9ad117e04a608637e71b62e63d43b7252b08e002464d080980dea6b41de7"
+    },
+    {
+      "id": "Level_48",
+      "rank": 48,
+      "experience": 3787,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 94,
+      "row_sha256": "d82e51f2e281f55f9ad707dd562f8df3806219a1052f6d2b0de87c3d72001c27"
+    },
+    {
+      "id": "Level_49",
+      "rank": 49,
+      "experience": 3916,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 96,
+      "row_sha256": "49e6b1e14c83725b3c56fe095358806d178af21f2433b83fe9d34ec7abc0491b"
+    },
+    {
+      "id": "Level_50",
+      "rank": 50,
+      "experience": 4044,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 98,
+      "row_sha256": "84f1e02c4b767f9cd25cb0a4807e0ae5170eaf4fa72a78dcfc0117c914d6a258"
+    },
+    {
+      "id": "Level_51",
+      "rank": 51,
+      "experience": 4172,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 100,
+      "row_sha256": "8a031dc1dd2de939c3713842488f993ddbb5bc7e32d4182de2ef4035ac7a9265"
+    },
+    {
+      "id": "Level_52",
+      "rank": 52,
+      "experience": 4301,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 102,
+      "row_sha256": "3e7f30797c28a563e5ff1d383321ae6b833809a12c899141f0038e6703fac811"
+    },
+    {
+      "id": "Level_53",
+      "rank": 53,
+      "experience": 4429,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 104,
+      "row_sha256": "cf454cf61b0c62406d8fc2eba84c301c4f27d1961ea5ce697fae1b1be96ac6a1"
+    },
+    {
+      "id": "Level_54",
+      "rank": 54,
+      "experience": 4557,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 106,
+      "row_sha256": "421c30b001f419b2c8220dcbc967debd7cef0b98b8e3fa7270d0ad71a06872ba"
+    },
+    {
+      "id": "Level_55",
+      "rank": 55,
+      "experience": 4685,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 108,
+      "row_sha256": "81372d6fe4a7c7970609bfcdca773bde91205e7610c4d9ccf5c5e0c0510e88d6"
+    },
+    {
+      "id": "Level_56",
+      "rank": 56,
+      "experience": 4809,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 110,
+      "row_sha256": "cfc802ee6bd331160421c25c3bd23dbc5c1d71bf0cb501e616a962725e294a76"
+    },
+    {
+      "id": "Level_57",
+      "rank": 57,
+      "experience": 4938,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 112,
+      "row_sha256": "9fa48f59b552a8f836080f3d92de95f51a636270693fb446aaf7170f1d893e4f"
+    },
+    {
+      "id": "Level_58",
+      "rank": 58,
+      "experience": 5063,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 114,
+      "row_sha256": "0c72fcec7eb4d459f4712a92b35fe5bb60ac38a370cece33649bc91869f991ee"
+    },
+    {
+      "id": "Level_59",
+      "rank": 59,
+      "experience": 5188,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 116,
+      "row_sha256": "fdc1e2442ddc6a5423a765901d87175cc01fe9557827048ed2597e5e654ee164"
+    },
+    {
+      "id": "Level_60",
+      "rank": 60,
+      "experience": 5309,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 118,
+      "row_sha256": "5cd865c23707ee056264303d780ffb2a0352fdcb842341ff598a00a843f15b7b"
+    },
+    {
+      "id": "Level_61",
+      "rank": 61,
+      "experience": 5430,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 120,
+      "row_sha256": "0d6709b30902052a86bf8f6f96d3d37df57265c800ad24c74c96bd9e6630e88b"
+    },
+    {
+      "id": "Level_62",
+      "rank": 62,
+      "experience": 5551,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 122,
+      "row_sha256": "3db51d7d2c267a13a7f1fbf04155685550bdb2ecf2785800ea221d46dc5d99ed"
+    },
+    {
+      "id": "Level_63",
+      "rank": 63,
+      "experience": 5673,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 124,
+      "row_sha256": "eb419f49d97d64b4124f52951c979f436a0ca8b070001c9b6f260720f24f62f8"
+    },
+    {
+      "id": "Level_64",
+      "rank": 64,
+      "experience": 5790,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 126,
+      "row_sha256": "a801240c99c87bfee2e24603868c8c000ddb82ac530aac6a1bbb6f931e6f02ce"
+    },
+    {
+      "id": "Level_65",
+      "rank": 65,
+      "experience": 5905,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 128,
+      "row_sha256": "3978ef7d5d24a3c04ed6e0c6b1db91693fc9d3a86dd7a530fe95b1ec747c3386"
+    },
+    {
+      "id": "Level_66",
+      "rank": 66,
+      "experience": 6023,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 130,
+      "row_sha256": "781fb67a300205d294c74ec4e77022020c9cf668f317815875e0682ce1a5d7db"
+    },
+    {
+      "id": "Level_67",
+      "rank": 67,
+      "experience": 6134,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 132,
+      "row_sha256": "7f6045a01882423fca05b4c1e24f32380af7e24e1df2f61b6ff68cc1bf532591"
+    },
+    {
+      "id": "Level_68",
+      "rank": 68,
+      "experience": 6244,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 134,
+      "row_sha256": "1210ccbab405f88d6900ab1a477d820bb9ec1e71c4f2629089fbc62a771c5481"
+    },
+    {
+      "id": "Level_69",
+      "rank": 69,
+      "experience": 6355,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 136,
+      "row_sha256": "8a3cd532e807cf254dcceeb00eb9be8c6fadbcd936b0ec9a96b8185db73d604c"
+    },
+    {
+      "id": "Level_70",
+      "rank": 70,
+      "experience": 6459,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 138,
+      "row_sha256": "461492b154e5c13e94c3046a87f17a524c374a5c835aad410dd09170d471cae1"
+    },
+    {
+      "id": "Level_71",
+      "rank": 71,
+      "experience": 6563,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 140,
+      "row_sha256": "60689d37e7977831ab69c7d791a785ea94deb34ffdb2dc39e8dc80ad253a6c3d"
+    },
+    {
+      "id": "Level_72",
+      "rank": 72,
+      "experience": 6667,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 142,
+      "row_sha256": "e2cc6a744327c7641f3b8f79b19764ddd24cf82992284904a0cd80d955cce747"
+    },
+    {
+      "id": "Level_73",
+      "rank": 73,
+      "experience": 6767,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 144,
+      "row_sha256": "3f44933cdac8e6f006c79b18fbbacfd9a76e33083348a27383c3a6b52d8668fc"
+    },
+    {
+      "id": "Level_74",
+      "rank": 74,
+      "experience": 6865,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 146,
+      "row_sha256": "7616f94f0bb908b6d6ecd9eef85e1134f8559a265c2208678e2c655efbfff3fb"
+    },
+    {
+      "id": "Level_75",
+      "rank": 75,
+      "experience": 6958,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 148,
+      "row_sha256": "6d9f09acd8c6f463a7b994d1b25d768a57dd7f7fd9e06134a2d64088b5b024cd"
+    },
+    {
+      "id": "Level_76",
+      "rank": 76,
+      "experience": 7048,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 150,
+      "row_sha256": "b36dc110742a12d558f76502c93ff6c387e92801c82b5f4246f3f4020d501cfb"
+    },
+    {
+      "id": "Level_77",
+      "rank": 77,
+      "experience": 7138,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 152,
+      "row_sha256": "97b841bc41ef4510fc1ed0db151be7c5ae2298a2c7e3c036a45d27e2e00d2913"
+    },
+    {
+      "id": "Level_78",
+      "rank": 78,
+      "experience": 7222,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 154,
+      "row_sha256": "07839327a7edc7e484435ba41b2927234877934b2b1b3fb426e9bd78073634bd"
+    },
+    {
+      "id": "Level_79",
+      "rank": 79,
+      "experience": 7304,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 156,
+      "row_sha256": "57f9eeb59f25bdc43c390afa282638eb398c6031309c89aecc0f9950f05f66cf"
+    },
+    {
+      "id": "Level_80",
+      "rank": 80,
+      "experience": 7384,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 158,
+      "row_sha256": "aeb15c79af3fa5401850945a4b91b09c5e6fca15a2c52896f3a68689403fdd25"
+    },
+    {
+      "id": "Level_81",
+      "rank": 81,
+      "experience": 9689,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 160,
+      "row_sha256": "ce21318daf3985ee27d6d4c1a529864a081c4f5f5fb618f0397427357a4f6105"
+    },
+    {
+      "id": "Level_82",
+      "rank": 82,
+      "experience": 9783,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 162,
+      "row_sha256": "c7be45819e78e9274698256e3b43d59b8b51a32c188c403e0717406ce41c659e"
+    },
+    {
+      "id": "Level_83",
+      "rank": 83,
+      "experience": 9869,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 164,
+      "row_sha256": "8282e964e0d297c7bd3426b3b57f2eae5ad7a44b6cf860c3c044195df76598f2"
+    },
+    {
+      "id": "Level_84",
+      "rank": 84,
+      "experience": 9954,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 166,
+      "row_sha256": "c4667ddf680ff13b33f5b297a98e2913f9e5e5cf8028090ed04ca74a7a55bfca"
+    },
+    {
+      "id": "Level_85",
+      "rank": 85,
+      "experience": 10031,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 168,
+      "row_sha256": "21e3afa096eea199db735783459aafcae19ec56b454eb595caa0ea60e1ae7586"
+    },
+    {
+      "id": "Level_86",
+      "rank": 86,
+      "experience": 10107,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 170,
+      "row_sha256": "d2f2099805f76657ac44f2dfe62cd70621dba97a308523de4370fe008556deca"
+    },
+    {
+      "id": "Level_87",
+      "rank": 87,
+      "experience": 10175,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 172,
+      "row_sha256": "8a146ba668351d45c1dcfeca1d51585dd3982108661bf1ecab706c0b86945167"
+    },
+    {
+      "id": "Level_88",
+      "rank": 88,
+      "experience": 10238,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 174,
+      "row_sha256": "a49fe105d3b32d41199892f84de00a94c0afbde2989825545566246a9ae64891"
+    },
+    {
+      "id": "Level_89",
+      "rank": 89,
+      "experience": 10296,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 176,
+      "row_sha256": "ff7623f5835799c84a8b2d2d2e307436b09e65ea64fa9700f5ba4f7c26c6a3bc"
+    },
+    {
+      "id": "Level_90",
+      "rank": 90,
+      "experience": 10395,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 178,
+      "row_sha256": "cb6d28f494fa174bdd358696a0bb4ba92cd697aa6e2eee866fc69dccd6597556"
+    },
+    {
+      "id": "Level_91",
+      "rank": 91,
+      "experience": 11635,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 180,
+      "row_sha256": "b3b484c18695dd39c8a52d6289f45beda701cc8c5caa7794de8d040b128bc1e5"
+    },
+    {
+      "id": "Level_92",
+      "rank": 92,
+      "experience": 11720,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 182,
+      "row_sha256": "c9523353a340e671c20666f0095d654d4cbc91b4913200644e437b6d7eb1168d"
+    },
+    {
+      "id": "Level_93",
+      "rank": 93,
+      "experience": 11800,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 184,
+      "row_sha256": "76dc37b94e8ed01eeeb501f4b0eddea405b5e0379d805d16a8ba57fb59e3889f"
+    },
+    {
+      "id": "Level_94",
+      "rank": 94,
+      "experience": 11890,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 186,
+      "row_sha256": "691e112eaad68ccb89885ddb073ebb53be66ce2d08d388feb35486697caf6737"
+    },
+    {
+      "id": "Level_95",
+      "rank": 95,
+      "experience": 11970,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 188,
+      "row_sha256": "caa1fe9d895d9e9ec3aed69ad90cf0b3ff4e1bc6a3c49268c2f75134f488957b"
+    },
+    {
+      "id": "Level_96",
+      "rank": 96,
+      "experience": 12055,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 190,
+      "row_sha256": "09d849f277fa38116fcb81b7ceb434de03cd6421c927e19fb6e7b2eacde75432"
+    },
+    {
+      "id": "Level_97",
+      "rank": 97,
+      "experience": 12140,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 192,
+      "row_sha256": "ab6f3654429378b6d0384d20cae6bdc6634b894f553e4154f2059061aa5b1b1a"
+    },
+    {
+      "id": "Level_98",
+      "rank": 98,
+      "experience": 12225,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 194,
+      "row_sha256": "11e9b22dfe1680bcdbe75fccf10e418fc8d58693bb06e3aaf4fdfba9608e3e02"
+    },
+    {
+      "id": "Level_99",
+      "rank": 99,
+      "experience": 12310,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 196,
+      "row_sha256": "647e7d2d0c0229f8bce5eb29bca00be4bba7cf0061d92b3defc80ff65a748ef8"
+    },
+    {
+      "id": "Level_100",
+      "rank": 100,
+      "experience": 0,
+      "old_experience": 0,
+      "ancient_experience": 0,
+      "stat_bonus_percent": 198,
+      "row_sha256": "4a6ccd5256a17ebe89b82e7b4fbae9cab5f556790add7f78aa3e27cbfce65de8"
+    }
+  ],
+  "enchantments": [
+    {
+      "id": "crafting_level_00_levelrange0",
+      "level": 0,
+      "level_range": 0,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "9ff91ed08bef22a19bcc295810de78254d608261cebbfbe1c159db0b9ab06d94"
+    },
+    {
+      "id": "crafting_level_01_levelrange0",
+      "level": 1,
+      "level_range": 0,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "4b7b1fc19c11beec778ed5acf9cb5adcb615dbb64c4e6c3d72d6794ae06aa967"
+    },
+    {
+      "id": "crafting_level_02_levelrange0",
+      "level": 2,
+      "level_range": 0,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "be3531da0ce8f56283ce1621ea5bc48464fe6de020b5f4bae0edce6ffea692dc"
+    },
+    {
+      "id": "crafting_level_03_levelrange0",
+      "level": 3,
+      "level_range": 0,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "ee38b65578165d393d8bcf5a40820e06983a5f2460e8d950497730e2548898f3"
+    },
+    {
+      "id": "crafting_level_04_levelrange0",
+      "level": 4,
+      "level_range": 0,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "777fe1b63ca5a40fdf3be665a247e5a0d7ba8c0b4cf253ef6053fb2d373616bf"
+    },
+    {
+      "id": "crafting_level_05_levelrange0",
+      "level": 5,
+      "level_range": 0,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "02787a39505eb506b8e8d42af677b32217b6d86921e88cf5fc61109f81272dcb"
+    },
+    {
+      "id": "crafting_level_06_levelrange0",
+      "level": 6,
+      "level_range": 0,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "2dffacc9627ab39edca4c7590b48a779b96a6795057b491696567215f6f81e2a"
+    },
+    {
+      "id": "crafting_level_07_levelrange0",
+      "level": 7,
+      "level_range": 0,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "e054c21a8c1269e8ff13b310a96c48c4a1627a5938c87e3a914d4259f5c18a5d"
+    },
+    {
+      "id": "crafting_level_08_levelrange0",
+      "level": 8,
+      "level_range": 0,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "0dffecd9b054ed6f8e30a97ef885ed2548db31ca0d0054fe7f3e12230af0735d"
+    },
+    {
+      "id": "crafting_level_09_levelrange0",
+      "level": 9,
+      "level_range": 0,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "3171d91538338453671294a203d91aa48a639bf8b4a2d6b8632ce53688dc2ba5"
+    },
+    {
+      "id": "crafting_level_10_levelrange0",
+      "level": 10,
+      "level_range": 0,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "4b1d61b01c6cb64f14d824e1cb631d974e3bd11ddb9abb78c6618e11ccf575dd"
+    },
+    {
+      "id": "crafting_level_00_levelrange1",
+      "level": 0,
+      "level_range": 1,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "acaa306ffe0b5c08d519de76071a59f92bb9b151c87de02417e40d3ac8af84ba"
+    },
+    {
+      "id": "crafting_level_01_levelrange1",
+      "level": 1,
+      "level_range": 1,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "e9af035f0b81e8c2f952e7974681c32762661337d13371e53d59d0682d952260"
+    },
+    {
+      "id": "crafting_level_02_levelrange1",
+      "level": 2,
+      "level_range": 1,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "c4ec3cf7509dfc102ba911cddc678346ec21f0c9d4cd4110d08e7f100ac215a2"
+    },
+    {
+      "id": "crafting_level_03_levelrange1",
+      "level": 3,
+      "level_range": 1,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "c277f29e576d141d02db70128ccc1f447406345e9e65f53558b7feedf6300e49"
+    },
+    {
+      "id": "crafting_level_04_levelrange1",
+      "level": 4,
+      "level_range": 1,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "a5b84c74bf6029c1524b2381bfea41a3c938c46d26ff9c6e4355c1c60053496f"
+    },
+    {
+      "id": "crafting_level_05_levelrange1",
+      "level": 5,
+      "level_range": 1,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "0054f26f5a1d1b0f8760cd48cd4fbae7677c215f3d6f2aee253149282346c9d9"
+    },
+    {
+      "id": "crafting_level_06_levelrange1",
+      "level": 6,
+      "level_range": 1,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "4e9d10bf3d1816fca5ab2ced9d1d529409a3223f9df23821d0c0371198a255df"
+    },
+    {
+      "id": "crafting_level_07_levelrange1",
+      "level": 7,
+      "level_range": 1,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "1f5cf9dc813c92feb4545170ac3525a6edac81602403bbd01eddaa142b18a52c"
+    },
+    {
+      "id": "crafting_level_08_levelrange1",
+      "level": 8,
+      "level_range": 1,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "527fe3c4cbeea3c2106ffe8f3080918a9dbe7c3c8d89506cd98c72b3395ba73f"
+    },
+    {
+      "id": "crafting_level_09_levelrange1",
+      "level": 9,
+      "level_range": 1,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "52bc7d169ca8d7b10f242a53f94dd1c850882c3882bd42923eaef2dd42fa1e31"
+    },
+    {
+      "id": "crafting_level_10_levelrange1",
+      "level": 10,
+      "level_range": 1,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "4a57ac44018d043f635c645136bbe3171bc49b828a587d1986a336ac242d0ab9"
+    },
+    {
+      "id": "crafting_level_00_levelrange2",
+      "level": 0,
+      "level_range": 2,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "77fc24d234dbca6c387487a84c4695acf014423dea08529e36d26dbb493f02c8"
+    },
+    {
+      "id": "crafting_level_01_levelrange2",
+      "level": 1,
+      "level_range": 2,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "35c3dd2822d2ae2835cd5be4978ce47b4fa3cd1b64166afc20df5b24e8c1caac"
+    },
+    {
+      "id": "crafting_level_02_levelrange2",
+      "level": 2,
+      "level_range": 2,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "5c6a6ee66d1a53b679828cc8e29bf1df3413fedbd080a8fee732d31d54559567"
+    },
+    {
+      "id": "crafting_level_03_levelrange2",
+      "level": 3,
+      "level_range": 2,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "af3c6dcad3897ff139d90749a70d381ec51079cb3508ef8b31c8446139f5c21d"
+    },
+    {
+      "id": "crafting_level_04_levelrange2",
+      "level": 4,
+      "level_range": 2,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "e71f6b70dd45969ab4c6aa485fde83aea37a18047d4ba9ddf07abb793312f2b3"
+    },
+    {
+      "id": "crafting_level_05_levelrange2",
+      "level": 5,
+      "level_range": 2,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "7ace3269802cb1e7561b0aa7c468890962e80079006824102f51ec4e72ab0375"
+    },
+    {
+      "id": "crafting_level_06_levelrange2",
+      "level": 6,
+      "level_range": 2,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "1a4d9fb5ead0995032f33cec87965863196e13e758d2b53aee60fbb3e57e8be1"
+    },
+    {
+      "id": "crafting_level_07_levelrange2",
+      "level": 7,
+      "level_range": 2,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "55ad379e83f76f94b8fd912de3d6f7b1e9daf7d2202dd4b3d28cc898618dd0fc"
+    },
+    {
+      "id": "crafting_level_08_levelrange2",
+      "level": 8,
+      "level_range": 2,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "e92c12f482dee4d4d3f87ee6eb0ff5d36330ae71448eab3a78ef551bfd4f08c9"
+    },
+    {
+      "id": "crafting_level_09_levelrange2",
+      "level": 9,
+      "level_range": 2,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "9f051a976ce0d35b41db7446fea337c7c85b42808beb36b1f8499b9c076d1896"
+    },
+    {
+      "id": "crafting_level_10_levelrange2",
+      "level": 10,
+      "level_range": 2,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "dfa23fcb4db0b7fc8dc536c1e96f2904bb26c8453f827172a92133a51abcca83"
+    },
+    {
+      "id": "crafting_level_00_levelrange3",
+      "level": 0,
+      "level_range": 3,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "04689f2ee23acdd8c2358353ba5a8df4bb6dce16c2a647d46364f183a232fdf5"
+    },
+    {
+      "id": "crafting_level_01_levelrange3",
+      "level": 1,
+      "level_range": 3,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "ab9a81c3edfaa96446b1011f1ab958e6c8132b8e659e0c3e7dc86084a4ba98a1"
+    },
+    {
+      "id": "crafting_level_02_levelrange3",
+      "level": 2,
+      "level_range": 3,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "33b02437077cda8ad901b02c91e9a5e70b8b5811e6790c5f235e6b1046d6ca3a"
+    },
+    {
+      "id": "crafting_level_03_levelrange3",
+      "level": 3,
+      "level_range": 3,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "ce77460643e9878928659559cc3169cc4ce7631c73bf4657c70601b7f22911a5"
+    },
+    {
+      "id": "crafting_level_04_levelrange3",
+      "level": 4,
+      "level_range": 3,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "9d5ff80b4abefeec259218a726b1f8723fb9d7b24ddcb8b3c03d97008590ad3c"
+    },
+    {
+      "id": "crafting_level_05_levelrange3",
+      "level": 5,
+      "level_range": 3,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "572af264840bf3a5e7e7be0e5dd9fd431f65d4cbbf6ebd2b0cfb7b4f1ed394f1"
+    },
+    {
+      "id": "crafting_level_06_levelrange3",
+      "level": 6,
+      "level_range": 3,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "95f4b12ebe2c5d128e5866e67839b0b5edff6ba8624a2a841271298af272bb5b"
+    },
+    {
+      "id": "crafting_level_07_levelrange3",
+      "level": 7,
+      "level_range": 3,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "98af5dc71fd165a384d5243cddb918f94a5e1f2b187a20e9ae157a809734dba7"
+    },
+    {
+      "id": "crafting_level_08_levelrange3",
+      "level": 8,
+      "level_range": 3,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "cabed0510d27a50b1b04cfc5b1f52b994a85223f16a26ce697f627abe510df8f"
+    },
+    {
+      "id": "crafting_level_09_levelrange3",
+      "level": 9,
+      "level_range": 3,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "0d13c606dc7782f23a3ddaa081d4f285ef16f14a6330777297c13b3dc0808e0d"
+    },
+    {
+      "id": "crafting_level_10_levelrange3",
+      "level": 10,
+      "level_range": 3,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "d101d5b3e348cda0a56ceb11d14b6ddb9cb4f379620e3e048c752cba27882d2e"
+    },
+    {
+      "id": "crafting_level_00_levelrange4",
+      "level": 0,
+      "level_range": 4,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "dd53414e636536178cd9c60fdb35db1acf1a1acc18af2178af6b349259dbadf1"
+    },
+    {
+      "id": "crafting_level_01_levelrange4",
+      "level": 1,
+      "level_range": 4,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "d6302cb2fd5729b31a7bb27b6fc4d177bf0e39e4c39503dccd784442206ac740"
+    },
+    {
+      "id": "crafting_level_02_levelrange4",
+      "level": 2,
+      "level_range": 4,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "8656ecab685f2c13894815e73b0466ceefdd7b89165b6c984f88eeaa66b57259"
+    },
+    {
+      "id": "crafting_level_03_levelrange4",
+      "level": 3,
+      "level_range": 4,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "4a18b50a357904320a4266ba808d9c8c19cc87c15b9245fa0394fa44bf301c65"
+    },
+    {
+      "id": "crafting_level_04_levelrange4",
+      "level": 4,
+      "level_range": 4,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "44d7c36ed8bfea7dc0738cb54409ffd90594d422e78ef724035614fd97af8e33"
+    },
+    {
+      "id": "crafting_level_05_levelrange4",
+      "level": 5,
+      "level_range": 4,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "8df141debcdb9ea42f3982de04b8aa1cb59d0acbd9bad84638a8dab2976c0e57"
+    },
+    {
+      "id": "crafting_level_06_levelrange4",
+      "level": 6,
+      "level_range": 4,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "74eef2d231c8930ce0feafc19d3a5aef6a17b5aa59ce6844884379a23767afe9"
+    },
+    {
+      "id": "crafting_level_07_levelrange4",
+      "level": 7,
+      "level_range": 4,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "af742576db32e9c0ce2113490e5c6d7a4ce9d07faf75ee9bb3a489234ef4dd4b"
+    },
+    {
+      "id": "crafting_level_08_levelrange4",
+      "level": 8,
+      "level_range": 4,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "6489455bf1876cd619163b3e3140f869fcce84f945a0bb98eb21da517b2b5350"
+    },
+    {
+      "id": "crafting_level_09_levelrange4",
+      "level": 9,
+      "level_range": 4,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "5e889f1e43c7605414ffd434971fc3f4706dba21ce9794d58c662bd9faf8402e"
+    },
+    {
+      "id": "crafting_level_10_levelrange4",
+      "level": 10,
+      "level_range": 4,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "37a84505ccaf2459575b109c5e0a575236abf8076e2daaa11a440c653e1e889f"
+    },
+    {
+      "id": "crafting_level_00_levelrange5",
+      "level": 0,
+      "level_range": 5,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "931e4f65b5b36441bee9b0fa55e5b6b81f20ad4c724863c522386abb5e71bcb8"
+    },
+    {
+      "id": "crafting_level_01_levelrange5",
+      "level": 1,
+      "level_range": 5,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "e1b5eb1c3cbb038a734d80d10bb6f408ee7b9d2b8e469bc02a92fdf2bae5ca94"
+    },
+    {
+      "id": "crafting_level_02_levelrange5",
+      "level": 2,
+      "level_range": 5,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "bb93bd927c5d84ad68910d359b5647bd197008bd60c98609b2336f60ce0e9e44"
+    },
+    {
+      "id": "crafting_level_03_levelrange5",
+      "level": 3,
+      "level_range": 5,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "fe0e521f79b0f6660ec581981c405550518d3ad4c27b9d8508248220b5cfa5e6"
+    },
+    {
+      "id": "crafting_level_04_levelrange5",
+      "level": 4,
+      "level_range": 5,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "29a06f321792d0137054893a99d07d7db317c2d68c1d34dec84cafccdb49aef1"
+    },
+    {
+      "id": "crafting_level_05_levelrange5",
+      "level": 5,
+      "level_range": 5,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "3f419da6fdb39e2d27f4b61e5bd637e68e0fb18650eaae59db0eff829c3dd582"
+    },
+    {
+      "id": "crafting_level_06_levelrange5",
+      "level": 6,
+      "level_range": 5,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "a0776b104a20ebdcfe89eb87aea7fd116ff2ca19819d75f36dc4f49322528abf"
+    },
+    {
+      "id": "crafting_level_07_levelrange5",
+      "level": 7,
+      "level_range": 5,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "1c22add2f1f31338596ec33e5b10f6f4220e57e3aad4f1ff2b1d1ca137ba8e14"
+    },
+    {
+      "id": "crafting_level_08_levelrange5",
+      "level": 8,
+      "level_range": 5,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "7003735f31657617425767b8b063df5afd13ed991cc336ad5187d152eae4d7c5"
+    },
+    {
+      "id": "crafting_level_09_levelrange5",
+      "level": 9,
+      "level_range": 5,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "59a01612b7c15e3b523b779ff06199b1a763ec02f7c83f27706df166dddddba2"
+    },
+    {
+      "id": "crafting_level_10_levelrange5",
+      "level": 10,
+      "level_range": 5,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "4134bc692e6aad890bfc422953b50e14b8260c7dc6d85d1daaeeec9687f90fc7"
+    },
+    {
+      "id": "crafting_level_00_levelrange6",
+      "level": 0,
+      "level_range": 6,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "c01f2bf7524951d9d9de927c62ab5f16d37acbf884ceac0870599ce31003b4d5"
+    },
+    {
+      "id": "crafting_level_01_levelrange6",
+      "level": 1,
+      "level_range": 6,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "9becc2ffb9695ab066abf3009ea5fc57b6e34350ab40cbdfc94f5abfc1a069dc"
+    },
+    {
+      "id": "crafting_level_02_levelrange6",
+      "level": 2,
+      "level_range": 6,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "5535c27d21a1b8295f6a50a65b55f04111e07cf71ab4f839f38169103ce27d49"
+    },
+    {
+      "id": "crafting_level_03_levelrange6",
+      "level": 3,
+      "level_range": 6,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "3f34a2c5d44e7cfa7532cb80369a74d79871aaae381daaf4c6dda7e4f9fffb8b"
+    },
+    {
+      "id": "crafting_level_04_levelrange6",
+      "level": 4,
+      "level_range": 6,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "2d3116d08db832c35ca903d0043a0c9a12b05c86fd730e38169681e80ed26bf8"
+    },
+    {
+      "id": "crafting_level_05_levelrange6",
+      "level": 5,
+      "level_range": 6,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "cb047b4046ccb1757b0b6f647ba2cf144c13b01df2d9588c21263f209ac18d83"
+    },
+    {
+      "id": "crafting_level_06_levelrange6",
+      "level": 6,
+      "level_range": 6,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "9ae49b17d4c2cfc010aeabf76aa3b136941f7f7ca924893a1e4a8ef54fbd87b6"
+    },
+    {
+      "id": "crafting_level_07_levelrange6",
+      "level": 7,
+      "level_range": 6,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "836407524af173ca208c16aeecbb12b61e22fea54394870ccb6886c8f1647a2e"
+    },
+    {
+      "id": "crafting_level_08_levelrange6",
+      "level": 8,
+      "level_range": 6,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "4c52961dff3c9b254fe9efcb4669a11da77f0c3168705f770daef55818aebc92"
+    },
+    {
+      "id": "crafting_level_09_levelrange6",
+      "level": 9,
+      "level_range": 6,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "7051e76496a1c784085344fc37f37fa32e2807f50fbfec3974f77a6d83bd68d9"
+    },
+    {
+      "id": "crafting_level_10_levelrange6",
+      "level": 10,
+      "level_range": 6,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "920ad4cea09b89c10fb2a3b263671bd3f06998ee0036ade9fa6f317d83a06277"
+    },
+    {
+      "id": "crafting_level_00_levelrange7",
+      "level": 0,
+      "level_range": 7,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "5a0998b5984e0208a9ba263c6c89b01684c9267cbf5b18399e3b5a1798dd08f9"
+    },
+    {
+      "id": "crafting_level_01_levelrange7",
+      "level": 1,
+      "level_range": 7,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "c56e1e5af3905c71d41f3250a0e97ac73faa7918e7eb2adab3f5d7b9043eff24"
+    },
+    {
+      "id": "crafting_level_02_levelrange7",
+      "level": 2,
+      "level_range": 7,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "b908bb00c3c23b249bc779d9d3af9c3e70c55f49f6f10fad961047d16c831fe1"
+    },
+    {
+      "id": "crafting_level_03_levelrange7",
+      "level": 3,
+      "level_range": 7,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "d4a7f9c42367a2c6cbf73d1d93b10299c4bbbae9b9cf383f4b07f0badf7acec9"
+    },
+    {
+      "id": "crafting_level_04_levelrange7",
+      "level": 4,
+      "level_range": 7,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "37b8d846fb83e930f9780487f66a4bc619ddb0af4079766b2a33170df34118d7"
+    },
+    {
+      "id": "crafting_level_05_levelrange7",
+      "level": 5,
+      "level_range": 7,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "97bef92a5adb6841f8f4e8ea0db56d5b7bd53c5b6a5cb4670f0444f662444487"
+    },
+    {
+      "id": "crafting_level_06_levelrange7",
+      "level": 6,
+      "level_range": 7,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "ce0749995a6c2f53669132a5c511800e5c41f49a075bc5f98f37fdd1c2a421e0"
+    },
+    {
+      "id": "crafting_level_07_levelrange7",
+      "level": 7,
+      "level_range": 7,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "84f6d0e98bb38720552db81ced80e2c26c8aba533c6befd33c628ed5ea50dd9a"
+    },
+    {
+      "id": "crafting_level_08_levelrange7",
+      "level": 8,
+      "level_range": 7,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "b92fb1efd27508fc0626cf62ae6e517aa33961980b21d171531dc4d8d5481795"
+    },
+    {
+      "id": "crafting_level_09_levelrange7",
+      "level": 9,
+      "level_range": 7,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "e823e8eab88b2f8a2f93832c4c00bd3974e1eacdc57b8321c8f98c20586eef43"
+    },
+    {
+      "id": "crafting_level_10_levelrange7",
+      "level": 10,
+      "level_range": 7,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "8d4813a9c83baf5f948ed3649c555ec541f3fb0be9f44638d9d188ef69a2a18c"
+    },
+    {
+      "id": "crafting_level_00_levelrange8",
+      "level": 0,
+      "level_range": 8,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "dfbaeecedd714e840c09433f2258dad02221fdb450453eeb2abd023e1e3cd5f5"
+    },
+    {
+      "id": "crafting_level_01_levelrange8",
+      "level": 1,
+      "level_range": 8,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "b7eb481f957427b251d6e7904e3cefe29346232e66ebf7d8dbee3b3d0789581f"
+    },
+    {
+      "id": "crafting_level_02_levelrange8",
+      "level": 2,
+      "level_range": 8,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "1bf6525ef050e9bff0fe6c876eb299f80b7bba58fc8e69b8471ed9faeac54f63"
+    },
+    {
+      "id": "crafting_level_03_levelrange8",
+      "level": 3,
+      "level_range": 8,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "f67de1c6403a7e06588c08c44852a0f034c6525497250146460a95cd33aae309"
+    },
+    {
+      "id": "crafting_level_04_levelrange8",
+      "level": 4,
+      "level_range": 8,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "8ecef6b2de0f5a07c6689852ea6d9ea14d99c7c653586edafbb86091a71b9cad"
+    },
+    {
+      "id": "crafting_level_05_levelrange8",
+      "level": 5,
+      "level_range": 8,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "48e5cc897a302c27fe21bc9ea651fbf005b7ad2e50d2af74edf4626ddd80ca09"
+    },
+    {
+      "id": "crafting_level_06_levelrange8",
+      "level": 6,
+      "level_range": 8,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "b38ee42c6e152b585bc219082ad47f824a62e4624a2011946599982e3ebcde7a"
+    },
+    {
+      "id": "crafting_level_07_levelrange8",
+      "level": 7,
+      "level_range": 8,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "b657a2633902f84c5e30b8043fd4bd14f94e9720f31bf28e76766f16590d0b53"
+    },
+    {
+      "id": "crafting_level_08_levelrange8",
+      "level": 8,
+      "level_range": 8,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "0f29b2e3494ab8d247b7861854beac53fab75205821f02f8b16b7899e48796d1"
+    },
+    {
+      "id": "crafting_level_09_levelrange8",
+      "level": 9,
+      "level_range": 8,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "baf7fb9baa1da3e0beb440a31265da9b85ebf1ed70dcfbb490a5aeb9689827de"
+    },
+    {
+      "id": "crafting_level_10_levelrange8",
+      "level": 10,
+      "level_range": 8,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "ef9ac8992ed6e9b22406c06f81e658f11d40260ae73f0524dbc4221d74ce07e7"
+    },
+    {
+      "id": "crafting_level_00_levelrange9",
+      "level": 0,
+      "level_range": 9,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "9922d278be0f92cc5f01761929882b4177b573945debe5f4f37b14add1664fd4"
+    },
+    {
+      "id": "crafting_level_01_levelrange9",
+      "level": 1,
+      "level_range": 9,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "97a7a5d5410b27bc2f0e42875b47cb75db1002a955e33203128b9a2ba3f0820e"
+    },
+    {
+      "id": "crafting_level_02_levelrange9",
+      "level": 2,
+      "level_range": 9,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "930cf6a2958b97803350e77e42f4a78820ccf129b8c7cf2ffc034d322f4db864"
+    },
+    {
+      "id": "crafting_level_03_levelrange9",
+      "level": 3,
+      "level_range": 9,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "4c21dd0da6215b45fdee990da4d3a78b9ae28606341efbbc90a2fefac7b20fb9"
+    },
+    {
+      "id": "crafting_level_04_levelrange9",
+      "level": 4,
+      "level_range": 9,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "89ef904dc0a343bec32efac247d9c7d67dafa42667073566925d00b7f952f844"
+    },
+    {
+      "id": "crafting_level_05_levelrange9",
+      "level": 5,
+      "level_range": 9,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "a0e8215ec1ecc7853bc72168c350efeb389dafa555b893467c78de14634e9747"
+    },
+    {
+      "id": "crafting_level_06_levelrange9",
+      "level": 6,
+      "level_range": 9,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "9a844eca506a0e9e7b56547bd49e5557ff610df8951cf1cf907a525b838b5e08"
+    },
+    {
+      "id": "crafting_level_07_levelrange9",
+      "level": 7,
+      "level_range": 9,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "7f5692754ddf3148e1025e3ee7734e80e8fc4a28bfe976a0fcf728788a3efae4"
+    },
+    {
+      "id": "crafting_level_08_levelrange9",
+      "level": 8,
+      "level_range": 9,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "b83a4663d9bb09eb7ff6110efcefb603236142d3dc8ab67072110cb67ddbfc19"
+    },
+    {
+      "id": "crafting_level_09_levelrange9",
+      "level": 9,
+      "level_range": 9,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "70b4697a39f0e8fed43349be6c86b20918c3e5dda76625581032f671cebe85de"
+    },
+    {
+      "id": "crafting_level_10_levelrange9",
+      "level": 10,
+      "level_range": 9,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "2f9976a23ff063a995af5ddf331cf4593a446b90c7b510a4006f0d5d23c09e81"
+    },
+    {
+      "id": "crafting_level_00_levelrange10",
+      "level": 0,
+      "level_range": 10,
+      "stats_boost_percent": 0.0,
+      "row_sha256": "72f23f4f0698108ed2f53889a25adc3d88e116cd320b29467bbf3b26dbba3cba"
+    },
+    {
+      "id": "crafting_level_01_levelrange10",
+      "level": 1,
+      "level_range": 10,
+      "stats_boost_percent": 5.0,
+      "row_sha256": "9055d1b4a55ab3b4176832688ada2e51acc2f8a03c6daa3163eef9ba69b11093"
+    },
+    {
+      "id": "crafting_level_02_levelrange10",
+      "level": 2,
+      "level_range": 10,
+      "stats_boost_percent": 10.0,
+      "row_sha256": "b0dc09326a1a6e6db6054e53fba10d7e2a94aa3059bad6dccdd366b257463d88"
+    },
+    {
+      "id": "crafting_level_03_levelrange10",
+      "level": 3,
+      "level_range": 10,
+      "stats_boost_percent": 15.0,
+      "row_sha256": "58c2a6c486ef0b0c0b2a388fe5ca1295da158b68f877da1530580bb047826382"
+    },
+    {
+      "id": "crafting_level_04_levelrange10",
+      "level": 4,
+      "level_range": 10,
+      "stats_boost_percent": 20.0,
+      "row_sha256": "13be43a94002ea4defadab758fe338766c9ab6231f7b8950647897e8b07c72fa"
+    },
+    {
+      "id": "crafting_level_05_levelrange10",
+      "level": 5,
+      "level_range": 10,
+      "stats_boost_percent": 25.0,
+      "row_sha256": "1ded416537596510070dea569c9e98cbe4c1f174a8ffb8de2d907fac63dc3b5a"
+    },
+    {
+      "id": "crafting_level_06_levelrange10",
+      "level": 6,
+      "level_range": 10,
+      "stats_boost_percent": 30.0,
+      "row_sha256": "c0ed53e62eace09891756e7e66ba44f94c9c34988371b8a073ba3dfaf6b1d030"
+    },
+    {
+      "id": "crafting_level_07_levelrange10",
+      "level": 7,
+      "level_range": 10,
+      "stats_boost_percent": 35.0,
+      "row_sha256": "41290b38bc6c70a0c8a0c8a8119165b92163c3e8f2d8fa82f0e3125113b136de"
+    },
+    {
+      "id": "crafting_level_08_levelrange10",
+      "level": 8,
+      "level_range": 10,
+      "stats_boost_percent": 40.0,
+      "row_sha256": "b3a72538586f7cbdfe11c03210225d77fc0d339a6ba742ac4e8f8f67e0472dc7"
+    },
+    {
+      "id": "crafting_level_09_levelrange10",
+      "level": 9,
+      "level_range": 10,
+      "stats_boost_percent": 45.0,
+      "row_sha256": "381023decb2a5e518cae8f8473378e44d0208da61ed8a325052adec4079f482f"
+    },
+    {
+      "id": "crafting_level_10_levelrange10",
+      "level": 10,
+      "level_range": 10,
+      "stats_boost_percent": 50.0,
+      "row_sha256": "55d7ad932d7719ff04449fbca4a23cb5c586cf231f3beb147b0cae820fc69ad2"
+    }
+  ],
+  "ancient_equipment_boost_percent": 10.0,
+  "ancient_row_sha256": "e6f8e1e5a6f11530360b48754d151112998406880d02ce52ee1b0c835e3d774c",
+  "limitations": [
+    "Native float stat getters recovered; integer battle model currently rounds final base stats",
+    "Live profiles use saved class mastery and original level-one starter hands; owned gear/other loot/crafting/recruitment and XP boosters remain unfinished"
+  ]
+}

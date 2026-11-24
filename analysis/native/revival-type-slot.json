@@ -1,0 +1,10 @@
+{
+  "slot_address": "0x1f5785c",
+  "got_delta": "0x45918",
+  "usage_kind": 1,
+  "native_type_kind": 18,
+  "type_definition_index": 4486,
+  "type_name": "ABH.GameDatas.BirdGameData",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf"
+}

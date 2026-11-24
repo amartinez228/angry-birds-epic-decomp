@@ -1,0 +1,15 @@
+[package]
+name = "epic-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+epic-core = { path = "../epic-core" }
+macroquad = "=0.4.16"
+quad-storage = "=0.1.3"
+
+[package.metadata.android]
+package = "org.epicrust.prototype"
+label = "Epic Rust Prototype"
+assets = "../../assets"
+

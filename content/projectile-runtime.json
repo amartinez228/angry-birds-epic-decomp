@@ -1,0 +1,1639 @@
+{
+  "source_manifest_sha256": "850ae2545dfb5bc7008f0e5aaf2232c5ed8d7a0e94fb47f0876337e5825bb2af",
+  "projectiles": 52,
+  "static_sprites": 47,
+  "geometry": [
+    {
+      "projectile": "Projectile_BlackBird_Bomb_01",
+      "sprite_component": 12,
+      "vertices": [
+        [
+          -49.0,
+          -70.0,
+          0.0,
+          1.0
+        ],
+        [
+          49.0,
+          -70.0,
+          1.0,
+          1.0
+        ],
+        [
+          49.0,
+          70.0,
+          1.0,
+          0.0
+        ],
+        [
+          -49.0,
+          70.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_02",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -47.5,
+          -64.5,
+          0.0,
+          1.0
+        ],
+        [
+          47.5,
+          -64.5,
+          1.0,
+          1.0
+        ],
+        [
+          47.5,
+          64.5,
+          1.0,
+          0.0
+        ],
+        [
+          -47.5,
+          64.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_03",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -51.0,
+          -75.5,
+          0.0,
+          1.0
+        ],
+        [
+          51.0,
+          -75.5,
+          1.0,
+          1.0
+        ],
+        [
+          51.0,
+          75.5,
+          1.0,
+          0.0
+        ],
+        [
+          -51.0,
+          75.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_04",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -54.5,
+          -75.5,
+          0.0,
+          1.0
+        ],
+        [
+          54.5,
+          -75.5,
+          1.0,
+          1.0
+        ],
+        [
+          54.5,
+          75.5,
+          1.0,
+          0.0
+        ],
+        [
+          -54.5,
+          75.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_05",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -65.0,
+          -56.0,
+          0.0,
+          1.0
+        ],
+        [
+          65.0,
+          -56.0,
+          1.0,
+          1.0
+        ],
+        [
+          65.0,
+          56.0,
+          1.0,
+          0.0
+        ],
+        [
+          -65.0,
+          56.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_06",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -63.5,
+          -69.0,
+          0.0,
+          1.0
+        ],
+        [
+          63.5,
+          -69.0,
+          1.0,
+          1.0
+        ],
+        [
+          63.5,
+          69.0,
+          1.0,
+          0.0
+        ],
+        [
+          -63.5,
+          69.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_07",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -63.5,
+          -54.5,
+          0.0,
+          1.0
+        ],
+        [
+          63.5,
+          -54.5,
+          1.0,
+          1.0
+        ],
+        [
+          63.5,
+          54.5,
+          1.0,
+          0.0
+        ],
+        [
+          -63.5,
+          54.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_08",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -49.5,
+          -59.0,
+          0.0,
+          1.0
+        ],
+        [
+          49.5,
+          -59.0,
+          1.0,
+          1.0
+        ],
+        [
+          49.5,
+          59.0,
+          1.0,
+          0.0
+        ],
+        [
+          -49.5,
+          59.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Bomb_09",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -58.5,
+          -70.5,
+          0.0,
+          1.0
+        ],
+        [
+          58.5,
+          -70.5,
+          1.0,
+          1.0
+        ],
+        [
+          58.5,
+          70.5,
+          1.0,
+          0.0
+        ],
+        [
+          -58.5,
+          70.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Pistol_01",
+      "sprite_component": 39,
+      "vertices": [
+        [
+          -34.0,
+          -21.0,
+          0.0,
+          1.0
+        ],
+        [
+          34.0,
+          -21.0,
+          1.0,
+          1.0
+        ],
+        [
+          34.0,
+          21.0,
+          1.0,
+          0.0
+        ],
+        [
+          -34.0,
+          21.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Set_02",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -52.0,
+          -68.5,
+          0.0,
+          1.0
+        ],
+        [
+          92.0,
+          -68.5,
+          1.0,
+          1.0
+        ],
+        [
+          92.0,
+          68.5,
+          1.0,
+          0.0
+        ],
+        [
+          -52.0,
+          68.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Set_05",
+      "sprite_component": 12,
+      "vertices": [
+        [
+          -93.61212940973161,
+          -103.18215408598714,
+          0.0,
+          1.0
+        ],
+        [
+          122.96073726544347,
+          -45.97906446776274,
+          1.0,
+          1.0
+        ],
+        [
+          82.61212940973161,
+          106.7821539906197,
+          1.0,
+          0.0
+        ],
+        [
+          -133.96073726544347,
+          49.57906437239531,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlackBird_Set_06",
+      "sprite_component": 38,
+      "vertices": [
+        [
+          -49.0,
+          -36.0,
+          0.0,
+          1.0
+        ],
+        [
+          49.0,
+          -36.0,
+          1.0,
+          1.0
+        ],
+        [
+          49.0,
+          36.0,
+          1.0,
+          0.0
+        ],
+        [
+          -49.0,
+          36.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_01",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -36.0,
+          -49.5,
+          0.0,
+          1.0
+        ],
+        [
+          36.0,
+          -49.5,
+          1.0,
+          1.0
+        ],
+        [
+          36.0,
+          49.5,
+          1.0,
+          0.0
+        ],
+        [
+          -36.0,
+          49.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_02",
+      "sprite_component": 14,
+      "vertices": [
+        [
+          -40.5,
+          -56.0,
+          0.0,
+          1.0
+        ],
+        [
+          40.5,
+          -56.0,
+          1.0,
+          1.0
+        ],
+        [
+          40.5,
+          56.0,
+          1.0,
+          0.0
+        ],
+        [
+          -40.5,
+          56.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_03",
+      "sprite_component": 14,
+      "vertices": [
+        [
+          -47.5,
+          -55.5,
+          0.0,
+          1.0
+        ],
+        [
+          47.5,
+          -55.5,
+          1.0,
+          1.0
+        ],
+        [
+          47.5,
+          55.5,
+          1.0,
+          0.0
+        ],
+        [
+          -47.5,
+          55.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_04",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -41.5,
+          -60.5,
+          0.0,
+          1.0
+        ],
+        [
+          41.5,
+          -60.5,
+          1.0,
+          1.0
+        ],
+        [
+          41.5,
+          60.5,
+          1.0,
+          0.0
+        ],
+        [
+          -41.5,
+          60.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_05",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -39.5,
+          -56.5,
+          0.0,
+          1.0
+        ],
+        [
+          39.5,
+          -56.5,
+          1.0,
+          1.0
+        ],
+        [
+          39.5,
+          56.5,
+          1.0,
+          0.0
+        ],
+        [
+          -39.5,
+          56.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_06",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -34.5,
+          -55.0,
+          0.0,
+          1.0
+        ],
+        [
+          34.5,
+          -55.0,
+          1.0,
+          1.0
+        ],
+        [
+          34.5,
+          55.0,
+          1.0,
+          0.0
+        ],
+        [
+          -34.5,
+          55.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_07",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -32.0,
+          -64.5,
+          0.0,
+          1.0
+        ],
+        [
+          32.0,
+          -64.5,
+          1.0,
+          1.0
+        ],
+        [
+          32.0,
+          64.5,
+          1.0,
+          0.0
+        ],
+        [
+          -32.0,
+          64.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Boomerang_08",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -45.5,
+          -46.5,
+          0.0,
+          1.0
+        ],
+        [
+          45.5,
+          -46.5,
+          1.0,
+          1.0
+        ],
+        [
+          45.5,
+          46.5,
+          1.0,
+          0.0
+        ],
+        [
+          -45.5,
+          46.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_01",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -26.0,
+          -18.0,
+          0.0,
+          1.0
+        ],
+        [
+          126.0,
+          -18.0,
+          1.0,
+          1.0
+        ],
+        [
+          126.0,
+          18.0,
+          1.0,
+          0.0
+        ],
+        [
+          -26.0,
+          18.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_02",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -28.0,
+          -16.0,
+          0.0,
+          1.0
+        ],
+        [
+          128.0,
+          -16.0,
+          1.0,
+          1.0
+        ],
+        [
+          128.0,
+          16.0,
+          1.0,
+          0.0
+        ],
+        [
+          -28.0,
+          16.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_03",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -28.0,
+          -19.0,
+          0.0,
+          1.0
+        ],
+        [
+          128.0,
+          -19.0,
+          1.0,
+          1.0
+        ],
+        [
+          128.0,
+          19.0,
+          1.0,
+          0.0
+        ],
+        [
+          -28.0,
+          19.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_04",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -7.0,
+          -4.0,
+          0.0,
+          1.0
+        ],
+        [
+          107.0,
+          -4.0,
+          1.0,
+          1.0
+        ],
+        [
+          107.0,
+          4.0,
+          1.0,
+          0.0
+        ],
+        [
+          -7.0,
+          4.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_05",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -15.0,
+          -15.0,
+          0.0,
+          1.0
+        ],
+        [
+          115.0,
+          -15.0,
+          1.0,
+          1.0
+        ],
+        [
+          115.0,
+          15.0,
+          1.0,
+          0.0
+        ],
+        [
+          -15.0,
+          15.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_06",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -5.0,
+          -17.0,
+          0.0,
+          1.0
+        ],
+        [
+          105.0,
+          -17.0,
+          1.0,
+          1.0
+        ],
+        [
+          105.0,
+          17.0,
+          1.0,
+          0.0
+        ],
+        [
+          -5.0,
+          17.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_07",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -18.0,
+          -15.0,
+          0.0,
+          1.0
+        ],
+        [
+          118.0,
+          -15.0,
+          1.0,
+          1.0
+        ],
+        [
+          118.0,
+          15.0,
+          1.0,
+          0.0
+        ],
+        [
+          -18.0,
+          15.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Bow_08",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -12.0,
+          -10.0,
+          0.0,
+          1.0
+        ],
+        [
+          112.0,
+          -10.0,
+          1.0,
+          1.0
+        ],
+        [
+          112.0,
+          10.0,
+          1.0,
+          0.0
+        ],
+        [
+          -12.0,
+          10.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Set_01",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -95.29020870406717,
+          -38.32787616174045,
+          0.0,
+          1.0
+        ],
+        [
+          92.1284199105296,
+          -155.4400339016891,
+          1.0,
+          1.0
+        ],
+        [
+          180.09501803193902,
+          -14.664050417421848,
+          1.0,
+          0.0
+        ],
+        [
+          -7.32361058265775,
+          102.44810732252682,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Set_02",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -73.5,
+          -86.0,
+          0.0,
+          1.0
+        ],
+        [
+          73.5,
+          -86.0,
+          1.0,
+          1.0
+        ],
+        [
+          73.5,
+          86.0,
+          1.0,
+          0.0
+        ],
+        [
+          -73.5,
+          86.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Set_03",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -34.0,
+          -26.0,
+          0.0,
+          1.0
+        ],
+        [
+          34.0,
+          -26.0,
+          1.0,
+          1.0
+        ],
+        [
+          34.0,
+          26.0,
+          1.0,
+          0.0
+        ],
+        [
+          -34.0,
+          26.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Set_04",
+      "sprite_component": 14,
+      "vertices": [
+        [
+          -31.575258591180102,
+          -29.936448696804533,
+          0.0,
+          1.0
+        ],
+        [
+          44.79227333210282,
+          -106.30398143179367,
+          1.0,
+          1.0
+        ],
+        [
+          118.33137892875902,
+          -32.764876616780484,
+          1.0,
+          0.0
+        ],
+        [
+          41.9638470054761,
+          43.60265611820866,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Set_05",
+      "sprite_component": 14,
+      "vertices": [
+        [
+          -91.4003258979621,
+          53.4102908577764,
+          0.0,
+          1.0
+        ],
+        [
+          -86.4324871100638,
+          -61.12367721050994,
+          1.0,
+          1.0
+        ],
+        [
+          91.4003258979621,
+          -53.4102908577764,
+          1.0,
+          0.0
+        ],
+        [
+          86.4324871100638,
+          61.12367721050994,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Slingshot_01",
+      "sprite_component": 13,
+      "vertices": [
+        [
+          -20.0,
+          -17.0,
+          0.0,
+          1.0
+        ],
+        [
+          20.0,
+          -17.0,
+          1.0,
+          1.0
+        ],
+        [
+          20.0,
+          17.0,
+          1.0,
+          0.0
+        ],
+        [
+          -20.0,
+          17.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_DrEggman",
+      "sprite_component": 27,
+      "vertices": [
+        [
+          -150.19599509239197,
+          -2.9219970703125,
+          0.0,
+          1.0
+        ],
+        [
+          -27.995999574661255,
+          -2.9219970703125,
+          1.0,
+          1.0
+        ],
+        [
+          -27.995999574661255,
+          93.27799940109253,
+          1.0,
+          0.0
+        ],
+        [
+          -150.19599509239197,
+          93.27799940109253,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_NinjaPig_Arrow",
+      "sprite_component": 14,
+      "vertices": [
+        [
+          61.88972436251069,
+          -21.12436058515134,
+          0.0,
+          1.0
+        ],
+        [
+          -55.88972656251566,
+          46.875650100587094,
+          1.0,
+          1.0
+        ],
+        [
+          -41.88972436251069,
+          71.12436058515134,
+          1.0,
+          0.0
+        ],
+        [
+          75.88972656251566,
+          3.124349899412909,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_PigDrone_GooBomb",
+      "sprite_component": 15,
+      "vertices": [
+        [
+          -8.0,
+          -45.0,
+          0.0,
+          1.0
+        ],
+        [
+          48.0,
+          -45.0,
+          1.0,
+          1.0
+        ],
+        [
+          48.0,
+          45.0,
+          1.0,
+          0.0
+        ],
+        [
+          -8.0,
+          45.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_PigDrone_Gunshot",
+      "sprite_component": 41,
+      "vertices": [
+        [
+          -33.0,
+          -11.0,
+          0.0,
+          1.0
+        ],
+        [
+          33.0,
+          -11.0,
+          1.0,
+          1.0
+        ],
+        [
+          33.0,
+          11.0,
+          1.0,
+          0.0
+        ],
+        [
+          -33.0,
+          11.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_PigDrone_RocketSalvo",
+      "sprite_component": 27,
+      "vertices": [
+        [
+          -164.81311544749565,
+          0.27885138904367235,
+          0.0,
+          1.0
+        ],
+        [
+          -68.58070423503248,
+          -8.140393652426773,
+          1.0,
+          1.0
+        ],
+        [
+          -61.78255594912928,
+          69.56279684861597,
+          1.0,
+          0.0
+        ],
+        [
+          -158.01496716159244,
+          77.9820418900864,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_PigDrone_RocketStrike",
+      "sprite_component": 26,
+      "vertices": [
+        [
+          -104.68138686636267,
+          29.06568823712384,
+          0.0,
+          1.0
+        ],
+        [
+          -27.86637492560997,
+          15.521129730541379,
+          1.0,
+          1.0
+        ],
+        [
+          -18.48937325519991,
+          68.70075126866341,
+          1.0,
+          0.0
+        ],
+        [
+          -95.3043851959526,
+          82.24530977524587,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_PigDrone_Snowball",
+      "sprite_component": 37,
+      "vertices": [
+        [
+          -23.0,
+          -23.0,
+          0.0,
+          1.0
+        ],
+        [
+          23.0,
+          -23.0,
+          1.0,
+          1.0
+        ],
+        [
+          23.0,
+          23.0,
+          1.0,
+          0.0
+        ],
+        [
+          -23.0,
+          23.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_PigDrone_WaterBomb",
+      "sprite_component": 16,
+      "vertices": [
+        [
+          -6.0,
+          -39.5,
+          0.0,
+          1.0
+        ],
+        [
+          46.0,
+          -39.5,
+          1.0,
+          1.0
+        ],
+        [
+          46.0,
+          39.5,
+          1.0,
+          0.0
+        ],
+        [
+          -6.0,
+          39.5,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_Pigmies_Shoot",
+      "sprite_component": 30,
+      "vertices": [
+        [
+          -72.0,
+          -3.0,
+          0.0,
+          1.0
+        ],
+        [
+          -48.0,
+          -3.0,
+          1.0,
+          1.0
+        ],
+        [
+          -48.0,
+          21.0,
+          1.0,
+          0.0
+        ],
+        [
+          -72.0,
+          21.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_Pigmies_Shoot",
+      "sprite_component": 29,
+      "vertices": [
+        [
+          -262.0,
+          8.0,
+          0.0,
+          1.0
+        ],
+        [
+          -238.0,
+          8.0,
+          1.0,
+          1.0
+        ],
+        [
+          -238.0,
+          32.0,
+          1.0,
+          0.0
+        ],
+        [
+          -262.0,
+          32.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_Pigmies_Shoot",
+      "sprite_component": 27,
+      "vertices": [
+        [
+          -224.0,
+          -6.0,
+          0.0,
+          1.0
+        ],
+        [
+          -200.0,
+          -6.0,
+          1.0,
+          1.0
+        ],
+        [
+          -200.0,
+          18.0,
+          1.0,
+          0.0
+        ],
+        [
+          -224.0,
+          18.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "projectile": "Projectile_BlueBirds_Set_06",
+      "sprite_component": 15,
+      "vertices": [
+        [
+          -55.621940456352824,
+          -62.85066581302911,
+          0.0,
+          1.0
+        ],
+        [
+          142.37806250285655,
+          -62.850660442122546,
+          1.0,
+          1.0
+        ],
+        [
+          142.37806079393175,
+          0.14934049944407923,
+          1.0,
+          0.0
+        ],
+        [
+          -55.62194216527764,
+          0.14933512853751574,
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "attachments": [
+    {
+      "asset": "BirdCage_Yellow",
+      "main_hand": null,
+      "off_hand": null,
+      "center": null
+    },
+    {
+      "asset": "BlackBird",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 92,
+      "source": "300f6c9753c0ab1498bdc7b4b3a3dc6b",
+      "sha256": "7fb05983a506bd0770ee510867b802d71f15ffdeead71bedd07f089152d155d5"
+    },
+    {
+      "asset": "BlueBirds",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 176,
+      "source": "e125e372b55724748ba8ba211a770639",
+      "sha256": "f443369122aeee8e5811f27cf110171cf3d451a2e0fa1ebaa2cb705572741690"
+    },
+    {
+      "asset": "GhostPig",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 92,
+      "source": "6d50b1680edf5134abd01b2b4cb7a770",
+      "sha256": "bfa739086d9b785e0f5de8d8147a13b86b15aa1d5f841f2b0d11573f918b68fd"
+    },
+    {
+      "asset": "KingPig",
+      "main_hand": "Root/Center",
+      "off_hand": "Root/Body/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 92,
+      "source": "b30af804cb04b2c48b66aab3975e446e",
+      "sha256": "24cef23c19e39bfb550c9949219b80769bfc54e936a2bf48533024b67c712be4"
+    },
+    {
+      "asset": "MinionPig",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 96,
+      "source": "1c14556229090b043a4baaeab929bad4",
+      "sha256": "b5fe059d4edc93eddb700908d919f608583c4ea70a61560e2702379373c33106"
+    },
+    {
+      "asset": "MoustachePig",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 103,
+      "source": "80efc9eb047ccc24c8ff7e75d1b8450c",
+      "sha256": "66f206187e0459471ded4520d0d0636bebdfd920015dbdc02ae32d4b04899bd7"
+    },
+    {
+      "asset": "NinjaPig",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 101,
+      "source": "ee8427954baa7a54884e101d3fad4607",
+      "sha256": "c9ddee939bc2724a52a8e10ed8bf3734a2fab7b3c6468b2736186cdfc024673d"
+    },
+    {
+      "asset": "PigBomb",
+      "main_hand": "Root/Center",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 34,
+      "source": "e06c9822f44f76a4eb4468c6afaf3e2f",
+      "sha256": "98f62a55461270d818363d8c1662dd3d6e9675b20e10b421aec2ba412762e027"
+    },
+    {
+      "asset": "PigBrute",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 94,
+      "source": "b4404e6db510d434597a7113931a2d24",
+      "sha256": "8cfab22759895c7ad8fc0475b2a5cbd618603b5ee723c17487e82cac05a595e0"
+    },
+    {
+      "asset": "PigKnight",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 104,
+      "source": "b435936b68f101347b6fe9076bc79480",
+      "sha256": "0f791ff3f83a5bc9056703d8fcfe1eb92cec2dc8ad491bb6ba632b2ebd234ea3"
+    },
+    {
+      "asset": "PigMage",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 120,
+      "source": "a37bba5c9ffc5724a9ab672e732ce23d",
+      "sha256": "f70a78e76b1a512d56e8a6e0ef5a5ebff7d473c59b43bf55ccb753360893078b"
+    },
+    {
+      "asset": "PigPirate",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 104,
+      "source": "7102bf72eab7f004a9f8adf6acd409df",
+      "sha256": "67998daa3e8c3ab1d7449926bcf944d5341025c9d3af30eff0fd4bc81320cf34"
+    },
+    {
+      "asset": "PigShaman",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 90,
+      "source": "069b1a3ce798e01448b71cebcd1e8f4e",
+      "sha256": "203f64e69a7c8a073eb332df70ab56c139e5c2649fc0de7e76e2a927ac2adb8c"
+    },
+    {
+      "asset": "Pigmies",
+      "main_hand": "Root/Pig_A/MainHand_A",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Pig_A/Body_A/Headgear_A",
+      "controller_path_id": 210,
+      "source": "b2450d4a5373c084aba12d3da27b18c8",
+      "sha256": "961d5702f4ffd31cd06a7e4681add69db3f7603c1019acbb4b7f8cd5053c6680"
+    },
+    {
+      "asset": "PrincePorky",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 104,
+      "source": "c205857dadcda05479c4cd0f320d26b9",
+      "sha256": "8bafdf36d3873f6c472dfdab802f3c45d8e12ff9f59b92fbfcde45ad16f24891"
+    },
+    {
+      "asset": "RedBird",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 88,
+      "source": "7da99302a35b0fb408ed27b207d1f51b",
+      "sha256": "405c513b23e77afe8c4e838d574a80d7882edc90c6f5ca23655284c9c2501dd1"
+    },
+    {
+      "asset": "WhiteBird",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 108,
+      "source": "742ea12e8f55ae14a94ec7608403b9bd",
+      "sha256": "140bd1404c49a507cfb464e700bf6a1ead168954b48d336a0c31ee1630fe1c53"
+    },
+    {
+      "asset": "WizPig",
+      "main_hand": "Root/Cloud/MainHand",
+      "off_hand": null,
+      "center": "Root/Cloud/Center",
+      "headgear": "Root/Cloud/Headgear",
+      "controller_path_id": 113,
+      "source": "ac632259829fde142982ee2ea464bb6e",
+      "sha256": "0563115fc8d902ef28f4583f87fc105a8211af30f88b545b292572cd464f81b0"
+    },
+    {
+      "asset": "WizPig_Demon",
+      "main_hand": "Root/Cloud/MainHand",
+      "off_hand": null,
+      "center": "Root/Cloud/Center",
+      "headgear": "Root/Cloud/Headgear",
+      "controller_path_id": 112,
+      "source": "248b96971ae130842b3cf3bfad4f36c1",
+      "sha256": "fb1e343ce7d10617b0f35896f1c2cf0a99785b6bb13342ceda79087c248a08a8"
+    },
+    {
+      "asset": "YellowBird",
+      "main_hand": "Root/MainHand",
+      "off_hand": "Root/OffHand",
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 88,
+      "source": "dfc2b4bda8c4f71499aa931a1ff3bd32",
+      "sha256": "00c9c8c5c5b8319792520945c2f893bfabf9d9ad464ee03337a6d41e6e73ac9a"
+    },
+    {
+      "asset": "ZombiePig",
+      "main_hand": "Root/MainHand",
+      "off_hand": null,
+      "center": "Root/Center",
+      "headgear": "Root/Headgear",
+      "controller_path_id": 99,
+      "source": "9563116c766e9104c962859faba214a4",
+      "sha256": "e449f35fa67c01e3e9cb353245c343d6bbed58fc3024a04f49a25466b8f01ab2"
+    }
+  ],
+  "limitations": [
+    "Static CHMeshSprite quads only; trails/particles/animated visual clips are not packed.",
+    "Native camera and battle choreography remain unfinished; runtime endpoints use the current battle layout."
+  ]
+}

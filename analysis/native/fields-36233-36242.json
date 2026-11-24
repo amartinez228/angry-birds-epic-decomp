@@ -1,0 +1,159 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 36233,
+      "declaring_type_index": 4568,
+      "declaring_type": "ABH.GameDatas.Battle.Skills.AttackWithCollateralDamageAndStun",
+      "fields": [
+        {
+          "metadata_index": 20458,
+          "name": "m_DamageMod",
+          "offset": 136,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20459,
+          "name": "m_ChargeTurns",
+          "offset": 140,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20460,
+          "name": "m_AttackCount",
+          "offset": 144,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20461,
+          "name": "m_CollateralDamageMod",
+          "offset": 148,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20462,
+          "name": "m_CollateralDamage",
+          "offset": 152,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20463,
+          "name": "m_AdditionalEnemiesAffected",
+          "offset": 156,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20464,
+          "name": "m_AddtionalEffectInfo",
+          "offset": 160,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 20465,
+          "name": "m_ChanceToStunMain",
+          "offset": 164,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20466,
+          "name": "m_ChanceToStunExtras",
+          "offset": 168,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20467,
+          "name": "m_StunDuration",
+          "offset": 172,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20468,
+          "name": "m_UseSkillAssetId",
+          "offset": 176,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20469,
+          "name": "m_AdditionalTargets",
+          "offset": 180,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20470,
+          "name": "<>f__am$cache0",
+          "offset": 0,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20471,
+          "name": "<>f__am$cache1",
+          "offset": 4,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        }
+      ]
+    },
+    {
+      "method_index": 36242,
+      "declaring_type_index": 4569,
+      "declaring_type": "ABH.GameDatas.Battle.Skills.AttackWithCollateralDamageAndStun+<Init>c__AnonStorey0",
+      "fields": [
+        {
+          "metadata_index": 20472,
+          "name": "source",
+          "offset": 8,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20473,
+          "name": "target",
+          "offset": 12,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20474,
+          "name": "$this",
+          "offset": 16,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}

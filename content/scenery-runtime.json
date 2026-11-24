@@ -1,0 +1,541 @@
+{
+  "format": "EPICSC01",
+  "source_sha256": "741833b0091f824bed03cc6fe678fb1cfaab043ba0f6f4ced61ad805cb43cdc8",
+  "sha256": "ad005b68c9096a229661b6410fe555da1dcbada134479dd6e7949981ef221234",
+  "bytes": 1948311,
+  "textures": 64,
+  "scenes": [
+    {
+      "id": "Battleground_Airfield_01",
+      "draws": 129,
+      "vertices": 1797,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BambooForest_01",
+      "draws": 44,
+      "vertices": 449,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BambooForest_02",
+      "draws": 46,
+      "vertices": 528,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BambooForest_03",
+      "draws": 41,
+      "vertices": 427,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BanjoBayou_01",
+      "draws": 59,
+      "vertices": 896,
+      "skipped": [
+        {
+          "path_id": 430,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 442,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_BeardForest_01",
+      "draws": 51,
+      "vertices": 1204,
+      "skipped": [
+        {
+          "path_id": 487,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 493,
+          "reason": "null_material"
+        },
+        {
+          "path_id": 512,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 520,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 521,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 532,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 547,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_BirdAirship_Generic_01",
+      "draws": 99,
+      "vertices": 989,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BirdAirship_HogheadMountain_01",
+      "draws": 96,
+      "vertices": 950,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BirdAirship_Mountain_01",
+      "draws": 107,
+      "vertices": 1069,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BirdShip_EasternSea_01",
+      "draws": 74,
+      "vertices": 621,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BirdShip_LimestoneLagoon_01",
+      "draws": 71,
+      "vertices": 630,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BirdShip_NorthernSea_01",
+      "draws": 80,
+      "vertices": 756,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BirdShip_StarReef_01",
+      "draws": 89,
+      "vertices": 805,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_BirdSubmarine_01",
+      "draws": 81,
+      "vertices": 705,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Castle_01",
+      "draws": 182,
+      "vertices": 1428,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Castle_02",
+      "draws": 207,
+      "vertices": 1665,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Castle_03",
+      "draws": 236,
+      "vertices": 2134,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Castle_04",
+      "draws": 204,
+      "vertices": 1927,
+      "skipped": [
+        {
+          "path_id": 1210,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 1318,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_Castle_05",
+      "draws": 233,
+      "vertices": 2437,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Castle_06",
+      "draws": 59,
+      "vertices": 598,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Cliff_01",
+      "draws": 35,
+      "vertices": 505,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_CobaltCave_01",
+      "draws": 39,
+      "vertices": 544,
+      "skipped": [
+        {
+          "path_id": 263,
+          "reason": "null_material"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_CobaltForest_01",
+      "draws": 53,
+      "vertices": 775,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_CobaltForest_02",
+      "draws": 44,
+      "vertices": 876,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_CobaltPlateaus_01",
+      "draws": 46,
+      "vertices": 408,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_CobaltPlateaus_01_MagicAnvil",
+      "draws": 50,
+      "vertices": 434,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_CobaltPlateaus_02",
+      "draws": 49,
+      "vertices": 425,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_CobaltPlateaus_03",
+      "draws": 46,
+      "vertices": 403,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_CobaltPlateaus_03_MagicCauldron",
+      "draws": 51,
+      "vertices": 443,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_DesertIsland_01",
+      "draws": 36,
+      "vertices": 619,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_DesertIsland_02",
+      "draws": 33,
+      "vertices": 568,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_FloatingIsland_01",
+      "draws": 52,
+      "vertices": 571,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_GoldenFields_01",
+      "draws": 48,
+      "vertices": 432,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_LakeLand_01",
+      "draws": 57,
+      "vertices": 1111,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Moorlands_01",
+      "draws": 51,
+      "vertices": 456,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Mountain_01",
+      "draws": 50,
+      "vertices": 502,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_Mountain_02",
+      "draws": 60,
+      "vertices": 620,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_OldNestingBarrows_01",
+      "draws": 63,
+      "vertices": 604,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_PigCity_01",
+      "draws": 85,
+      "vertices": 1313,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_PigCity_02",
+      "draws": 55,
+      "vertices": 948,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_PigPrison_01",
+      "draws": 100,
+      "vertices": 1047,
+      "skipped": [
+        {
+          "path_id": 439,
+          "reason": "null_material"
+        },
+        {
+          "path_id": 462,
+          "reason": "null_material"
+        },
+        {
+          "path_id": 488,
+          "reason": "null_material"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_PigShip_LimestoneLagoon_01",
+      "draws": 73,
+      "vertices": 724,
+      "skipped": [
+        {
+          "path_id": 449,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_PigShip_SouthernSea_01",
+      "draws": 82,
+      "vertices": 775,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_PirateCoast_01",
+      "draws": 41,
+      "vertices": 544,
+      "skipped": [
+        {
+          "path_id": 458,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 467,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_Porktuga_01",
+      "draws": 55,
+      "vertices": 933,
+      "skipped": [
+        {
+          "path_id": 510,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 513,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_PumpkinPlateau_01",
+      "draws": 39,
+      "vertices": 368,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_RedwoodForest_01",
+      "draws": 52,
+      "vertices": 1307,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_RedwoodForest_02",
+      "draws": 47,
+      "vertices": 1157,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_SlingshotForest_01",
+      "draws": 41,
+      "vertices": 398,
+      "skipped": [
+        {
+          "path_id": 367,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 371,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_SlingshotForest_02",
+      "draws": 53,
+      "vertices": 486,
+      "skipped": [
+        {
+          "path_id": 379,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 394,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_SlingshotForest_03",
+      "draws": 65,
+      "vertices": 641,
+      "skipped": [
+        {
+          "path_id": 393,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 429,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_SmallIsland_01",
+      "draws": 53,
+      "vertices": 574,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_SouthBeach_01",
+      "draws": 45,
+      "vertices": 485,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_SouthBeach_02",
+      "draws": 61,
+      "vertices": 742,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_SouthBeach_03_BirdShip",
+      "draws": 48,
+      "vertices": 614,
+      "skipped": [
+        {
+          "path_id": 434,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 457,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_SquareWoodForest_01",
+      "draws": 48,
+      "vertices": 1339,
+      "skipped": [
+        {
+          "path_id": 321,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 342,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 353,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 354,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 361,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 373,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_SquareWoodForest_02",
+      "draws": 74,
+      "vertices": 1741,
+      "skipped": []
+    },
+    {
+      "id": "Battleground_WinterWonderland_01",
+      "draws": 45,
+      "vertices": 858,
+      "skipped": [
+        {
+          "path_id": 456,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 471,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_WinterWonderland_01_SetItemFusion",
+      "draws": 52,
+      "vertices": 1121,
+      "skipped": [
+        {
+          "path_id": 471,
+          "reason": "no_serialized_mesh"
+        },
+        {
+          "path_id": 508,
+          "reason": "no_serialized_mesh"
+        }
+      ]
+    },
+    {
+      "id": "Battleground_WinterWonderland_02",
+      "draws": 54,
+      "vertices": 744,
+      "skipped": []
+    }
+  ],
+  "limitations": [
+    "Static mesh rest poses only; animations, skinned renderers, particles and CHMeshSprites not rendered",
+    "Camera prefix recovered; runtime resolution/camera scripts and shader behavior pending",
+    "Depth sorted static triangles; original shader and runtime camera effects pending"
+  ]
+}

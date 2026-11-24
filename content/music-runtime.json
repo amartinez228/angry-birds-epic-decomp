@@ -1,0 +1,60 @@
+{
+  "source_sha256": "d4e70a0dd04de9d0be62105d6d193a4cb2c8bdb2410c4b5c1a8186e8491db786",
+  "sounds": [
+    {
+      "id": "music_worldmap",
+      "tracks": [
+        "WorldMap"
+      ],
+      "looping": true,
+      "fade_time": 3.0
+    },
+    {
+      "id": "music_camp",
+      "tracks": [
+        "Camp"
+      ],
+      "looping": true,
+      "fade_time": 2.0
+    },
+    {
+      "id": "Music_Combat_Basic",
+      "tracks": [
+        "Battle_01",
+        "Battle_02",
+        "Battle_03",
+        "Battle_04"
+      ],
+      "looping": true,
+      "fade_time": 1.0
+    },
+    {
+      "id": "Music_Combat_Special",
+      "tracks": [
+        "Battle_05"
+      ],
+      "looping": true,
+      "fade_time": 1.0
+    },
+    {
+      "id": "music_battle_win",
+      "tracks": [
+        "BattleWon"
+      ],
+      "looping": false,
+      "fade_time": 1.0
+    },
+    {
+      "id": "music_battle_lose",
+      "tracks": [
+        "BattleLost"
+      ],
+      "looping": false,
+      "fade_time": 1.0
+    }
+  ],
+  "limitations": [
+    "Windows WinMM primary music only; other platform backends, native mixer/channel gains, secondary music, crossfades and sound effects unfinished",
+    "Current Camp/Shop share camp music; original screen-state transitions still need comparison"
+  ]
+}

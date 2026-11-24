@@ -1,0 +1,647 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 36525,
+      "declaring_type_index": 4623,
+      "declaring_type": "ABH.GameDatas.Battle.AttackSkillTemplate+<DoAction>c__Iterator0",
+      "fields": [
+        {
+          "metadata_index": 20740,
+          "name": "battle",
+          "offset": 8,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20741,
+          "name": "<pigsAliveBeforeSkill>__0",
+          "offset": 12,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 20742,
+          "name": "source",
+          "offset": 16,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20743,
+          "name": "shared",
+          "offset": 20,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20744,
+          "name": "target",
+          "offset": 24,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20745,
+          "name": "$locvar0",
+          "offset": 28,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20746,
+          "name": "<action>__1",
+          "offset": 44,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20747,
+          "name": "<preEffects>__0",
+          "offset": 48,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20748,
+          "name": "<targetSelf>__0",
+          "offset": 52,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20749,
+          "name": "<targetAllies>__0",
+          "offset": 56,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20750,
+          "name": "$locvar1",
+          "offset": 60,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20751,
+          "name": "<action>__2",
+          "offset": 76,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20752,
+          "name": "<chargeDone>__0",
+          "offset": 80,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20753,
+          "name": "$locvar2",
+          "offset": 84,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20754,
+          "name": "<action>__3",
+          "offset": 100,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20755,
+          "name": "<elapsedTime>__4",
+          "offset": 104,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20756,
+          "name": "illusion",
+          "offset": 108,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20757,
+          "name": "<duration>__5",
+          "offset": 112,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20758,
+          "name": "$locvar3",
+          "offset": 116,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20759,
+          "name": "<action>__6",
+          "offset": 132,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20760,
+          "name": "<firstTarget>__0",
+          "offset": 136,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20761,
+          "name": "<attackCount>__0",
+          "offset": 140,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20762,
+          "name": "<WaitSlices>__0",
+          "offset": 144,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20763,
+          "name": "<m_NormalizedDamagePerTarget>__0",
+          "offset": 148,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20764,
+          "name": "<i>__7",
+          "offset": 152,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 20765,
+          "name": "<j>__8",
+          "offset": 156,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 20766,
+          "name": "<skillTarget>__9",
+          "offset": 160,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20767,
+          "name": "<modifierInPercent>__9",
+          "offset": 164,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20768,
+          "name": "<additionalModifierForAimedEnemy>__9",
+          "offset": 168,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20769,
+          "name": "<skillAttackBase>__9",
+          "offset": 172,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20770,
+          "name": "<modificationdealt>__9",
+          "offset": 176,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20771,
+          "name": "<perkDamagedealt>__9",
+          "offset": 180,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20772,
+          "name": "$locvar4",
+          "offset": 184,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20773,
+          "name": "$locvar5",
+          "offset": 200,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20774,
+          "name": "$locvar6",
+          "offset": 216,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20775,
+          "name": "<modificationreceived>__9",
+          "offset": 232,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20776,
+          "name": "$locvar7",
+          "offset": 236,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20777,
+          "name": "<normalizedDamage>__9",
+          "offset": 252,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 20778,
+          "name": "$locvar8",
+          "offset": 256,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20779,
+          "name": "<effectAll>__0",
+          "offset": 272,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20780,
+          "name": "$locvarA",
+          "offset": 276,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20781,
+          "name": "<action>__10",
+          "offset": 292,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20782,
+          "name": "$locvarB",
+          "offset": 296,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20783,
+          "name": "<action>__11",
+          "offset": 312,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20784,
+          "name": "$this",
+          "offset": 316,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20785,
+          "name": "$current",
+          "offset": 320,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 28
+        },
+        {
+          "metadata_index": 20786,
+          "name": "$disposing",
+          "offset": 324,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20787,
+          "name": "$PC",
+          "offset": 328,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 20788,
+          "name": "$locvarC",
+          "offset": 332,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20789,
+          "name": "<>f__am$cache0",
+          "offset": 0,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20790,
+          "name": "<>f__am$cache1",
+          "offset": 4,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        }
+      ]
+    },
+    {
+      "method_index": 36516,
+      "declaring_type_index": 4622,
+      "declaring_type": "ABH.GameDatas.Battle.AttackSkillTemplate",
+      "fields": [
+        {
+          "metadata_index": 20713,
+          "name": "m_Stopped",
+          "offset": 60,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20714,
+          "name": "m_BlockMovement",
+          "offset": 61,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20715,
+          "name": "m_NoDamage",
+          "offset": 62,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20716,
+          "name": "m_AfterDamageEvenIfDefeated",
+          "offset": 63,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20717,
+          "name": "m_IsMelee",
+          "offset": 64,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20718,
+          "name": "m_UseCenterPosition",
+          "offset": 65,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20719,
+          "name": "m_UseFocusPosition",
+          "offset": 66,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20720,
+          "name": "m_ApplyPerks",
+          "offset": 67,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20721,
+          "name": "m_Break",
+          "offset": 68,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20722,
+          "name": "m_IgnoreRage",
+          "offset": 69,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20723,
+          "name": "m_Shared",
+          "offset": 70,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20724,
+          "name": "m_FallBackTime",
+          "offset": 72,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20725,
+          "name": "m_AttackAnimation",
+          "offset": 76,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20726,
+          "name": "ActionsBeforeTargetSelection",
+          "offset": 80,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20727,
+          "name": "ActionsAfterTargetSelection",
+          "offset": 84,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20728,
+          "name": "ActionsOnStartSkill",
+          "offset": 88,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20729,
+          "name": "ActionsOnMovementBegan",
+          "offset": 92,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20730,
+          "name": "ActionsOnImpact",
+          "offset": 96,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20731,
+          "name": "ActionsOnEnd",
+          "offset": 100,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20732,
+          "name": "ActionsToDelayEnd",
+          "offset": 104,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20733,
+          "name": "ActionsAfterDamageDealt",
+          "offset": 108,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20734,
+          "name": "ActionsOnDamageDealt",
+          "offset": 112,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20735,
+          "name": "ActionsBeforeDamageDealt",
+          "offset": 116,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20736,
+          "name": "ModificationsOnDamageCalculation",
+          "offset": 120,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20737,
+          "name": "ModificationsOnDamageDealtCalculation",
+          "offset": 124,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20738,
+          "name": "ModificationsOnEarlyDamageDealtCalculation",
+          "offset": 128,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20739,
+          "name": "m_UseOffhandAnim",
+          "offset": 132,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 34763,
+      "declaring_type_index": 4473,
+      "declaring_type": "ABH.GameDatas.Battle.BattleEndGameData",
+      "fields": [
+        {
+          "metadata_index": 19908,
+          "name": "m_wheelLootEntries",
+          "offset": 8,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19909,
+          "name": "m_additionalLootTable",
+          "offset": 12,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19910,
+          "name": "m_wheelLoot",
+          "offset": 16,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19911,
+          "name": "m_additionalLoot",
+          "offset": 20,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19912,
+          "name": "m_lostLoot",
+          "offset": 24,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19913,
+          "name": "m_WinnerFaction",
+          "offset": 28,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 19914,
+          "name": "m_BattlePerformanceStars",
+          "offset": 32,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19915,
+          "name": "m_NeededScoreFor3Stars",
+          "offset": 36,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19916,
+          "name": "m_ThrownWheelIndex",
+          "offset": 40,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19917,
+          "name": "m_LastWaveIndex",
+          "offset": 44,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19918,
+          "name": "m_Score",
+          "offset": 48,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19919,
+          "name": "m_DisplayScore",
+          "offset": 52,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19920,
+          "name": "m_BattleEndTime",
+          "offset": 56,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 19921,
+          "name": "m_Level",
+          "offset": 68,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19922,
+          "name": "m_GoldenPigFinishState",
+          "offset": 72,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 19923,
+          "name": "m_IsDungeon",
+          "offset": 76,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19924,
+          "name": "m_IsPvp",
+          "offset": 77,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19925,
+          "name": "m_VideoAdMultiplier",
+          "offset": 80,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 19926,
+          "name": "m_ReviveUsed",
+          "offset": 84,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19927,
+          "name": "m_DamageDealt",
+          "offset": 88,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19928,
+          "name": "m_DamageTaken",
+          "offset": 92,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19929,
+          "name": "m_PigsLeft",
+          "offset": 96,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19930,
+          "name": "m_PigsHealthLeft",
+          "offset": 100,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19931,
+          "name": "m_HealedHealth",
+          "offset": 104,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19932,
+          "name": "m_RageUsedByBird",
+          "offset": 108,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19933,
+          "name": "m_wheelLootTable",
+          "offset": 112,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}

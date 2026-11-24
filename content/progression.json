@@ -1,0 +1,4719 @@
+{
+  "source_sha256": "b98293b8e7d8376a38063e0d64076534e2e24569e40d3150fd4abe3172541c0a",
+  "levels": [
+    {
+      "id": "Level_01",
+      "level": 1,
+      "next_level_cost": 35,
+      "row_sha256": "8ec4791c0800fa9b0f2bca9f8fd7447e0563375c0c5537888e52761225dd2b8f",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_01"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 35
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 35
+        }
+      ]
+    },
+    {
+      "id": "Level_02",
+      "level": 2,
+      "next_level_cost": 53,
+      "row_sha256": "59f66ba854df30e362607bf874921fc059f8089a3190f52125195772cb426518",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_02"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 53
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 50
+        }
+      ]
+    },
+    {
+      "id": "Level_03",
+      "level": 3,
+      "next_level_cost": 74,
+      "row_sha256": "80fbde47430e0073c4579811c6289b43507cf9c51171d621938c95c596f14224",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_03"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 74
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 55
+        }
+      ]
+    },
+    {
+      "id": "Level_04",
+      "level": 4,
+      "next_level_cost": 96,
+      "row_sha256": "573b4cd35dca4f4b05ec07aa182ad457fdaa8ad76d80e5c44825ca42b454dc5a",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_04"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 96
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 80
+        }
+      ]
+    },
+    {
+      "id": "Level_05",
+      "level": 5,
+      "next_level_cost": 115,
+      "row_sha256": "c82ae9b01c3c4f03852a271c57129d0e5490630d2b469ecf06c6b6001f4f3022",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_05"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 115
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 145
+        }
+      ]
+    },
+    {
+      "id": "Level_06",
+      "level": 6,
+      "next_level_cost": 132,
+      "row_sha256": "693689015660e5803ed58b708554b341e729263099d640e9c740edc2f7898045",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_06"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 132
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 175
+        }
+      ]
+    },
+    {
+      "id": "Level_07",
+      "level": 7,
+      "next_level_cost": 145,
+      "row_sha256": "b639a21183e1e571c27b315da7659b90c6792461fc1bafb738a8821e4afd25d2",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_07"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 145
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 250
+        }
+      ]
+    },
+    {
+      "id": "Level_08",
+      "level": 8,
+      "next_level_cost": 160,
+      "row_sha256": "32cbbbc2fc09b49221967558d2dc1b29202758a9aeae3629d18474e72de609e6",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_08"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 160
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 10.0,
+          "hex": "00002041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 165
+        }
+      ]
+    },
+    {
+      "id": "Level_09",
+      "level": 9,
+      "next_level_cost": 176,
+      "row_sha256": "a85b60172852120a7a311bf8582b1b1462f01bb90fa782f9abfbcd5f486fe960",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_09"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 176
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 10.0,
+          "hex": "00002041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 360
+        }
+      ]
+    },
+    {
+      "id": "Level_10",
+      "level": 10,
+      "next_level_cost": 193,
+      "row_sha256": "a7b88bbc1871eed372c1ad29d274802b21465e85c4c198e55c2153e94455661c",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_10"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 193
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 10.0,
+          "hex": "00002041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 250
+        }
+      ]
+    },
+    {
+      "id": "Level_11",
+      "level": 11,
+      "next_level_cost": 212,
+      "row_sha256": "f8f28cf18b5239b28a3b6a2e0efe8f05d2fa4eddd909b7a0edb46b509687fe64",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_11"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 212
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 10.0,
+          "hex": "00002041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 550
+        }
+      ]
+    },
+    {
+      "id": "Level_12",
+      "level": 12,
+      "next_level_cost": 234,
+      "row_sha256": "165b71e727cdd3a6c0c18d2f334de0477d49782300d368212794db235fc9f636",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_12"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 234
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 10.0,
+          "hex": "00002041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 440
+        }
+      ]
+    },
+    {
+      "id": "Level_13",
+      "level": 13,
+      "next_level_cost": 257,
+      "row_sha256": "add43a09d6f2921b7b80897191cca0f9ae157a49cbd237babda22ae66e04f677",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_13"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 257
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 20.0,
+          "hex": "0000a041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 440
+        }
+      ]
+    },
+    {
+      "id": "Level_14",
+      "level": 14,
+      "next_level_cost": 283,
+      "row_sha256": "1bf08445ea323a00eb187fd9383a9cd2678c12d9da223bab21e4661a0b8e52cd",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_14"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 283
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 20.0,
+          "hex": "0000a041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 715
+        }
+      ]
+    },
+    {
+      "id": "Level_15",
+      "level": 15,
+      "next_level_cost": 311,
+      "row_sha256": "db725ab667cab8fad7c035bd3e481f90ac28d666a7897c2521788d87873da136",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_15"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 311
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 20.0,
+          "hex": "0000a041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 550
+        }
+      ]
+    },
+    {
+      "id": "Level_16",
+      "level": 16,
+      "next_level_cost": 342,
+      "row_sha256": "809091497099a10b7a4eb537ee628a583dedc90741fd97a7d29752e6ce2cd304",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_16"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 342
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 20.0,
+          "hex": "0000a041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_17",
+      "level": 17,
+      "next_level_cost": 376,
+      "row_sha256": "73f79e769085638681ae9481da10708af8723af8f4c244a67eb7f2e9dc0589a5",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_17"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 376
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 30.0,
+          "hex": "0000f041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_18",
+      "level": 18,
+      "next_level_cost": 414,
+      "row_sha256": "990b107800ed39b43a3421cddd1084357b0bfa79e442d09b7c613536c02e8185",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_18"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 414
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 30.0,
+          "hex": "0000f041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_19",
+      "level": 19,
+      "next_level_cost": 455,
+      "row_sha256": "11485cc03591214bec2c381e6ee6d6f85b2323d850a684e106a3017ce7fc94c9",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_19"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 455
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 30.0,
+          "hex": "0000f041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_20",
+      "level": 20,
+      "next_level_cost": 501,
+      "row_sha256": "57653a3a8f3b0e5da7d2bce42dd658fd607d0d6bf4b7f55e1c9c3e829812c1c2",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_20"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 501
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 1
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 30.0,
+          "hex": "0000f041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_21",
+      "level": 21,
+      "next_level_cost": 551,
+      "row_sha256": "46cb20b273a3a820b7c4ea224c5bac90e1fc26407513af080d489825ddaee307",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_21"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 551
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 30.0,
+          "hex": "0000f041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_22",
+      "level": 22,
+      "next_level_cost": 606,
+      "row_sha256": "81083ce596725f9aa5a90d17f63cacc5a116c22cd1bf68964102432ad30b3a96",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_22"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 606
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 30.0,
+          "hex": "0000f041"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_23",
+      "level": 23,
+      "next_level_cost": 666,
+      "row_sha256": "384101b72e72090c4c1a0b6c593cb5c2154bb220aba47d457972a26bacff3e18",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_23"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 666
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 40.0,
+          "hex": "00002042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_24",
+      "level": 24,
+      "next_level_cost": 733,
+      "row_sha256": "51fd94722fb4692bfc8ee06a5cf0af4b4ce7f4a461cfcba2785f01150391e15d",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_24"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 733
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 40.0,
+          "hex": "00002042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_25",
+      "level": 25,
+      "next_level_cost": 755,
+      "row_sha256": "a879e0f07f13dba5eed4f5dc34a05e30415265c27b979a2114e7ec8534e909e2",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_25"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 755
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 40.0,
+          "hex": "00002042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_26",
+      "level": 26,
+      "next_level_cost": 765,
+      "row_sha256": "1f18d23023b6d9c42334416dbf05c5e401f779695b1faee2c67feadbc7302b09",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_26"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 765
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 40.0,
+          "hex": "00002042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_27",
+      "level": 27,
+      "next_level_cost": 775,
+      "row_sha256": "19bf71823d4646862e203891f541ccec768d310c458344fb708ab683ab583b47",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_27"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 775
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 40.0,
+          "hex": "00002042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_28",
+      "level": 28,
+      "next_level_cost": 780,
+      "row_sha256": "1cc87498b7f55575bf9b78b348a2ecf368758c8e143bb63916555b9b999f9840",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_28"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 780
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 40.0,
+          "hex": "00002042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 2000
+        }
+      ]
+    },
+    {
+      "id": "Level_29",
+      "level": 29,
+      "next_level_cost": 790,
+      "row_sha256": "a53bc9ceb94d3c4c96666569515c56049ac39158af58a76fec9b60de3ee49c02",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_29"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 790
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 50.0,
+          "hex": "00004842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 3000
+        }
+      ]
+    },
+    {
+      "id": "Level_30",
+      "level": 30,
+      "next_level_cost": 795,
+      "row_sha256": "29e2e3997f9e39ae29e956c669dcdbbeeb7d242d4d2d61be4e58889b56bedbd3",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_30"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 795
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 2
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 50.0,
+          "hex": "00004842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 3000
+        }
+      ]
+    },
+    {
+      "id": "Level_31",
+      "level": 31,
+      "next_level_cost": 800,
+      "row_sha256": "94608ce3b15319665923b4fe256c0f1feda001947f5f40fe1300375e8852c181",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_31"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 800
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 50.0,
+          "hex": "00004842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_32",
+      "level": 32,
+      "next_level_cost": 805,
+      "row_sha256": "373a7685e115ef64ac02f4579f48a4bec93fc76aecfaedd37e9c7fe7d6515d23",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_32"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 805
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 50.0,
+          "hex": "00004842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_33",
+      "level": 33,
+      "next_level_cost": 810,
+      "row_sha256": "ce2107f1db2150a327233378a2768857798608e112140fda5baf06905a49e0a5",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_33"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 810
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 60.0,
+          "hex": "00007042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_34",
+      "level": 34,
+      "next_level_cost": 815,
+      "row_sha256": "a90c08451b5015ab05a87ef42784bfb73bf5e8244da8f815e3e1822d3d7ae0a4",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_34"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 815
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 60.0,
+          "hex": "00007042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_35",
+      "level": 35,
+      "next_level_cost": 825,
+      "row_sha256": "e91989b535af108fc54e31d9a2546f9598f8f6d603ffcbb195ebd36080171b89",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_35"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 825
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 60.0,
+          "hex": "00007042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_36",
+      "level": 36,
+      "next_level_cost": 855,
+      "row_sha256": "d06d4e002ff85466aac33d613110316c092d57d6022590a4e9a2d01b65ed870e",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_36"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 855
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 60.0,
+          "hex": "00007042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_37",
+      "level": 37,
+      "next_level_cost": 880,
+      "row_sha256": "8814d225c7de23b58761efd47781302aa0827bb3e1fb002df2866b96d5f5bb95",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_37"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 880
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 70.0,
+          "hex": "00008c42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_38",
+      "level": 38,
+      "next_level_cost": 905,
+      "row_sha256": "c9af6ebf456720376f54d10c9d38d890f630cf8523b97e95ff6e60b893dec02c",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_38"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 905
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 70.0,
+          "hex": "00008c42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_39",
+      "level": 39,
+      "next_level_cost": 935,
+      "row_sha256": "7a01115165689a7e9b5ae7588ed6288abfb89538dd350a3a9adc3a805f8aab78",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_39"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 935
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 70.0,
+          "hex": "00008c42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_40",
+      "level": 40,
+      "next_level_cost": 965,
+      "row_sha256": "c03fdc3202eb96ea01425b247f87e3d89179532cc73b1914c22322f763d6b6b9",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_40"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 965
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 3
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 70.0,
+          "hex": "00008c42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_41",
+      "level": 41,
+      "next_level_cost": 995,
+      "row_sha256": "4028d772173e69b3247961812d1c12304f8da9c98329710e9ee022d76141f470",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_41"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 995
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 70.0,
+          "hex": "00008c42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_42",
+      "level": 42,
+      "next_level_cost": 1030,
+      "row_sha256": "9550b6abaf94dba5e1a34022b68a39309905e062788e2a26000251e8d66844d9",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_42"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1030
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 80.0,
+          "hex": "0000a042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_43",
+      "level": 43,
+      "next_level_cost": 1050,
+      "row_sha256": "de9feb9d3096571affba1b977eb0bbf46987783fdd8f253f0d339c923af3a845",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_43"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1050
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 80.0,
+          "hex": "0000a042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_44",
+      "level": 44,
+      "next_level_cost": 1075,
+      "row_sha256": "2a8afe156cdea051f65ea7a6e712c658d453ea71e796824ad1c499ab3a1379ff",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_44"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1075
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 80.0,
+          "hex": "0000a042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_45",
+      "level": 45,
+      "next_level_cost": 1110,
+      "row_sha256": "0d9bc6936efa26cffe2eeab013f181b7d9b194f25714c5c07aa51a43e798ee57",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_45"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1110
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 80.0,
+          "hex": "0000a042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_46",
+      "level": 46,
+      "next_level_cost": 1140,
+      "row_sha256": "c489883505fec045e0b9c27cafe7dc5b513a67b888e0ec0a06940a1b2a88e2ca",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_46"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1140
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 80.0,
+          "hex": "0000a042"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_47",
+      "level": 47,
+      "next_level_cost": 1180,
+      "row_sha256": "5e4f4e8499fea4cfb54fc7cc27b625ee03451dcf241b0cb04226ef8fb497062c",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_47"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1180
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 90.0,
+          "hex": "0000b442"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_48",
+      "level": 48,
+      "next_level_cost": 1215,
+      "row_sha256": "255ea3c6295a7262da825899f2bbf870e5e5f165355b4ca5ea160d156b72dc1a",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_48"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1215
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 90.0,
+          "hex": "0000b442"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_49",
+      "level": 49,
+      "next_level_cost": 1245,
+      "row_sha256": "66936e340e65a4bb4caecc041143648480d66f587a1cd976a7f2c7d6d8a2d8e4",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_49"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1245
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 90.0,
+          "hex": "0000b442"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "Level_50",
+      "level": 50,
+      "next_level_cost": 1275,
+      "row_sha256": "d4e9525e28e379c2299821f1bdaa01cedcb666457611a5f5da6f73d663a90755",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_50"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1275
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 4
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 90.0,
+          "hex": "0000b442"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4250
+        }
+      ]
+    },
+    {
+      "id": "Level_51",
+      "level": 51,
+      "next_level_cost": 1310,
+      "row_sha256": "4c0536b13db7f386f90456972a301f0ff0eb09ed00ccf03c23de7c14eca6c889",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_51"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1310
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 90.0,
+          "hex": "0000b442"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4500
+        }
+      ]
+    },
+    {
+      "id": "Level_52",
+      "level": 52,
+      "next_level_cost": 1330,
+      "row_sha256": "9b3d7aa1f0294bc44cc90ef331a35089637b161bae30ac4c4c1a6877e07f5675",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_52"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1330
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 90.0,
+          "hex": "0000b442"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4500
+        }
+      ]
+    },
+    {
+      "id": "Level_53",
+      "level": 53,
+      "next_level_cost": 1350,
+      "row_sha256": "980f7a5187746c60851403a670c82d944ab9a5798da3b915c7bc1c2784b1503b",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_53"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1350
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 100.0,
+          "hex": "0000c842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 4750
+        }
+      ]
+    },
+    {
+      "id": "Level_54",
+      "level": 54,
+      "next_level_cost": 1380,
+      "row_sha256": "1beaffe1d10cdd55ee8bd284969f8ddec5e3acee43cdb57688d9d6bdd1b4db70",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_54"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1380
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 100.0,
+          "hex": "0000c842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 5000
+        }
+      ]
+    },
+    {
+      "id": "Level_55",
+      "level": 55,
+      "next_level_cost": 1400,
+      "row_sha256": "e046709bf4a8c4b50795338d42fe0c02b454a93862125dcae53e02f051506c5d",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_55"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1400
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 100.0,
+          "hex": "0000c842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 5000
+        }
+      ]
+    },
+    {
+      "id": "Level_56",
+      "level": 56,
+      "next_level_cost": 1420,
+      "row_sha256": "12641e516ae9e70ece65566a33d6292a474e3a6b24ea53b342b287b42899ad32",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_56"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1420
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 100.0,
+          "hex": "0000c842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 5250
+        }
+      ]
+    },
+    {
+      "id": "Level_57",
+      "level": 57,
+      "next_level_cost": 1440,
+      "row_sha256": "349245574f77fcb274412e4a5af0b35d3085331d99d9ddeb2a7b643cc1e59468",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_57"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1440
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 100.0,
+          "hex": "0000c842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 5500
+        }
+      ]
+    },
+    {
+      "id": "Level_58",
+      "level": 58,
+      "next_level_cost": 1460,
+      "row_sha256": "6572dbdd80df5e6d49d4576d9c14ca0490f6ca14b007c8420850b335d2ed75a0",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_58"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1460
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 100.0,
+          "hex": "0000c842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 5500
+        }
+      ]
+    },
+    {
+      "id": "Level_59",
+      "level": 59,
+      "next_level_cost": 1485,
+      "row_sha256": "7df6d6ffb0399e7b512e18347e4b5def2d343c5354d6bea9c870b6b7985dad58",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_59"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1485
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 100.0,
+          "hex": "0000c842"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 6000
+        }
+      ]
+    },
+    {
+      "id": "Level_60",
+      "level": 60,
+      "next_level_cost": 1510,
+      "row_sha256": "86aeefb66a87d8ac65586ddba4e3ad944ca261f5e20c8a6030d27bb80325fad4",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_60"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1510
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 5
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 6500
+        }
+      ]
+    },
+    {
+      "id": "Level_61",
+      "level": 61,
+      "next_level_cost": 1560,
+      "row_sha256": "28b5541e78f0e07c4c370619385f87b313162b943b5a42ee10aedfb8c5da576a",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_61"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1560
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 7000
+        }
+      ]
+    },
+    {
+      "id": "Level_62",
+      "level": 62,
+      "next_level_cost": 1600,
+      "row_sha256": "07ad8e325466b51d7058774adb3efb1115bc0bfc614d7d99f8883a0651514167",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_62"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1600
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 7500
+        }
+      ]
+    },
+    {
+      "id": "Level_63",
+      "level": 63,
+      "next_level_cost": 1633,
+      "row_sha256": "83290b3c4f670eba61bf4af218d9884c855d639fce4e183747fdbd899e759108",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_63"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1633
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 8000
+        }
+      ]
+    },
+    {
+      "id": "Level_64",
+      "level": 64,
+      "next_level_cost": 1666,
+      "row_sha256": "55fd6a43ca3311fad0f8aa9d35d854f0232e2c4002c849c881a21fbb3833caa8",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_64"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1666
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 8500
+        }
+      ]
+    },
+    {
+      "id": "Level_65",
+      "level": 65,
+      "next_level_cost": 1700,
+      "row_sha256": "f28398baf4050c9aec1e27d9fe2417677012dcaf29fd88f5e5a75c82ae3eede7",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_65"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1700
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 9000
+        }
+      ]
+    },
+    {
+      "id": "Level_66",
+      "level": 66,
+      "next_level_cost": 1750,
+      "row_sha256": "53bef70afea8a636b4d7698d992c09585d398a74d3d4791f14c1cd8ef1c7a372",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_66"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1750
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 9500
+        }
+      ]
+    },
+    {
+      "id": "Level_67",
+      "level": 67,
+      "next_level_cost": 1800,
+      "row_sha256": "5411d3fd70a7ac0dc4f9782f11cb0516f6b4368b2932463331f6d3e593b80780",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_67"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1800
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 10000
+        }
+      ]
+    },
+    {
+      "id": "Level_68",
+      "level": 68,
+      "next_level_cost": 1830,
+      "row_sha256": "cfd9a0552a992529234c3ec50a327ac70e2fe1286b5026c0b7b82df1e75a9fc6",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_68"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1830
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 10500
+        }
+      ]
+    },
+    {
+      "id": "Level_69",
+      "level": 69,
+      "next_level_cost": 1850,
+      "row_sha256": "5276ed41b747ae17c7bb3d7c67214c1eaaa7b4793eb3ebbb2dad4d887bfd15ee",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_69"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1850
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 6
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 110.0,
+          "hex": "0000dc42"
+        },
+        {
+          "field": 6,
+          "wire": 0,
+          "value": 11000
+        }
+      ]
+    },
+    {
+      "id": "Level_70",
+      "level": 70,
+      "next_level_cost": 1866,
+      "row_sha256": "df03285ff7adf8462b8fab23b99a5ad15f1085fa5e784d2e4281007cb5813396",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_70"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1866
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_71",
+      "level": 71,
+      "next_level_cost": 1885,
+      "row_sha256": "9dc80c46a63bcb77c670be9f18c5f26d203768ba61843ca03e8228fd19c23fdd",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_71"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1885
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_72",
+      "level": 72,
+      "next_level_cost": 1900,
+      "row_sha256": "3bda6a7ef098ae33d381a5abf9705f1735021bc41ed66246a419fead95af5568",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_72"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1900
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_73",
+      "level": 73,
+      "next_level_cost": 1920,
+      "row_sha256": "5614186ef360f89b049cfa85f955720ff0fb02398bad77ae4d0566108d703735",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_73"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1920
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_74",
+      "level": 74,
+      "next_level_cost": 1950,
+      "row_sha256": "5ec5a844c031376a5ac58d6c54cbc36013a2a4110c144d45f00cc27cef49756a",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_74"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1950
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_75",
+      "level": 75,
+      "next_level_cost": 1960,
+      "row_sha256": "2c7b7d96b1c58282db8ab8f00076f29dc04525221028078ff57686b48f7147f8",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_75"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1960
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_76",
+      "level": 76,
+      "next_level_cost": 1970,
+      "row_sha256": "efe7f71497f1ed755da5d349b60d0f123477f6b571725728e1071bb2e81663f3",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_76"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1970
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_77",
+      "level": 77,
+      "next_level_cost": 1980,
+      "row_sha256": "097989f6957000affc1832782d4c361206535ece80260bf89cb6a4fb01edc90d",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_77"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1980
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_78",
+      "level": 78,
+      "next_level_cost": 1985,
+      "row_sha256": "c4e3b34ebf67bb682db48e43d5c8086904f47b06eb47a7b74257bedf715fa83f",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_78"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1985
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_79",
+      "level": 79,
+      "next_level_cost": 1990,
+      "row_sha256": "320606c485a920214812be341fcfdb66288c2e6e7cc22796eb754d19ca730cf9",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_79"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 1990
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 7
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_80",
+      "level": 80,
+      "next_level_cost": 2005,
+      "row_sha256": "68e5aeb932434bdc335e3dfbcfefe68a7d354cf52f2981686cf2a4105c386cd1",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_80"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2005
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_81",
+      "level": 81,
+      "next_level_cost": 2020,
+      "row_sha256": "015b6e5a41c4fa4649ab530a5bf16db4c5f3c997397fea753bf810cb10a2207d",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_81"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2020
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_82",
+      "level": 82,
+      "next_level_cost": 2035,
+      "row_sha256": "a5e014e0a201f1e2ccb5ff48d5f2db055421f117b76b3243ce29ee6fd25ad34d",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_82"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2035
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_83",
+      "level": 83,
+      "next_level_cost": 2050,
+      "row_sha256": "5ffdfba6d016ed4d59b72ecec2d60683e47c5323cd354b4a7840091104893653",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_83"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2050
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_84",
+      "level": 84,
+      "next_level_cost": 2065,
+      "row_sha256": "1c11ca398f667c4e2bceacdaf9b81809f73f7ea952810b2e4c75352d6956f48c",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_84"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2065
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_85",
+      "level": 85,
+      "next_level_cost": 2080,
+      "row_sha256": "05f82bdfcf4542f8f4ad3da2cbae4819c735eb81a4f2d72163ebbcef6b57bbb9",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_85"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2080
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_86",
+      "level": 86,
+      "next_level_cost": 2095,
+      "row_sha256": "88d14f5be2ed134c469369aab223264de3ef048af5063dd2dcab7ed272db0637",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_86"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2095
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_87",
+      "level": 87,
+      "next_level_cost": 2110,
+      "row_sha256": "0523254967e628076b9b75f0f38df262d9873281fc414bf438f336b02d6a4331",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_87"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2110
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_88",
+      "level": 88,
+      "next_level_cost": 2125,
+      "row_sha256": "b03725e892a0dbfdd6f0a35d489110c53b6311c55699bc356b25ae367a722426",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_88"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2125
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_89",
+      "level": 89,
+      "next_level_cost": 2140,
+      "row_sha256": "27cc2a30449bf42c274c5b175c306305ebb0eb498743e4bbf51c3a395c212e5e",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_89"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2140
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 8
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_90",
+      "level": 90,
+      "next_level_cost": 2155,
+      "row_sha256": "23b3ca4fb8ddecba9fca4056d96e77a6d4609a2eb0622ae580e83d992a9d5335",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_90"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2155
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_91",
+      "level": 91,
+      "next_level_cost": 2170,
+      "row_sha256": "9e6615f968c6d299854cb50ecd8d5c33d7afb0b24d8c283902dec2319e859d3b",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_91"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2170
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_92",
+      "level": 92,
+      "next_level_cost": 2185,
+      "row_sha256": "8978dd9e6a3f40ef20f20f190012618060da642af1340481986e8b9c1c07e6b0",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_92"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2185
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_93",
+      "level": 93,
+      "next_level_cost": 2200,
+      "row_sha256": "a7201ffdc814c7399ffccfe7e78b783a3ea82a712f2926999b9dad6ef6c0b54b",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_93"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2200
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_94",
+      "level": 94,
+      "next_level_cost": 2215,
+      "row_sha256": "bacfcdb0d6e2dfe3a07991a8f3aff68d6986d5f816288e8149725d572a496c2c",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_94"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2215
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_95",
+      "level": 95,
+      "next_level_cost": 2230,
+      "row_sha256": "4c522e12cf6aac5155a45b6137d2d371042792a76c3925dbddb09cda87150b03",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_95"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2230
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_96",
+      "level": 96,
+      "next_level_cost": 2245,
+      "row_sha256": "5d836d68aad11acace8e374985fc2f7c1153265987695c3e4ab5bf4dbd716039",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_96"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2245
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_97",
+      "level": 97,
+      "next_level_cost": 2260,
+      "row_sha256": "a8ec0a8bcc93030038b781e2b451e1410e776f4bd2e8cc1ba7d8bfd70e4af1bb",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_97"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2260
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_98",
+      "level": 98,
+      "next_level_cost": 2275,
+      "row_sha256": "02dfdf1e40af847a34c7904f78e451453da6016372a43f6ea15ee983314874d1",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_98"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2275
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    },
+    {
+      "id": "Level_99",
+      "level": 99,
+      "next_level_cost": 2290,
+      "row_sha256": "9344bb30957b9379c11c7545c571866e851a5bf6d3074df26cb22236f4d00638",
+      "raw_fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "text": "Level_99"
+        },
+        {
+          "field": 2,
+          "wire": 0,
+          "value": 2290
+        },
+        {
+          "field": 3,
+          "wire": 2,
+          "message": [
+            {
+              "field": 1,
+              "wire": 2,
+              "text": "lucky_coin"
+            },
+            {
+              "field": 2,
+              "wire": 0,
+              "value": 3
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "wire": 0,
+          "value": 9
+        },
+        {
+          "field": 5,
+          "wire": 5,
+          "float": 120.0,
+          "hex": "0000f042"
+        }
+      ]
+    }
+  ],
+  "terminal_level": 100,
+  "limitations": [
+    "Native XP is floating point; current battle XP grants and storage use whole points",
+    "Original defeat XP/battle bonuses and initial live stat refresh are implemented; boosters, level-up loot and complete native callback/visual timing remain unfinished",
+    "One level transition per XP event follows the traced callback; complete surplus-XP/UI event choreography needs comparison"
+  ]
+}

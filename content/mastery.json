@@ -1,0 +1,1722 @@
+{
+  "costs": [
+    {
+      "id": "Level_01",
+      "rank": 1,
+      "cost": 14,
+      "stat_bonus_percent": 0,
+      "row_sha256": "cb86cb11227b277ffa983041a6b0ba017255afd8cc1c293b03029881bee4bf44"
+    },
+    {
+      "id": "Level_02",
+      "rank": 2,
+      "cost": 28,
+      "stat_bonus_percent": 2,
+      "row_sha256": "c50e65dd5cfd629c40c2dbe0eb01a0ffc38b3460556810b35f8d0dded8f1384c"
+    },
+    {
+      "id": "Level_03",
+      "rank": 3,
+      "cost": 48,
+      "stat_bonus_percent": 4,
+      "row_sha256": "5687a6ce914b525b9c95db8dd7af79ddbcca029c0d15054bc46b34372600b416"
+    },
+    {
+      "id": "Level_04",
+      "rank": 4,
+      "cost": 66,
+      "stat_bonus_percent": 6,
+      "row_sha256": "78739b7772170f515beed2c73b85c49d2eaa65ff52f7cac2f65bfd421f9d5275"
+    },
+    {
+      "id": "Level_05",
+      "rank": 5,
+      "cost": 80,
+      "stat_bonus_percent": 8,
+      "row_sha256": "9273de424735b582c04999ef62dc6b965ef54a7879b3f3204dc387e07e99b36b"
+    },
+    {
+      "id": "Level_06",
+      "rank": 6,
+      "cost": 84,
+      "stat_bonus_percent": 10,
+      "row_sha256": "a3b8077578d093bae06bd2fca9615f69bf4711e86de52f20ed411cfd214262ae"
+    },
+    {
+      "id": "Level_07",
+      "rank": 7,
+      "cost": 90,
+      "stat_bonus_percent": 12,
+      "row_sha256": "fe3d5f1356cfbd051f047b54195b707258b9f346fcd96c5ca8ce93870cdf5c46"
+    },
+    {
+      "id": "Level_08",
+      "rank": 8,
+      "cost": 97,
+      "stat_bonus_percent": 14,
+      "row_sha256": "52e24b6aa2d990d7e78ee7f74488fab5d114e1989d8da971bd3c9a81cd9ab84a"
+    },
+    {
+      "id": "Level_09",
+      "rank": 9,
+      "cost": 105,
+      "stat_bonus_percent": 16,
+      "row_sha256": "74b361200063471b1f514b638f9bb9e6a9ba13d07833d7aadcb13a7252b380dd"
+    },
+    {
+      "id": "Level_10",
+      "rank": 10,
+      "cost": 139,
+      "stat_bonus_percent": 18,
+      "row_sha256": "b563ebb9043998ad71aa988e2c9f5a3545292b4a8787848ee811d6be178b6257"
+    },
+    {
+      "id": "Level_11",
+      "rank": 11,
+      "cost": 177,
+      "stat_bonus_percent": 20,
+      "row_sha256": "382b4b1b62c6bd6787499b8ac612fa26652adfb33a4b28b3d6d8f2584eac8bee"
+    },
+    {
+      "id": "Level_12",
+      "rank": 12,
+      "cost": 219,
+      "stat_bonus_percent": 22,
+      "row_sha256": "9be21963db42c76189cd7d55d432104b0a3d7cc9388282cdb75c903ac8ef70d3"
+    },
+    {
+      "id": "Level_13",
+      "rank": 13,
+      "cost": 267,
+      "stat_bonus_percent": 24,
+      "row_sha256": "e56df4fcc320a5df5a9ff50e82a1db22f91f2296228e76b6f4ff7ed0bd40d0f7"
+    },
+    {
+      "id": "Level_14",
+      "rank": 14,
+      "cost": 319,
+      "stat_bonus_percent": 26,
+      "row_sha256": "554d468d2dd72bf1f4de520eeaa43d5dc0afce9250e2dd54feadfba629109728"
+    },
+    {
+      "id": "Level_15",
+      "rank": 15,
+      "cost": 374,
+      "stat_bonus_percent": 28,
+      "row_sha256": "3d05440a150929c50d224f3aed59895210ca252cee859708e0ec7e26b8d4b136"
+    },
+    {
+      "id": "Level_16",
+      "rank": 16,
+      "cost": 437,
+      "stat_bonus_percent": 30,
+      "row_sha256": "7e87a8ae698c72aab68c630c07132319ff79ac3ad276a2176b163231dbd9a0ef"
+    },
+    {
+      "id": "Level_17",
+      "rank": 17,
+      "cost": 499,
+      "stat_bonus_percent": 32,
+      "row_sha256": "12a8544001027467f12837c0e1c9b2616946796b1b02a677d85494f976681712"
+    },
+    {
+      "id": "Level_18",
+      "rank": 18,
+      "cost": 569,
+      "stat_bonus_percent": 34,
+      "row_sha256": "c7d0bcd38713896ea5be28fdbfdc04675803f64ad4665559c8dea7f2a4cfc325"
+    },
+    {
+      "id": "Level_19",
+      "rank": 19,
+      "cost": 638,
+      "stat_bonus_percent": 36,
+      "row_sha256": "08c6bd115318c0efb3567d2a379fb7e238a158a3708e3af4fabe2a55060ad41b"
+    },
+    {
+      "id": "Level_20",
+      "rank": 20,
+      "cost": 714,
+      "stat_bonus_percent": 38,
+      "row_sha256": "48efd5da602e874d87c2478b90474fd6b30bfaf87c72efdffe1d72cb723c05e2"
+    },
+    {
+      "id": "Level_21",
+      "rank": 21,
+      "cost": 794,
+      "stat_bonus_percent": 40,
+      "row_sha256": "0a45d3be5c9603b060e8001c66b3cbad27ce1586bc032358530fbdf61342917c"
+    },
+    {
+      "id": "Level_22",
+      "rank": 22,
+      "cost": 873,
+      "stat_bonus_percent": 42,
+      "row_sha256": "3e959494df76f8660f8ec58db29e32bef707471d8c189f59a2092eb1aea88016"
+    },
+    {
+      "id": "Level_23",
+      "rank": 23,
+      "cost": 960,
+      "stat_bonus_percent": 44,
+      "row_sha256": "d2fe435c13b6de81cb864bc1922c7fbbb2224cf5ed2ad859c8b534edc0da264c"
+    },
+    {
+      "id": "Level_24",
+      "rank": 24,
+      "cost": 1046,
+      "stat_bonus_percent": 46,
+      "row_sha256": "24c64093ad673dfe93d12abb6989b0a0be9fcc48f2c782c2bf6f8ec21331dc6e"
+    },
+    {
+      "id": "Level_25",
+      "rank": 25,
+      "cost": 1136,
+      "stat_bonus_percent": 48,
+      "row_sha256": "756bc2f4b9e49dc6918282154cbc50e15ea619370337cb427b65711a1ca44f18"
+    },
+    {
+      "id": "Level_26",
+      "rank": 26,
+      "cost": 1233,
+      "stat_bonus_percent": 50,
+      "row_sha256": "67efa9d89a50a36072d8f1b582c0a4a3d70bf7b39a91936be73301d43492798a"
+    },
+    {
+      "id": "Level_27",
+      "rank": 27,
+      "cost": 1328,
+      "stat_bonus_percent": 52,
+      "row_sha256": "35affa7136f3fb0af053233919af4d6c0e40ca6f4960c9fd2dc80baf6533424d"
+    },
+    {
+      "id": "Level_28",
+      "rank": 28,
+      "cost": 1428,
+      "stat_bonus_percent": 54,
+      "row_sha256": "bee9bb696ebf3bc4169fd5ca9190b67bfd5b64b20c12130636ef8aaef54f1923"
+    },
+    {
+      "id": "Level_29",
+      "rank": 29,
+      "cost": 1529,
+      "stat_bonus_percent": 56,
+      "row_sha256": "8ba1698877df4ba6593117962c62250cba9b6f45feeb36d2903b87a0824db6f0"
+    },
+    {
+      "id": "Level_30",
+      "rank": 30,
+      "cost": 1632,
+      "stat_bonus_percent": 58,
+      "row_sha256": "7e856b91283399e984cbdf643e18bb1fded756680887ee306e7d2071799f4d7e"
+    },
+    {
+      "id": "Level_31",
+      "rank": 31,
+      "cost": 1739,
+      "stat_bonus_percent": 60,
+      "row_sha256": "be4ac2fdce7c6f4d6d60e1bbb0d1cc364be6a0accfc0b7b01d05aac703ce5ff0"
+    },
+    {
+      "id": "Level_32",
+      "rank": 32,
+      "cost": 1850,
+      "stat_bonus_percent": 62,
+      "row_sha256": "dc9cdad049206775c63b274a36225b356ff6fcce484c531ddfdca8fd21d5fe74"
+    },
+    {
+      "id": "Level_33",
+      "rank": 33,
+      "cost": 1958,
+      "stat_bonus_percent": 64,
+      "row_sha256": "1a113c9179980a9f0beacf9d4f25547c4f5ee9dab50d560b21fecd792db5dd4e"
+    },
+    {
+      "id": "Level_34",
+      "rank": 34,
+      "cost": 2072,
+      "stat_bonus_percent": 66,
+      "row_sha256": "aa0a9621d603fe02b232b254774cea96fabbca7ba318624b63e14bc20eec1aed"
+    },
+    {
+      "id": "Level_35",
+      "rank": 35,
+      "cost": 2187,
+      "stat_bonus_percent": 68,
+      "row_sha256": "ded69b3aa0ae8f2e3768921bcddcdbd1cb3e8659291d25c2d1df55e812e05c94"
+    },
+    {
+      "id": "Level_36",
+      "rank": 36,
+      "cost": 2305,
+      "stat_bonus_percent": 70,
+      "row_sha256": "7511c282a7a34fab8f7bc07d9ca56cda9d5a302643135564d7d69e844eac4bf2"
+    },
+    {
+      "id": "Level_37",
+      "rank": 37,
+      "cost": 2422,
+      "stat_bonus_percent": 72,
+      "row_sha256": "d9753db080e62deaa2b097b5d1f2b7d627965f34ce47b05c601f73191f915e29"
+    },
+    {
+      "id": "Level_38",
+      "rank": 38,
+      "cost": 2540,
+      "stat_bonus_percent": 74,
+      "row_sha256": "a5f8c7162d2fc131f13c58db12547918b18bb223aaccf5cdd68c5ce83ccfb29f"
+    },
+    {
+      "id": "Level_39",
+      "rank": 39,
+      "cost": 2661,
+      "stat_bonus_percent": 76,
+      "row_sha256": "c335ce7b780bfb27c5e5e2da7182d996d4e322e972bf517ad714f05b3514b162"
+    },
+    {
+      "id": "Level_40",
+      "rank": 40,
+      "cost": 2783,
+      "stat_bonus_percent": 78,
+      "row_sha256": "c9feb109f8d9d98a1837ecf4478daed982b267aa2268175ad1a4b6037b9b6bba"
+    },
+    {
+      "id": "Level_41",
+      "rank": 41,
+      "cost": 2904,
+      "stat_bonus_percent": 80,
+      "row_sha256": "7bca224cf72352badbd8a97df5b222c9239f20993299f86ea690f2020d2dd474"
+    },
+    {
+      "id": "Level_42",
+      "rank": 42,
+      "cost": 3028,
+      "stat_bonus_percent": 82,
+      "row_sha256": "e9458ecf7f25ac31cc5c442f3b56f7e491451540225cfb15d97022eaacdc52d5"
+    },
+    {
+      "id": "Level_43",
+      "rank": 43,
+      "cost": 3154,
+      "stat_bonus_percent": 84,
+      "row_sha256": "be7a2c4b7d6e930f80e6b2a7720779fb62bc3082dadc91fd7f47fa7db67d5222"
+    },
+    {
+      "id": "Level_44",
+      "rank": 44,
+      "cost": 3281,
+      "stat_bonus_percent": 86,
+      "row_sha256": "2d31d2c1b2836e19606e323d045e8204a34054c88c12907f4297f261d5dff521"
+    },
+    {
+      "id": "Level_45",
+      "rank": 45,
+      "cost": 3407,
+      "stat_bonus_percent": 88,
+      "row_sha256": "0c7281400da6687eab10544d103db5e324bdb0d7bc6205ab9bc630321ee23729"
+    },
+    {
+      "id": "Level_46",
+      "rank": 46,
+      "cost": 3534,
+      "stat_bonus_percent": 90,
+      "row_sha256": "a587785b64e2129f561efeb268236be8a169941b3a50ea101561c023543d29a8"
+    },
+    {
+      "id": "Level_47",
+      "rank": 47,
+      "cost": 3663,
+      "stat_bonus_percent": 92,
+      "row_sha256": "9cdb9ad117e04a608637e71b62e63d43b7252b08e002464d080980dea6b41de7"
+    },
+    {
+      "id": "Level_48",
+      "rank": 48,
+      "cost": 3787,
+      "stat_bonus_percent": 94,
+      "row_sha256": "d82e51f2e281f55f9ad707dd562f8df3806219a1052f6d2b0de87c3d72001c27"
+    },
+    {
+      "id": "Level_49",
+      "rank": 49,
+      "cost": 3916,
+      "stat_bonus_percent": 96,
+      "row_sha256": "49e6b1e14c83725b3c56fe095358806d178af21f2433b83fe9d34ec7abc0491b"
+    },
+    {
+      "id": "Level_50",
+      "rank": 50,
+      "cost": 4044,
+      "stat_bonus_percent": 98,
+      "row_sha256": "84f1e02c4b767f9cd25cb0a4807e0ae5170eaf4fa72a78dcfc0117c914d6a258"
+    },
+    {
+      "id": "Level_51",
+      "rank": 51,
+      "cost": 4172,
+      "stat_bonus_percent": 100,
+      "row_sha256": "8a031dc1dd2de939c3713842488f993ddbb5bc7e32d4182de2ef4035ac7a9265"
+    },
+    {
+      "id": "Level_52",
+      "rank": 52,
+      "cost": 4301,
+      "stat_bonus_percent": 102,
+      "row_sha256": "3e7f30797c28a563e5ff1d383321ae6b833809a12c899141f0038e6703fac811"
+    },
+    {
+      "id": "Level_53",
+      "rank": 53,
+      "cost": 4429,
+      "stat_bonus_percent": 104,
+      "row_sha256": "cf454cf61b0c62406d8fc2eba84c301c4f27d1961ea5ce697fae1b1be96ac6a1"
+    },
+    {
+      "id": "Level_54",
+      "rank": 54,
+      "cost": 4557,
+      "stat_bonus_percent": 106,
+      "row_sha256": "421c30b001f419b2c8220dcbc967debd7cef0b98b8e3fa7270d0ad71a06872ba"
+    },
+    {
+      "id": "Level_55",
+      "rank": 55,
+      "cost": 4685,
+      "stat_bonus_percent": 108,
+      "row_sha256": "81372d6fe4a7c7970609bfcdca773bde91205e7610c4d9ccf5c5e0c0510e88d6"
+    },
+    {
+      "id": "Level_56",
+      "rank": 56,
+      "cost": 4809,
+      "stat_bonus_percent": 110,
+      "row_sha256": "cfc802ee6bd331160421c25c3bd23dbc5c1d71bf0cb501e616a962725e294a76"
+    },
+    {
+      "id": "Level_57",
+      "rank": 57,
+      "cost": 4938,
+      "stat_bonus_percent": 112,
+      "row_sha256": "9fa48f59b552a8f836080f3d92de95f51a636270693fb446aaf7170f1d893e4f"
+    },
+    {
+      "id": "Level_58",
+      "rank": 58,
+      "cost": 5063,
+      "stat_bonus_percent": 114,
+      "row_sha256": "0c72fcec7eb4d459f4712a92b35fe5bb60ac38a370cece33649bc91869f991ee"
+    },
+    {
+      "id": "Level_59",
+      "rank": 59,
+      "cost": 5188,
+      "stat_bonus_percent": 116,
+      "row_sha256": "fdc1e2442ddc6a5423a765901d87175cc01fe9557827048ed2597e5e654ee164"
+    },
+    {
+      "id": "Level_60",
+      "rank": 60,
+      "cost": 5309,
+      "stat_bonus_percent": 118,
+      "row_sha256": "5cd865c23707ee056264303d780ffb2a0352fdcb842341ff598a00a843f15b7b"
+    },
+    {
+      "id": "Level_61",
+      "rank": 61,
+      "cost": 5430,
+      "stat_bonus_percent": 120,
+      "row_sha256": "0d6709b30902052a86bf8f6f96d3d37df57265c800ad24c74c96bd9e6630e88b"
+    },
+    {
+      "id": "Level_62",
+      "rank": 62,
+      "cost": 5551,
+      "stat_bonus_percent": 122,
+      "row_sha256": "3db51d7d2c267a13a7f1fbf04155685550bdb2ecf2785800ea221d46dc5d99ed"
+    },
+    {
+      "id": "Level_63",
+      "rank": 63,
+      "cost": 5673,
+      "stat_bonus_percent": 124,
+      "row_sha256": "eb419f49d97d64b4124f52951c979f436a0ca8b070001c9b6f260720f24f62f8"
+    },
+    {
+      "id": "Level_64",
+      "rank": 64,
+      "cost": 5790,
+      "stat_bonus_percent": 126,
+      "row_sha256": "a801240c99c87bfee2e24603868c8c000ddb82ac530aac6a1bbb6f931e6f02ce"
+    },
+    {
+      "id": "Level_65",
+      "rank": 65,
+      "cost": 5905,
+      "stat_bonus_percent": 128,
+      "row_sha256": "3978ef7d5d24a3c04ed6e0c6b1db91693fc9d3a86dd7a530fe95b1ec747c3386"
+    },
+    {
+      "id": "Level_66",
+      "rank": 66,
+      "cost": 6023,
+      "stat_bonus_percent": 130,
+      "row_sha256": "781fb67a300205d294c74ec4e77022020c9cf668f317815875e0682ce1a5d7db"
+    },
+    {
+      "id": "Level_67",
+      "rank": 67,
+      "cost": 6134,
+      "stat_bonus_percent": 132,
+      "row_sha256": "7f6045a01882423fca05b4c1e24f32380af7e24e1df2f61b6ff68cc1bf532591"
+    },
+    {
+      "id": "Level_68",
+      "rank": 68,
+      "cost": 6244,
+      "stat_bonus_percent": 134,
+      "row_sha256": "1210ccbab405f88d6900ab1a477d820bb9ec1e71c4f2629089fbc62a771c5481"
+    },
+    {
+      "id": "Level_69",
+      "rank": 69,
+      "cost": 6355,
+      "stat_bonus_percent": 136,
+      "row_sha256": "8a3cd532e807cf254dcceeb00eb9be8c6fadbcd936b0ec9a96b8185db73d604c"
+    },
+    {
+      "id": "Level_70",
+      "rank": 70,
+      "cost": 6459,
+      "stat_bonus_percent": 138,
+      "row_sha256": "461492b154e5c13e94c3046a87f17a524c374a5c835aad410dd09170d471cae1"
+    },
+    {
+      "id": "Level_71",
+      "rank": 71,
+      "cost": 6563,
+      "stat_bonus_percent": 140,
+      "row_sha256": "60689d37e7977831ab69c7d791a785ea94deb34ffdb2dc39e8dc80ad253a6c3d"
+    },
+    {
+      "id": "Level_72",
+      "rank": 72,
+      "cost": 6667,
+      "stat_bonus_percent": 142,
+      "row_sha256": "e2cc6a744327c7641f3b8f79b19764ddd24cf82992284904a0cd80d955cce747"
+    },
+    {
+      "id": "Level_73",
+      "rank": 73,
+      "cost": 6767,
+      "stat_bonus_percent": 144,
+      "row_sha256": "3f44933cdac8e6f006c79b18fbbacfd9a76e33083348a27383c3a6b52d8668fc"
+    },
+    {
+      "id": "Level_74",
+      "rank": 74,
+      "cost": 6865,
+      "stat_bonus_percent": 146,
+      "row_sha256": "7616f94f0bb908b6d6ecd9eef85e1134f8559a265c2208678e2c655efbfff3fb"
+    },
+    {
+      "id": "Level_75",
+      "rank": 75,
+      "cost": 6958,
+      "stat_bonus_percent": 148,
+      "row_sha256": "6d9f09acd8c6f463a7b994d1b25d768a57dd7f7fd9e06134a2d64088b5b024cd"
+    },
+    {
+      "id": "Level_76",
+      "rank": 76,
+      "cost": 7048,
+      "stat_bonus_percent": 150,
+      "row_sha256": "b36dc110742a12d558f76502c93ff6c387e92801c82b5f4246f3f4020d501cfb"
+    },
+    {
+      "id": "Level_77",
+      "rank": 77,
+      "cost": 7138,
+      "stat_bonus_percent": 152,
+      "row_sha256": "97b841bc41ef4510fc1ed0db151be7c5ae2298a2c7e3c036a45d27e2e00d2913"
+    },
+    {
+      "id": "Level_78",
+      "rank": 78,
+      "cost": 7222,
+      "stat_bonus_percent": 154,
+      "row_sha256": "07839327a7edc7e484435ba41b2927234877934b2b1b3fb426e9bd78073634bd"
+    },
+    {
+      "id": "Level_79",
+      "rank": 79,
+      "cost": 7304,
+      "stat_bonus_percent": 156,
+      "row_sha256": "57f9eeb59f25bdc43c390afa282638eb398c6031309c89aecc0f9950f05f66cf"
+    },
+    {
+      "id": "Level_80",
+      "rank": 80,
+      "cost": 7384,
+      "stat_bonus_percent": 158,
+      "row_sha256": "aeb15c79af3fa5401850945a4b91b09c5e6fca15a2c52896f3a68689403fdd25"
+    },
+    {
+      "id": "Level_81",
+      "rank": 81,
+      "cost": 9689,
+      "stat_bonus_percent": 160,
+      "row_sha256": "ce21318daf3985ee27d6d4c1a529864a081c4f5f5fb618f0397427357a4f6105"
+    },
+    {
+      "id": "Level_82",
+      "rank": 82,
+      "cost": 9783,
+      "stat_bonus_percent": 162,
+      "row_sha256": "c7be45819e78e9274698256e3b43d59b8b51a32c188c403e0717406ce41c659e"
+    },
+    {
+      "id": "Level_83",
+      "rank": 83,
+      "cost": 9869,
+      "stat_bonus_percent": 164,
+      "row_sha256": "8282e964e0d297c7bd3426b3b57f2eae5ad7a44b6cf860c3c044195df76598f2"
+    },
+    {
+      "id": "Level_84",
+      "rank": 84,
+      "cost": 9954,
+      "stat_bonus_percent": 166,
+      "row_sha256": "c4667ddf680ff13b33f5b297a98e2913f9e5e5cf8028090ed04ca74a7a55bfca"
+    },
+    {
+      "id": "Level_85",
+      "rank": 85,
+      "cost": 10031,
+      "stat_bonus_percent": 168,
+      "row_sha256": "21e3afa096eea199db735783459aafcae19ec56b454eb595caa0ea60e1ae7586"
+    },
+    {
+      "id": "Level_86",
+      "rank": 86,
+      "cost": 10107,
+      "stat_bonus_percent": 170,
+      "row_sha256": "d2f2099805f76657ac44f2dfe62cd70621dba97a308523de4370fe008556deca"
+    },
+    {
+      "id": "Level_87",
+      "rank": 87,
+      "cost": 10175,
+      "stat_bonus_percent": 172,
+      "row_sha256": "8a146ba668351d45c1dcfeca1d51585dd3982108661bf1ecab706c0b86945167"
+    },
+    {
+      "id": "Level_88",
+      "rank": 88,
+      "cost": 10238,
+      "stat_bonus_percent": 174,
+      "row_sha256": "a49fe105d3b32d41199892f84de00a94c0afbde2989825545566246a9ae64891"
+    },
+    {
+      "id": "Level_89",
+      "rank": 89,
+      "cost": 10296,
+      "stat_bonus_percent": 176,
+      "row_sha256": "ff7623f5835799c84a8b2d2d2e307436b09e65ea64fa9700f5ba4f7c26c6a3bc"
+    },
+    {
+      "id": "Level_90",
+      "rank": 90,
+      "cost": 10395,
+      "stat_bonus_percent": 178,
+      "row_sha256": "cb6d28f494fa174bdd358696a0bb4ba92cd697aa6e2eee866fc69dccd6597556"
+    },
+    {
+      "id": "Level_91",
+      "rank": 91,
+      "cost": 11635,
+      "stat_bonus_percent": 180,
+      "row_sha256": "b3b484c18695dd39c8a52d6289f45beda701cc8c5caa7794de8d040b128bc1e5"
+    },
+    {
+      "id": "Level_92",
+      "rank": 92,
+      "cost": 11720,
+      "stat_bonus_percent": 182,
+      "row_sha256": "c9523353a340e671c20666f0095d654d4cbc91b4913200644e437b6d7eb1168d"
+    },
+    {
+      "id": "Level_93",
+      "rank": 93,
+      "cost": 11800,
+      "stat_bonus_percent": 184,
+      "row_sha256": "76dc37b94e8ed01eeeb501f4b0eddea405b5e0379d805d16a8ba57fb59e3889f"
+    },
+    {
+      "id": "Level_94",
+      "rank": 94,
+      "cost": 11890,
+      "stat_bonus_percent": 186,
+      "row_sha256": "691e112eaad68ccb89885ddb073ebb53be66ce2d08d388feb35486697caf6737"
+    },
+    {
+      "id": "Level_95",
+      "rank": 95,
+      "cost": 11970,
+      "stat_bonus_percent": 188,
+      "row_sha256": "caa1fe9d895d9e9ec3aed69ad90cf0b3ff4e1bc6a3c49268c2f75134f488957b"
+    },
+    {
+      "id": "Level_96",
+      "rank": 96,
+      "cost": 12055,
+      "stat_bonus_percent": 190,
+      "row_sha256": "09d849f277fa38116fcb81b7ceb434de03cd6421c927e19fb6e7b2eacde75432"
+    },
+    {
+      "id": "Level_97",
+      "rank": 97,
+      "cost": 12140,
+      "stat_bonus_percent": 192,
+      "row_sha256": "ab6f3654429378b6d0384d20cae6bdc6634b894f553e4154f2059061aa5b1b1a"
+    },
+    {
+      "id": "Level_98",
+      "rank": 98,
+      "cost": 12225,
+      "stat_bonus_percent": 194,
+      "row_sha256": "11e9b22dfe1680bcdbe75fccf10e418fc8d58693bb06e3aaf4fdfba9608e3e02"
+    },
+    {
+      "id": "Level_99",
+      "rank": 99,
+      "cost": 12310,
+      "stat_bonus_percent": 196,
+      "row_sha256": "647e7d2d0c0229f8bce5eb29bca00be4bba7cf0061d92b3defc80ff65a748ef8"
+    },
+    {
+      "id": "Level_100",
+      "rank": 100,
+      "cost": 0,
+      "stat_bonus_percent": 198,
+      "row_sha256": "4a6ccd5256a17ebe89b82e7b4fbae9cab5f556790add7f78aa3e27cbfce65de8"
+    }
+  ],
+  "classes": [
+    {
+      "id": "class_avenger",
+      "restricted_bird": "bird_red",
+      "mastery_item": "mastery_avenger",
+      "row_sha256": "08e171dc885fc4b3d83e112f508f2c292fc47a23f4dc001ec8e01f4781ab3f91"
+    },
+    {
+      "id": "class_bard",
+      "restricted_bird": "bird_white",
+      "mastery_item": "mastery_bard",
+      "row_sha256": "7286e9b125b7df885cf4c6da15286d0b3ef67cf6ef98980bbc23d7de8df704fa"
+    },
+    {
+      "id": "class_berserk",
+      "restricted_bird": "bird_black",
+      "mastery_item": "mastery_berserk",
+      "row_sha256": "59adaa729fe4ba9850621c751e67925c02de10a44212bd222c2774337667e9fb"
+    },
+    {
+      "id": "class_cannoneer",
+      "restricted_bird": "bird_black",
+      "mastery_item": "mastery_cannoneer",
+      "row_sha256": "f7b27703b06dd03487fadfb2543af0cce6d2eed7e9d5a290609e311467675d54"
+    },
+    {
+      "id": "class_captn",
+      "restricted_bird": "bird_black",
+      "mastery_item": "mastery_captn",
+      "row_sha256": "39be32bc6d87ff882a51dd2371454f5b305a89668eb45a889b2495f7be058a6f"
+    },
+    {
+      "id": "class_cleric",
+      "restricted_bird": "bird_white",
+      "mastery_item": "mastery_cleric",
+      "row_sha256": "964df9f31046cfacc0ec9538af10f5bf8cd12326b1c8f22807c339989d4e2835"
+    },
+    {
+      "id": "class_corsair",
+      "restricted_bird": "",
+      "mastery_item": "mastery_corsair",
+      "row_sha256": "236481632a33070a5c9a10ac8205d391a64741295b47a0cf2a2b79d6b1c3134c"
+    },
+    {
+      "id": "class_druid",
+      "restricted_bird": "bird_white",
+      "mastery_item": "mastery_druid",
+      "row_sha256": "39fc4cb1aec87627f8a06532865097fdcb7e637b9539eaed8bf1b24ef8df481c"
+    },
+    {
+      "id": "class_guardian",
+      "restricted_bird": "bird_red",
+      "mastery_item": "mastery_guardian",
+      "row_sha256": "f0f5f922a5f3d61dadfacef365717d196955e7453c6a56c4b6396911ef4829b3"
+    },
+    {
+      "id": "class_illusionist",
+      "restricted_bird": "bird_yellow",
+      "mastery_item": "mastery_illusionist",
+      "row_sha256": "59e5324c2b3fb52ead4100acc94d9cd041a08e235d7fae067ac24d02824f3b10"
+    },
+    {
+      "id": "class_knight",
+      "restricted_bird": "bird_red",
+      "mastery_item": "mastery_knight",
+      "row_sha256": "f0556ae0c43e31cf9a7939ba47f55426367400bafe9f974868abba460562cfc8"
+    },
+    {
+      "id": "class_lightningbird",
+      "restricted_bird": "bird_yellow",
+      "mastery_item": "mastery_lightningbird",
+      "row_sha256": "bc214cd2dc155de2d77287ac66696686573aefe3982cf94114ef4b451d7d1454"
+    },
+    {
+      "id": "class_mage",
+      "restricted_bird": "bird_yellow",
+      "mastery_item": "mastery_mage",
+      "row_sha256": "4d65ad79d062f31dd1f2b46a35c708e0dfef3d24e6c29c71220fd0c498aab713"
+    },
+    {
+      "id": "class_marksmen",
+      "restricted_bird": "bird_blue",
+      "mastery_item": "mastery_marksmen",
+      "row_sha256": "c0301d7e88ac08a376ac1f571d9b73be88ae9a663671dac3dcfeb5e267bfea7a"
+    },
+    {
+      "id": "class_moonpriest",
+      "restricted_bird": "",
+      "mastery_item": "mastery_moonpriest",
+      "row_sha256": "3350b09c28878f9e35ed9e597b72a43b626ae003dc0f324bf207085bbb6aefe2"
+    },
+    {
+      "id": "class_nerd",
+      "restricted_bird": "",
+      "mastery_item": "mastery_nerd",
+      "row_sha256": "78cfd9e7b96e1306730201e77c80a05f98ee002e1d772dfcecabd11f289847b2"
+    },
+    {
+      "id": "class_paladin",
+      "restricted_bird": "bird_red",
+      "mastery_item": "mastery_paladin",
+      "row_sha256": "c2f6e851dd0227295eb667969d74ba422b7e8b04237b086c35c5e6c32bf771fb"
+    },
+    {
+      "id": "class_pirate",
+      "restricted_bird": "bird_black",
+      "mastery_item": "mastery_pirate",
+      "row_sha256": "dd5fb0774dd9b997a2e91c488928a7bdee7981ce2aec36e74361d524d6b12656"
+    },
+    {
+      "id": "class_priest",
+      "restricted_bird": "bird_white",
+      "mastery_item": "mastery_priest",
+      "row_sha256": "cc6d892720bcd070992961e79945d37974a68370a305021fda3418bbfe25357c"
+    },
+    {
+      "id": "class_princess",
+      "restricted_bird": "bird_white",
+      "mastery_item": "mastery_princess",
+      "row_sha256": "31c5f104b4cd9dfbad0125301ff0388a164182de8f5b1ed58109240146e8810f"
+    },
+    {
+      "id": "class_rainbird",
+      "restricted_bird": "bird_yellow",
+      "mastery_item": "mastery_rainbird",
+      "row_sha256": "9b6fc6accbb3d7d0a2ba2a882e5660dfd08af0e7ba188d18527c6df94298a605"
+    },
+    {
+      "id": "class_rogues",
+      "restricted_bird": "bird_blue",
+      "mastery_item": "mastery_rogues",
+      "row_sha256": "f54a0e522625c659c8b701d47a545b5b7065b2cf9ecfc3df54aacd2e2982ae2b"
+    },
+    {
+      "id": "class_ronin",
+      "restricted_bird": "",
+      "mastery_item": "mastery_ronin",
+      "row_sha256": "a9d6d62b99b52cb91a8444cd2ad5e15b951d2742e7dff67387c76e22181935cb"
+    },
+    {
+      "id": "class_samurai",
+      "restricted_bird": "bird_red",
+      "mastery_item": "mastery_samurai",
+      "row_sha256": "a2a68be4c36385e7b6667855b3aed0a3c9d05ed3af860683a7f35ea0eb9bcec5"
+    },
+    {
+      "id": "class_seadog",
+      "restricted_bird": "bird_black",
+      "mastery_item": "mastery_seadog",
+      "row_sha256": "ec94f63037953d2b2a9bd5af2602e5ff20e6d6fc88434fd760d00152d54d45b7"
+    },
+    {
+      "id": "class_skulkers",
+      "restricted_bird": "bird_blue",
+      "mastery_item": "mastery_skulkers",
+      "row_sha256": "8605073fead352e6904be87823c8a11e4811893fd4fccb5820a18105da0b911b"
+    },
+    {
+      "id": "class_spies",
+      "restricted_bird": "bird_blue",
+      "mastery_item": "mastery_spies",
+      "row_sha256": "4f44ee2b9c407d244a6e9d592c7cd538d329c56c5adc45a44a92a15cc6e955ee"
+    },
+    {
+      "id": "class_stoneguard",
+      "restricted_bird": "bird_red",
+      "mastery_item": "mastery_stoneguard",
+      "row_sha256": "e1f5f6dc8f6900f9dd2f34d5597cf6cec255462479381fe7862cc8364eb36e0c"
+    },
+    {
+      "id": "class_thunderbird",
+      "restricted_bird": "bird_yellow",
+      "mastery_item": "mastery_thunderbird",
+      "row_sha256": "3f8ff582dce6793844d989748f4c4575650be1d489a8d9d15361b7c60699b2d4"
+    },
+    {
+      "id": "class_treasurehunters",
+      "restricted_bird": "bird_blue",
+      "mastery_item": "mastery_treasurehunters",
+      "row_sha256": "d62dbd279d3ff8e9de1d12c406a7e3d7cdf7e55d2113049d43508a2e0585dd00"
+    },
+    {
+      "id": "class_tricksters",
+      "restricted_bird": "bird_blue",
+      "mastery_item": "mastery_tricksters",
+      "row_sha256": "4a3b546f8e8301af2a2891ddab75edce0dc88ca2edac8bcd04ae5ec5ed278ee2"
+    },
+    {
+      "id": "class_winterfighter",
+      "restricted_bird": "bird_black",
+      "mastery_item": "mastery_winterfighter",
+      "row_sha256": "212c4456195aae568d533e476c6c664d4fd45fd40efc597af2abac8caa0fe153"
+    },
+    {
+      "id": "class_witch",
+      "restricted_bird": "bird_white",
+      "mastery_item": "mastery_witch",
+      "row_sha256": "6f5ab87f354f187e3367a23268fc479e9d2386cebe405d8fff16b85d35daffb1"
+    },
+    {
+      "id": "class_wizard",
+      "restricted_bird": "bird_yellow",
+      "mastery_item": "mastery_wizard",
+      "row_sha256": "18bfb580379c9a17223bf3dd3cfced31d5075698bb48ecac6e0f2e9b3a4b4c9d"
+    }
+  ],
+  "items": [
+    {
+      "id": "mastery_all",
+      "scope": "ALL",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "row_sha256": "f464859956ade3bd2beda200e1f26600785c1731a78ea47f554edd13681d47c0"
+    },
+    {
+      "id": "mastery_current",
+      "scope": "current",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 250
+        }
+      ],
+      "row_sha256": "6ccdb728018adb1dda19b198196b719e0e6a5aa70708fdeced47b01e6b14b743"
+    },
+    {
+      "id": "mastery_bird_red",
+      "scope": "bird_red",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 250
+        }
+      ],
+      "row_sha256": "94b3a8ed23fefbe9ad68a2365f27f8eff5437a69473de0481e17b690a72dc891"
+    },
+    {
+      "id": "mastery_bird_yellow",
+      "scope": "bird_yellow",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 250
+        }
+      ],
+      "row_sha256": "b647ff9530e69673a27373baf1617947c386871afaf18a4b397fd8a3eff24b81"
+    },
+    {
+      "id": "mastery_bird_white",
+      "scope": "bird_white",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 250
+        }
+      ],
+      "row_sha256": "7ab682b3922eca7b4ba6a18ce57ddd63243fe45aa20495089fad3dfa1f5d185a"
+    },
+    {
+      "id": "mastery_bird_black",
+      "scope": "bird_black",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 250
+        }
+      ],
+      "row_sha256": "b6faa2c52967867d369f7ffe52fb438f6ebb81cd3c8ad1ea2d30093c2d944062"
+    },
+    {
+      "id": "mastery_bird_blue",
+      "scope": "bird_blue",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 250
+        }
+      ],
+      "row_sha256": "9607d4ed6fbac9e78c0ee4129385b6f1724965b31f0052a9bdae445794fdd5fe"
+    },
+    {
+      "id": "mastery_knight",
+      "scope": "class_knight",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "47055defd393eb7c914e6617bf6df3ef7aa7214fdca7f68776090822d4ceb19e"
+    },
+    {
+      "id": "mastery_ronin",
+      "scope": "class_ronin",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "627d6faf98de2e2e6dbf9db152daf808360490009c774b1fc85f22318541bc67"
+    },
+    {
+      "id": "mastery_guardian",
+      "scope": "class_guardian",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "241f80fa82589857938fd62e7dc1456924e45f1c94169bee3f85b8a02b66c643"
+    },
+    {
+      "id": "mastery_samurai",
+      "scope": "class_samurai",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "6a1e0b717499a5e76e4175d48f5c2b5e6f0e0e9504a9c52cf01241fc72c04763"
+    },
+    {
+      "id": "mastery_avenger",
+      "scope": "class_avenger",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "39a0c0b33985d388f17a2719383a99abf6684afeacedf4f54d6e31f2237c59af"
+    },
+    {
+      "id": "mastery_paladin",
+      "scope": "class_paladin",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "be56c7b4b7e7eebdda904fef872ef045ecca74895db8f88acfb696a20404bdc4"
+    },
+    {
+      "id": "mastery_stoneguard",
+      "scope": "class_stoneguard",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "3e81aa153a453564059bc06adae55ef3600b1835dd94db2642decb819fc02ac5"
+    },
+    {
+      "id": "mastery_mage",
+      "scope": "class_mage",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "38d7ae8753817e0a14cbe1c2725ee52704db5415acf83ccc3e7947c25ce3437c"
+    },
+    {
+      "id": "mastery_nerd",
+      "scope": "class_nerd",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "6b97f00144cafd9bb29d0f80aef86701f6e9050b703a459c91a967bfb6bf2a70"
+    },
+    {
+      "id": "mastery_lightningbird",
+      "scope": "class_lightningbird",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "fe4c3654bb9d963868de724dd5103ac9a77461e43f1e3b9f60f1c3b60e758235"
+    },
+    {
+      "id": "mastery_wizard",
+      "scope": "class_wizard",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "58f59097610507db28714990c3016b70a9959c6536d37118a62c280a0cc67e3e"
+    },
+    {
+      "id": "mastery_rainbird",
+      "scope": "class_rainbird",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "c66aa3d013cae3c72389e6acf854d86c9498a9a0ea1b9b582f4a97c0d5ff20c6"
+    },
+    {
+      "id": "mastery_thunderbird",
+      "scope": "class_thunderbird",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "ba9c913a07bf63a6fda881fab9b0147861149ee8c4f981590f765bb7e6ed3209"
+    },
+    {
+      "id": "mastery_illusionist",
+      "scope": "class_illusionist",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "fe2ec9eebfc8a8973f3ccc4840bfa8d41c0a3f9e2018d88da848caa0215683d9"
+    },
+    {
+      "id": "mastery_cleric",
+      "scope": "class_cleric",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "de162cabb2ef539b3950b23ece0155215e8abc06b57a71fbe6f66168d5f8efa3"
+    },
+    {
+      "id": "mastery_druid",
+      "scope": "class_druid",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "895ae03ed366798d313a94a53f3fd37fbcb587ced20cc2d802284553ebeca4b7"
+    },
+    {
+      "id": "mastery_princess",
+      "scope": "class_princess",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "7412b59da8dfb9573a67f50d7c5e3a83633cac36252704fcbcf0bbd5d4827f6a"
+    },
+    {
+      "id": "mastery_bard",
+      "scope": "class_bard",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "d09c33a9fdfd4d8b151a3c15aab257a85885e1f159b12c7e7a23ac74fcb1602b"
+    },
+    {
+      "id": "mastery_priest",
+      "scope": "class_priest",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "48cae42d95e4ec4f07d4c3f484311b4ee826d7ce6721b97280722f3ea7a1d5e3"
+    },
+    {
+      "id": "mastery_moonpriest",
+      "scope": "class_moonpriest",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "1abf4f3757b2217aab8c03c70d336bc1f75e288d04c295d00518ceffccf3ca04"
+    },
+    {
+      "id": "mastery_witch",
+      "scope": "class_witch",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "2caf4f24c63bae5fe95934cf51f1b02a428c3e6047f11a5a1333f339c7c71032"
+    },
+    {
+      "id": "mastery_pirate",
+      "scope": "class_pirate",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "a0c7961a42884161179d891e6ac5c1a2b51167144680843026ac6df615762ebc"
+    },
+    {
+      "id": "mastery_corsair",
+      "scope": "class_corsair",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "886dcb14942d4f639179cd3f1d8aa17cae807f635bb9c1437ef25f6a04530d63"
+    },
+    {
+      "id": "mastery_cannoneer",
+      "scope": "class_cannoneer",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "c23834ccdfdc07af26f9d68e2ee83e900ff79764b30ff6023cd622a6395d68f8"
+    },
+    {
+      "id": "mastery_berserk",
+      "scope": "class_berserk",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "6cf4868db5b18dee0f1c18e9b93b6296df96cec130db6ae064d44b5c205daf8e"
+    },
+    {
+      "id": "mastery_captn",
+      "scope": "class_captn",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "f815c1f00674c633a37b4588671bfe9247814178654efb88fc672e7007d0b928"
+    },
+    {
+      "id": "mastery_seadog",
+      "scope": "class_seadog",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "69296a1c637b6ff7416dcd38d948b208fcdd0138229eb6928bb8387200ff2f4a"
+    },
+    {
+      "id": "mastery_winterfighter",
+      "scope": "class_winterfighter",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "488dd2dc7b6514ef8b7041fd5b4cb618734ca0f3e9d2a72ce03f3d290e1a5b37"
+    },
+    {
+      "id": "mastery_tricksters",
+      "scope": "class_tricksters",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "da97bb5508ac7b67e2c9f4e485eaadbd4fd7ec72f1afb5a215a3ccffd4ffe2d0"
+    },
+    {
+      "id": "mastery_rogues",
+      "scope": "class_rogues",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "e961d749003b868dab3eb8a850420ad70ebd3ec7bbb3ad96a98e070278f217a8"
+    },
+    {
+      "id": "mastery_skulkers",
+      "scope": "class_skulkers",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "b7814a7bdfde5e5160fccbdfc141d55844280fd742164d070c46ba19949de1fb"
+    },
+    {
+      "id": "mastery_spies",
+      "scope": "class_spies",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "ed706b60a660baa7f18f49d2bf0bf9fdc46ff222d5b005ffe1565fe65b1272fb"
+    },
+    {
+      "id": "mastery_marksmen",
+      "scope": "class_marksmen",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "8d66bb4906fcf6d1974e4338042b39b650fa4afd88ea08fcc2b35021746b2699"
+    },
+    {
+      "id": "mastery_treasurehunters",
+      "scope": "class_treasurehunters",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "4176b4534f8ac65dc53d6268b70012272a2a61bf86ef19525f78912aaef12aaf"
+    },
+    {
+      "id": "mastery_mighty_eagle",
+      "scope": "class_mighty_eagle",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "e53f6643c6632fc6e45041bea4d4c337118f446259ec62a0909d0024f3415f08"
+    },
+    {
+      "id": "mastery_headgear_bird_prince_porky",
+      "scope": "headgear_bird_prince_porky",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "87147aec2a585c8dae786d7d3417958ef56bde09df514f6232a10ec2ec42d096"
+    },
+    {
+      "id": "mastery_headgear_bird_merchant",
+      "scope": "headgear_bird_merchant",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "6c679117be7d253dc1673e9db360fb24ecbf4dc972f43e7ef4d135fb5e3cb279"
+    },
+    {
+      "id": "mastery_headgear_bird_adventurer",
+      "scope": "headgear_bird_adventurer",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "ee5f94b14c35593b840d5ff56917266c6ba4b277e40f59cdb0b1879f31074771"
+    },
+    {
+      "id": "mastery_sonic",
+      "scope": "class_sonic",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "9fb606ee42e0bf9a4b39667106d6dbe92ac8254bfb471c0b9770a91ee6dc68a4"
+    },
+    {
+      "id": "mastery_headgear_valkyrie",
+      "scope": "headgear_valkyrie",
+      "fallback": [
+        {
+          "id": "gold",
+          "amount": 500
+        }
+      ],
+      "fallback_old": [
+        {
+          "id": "gold",
+          "amount": 100
+        }
+      ],
+      "row_sha256": "57e781f05f6ef66f03fe61de96001c1e2b324ac513c27b6f65d562cde0117f6e"
+    }
+  ],
+  "unlock": {
+    "resource": "unlock_mastery_badge",
+    "offer": "offer_star_reward_02",
+    "stars": 100,
+    "offer_sha256": "8bed4eb3d72760323eae0574e297b2be0d6f74e6e1e98a222c6437b1646b9d44"
+  },
+  "source_sha256": "b98293b8e7d8376a38063e0d64076534e2e24569e40d3150fd4abe3172541c0a",
+  "limitations": [
+    "Current-party rewards use the recovered 100-star badge gate and v7 shared class progress; action-boundary delivery/cache refresh approximates native callback timing",
+    "Native resource inventory/full star-shop claim flow, non-current reward scopes/fallback, NPC guest ownership, rank-up popup/effects and exact cache callbacks remain unfinished"
+  ]
+}

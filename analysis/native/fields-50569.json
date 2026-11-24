@@ -1,0 +1,480 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 50569,
+      "declaring_type_index": 6408,
+      "declaring_type": "CharacterControllerBattleGroundBase",
+      "fields": [
+        {
+          "metadata_index": 32177,
+          "name": "m_ReviveMePrefab",
+          "offset": 12,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32178,
+          "name": "m_InstantiatedReviveMe",
+          "offset": 16,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32179,
+          "name": "m_BattleMgr",
+          "offset": 20,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32180,
+          "name": "m_Model",
+          "offset": 24,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32181,
+          "name": "m_CounterModel",
+          "offset": 28,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32182,
+          "name": "m_CounterModelTarget",
+          "offset": 32,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32183,
+          "name": "m_RetargetDeadCounterModel",
+          "offset": 36,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32184,
+          "name": "m_WasKnockedOut",
+          "offset": 37,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32185,
+          "name": "UsedConsumable",
+          "offset": 40,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32186,
+          "name": "m_AlreadyPlaced",
+          "offset": 44,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32187,
+          "name": "m_AllowClick",
+          "offset": 45,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32188,
+          "name": "m_AllowDrag",
+          "offset": 46,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32189,
+          "name": "m_StartPositionY",
+          "offset": 48,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 32190,
+          "name": "m_reviveClicked",
+          "offset": 52,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32191,
+          "name": "m_CommandGiven",
+          "offset": 53,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32192,
+          "name": "m_stunnedDuringAttack",
+          "offset": 54,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32193,
+          "name": "m_maxSpawnDelay",
+          "offset": 56,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 32194,
+          "name": "m_minSpawnDelay",
+          "offset": 60,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 32195,
+          "name": "m_hidden",
+          "offset": 64,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32196,
+          "name": "LastingVisualEffects",
+          "offset": 68,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 32197,
+          "name": "m_ScrollingCombatTextPrefab",
+          "offset": 72,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32198,
+          "name": "m_ScrollingCombatTextWithLabelPrefab",
+          "offset": 76,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32199,
+          "name": "m_CriticalAdditionalEffect",
+          "offset": 80,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32200,
+          "name": "m_ScorePopup",
+          "offset": 84,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32201,
+          "name": "m_CharacterSpeechBubblePrefab",
+          "offset": 88,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32202,
+          "name": "m_TapHoldTrigger",
+          "offset": 92,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32203,
+          "name": "m_TweenMovement",
+          "offset": 96,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32204,
+          "name": "m_CurrentPerkType",
+          "offset": 100,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 32205,
+          "name": "m_AssetController",
+          "offset": 104,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32206,
+          "name": "m_SpeechBubbles",
+          "offset": 108,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 32207,
+          "name": "m_BoxCollider",
+          "offset": 112,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32208,
+          "name": "ShowTooltip",
+          "offset": 116,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 32209,
+          "name": "Clicked",
+          "offset": 120,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 32210,
+          "name": "m_tauntedTarget",
+          "offset": 124,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32211,
+          "name": "m_IsWaitingForInput",
+          "offset": 128,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32212,
+          "name": "m_SkillToDo",
+          "offset": 132,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32213,
+          "name": "m_CounterSkillToDo",
+          "offset": 136,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32214,
+          "name": "<m_CounterAttack>k__BackingField",
+          "offset": 140,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32215,
+          "name": "<targetSheltered>k__BackingField",
+          "offset": 144,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32216,
+          "name": "m_CachedZ",
+          "offset": 148,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 32217,
+          "name": "m_CachedTransform",
+          "offset": 152,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32218,
+          "name": "m_TooltipTapBegan",
+          "offset": 156,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32219,
+          "name": "m_GoalMarkerBubble",
+          "offset": 160,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32220,
+          "name": "m_BeShelteredRetreatValue",
+          "offset": 164,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 32221,
+          "name": "m_ReadyToDestroy",
+          "offset": 168,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 32222,
+          "name": "m_StartPosition",
+          "offset": 172,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 32223,
+          "name": "m_LastHealthUpdate",
+          "offset": 184,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 32224,
+          "name": "OffsetFromEnemyZ",
+          "offset": 188,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 32225,
+          "name": "m_BirdFocusPosOffset",
+          "offset": 192,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 32226,
+          "name": "m_RankUpEffect",
+          "offset": 204,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 32227,
+          "name": "m_InitialStartPosOffset",
+          "offset": 208,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 32228,
+          "name": "m_CachedFocusPos",
+          "offset": 220,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 32229,
+          "name": "m_CachedUnfocusedPos",
+          "offset": 232,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 32230,
+          "name": "m_StartSize",
+          "offset": 244,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 32231,
+          "name": "<>f__am$cache0",
+          "offset": 0,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 32232,
+          "name": "<>f__am$cache1",
+          "offset": 4,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 32233,
+          "name": "<>f__am$cache2",
+          "offset": 8,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 32234,
+          "name": "<>f__am$cache3",
+          "offset": 12,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}

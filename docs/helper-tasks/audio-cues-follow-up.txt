@@ -1,0 +1,142 @@
+FOLLOW-UP ASSIGNMENT: COMPLETE AND VERIFY ONE ORIGINAL AUDIO CUE PATH
+
+You are continuing the audio task for the Rust Angry Birds Epic recreation.
+The main agent reviewed your previous delivery. Read this review before doing
+more work. Do not treat the previous HANDOFF.txt's completion claims as evidence.
+
+REVIEW OF THE PREVIOUS DELIVERY
+
+The only delivered file under helper-work/audio-cues was HANDOFF.txt.
+There was no cue-map.json, resolver.rs, extraction script, evidence directory,
+test implementation, or captured test output. Therefore the original assignment
+was not complete, and its claimed extraction/verification was not reproducible.
+
+These facts do match analysis/native-methods.json:
+- SoundManager.PlayCharacterTypeSound: metadata_index 31790,
+  address 17588276 (0x10c6034).
+- SoundManager.PlayCharacterSound: metadata_index 31791,
+  address 17588983 (0x10c62f7).
+- Both have parameter count 3, with parameter NAMES:
+  baseName, character, objectSource.
+Names and addresses do not prove parameter types, dispatch behavior, call timing
+or which sound is played. Those require additional evidence.
+
+The claim that Character_Red_Attack_1 is missing is incorrect. An exact lookup in
+content/audio.json finds it, with these three asset names:
+  character_red_attack_01
+  character_red_attack_02
+  character_red_attack_03
+All three references resolve to recovered Ogg files; the main agent checked
+their file hashes against the manifest. This sound is not listed among the
+manifest's seven missing bindings. Distinguish the configured sound ID from the
+lowercase clip asset names, and distinguish configured variant availability
+from proof that a particular action dispatches that sound.
+
+There are 256 sound rows whose IDs contain 'character' (case-insensitive).
+There are 45 rows across these five exact prefixes: Character_Red_,
+Character_Yellow_, Character_White_, Character_Black_, Character_Blues_.
+Your '~80' figure had no delivered filtering script or result set, so its
+meaning cannot be verified. Report exact counts with explicit selection rules.
+
+32955076 (0x1f6dac4) appears in the linked report's string_literal_slots map as
+'Sound Played: '. That is a literal usage-slot address, not proof of an executed
+logging call, a sound playback routine or the native address of either one.
+Use the correct category of address when reporting evidence.
+
+PROJECT AND BOUNDARY
+
+Project: C:\Users\Adria\Downloads\epic-rust
+Original brief: C:\Users\Adria\Desktop\Epic Rust Helper Task.txt
+
+Create/edit ONLY:
+C:\Users\Adria\Downloads\epic-rust\helper-work\audio-cues-v2\
+
+Read the main project and previous brief for context. Preserve the previous
+handoff as history. Do not modify main source, saves, Cargo files, shared
+generated files, shared analysis/native-methods.json, findings, documentation,
+original inputs, the Desktop package, or the goal state. The main goal remains
+paused; this task does not authorize resuming it or publishing anything.
+
+Do not run tools/link_native.py unchanged: it overwrites shared files. Read its
+binding/annotation code and use the existing linked report read-only. Use objdump
+directly, saving focused output in your assigned evidence directory, or adapt a
+copy of the tool so ALL writes remain inside your assigned directory. Check for
+other hidden output writes before running copied/imported recovery helpers.
+Do not execute the original game's native library.
+
+TASK LIST, IN ORDER
+
+1. Create verify_inputs.py using only Python's standard library. Make paths
+   relative to a supplied project root. Validate the existing source hashes,
+   locate the two methods by class/name, and perform an exact lookup of
+   Character_Red_Attack_1. Resolve its three clips and verify recovered Ogg
+   existence and SHA256 against audio.json. Report exact sound counts with the
+   filter rules above. Fail with a useful error if an expected input is absent;
+   do not silently classify a bad path or failed search as a missing game asset.
+
+2. Trace ONE complete path first: a normal Red attack's original sound cue.
+   Inspect the two SoundManager native method bodies and their relevant caller
+   or serialized event. Determine which original identity/name is passed, how
+   the final configured sound ID is formed, when the call occurs, how variants
+   are selected, and which parameters/channel/gain flags apply. Include metadata
+   indices, actual code addresses, and focused disassembly or object/event
+   identities. Read actual instructions; a name search is only a starting point.
+
+3. Create cue-map.json with the confirmed Red path, its variant references and
+   provenance. Clearly separate three different facts: sound definition exists,
+   original call path dispatches it, and timing/selection behavior is proven.
+   Mark any unproved part unresolved. Do not claim gameplay playback was tested
+   when you have only inspected static files.
+
+4. Implement resolver.rs plus any small generated table for the proven subset.
+   Keep it independent of playback, macroquad, game saves and combat RNG. Model
+   only behavior supported by the evidence. Preserve variant lists and native
+   selection/parameter-presence semantics rather than always selecting clip 0.
+   If a required behavior is unresolved, return an explicit unresolved result
+   instead of supplying a guessed mapping.
+
+5. Add meaningful tests. Verify that the known Red ID resolves, all its clip
+   references/hashes match, an unknown ID is handled explicitly, and the proven
+   dispatch/variant behavior matches source evidence. Include malformed input
+   checks in the Python verifier. Compile/run Rust tests with rustc --test and
+   place the executable inside your own directory. Capture the exact commands,
+   exit statuses and output. Searching with grep/sed alone is not a substitute
+   for resolver tests or source behavior evidence.
+
+6. Only after the Red path is proved and tested, extend the same process to
+   normal attacks for Chuck, Matilda, Bomb and the Blues. Do not infer those
+   mappings just because similarly named sound IDs exist. If time or evidence
+   limits you, deliver the completed Red subset and state the remaining scope.
+   Leave hit, knockout, revival, support and rage for a subsequent assignment.
+
+7. Write HANDOFF.txt listing every delivered file, confirmed coverage, unresolved
+   questions, exact test commands/results, proposed integration points and any
+   file changes outside your assigned directory (the expected answer is none).
+   Distinguish delivered code from proposed next steps. Do not label discovery,
+   extraction or verification complete unless the corresponding artifacts exist
+   and demonstrate it. Then stop and report its absolute path.
+
+REQUIRED FILES
+
+verify_inputs.py
+cue-map.json
+resolver.rs (plus its generated data if required)
+evidence/ (focused disassembly/object reports and captured test output)
+HANDOFF.txt
+
+TOOLS
+
+Python: C:\Users\Adria\AppData\Local\Programs\Python\Python312\python.exe
+Rust tools: C:\Users\Adria\.cargo\bin\
+Objdump: C:\msys64\ucrt64\bin\objdump.exe
+
+Metadata SHA256:
+a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf
+x86 native SHA256:
+d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19
+
+The original build uses IL2CPP metadata v23. Reuse the existing verified method
+bindings. Follow applicable AGENTS.md/skill instructions. Do not install new
+dependencies or spawn agents without authorization. A narrow confirmed result
+with reproducible evidence is more useful than broad unsupported completion
+claims.

@@ -1,0 +1,100 @@
+You are helping another coding agent finish a Rust recreation of Angry Birds Epic. Your assignment is original sound-effect cue recovery and a small, independently testable cue resolver. Work autonomously within this assignment, then stop and produce an integration report.
+
+PROJECT AND GOAL
+
+Main project: C:\Users\Adria\Downloads\epic-rust
+Desktop playable package: C:\Users\Adria\Desktop\Epic Rust
+Requested reference repository: C:\Users\Adria\Downloads\rea (https://github.com/morluto/rea.git)
+
+The overall goal is a complete standalone Rust recreation of the supplied game, eventually verified on multiple platforms, with easier earned gold and all bundled player hats purchasable with gold. The current build is an unfinished prototype. Do not claim complete recreation or universal device support.
+
+The main agent is currently paused. Do not resume its goal, change its goal state, publish anything, or contact anyone. Your work should be easy for that agent to review and integrate later.
+
+YOUR FILE BOUNDARY
+
+Create and edit files ONLY inside:
+C:\Users\Adria\Downloads\epic-rust\helper-work\audio-cues\
+
+Read the main project and original data as needed. Do not modify main source, Cargo files, generated files, README, RECONSTRUCTION.json, analysis/native-methods.json, shared findings, original inputs, Desktop package, or local.data saves. Do not run the Desktop packager. Do not start another agent unless the user explicitly authorizes delegation.
+
+This is a shared workspace. Do not revert or overwrite other changes. Put every output, disassembly, temporary file, generated table, executable and report in your assigned directory. If using a recovery helper that writes shared output, adapt a copy to your assigned directory or use a read-only extraction path. In particular, tools/link_native.py regenerates shared analysis/native-methods.json; do not run it unchanged.
+
+CURRENT AUTHORITATIVE STATE
+
+Read README.md and RECONSTRUCTION.json first and verify these facts against the files:
+- Core: deterministic Rust battle engine. Client: macroquad 0.4.16 plus quad-storage.
+- 116 original player hat skins across 34 classes; every hat uses earned gold. Starting gold 500, victory gold 200 + 25 * encounter ordinal.
+- 167 imported main-island encounters. Combat, story, rewards, presentation and other modes remain incomplete.
+- Save format is EPIC_RUST_8. Saved owned gear, loadouts, XP, stars and mastery exist. Live wheel reward delivery, resource inventory, crafting and many equipment effects remain unfinished. Do not change saves or combat.
+- Latest completed checks: 139 Rust tests, 38 Python recovery tests, Clippy with warnings denied, Windows release build and native UI/save checks. Only Windows x86_64 is verified.
+- 622 original AudioClips have already been recovered and their FSB5 Vorbis data losslessly repackaged to Ogg, independently decoded and checked. Do not redo extraction without evidence of a fault.
+- Audio manifest has 460 sound rows, 459 unique sound IDs, five provider tables, and explicit unresolved references.
+- Nine embedded PCM music tracks currently provide primary music through Windows WinMM. Sound effects, original channel gains, fades, secondary music and other platform backends remain unfinished.
+- The existing WinMM PlaySound backend is single-stream. Do not use it to play effects over music: it would interrupt music. This assignment does not require implementing an audio backend.
+
+USEFUL INPUTS
+
+content/audio.json
+content/animations.json
+content/animation-runtime.json
+tools/recover_audio.py
+tools/fsb_audio.py
+tools/build_music_runtime.py
+tools/inspect_game.py
+tools/link_native.py (read its address-binding/annotation logic; see write restriction above)
+tools/native_field_layout.py
+analysis/native-methods.json
+analysis/native/findings.json
+analysis/native/*.asm
+analysis/global-metadata.dat
+analysis/libil2cpp-x86.so
+crates/epic-client/src/music.rs
+crates/epic-client/src/presentation.rs
+crates/epic-client/src/animation.rs
+
+The original build is com.rovio.gold 3.0.27463.4821, Unity 5.6.3p3, IL2CPP metadata version 23, with x86 and ARMv7 libraries. The supplied archive originally had the typo angry-brids-epic.xapk. Source material is already extracted in the project; locate it instead of asking the user to upload it again.
+
+Metadata SHA256:
+a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf
+x86 native SHA256:
+d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19
+
+REA's available metadata support did not cover this v23 build, so the project has its own verified static reader and native method bindings. Use REA where applicable; do not force unsupported parsing or alter source inputs. A requirement to read a skill or AGENTS.md still applies when its scope covers your actual work.
+
+TOOLS ON THIS COMPUTER
+
+Rust tools: C:\Users\Adria\.cargo\bin\
+Python: C:\Users\Adria\AppData\Local\Programs\Python\Python312\python.exe
+Objdump: C:\msys64\ucrt64\bin\objdump.exe
+Default shell: PowerShell. Network/dependency downloads may be unavailable; prefer existing tools and offline builds. Use rg for searches. Never execute the extracted game's native library.
+
+TASKS, IN ORDER
+
+1. Trace the original normal-battle sound-effect dispatch for the five playable birds. Start with attack, hit, knockout and revival cues; then cover support and rage where their bindings are provable. Inspect original serialized events, sound providers and native callers. Do not guess from a filename that happens to sound appropriate.
+
+2. Follow each confirmed cue through to a configured sound ID and the existing manifest's clip references. Record source method metadata index/address or serialized object/event identity, trigger timing, relevant flags, parameter presence, random variant rules, duplicate-ID lookup behavior, gain/channel routing and any missing reference. Distinguish recovered facts, inference and unresolved behavior.
+
+3. Produce a deterministic machine-readable mapping plus a small Rust resolver that can be integrated later. Keep it independent of macroquad and device playback. Model inputs using original semantic events and identities only where evidence supports that model. If routing requires state or parameters, preserve them rather than inventing a universal mapping. Keep cosmetic randomness separate from combat RNG. Do not flatten variants to the first clip or consume RNG when native code does not.
+
+4. Write meaningful standalone tests covering recovered variants, timing/dispatch distinctions, missing bindings and duplicate-ID behavior as applicable. Compile/run the resolver with rustc --test, writing its executable inside your assigned directory. Use Python's standard library for manifest validation. Do not edit or rebuild the shared project just to test your isolated module.
+
+5. Stop after this bounded assignment. Do not expand into combat, music replacement, resource rewards, UI redesign, platform packaging or other game systems.
+
+REQUIRED OUTPUTS (ALL INSIDE YOUR ASSIGNED DIRECTORY)
+
+- cue-map.json: structured, provenance-backed confirmed mappings and explicit unresolved entries.
+- resolver.rs and any accompanying generated data: independently compilable resolver and meaningful tests for confirmed behavior.
+- recover_audio_cues.py (or equivalent): reproducible extraction/validation using existing inputs without rewriting the main project.
+- evidence/: supporting focused disassembly or serialized-object reports, with source hashes/identities. Keep output reasonably small.
+- HANDOFF.txt: what is finished, exact test commands/results, unresolved gaps, every new file, proposed integration points and a minimal integration plan. Include any assumptions and their evidence.
+
+ACCEPTANCE CRITERIA
+
+- Every claimed mapping links to primary evidence from the supplied build.
+- Clip references resolve against existing recovered audio or explicitly identify a known missing reference.
+- Confirmed behavior is reproducible and tested; uncertain behavior remains marked unresolved.
+- Resolver does not play audio, touch saves, alter battle RNG, or require new dependencies.
+- No file outside your assigned directory was changed.
+- Do not invent substitute effects or claim that recovering cue mappings completes the game's audio system.
+
+If a particular cue cannot be proved, document the precise missing evidence and continue with other cues. Deliver partial confirmed coverage honestly rather than filling gaps with guesses. In your final response, give the main agent the absolute path to HANDOFF.txt and a concise description of coverage and test results.

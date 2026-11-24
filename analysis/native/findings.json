@@ -1,0 +1,590 @@
+{
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "observations": [
+    {
+      "method": "BirdGameData::get_ClassIndependentAttack",
+      "address": "0x6c4b3d",
+      "source": "34998.asm",
+      "fact": "Adds CharacterAttack to MainHandItem.GetItemMainStat(-1) when an item exists."
+    },
+    {
+      "method": "BirdGameData::get_ClassIndependentHealth",
+      "address": "0x6c5437",
+      "source": "35006.asm",
+      "fact": "Adds CharacterHealth to OffHandItem.GetItemMainStat(-1) when an item exists."
+    },
+    {
+      "method": "BirdGameData::get_BaseAttack / get_BaseHealth",
+      "addresses": [
+        "0x6c5001",
+        "0x6c533a"
+      ],
+      "sources": [
+        "35001.asm",
+        "35004.asm"
+      ],
+      "fact": "Adds class-independent and class-dependent stats, then applies skin bonus as total * bonus / 100."
+    },
+    {
+      "method": "ThornSkill::Init",
+      "address": "0x6bef2f",
+      "source": "38813.asm",
+      "fact": "Reads EffectDuration and stores the retaliation parameter divided by 100 at instance+0x40."
+    },
+    {
+      "method": "ThornSkill+<DoAction>c__Iterator0::MoveNext",
+      "address": "0x6bf590",
+      "source": "38819.asm",
+      "fact": "At 0x6bf8e4 multiplies the stored ratio by source ICombatant.get_ModifiedAttack (interface slot 28). DoAction wrapper 0x6bf0be maps argument source [ebp+0x10] to iterator+0xc, proving source identity. Fixed thorn damage is now implemented separately from incoming-damage reflection."
+    },
+    {
+      "method": "BaseCombatant<BirdGameData>::get_ModifiedAttack",
+      "address": "0x1603b55",
+      "source": "34610-generic-1953.asm",
+      "fact": "Generic native binding resolves the BirdGameData instantiation. Getter calls BattleService.ApplyBuffsOnAttack and adds AttackBuff; exact stacking and equipment perk interaction still require tracing."
+    },
+    {
+      "method": "BattleEffectGameData::InitActions / OnInvokerStartTurn / GetTurnsLeft",
+      "addresses": [
+        "0xebcf15",
+        "0xebf719",
+        "0xebf170"
+      ],
+      "sources": [
+        "34742.asm",
+        "34751.asm",
+        "34752.asm"
+      ],
+      "fact": "InitActions subscribes using source faction (BirdsTurnStarted or PigsTurnStarted). OnInvokerStartTurn advances elapsed turns unless manual, updates the effect, and removes finite effects at elapsed >= duration. Negative durations persist. GetTurnsLeft clamps duration minus elapsed to zero. Full event ordering remains unresolved."
+    },
+    {
+      "method": "HealAndCleanseSkill::Init / Heal",
+      "addresses": [
+        "0x14b89cc",
+        "0x14b8e20"
+      ],
+      "sources": [
+        "38478.asm",
+        "38480.asm"
+      ],
+      "fact": "Init uses dictionary key presence for invoker, first_target and cleanse_target flags. Heal chooses source modified health for invoker, original selected target health for first_target, or each target health otherwise. Additional healing percentage applies only to selected target; cleanse chance and target-only cleansing are separate."
+    },
+    {
+      "method": "Sound::Init",
+      "address": "0x10c4d59",
+      "source": "31779.asm",
+      "fact": "Switch at 0x10c4e21 dispatches SoundParameterType 0 to looping=true (+0x17), 1 to one-shot=true (+0x14), 2 to primary music/source (+0x15/+0x2c), 3 to FadeTime (+0x20) from parameter Value, 4 to secondary music/source (+0x16/+0x2c). Boolean flags use presence even when Value=0. Jump table destinations verified from ELF bytes."
+    },
+    {
+      "method": "Sound::GetAssetName",
+      "address": "0x10c4f89",
+      "source": "31780.asm",
+      "fact": "Nonempty AssetNames selects UnityEngine.Random.Range(0, Count) then indexed name. Empty list returns NameId. It does not select by modulo elapsed time or first asset."
+    },
+    {
+      "method": "SoundManager::Initialize",
+      "address": "0x10c5945",
+      "source": "31788.asm",
+      "fact": "Checks SoundLookup.ContainsKey at 0x10c5a39, skips Add when present, so duplicate IDs retain the first definition. Both duplicate rows still join channel lists and run Init. Shipped SkillFX_Gen_Support_Magic has two rows with volumes 0.5 and 1.0."
+    },
+    {
+      "method": "SoundManager::PlayMusic / Sound::Start",
+      "addresses": [
+        "0x10c6408",
+        "0x10c5048"
+      ],
+      "sources": [
+        "31792.asm",
+        "31781.asm"
+      ],
+      "fact": "PlayMusic routes to PlaySound on primary music source GameObject. Start obtains the audio provider for AssetPrioritiy, picks GetAssetName and GetAudioClip, uses one-shot branch or normal AudioSource loop/volume/clip/play with a music fade coroutine path. Complete fades, channel gain and trigger behavior remain unfinished."
+    },
+    {
+      "method": "BirdGameData::get_CharacterAttack / get_CharacterHealth; PigGameData equivalents",
+      "addresses": [
+        "0x6c490d",
+        "0x6c510a",
+        "0x6f5200",
+        "0x6f5cb0"
+      ],
+      "sources": [
+        "34997.asm",
+        "35003.asm",
+        "35093.asm",
+        "35098.asm"
+      ],
+      "fact": "Computes Mathf.Round(base + (level - 1) * ((perLevel / 100f) * base)) in single precision. Native inlined rounding branches compare fractional halves and odd integer parts for ties-to-even. ELF GOT literals 100f, +1/-1 and +0.5/-0.5 verified. PerLevel fields are percentages, not flat increments."
+    },
+    {
+      "method": "EquipmentGameData::GetItemMainStat",
+      "address": "0x6d3b8d",
+      "source": "35744.asm",
+      "fact": "Chooses quality-percent list[quality] or last entry; rounds percentage-of-base level growth first. Percentage quality is Round((((qualityPercent/quality)/100f)*roundedBase)*quality), zero at quality <=0, then Max with quality when qualityPercent>0 else 0. Adds roundedBase, integer quality*StatPerQuality and that percentage bonus. Ancient adds total*AncientEquipmentStatsBoost/100; positive enchantment then adds current total*enchantment.StatsBoost/100. Returns float without final rounding."
+    },
+    {
+      "method": "BirdGameData::get_ClassAttack / get_ClassHealth",
+      "addresses": [
+        "0x6c4bfa",
+        "0x6c54c4"
+      ],
+      "sources": [
+        "34999.asm",
+        "35005.asm"
+      ],
+      "fact": "Looks up ExperienceMasteryBalancingData by Level_{ClassItemData.Level:00}, returns StatBonus/100f * class-independent stat. Class-independent includes the corresponding gear. Legacy ClassItemBalancingData per-mastery fields are not used by these getters."
+    },
+    {
+      "method": "BirdGameData::CreateNewInstance(nameId, level)",
+      "address": "0x6c25df",
+      "source": "34986.asm",
+      "fact": "Uses default-inventory InitializingLevel when nonzero, otherwise supplied bird level, to GenerateLoot. Rewards that loot with quality argument 0 at 0x6c28f0 and source 4; default hand identities come from the exact InventoryBalancingData dictionary. Full loot/recruitment lifecycle remains unfinished."
+    },
+    {
+      "method": "PlayerGameData::OnExperienceChanged / ApplyLevelUp / GetNeededExperience",
+      "addresses": [
+        "0x70369d",
+        "0x703981",
+        "0x703475"
+      ],
+      "sources": [
+        "35909.asm",
+        "35910.asm",
+        "35908.asm"
+      ],
+      "fact": "OnExperienceChanged resolves ExperienceLevelBalancingData for current Level_{level:00}; absent current row returns without adding XP. Adds delta to PlayerData.Experience and compares >= row.Experience at 0x703907, calling ApplyLevelUp once. ApplyLevelUp subtracts neededExperience from residual XP at 0x703a1d and increments player level at 0x703a68. Updates next cost only when next row exists (0x703bee), and sets each owned bird level. Supplied rows Level_01..99 imply terminal 100; table costs sum123520. Full fractional XP, surplus UI event choreography and level-up loot remain unfinished."
+    },
+    {
+      "method": "PigGameData::get_DefeatLoot / LootOperations::GenerateLootRecursive / ProcessLootEntry / AddItemValue",
+      "sources": [
+        "35106.asm",
+        "41964.asm",
+        "41965.asm",
+        "41966.asm",
+        "41967.asm",
+        "41970.asm",
+        "41956.asm",
+        "23783.asm"
+      ],
+      "fact": "Pig defeat loot is lazily generated from repeated field13 root map at pig level. Recursive table generation caps depth at10; type1 weighted uses eligible rows and inclusive cumulative boundary, type2 inventory ignores level/probability filters, type0 probability uses inclusive comparison. Entry selection consumes Random.Range(0,Span+1), clamps negative values, propagates nonnegative level delta and recurses into nested tables. Existing resource IDs merge before ancient_ normalization; normalized key collisions can throw. All26 tables reachable from140 imported pig maps are weighted; three direct-resource roots are valid. Wheel and forced-wheel selection remain unimplemented; Unity global RNG order remains provisional."
+    },
+    {
+      "method": "CharacterControllerBattleGroundBase::GetXpDifferenceFactor / <DefeatCharacter>c__Iterator0::MoveNext",
+      "sources": [
+        "50584.asm",
+        "50653.asm",
+        "50658.asm",
+        "50659.asm"
+      ],
+      "fact": "XP factor uses pigLevel-playerLevel. Equal difference returns1; otherwise first ascending ExperienceScaling.Difference >= difference supplies XpModifier/100; no upper bound returns1. Per-pig XP is multiplied then truncated with cvttss2si. On final wave with no living pigs, BattleBalancing.BonusLoot experience is added after scaling, once using battle manager+0x90 guard; may create XP item when absent. RewardLootGetInputCopy receives battle ControllerInventory+0x78. Rust settles once per recorded defeat at action boundaries, retaining loss/retreat XP; native death coroutine order and level-up fighter refresh remain unfinished."
+    },
+    {
+      "method": "WorldMapService::SetupHotspotBattle / BattleService::GenerateBattle / BattleGameData::OnControllerLevelUp",
+      "sources": [
+        "42504.asm",
+        "40915.asm",
+        "34820.asm"
+      ],
+      "fact": "World map setup stores PlayerGameData.InventoryGameData at BattleStartGameData+0x1c. GenerateBattle copies it to BattleGameData.ControllerInventory+0x78, and start level+0x30 to battle controller level+0x7c. OnControllerLevelUp assigns new controller level. This statically confirms direct player inventory routing rather than a win-only XP stash; full retreat and runtime UI/rollback comparison remains unverified."
+    },
+    {
+      "method": "BirdCombatant::model_LevelChanged / BaseCombatant<BirdGameData>::RaiseBuffsChanged / get_ModifiedHealth / get_IsParticipating",
+      "sources": [
+        "34848.asm",
+        "34632-generic-2019.asm",
+        "34607-generic-1950.asm",
+        "34610-generic-1953.asm",
+        "34618-generic-1956.asm",
+        "34634-generic-2005.asm",
+        "34683-generic-2006.asm",
+        "40960.asm",
+        "50418.asm",
+        "50447.asm"
+      ],
+      "fact": "Bird model level event raises combatant LevelChanged then RaiseBuffsChanged. BuffsChanged marks attack cache+0x50 and health cache+0x44 dirty. ModifiedHealth recomputes from dynamic bird base and health modifiers/perk, writes result into current-health storage+0x60 at0x1603ac3, then adds TemporaryHealth+0x3c to cached maximum+0x40. Thus level refresh indirectly refills health; merely tracing level callback and current-health clamp misses this side effect. IsAlive checks positive current health; IsParticipating separately rejects knockout and checks participation flag+0xac. LevelUp effect waits on UI level-up state/pacing, spawns configured LevelUp/LevelUpFX and finally dispatches ICombatant slot104 RaiseBuffsChanged, not slot13 RefreshHealth. Rust refreshes all battle birds with original base growth/captured skin, refills HP and retains explicit knockout/actions/effects; full temporary-health/perks, exact lazy getter/coroutine order and revival lifecycle remain unfinished."
+    },
+    {
+      "method": "PopupSingleBirdRevive::ReviveButtonClicked / BattleMgrBase::ReviveBird / CharacterControllerBattleGroundBase::ReviveCombatant / CharacterAssetController::PlayReviveAnim",
+      "sources": [
+        "44022.asm",
+        "40012.asm",
+        "32119.asm",
+        "50562.asm",
+        "40966.asm",
+        "40970.asm",
+        "34839.asm",
+        "34855.asm",
+        "31597.asm",
+        "31636.asm",
+        "revival-type-slot.json"
+      ],
+      "fact": "Single revive obtains GameConstants.ReviveSingleBirdsRequirement and consumes requirement before calling ReviveBird. Original requirement row is resource lucky_coin amount5; all-party10/PvP15 retained separately. ReviveBird requests100 percent health at0x9f54ce, then ICombatant slot97 set_KnockOutOnDefeat(true), so repeated paid revives are possible. ReviveCombatant computes ModifiedHealth*percentage/100-CurrentHealth, queues HealDamage (slot112), runs HealCurrentTurn, clears IsKnockedOut (slot89), restores initiative membership and recalculates. Bird ctor defaults KnockOutOnDefeat true; knockout callback turns it off until revive rearms it. PlayKnockoutAnim selects KnockedOut. PlayReviveAnim first recognizes BirdGameData and selects KnockedOutEnd; non-bird branch uses ICharacter.IsPvPBird before falling back to Resurrection. All five bird clips verified in runtime library. Rust single revive uses existing shared gold wallet, full health, separate knockout state, retained used action and recovery presentation; native separate currencies, all-party/PvP/free/tutorial flow, full initiative, perks and trigger timing remain unfinished. Metadata usage-kind1 slot GOT+0x45918 independently resolves native CLASS type definition4486 ABH.GameDatas.BirdGameData, confirming the first PlayReviveAnim branch."
+    },
+    {
+      "method": "BattleUIStateMgr::m_ReviveBirdsButton_Clicked / EnterReviveButton / BattleMgrBase::ReviveAllBirds",
+      "sources": [
+        "43703.asm",
+        "43743.asm",
+        "32118.asm",
+        "40005.asm",
+        "50562.asm"
+      ],
+      "fact": "Revive click selects normal ReviveBirdsRequirement or PvP requirement. PlayerData.FirstReviveUsed is checked at0xa4ac99; when false a copied requirement is created with Value0 at0xa4ace8/call0xa4acf0, retaining resource/type. Requirement consumption must succeed before FirstReviveUsed=true at0xa4aebe/call0xa4aec6; calls ReviveAllBirds and saves player data. EnterReviveButton applies the same free-first rule to displayed cost. ReviveAllBirds loops faction0 with ReviveCombatant100%, clears ActedThisTurn for both factions (ICombatant slot127), StartedHisTurn for faction1 (slot129), then clears/restarts initiative. No enemy-health reset or wave reload in this path. Rust v5 persists the entitlement, backs up v4 before mutation, restores all birds/reset turn completion in the existing battle and retains drop ledger. Exact initiative/coroutine/trigger/perk flow, separate native currency inventory and original popup/countdown remain unfinished."
+    },
+    {
+      "method": "ClassItemGameData::AddMastery / MasteryNeededForNextRank / MasteryMaxRank / InventoryOperationServiceRealImpl::OnAddMasteryItem",
+      "sources": [
+        "35604.asm",
+        "35608.asm",
+        "35605.asm",
+        "35602.asm",
+        "35603.asm",
+        "41870.asm",
+        "41865.asm",
+        "41931.asm"
+      ],
+      "fact": "OnAddMasteryItem first requires inventory value unlock_mastery_badge>0; direct ClassItem.AddMastery separately requires that badge item exist. Class ItemValue is signed int Value; AddMastery adds amount, loops while rank<MasteryMaxRank and Value>=current required cost, subtracts/clamps0, increments class rank, updates ExperienceForNextLevel and recomputes next cost at0x6cdbec. Reaching maximum clears residual Value. MasteryMaxRank counts ExperienceMasteryBalancingData rows (100 bundled); rank0 cost sentinel10000000, rank>=maximum cost i32::MAX; normal cost uses current Level_XX.Experience, not OldExperience/AncientExperience. Current mastery selects faction0 ICombatant.IsParticipating (slot86) and !ICharacter.IsNPC (slot20), then awards each participant current class; quantity is not split. AddMastery(c) resolves owner by class RestrictedBirdId; some legacy rows have empty restriction, retained as data for later ownership/routing work. Source offer_star_reward_02 rewards unlock_mastery_badge and requires star_collection>=100 with one-time acquired-reward condition. Core evaluator/recipient/stat-helper foundation implemented separately; live unlock/star scoring, owned class persistence, delivery/fallback, exact timing and callbacks remain unfinished."
+    },
+    {
+      "method": "BattleService::GetScoreForPig / GetScoreForBird / GetMaxScoreForBird / EvaluateFinalBattleScore / EvaluateBattlePerformance / UpdateCurrentCombatant / EndCurrentTurn",
+      "sources": [
+        "40938.asm",
+        "40939.asm",
+        "40940.asm",
+        "40941.asm",
+        "40942.asm",
+        "40943.asm",
+        "40944.asm",
+        "40948.asm",
+        "40962.asm",
+        "40964.asm",
+        "41059.asm",
+        "41060.asm"
+      ],
+      "fact": "Campaign ScoringStrategy enum FixedMaximum0/MaximumByStrength1; 109/58 imported encounter definitions, BonusPoints field13. GetScoreForPig reads BattleGameData.m_CurrentWaveTurn+0x24 and clamps (100-5*counter)/100 to minimum25%; ignores summoningType2. Fixed score truncates30000*((ratio*pigStrength)/sum non-banner faction1 strength); strength score truncates ratio*(2000*pigStrength). Current-wave enemy denominator includes defeated pigs; HandleNextWave removes/replaces faction1, accumulates original pig strength and resets wave counter at0x504d73. UpdateCurrentCombatant calls EndCurrentTurn only when remaining-initiative list+0x60 empties; EndCurrentTurn increments current and wave counters at0x508752/755. Final score sums accumulated pig points plus participating survivor birds (predicate slot86), bonus points; bird ratio floored50%, Fixed maximum per bird truncates30000/partyCount, strength per bird10000. Strength per-star threshold truncates(accumulatedStrength*2000 + 10000*partyCount)/4, and final score caps at4 thresholds. Fixed threshold15000. EvaluateBattlePerformance tests score>=3T then>=2T, clamps minimum1. Core follows these arithmetic paths at current action-boundary death collection; original coroutine/initiative details, floating HP and non-imported modes remain unfinished."
+    },
+    {
+      "method": "WorldMapService::CompleteHotSpot / GetTotalAccumulatedStars / EvaluateStarCollection",
+      "sources": [
+        "42513.asm",
+        "42529.asm",
+        "42514.asm"
+      ],
+      "fact": "CompleteHotSpot compares stored stars and only writes an improved StarCount (get0xab48ee, compare0xab48f3, set0xab4922). GetTotalAccumulatedStars includes cave collection and main-world Type1 hotspots, excludes hotspot_golden_pig_battleground. All167 imported nodes are source Type1 and exclude that special ID. EvaluateStarCollection compares star_collection with recomputed total and automatically buys eligible shop_star_rewards offers. Core v6 saves highest stars only for imported nodes and exposes the recovered100-star mastery eligibility; other collections and complete star-shop reward/unlock claim flow remain unfinished."
+    },
+    {
+      "method": "Current-party mastery delivery integration",
+      "sources": [
+        "41870.asm",
+        "41931.asm",
+        "41865.asm",
+        "35604.asm"
+      ],
+      "fact": "Live Rust integration now maps the source100-star badge gate to highest-star collection, applies current-party drops once to participating captured classes, validates restricted-bird ownership and shares rank state across skins. v7 stores rank and residual points by stable class ID, validates ownership/range/canonical residual, initializes absent legacy mastery to rank1 and preserves exact v6 before changed writes. Locked drops advance their delivery cursor without being banked; the battle reaching100 stars does not retroactively gain mastery from pre-unlock drops. Rank changes update base stats using original combined character/gear mastery-before-skin formula and retain knockout state/actions/effects. Delivery and stat-cache invalidation are at current action boundaries; exact native callback/cache/refill timing, other reward scopes/fallback, full native resource/star-shop claim flow and rank-up presentation remain unfinished."
+    },
+    {
+      "method": "LootOperations::GenerateListByWheel / GetLootIndexFromWheel",
+      "addresses": [
+        "0x57d4a2",
+        "0x57d938"
+      ],
+      "sources": [
+        "41968.asm",
+        "41971.asm"
+      ],
+      "fact": "Chooses one integer Random.Range(0, entryCount) start even if amount <= 0. For amount positive, processes entries[(start+i)%entryCount] in order. Each goes through ProcessLootEntry; no level eligibility or weight/probability selection at wheel level. The selected start is written through the caller reference."
+    },
+    {
+      "method": "LootOperations::GenerateListByWheelForced",
+      "address": "0x57d377",
+      "source": "41969.asm",
+      "fact": "Uses caller-provided referenced integer start, then consecutive wrapped slots, with no random starting-slot draw. Entry quantity/span RNG still runs."
+    },
+    {
+      "method": "LootOperations::GenerateLootRecursive / ProcessLootEntry",
+      "addresses": [
+        "0x57c4df",
+        "0x57d5ce"
+      ],
+      "sources": [
+        "41964.asm",
+        "41970.asm"
+      ],
+      "fact": "Verified relative jump table at GOT-0x64f9cc: kind0 ->0x57c6f5 probabilities, 1 ->0x57c743 weights, 2 ->0x57c78e inventory, 3 ->0x57c7df wheel/forced flag, 4 ->0x57c83e forced wheel. Kind3 uses forced flag at ebp+0x30; kind4 always forced. ProcessLootEntry recursive call clears preview/forced flags. Wheel processors pass a separate initially-zero local wheel-index ref to ProcessLootEntry, so a forced root start is not inherited by nested wheels."
+    },
+    {
+      "method": "BattleService::FinishBattlePlayerWin",
+      "address": "0x4fe6e7",
+      "sources": [
+        "40931.asm",
+        "wheel-end-data-fields.json"
+      ],
+      "fact": "At 0x4fee84 passes BattleEndGameData.m_BattlePerformanceStars (+0x20) as GenerateLoot amount, m_Level (+0x44) as level, and ref m_ThrownWheelIndex (+0x28), then stores resulting wheel map at endData+0x10. It calls GenerateLoot separately for Balancing.LootTableAdditional with amount1 and stores at +0x14. Verified nongeneric BattleEndGameData layout retained. Remaining battle wheel-table initialization/selection and reward application need integration."
+    },
+    {
+      "method": "InventoryOperationServiceRealImpl::GenerateEquipment",
+      "address": "0x575d09",
+      "source": "41910.asm",
+      "fact": "Creates EquipmentData, assigns provided level/name/value/quality/source, sets IsNew true. GenerateAndSetNewEquipmentGameData wraps it in EquipmentGameData and generates original scrap loot; scrap progression remains unimplemented."
+    },
+    {
+      "method": "PlayerGameData::CreateNewInstance / InventoryOperationServiceRealImpl::GenerateCraftingRecipe",
+      "addresses": [
+        "0x704c36",
+        "0x575e0b"
+      ],
+      "sources": [
+        "35912.asm",
+        "41915.asm"
+      ],
+      "fact": "Player creation constructs player_inventory at 0x704d08. At 0x706332 reads its DefaultInventoryContent, at 0x706348 reads PlayerData.Level, passes both to GenerateLoot at 0x706377. Recipe constructor preserves provided level, name, value, quality and sets IsNew. Original loot_starting_inventory has recipe_weapon_red_lance_01 level delta+1 and duplicate recipe_vial entries; recovery retains this information rather than flattening every starting item to an untyped count."
+    }
+  ],
+  "enemy_ai_observations": [
+    {
+      "method": "BattleService::GetNextSkill / InitiateNewCombo / GetCurrentSkillFromComboAndUpdateCombo",
+      "addresses": [
+        "0x50e94f",
+        "0x50f1c5",
+        "0x50f46a"
+      ],
+      "sources": [
+        "40993.asm",
+        "40994.asm",
+        "40995.asm"
+      ],
+      "fact": "ComboInfo stores a selected AiCombo and index initially zero. Native selection reads indexed ComboChain skill, increments the index, checks skill feasibility, and chooses another combo once exhausted. Feasibility skipping and PvP/interrupt paths remain unimplemented."
+    },
+    {
+      "method": "BattleService::GetRandomCombo",
+      "addresses": [
+        "0x5106fb",
+        "0x50f9f6"
+      ],
+      "sources": [
+        "41000.asm",
+        "41001.asm"
+      ],
+      "fact": "Sums combo percentages, draws Unity Random.Range(0,total), and selects by cumulative lower bounds in serialized order. Rust uses its own seeded random stream with the same weighted selection structure."
+    },
+    {
+      "method": "SkillBattleDataBase::GetChargeDuration / EvaluateCharge",
+      "addresses": [
+        "0xec9072",
+        "0xeba86c"
+      ],
+      "sources": [
+        "38253.asm",
+        "38265.asm"
+      ],
+      "fact": "Reads and truncates charge parameter to int. Creates a manual charge effect with that duration, retains target at skill+0x38, and returns true while charging. Existing charge with turns left greater than one increments elapsed manually; at one or less it clears charging and recursively evaluates continuation. Charge modifiers and special interrupt interactions remain unresolved."
+    },
+    {
+      "method": "BattleService::GetNextTargetForAttackSkill / GetNextTargetForSupportSkill",
+      "addresses": [
+        "0x510ba4",
+        "0x510deb"
+      ],
+      "sources": [
+        "41004.asm",
+        "41005.asm",
+        "41236.asm",
+        "41239.asm"
+      ],
+      "fact": "Dispatches on PigTargetingBehavior. Metadata enum: None=0, Weakest=1, Strongest=3, bird-specific=11..15, Self=16. Weakest/strongest selector lambdas read ICombatant.get_CurrentHealth (slot31). Other debuff/buff/charging-specific selectors remain separate work."
+    }
+  ],
+  "animation_observations": [
+    {
+      "method": "SmoothMoves.BoneAnimation::SetVertexData",
+      "address": "0x14789a2",
+      "source": "25872.asm",
+      "fact": "Copies four supplied Vector3 corner values directly into the mesh vertex array at consecutive indices. Frame corner values are already pivot-adjusted, so the runtime must not subtract the pivot offset again. Runtime source validation rejects non-planar frame corners before packing its 2D sprite geometry."
+    },
+    {
+      "method": "SmoothMoves.BoneAnimation::AnimationEvent_Triggered / AnimationEventTrigger / FireTextureTrigger",
+      "addresses": [
+        "0x1477d00",
+        "0x1477d75",
+        "0x14785c4"
+      ],
+      "sources": [
+        "25865.asm",
+        "25866.asm",
+        "25867.asm"
+      ],
+      "fact": "AnimationEvent_Triggered reads Unity AnimationEvent.intParameter and indexes the trigger frame array before forwarding to AnimationEventTrigger. Event type constants from nested TRIGGER_EVENT_TYPE: UserTrigger0, HideTexture1, ChangeMaterial2, ChangeDepth3, ChangeTexture4, ChangePivot5, ChangeCollider6. FireTextureTrigger handles visibility, material, mesh vertex and UV changes. All2352 decoded Unity events independently agree with SmoothMoves clip index and integer frame."
+    },
+    {
+      "method": "ABH.GameDatas.Battle.SkillBattleDataBase::BoneAnimationUserTrigger",
+      "address": "0xec8e95",
+      "source": "38251.asm",
+      "fact": "Base callback compares Movement, Impact and Projectile, spawning VFX/projectiles. AttackSkillTemplate override and coroutine provide additional melee wait evidence in the following observation; full native damage sequencing remains unfinished."
+    },
+    {
+      "method": "AttackSkillTemplate::BoneAnimationUserTrigger / Init / <DoAction> iterator.MoveNext",
+      "addresses": [
+        "0xeb2627",
+        "0xeb23c3",
+        "0xeb4cd3"
+      ],
+      "sources": [
+        "36517.asm",
+        "36516.asm",
+        "36525.asm",
+        "36523.asm"
+      ],
+      "fact": "Impact override clears this+0x3c at0xeb26c4. Melee coroutine invokes attack delegate, sets stopped=1 at0xeb61f6, copies fallback timeout from this+0x48 to iterator+0x68, yields per frame while stopped and timeout positive, decrementing by deltaTime; later reaches BattleService.DealDamageFromCurrentTurn at0xeb9442. Init obtains fallback from PacingBalancing.FallBackTimeWaitForSkillImpact and binds delegate to source combatant view.PlayAttackAnimation. Shipped timeout recovered as1.5 seconds; conditional branch at0xeb6218 overrides with0.4 and its eligibility still requires tracing. Projectile/multihit/support timing remains unfinished."
+    },
+    {
+      "method": "PacingBalancing::.ctor / get_TimeFromStartPosToBasePosInSec / get_FallBackTimeWaitForSkillImpact",
+      "addresses": [
+        "0x7816be",
+        "0x781815",
+        "0x78194e"
+      ],
+      "sources": [
+        "33706.asm",
+        "33707.asm",
+        "33725.asm"
+      ],
+      "fact": "First field getter loads instance+0xc; Impact fallback getter loads+0x50, corresponding to declaration index17. Constructor default at+0x50 is1.0 but original OBB level1 component124 serializes1.5. tools/recover_pacing.py matches MonoScript reference, declaration order, all40 fields and exact payload end; content/pacing.json preserves hashes. Other shipped values include multiattack delay0.5 and show-damage/return delay0.75. Runtime currently uses only melee timeout; remaining use sites need tracing."
+    },
+    {
+      "method": "CHMotionTween::Play / Update / get_MovementDuration; SkillBattleDataBase::SpawnProjectile",
+      "addresses": [
+        "0x8d3ac6",
+        "0x9078f4",
+        "0x8dbd22",
+        "0xeb2f2a"
+      ],
+      "sources": [
+        "39248.asm",
+        "39252.asm",
+        "39243.asm",
+        "38252.asm"
+      ],
+      "fact": "Play timing0 copies m_DurationInSeconds(+0x3c) to computed duration+0x6c; timing1 computes Vector3.Distance(start,end)/speed(+0x40). Update normalizes elapsed time by+0x6c and invokes Finished at completion, evaluates general/per-axis AnimationCurves. SpawnProjectile obtains tween component, sets end transform, optionally inverts curves, calls Play then schedules projectile Destroy using configured+0x3c. Recovered all671 serialized tweens consume exact payload;52 components named Projectile use fixed0.2/0.25/0.3seconds. Identifying each projectile asset binding and damage callback remains unfinished."
+    },
+    {
+      "method": "DIContainerInfrastructure::<get_ProjectileAssetProvider>m__7 / EquipmentGameData::GetProjectileAssetId",
+      "addresses": [
+        "0x10913fc",
+        "0x6d5818"
+      ],
+      "sources": [
+        "33560.asm",
+        "33508.asm",
+        "35749.asm",
+        "35750.asm"
+      ],
+      "fact": "Projectile provider predicate compares Object.name.StartsWith(CharacterHighResAndEquipmentAssetProvider). Original level1 component120 contains546 EditorAssetInfo records, including52 Projectile_ IDs. Each serialized path resolves uniquely through globalgamemanagers ResourceManager external references to a GameObject prefab; actual transform descendants contain exactly one recovered CHMotionTween per ID. content/projectiles.json preserves links/hashes plus47 CHMeshSprite crops. Weapon GetProjectileAssetId has direct-ID and level/asset-cycle formatting branches; those selections and damage callback semantics remain unfinished."
+    },
+    {
+      "method": "EquipmentGameData::GetProjectileAssetId",
+      "address": "0x6d5818",
+      "source": "35750.asm",
+      "fact": "Returns empty for !IsRanged; DirectProjectileAssetAndLoca returns configured ID unchanged. Otherwise tests IInventoryItemData.get_Level(slot2), then IInventoryItemBalancingData.get_ItemType(slot2). Nonnegative-level mainhand(type3) computes sum=Level+AssetLevelOffset, adds27 if sum<=0, then suffix=((sum-1)/3)%9+1 formatted00; offhand(type4) uses24 and period8. Remaining cases return configured ID. AssetCycleCount is not read by this method. Rust reproduces signed32 arithmetic/truncating division and normalizes an empty configured projectile ID to None. Original 312 equipment definitions imported with offsets including -3,-10,-6,-9; actual stat/perk execution remains separate work."
+    },
+    {
+      "method": "CharacterAssetController::PlayAttackAnim; AttackSkillTemplate::Init",
+      "addresses": [
+        "0x8b9188",
+        "0xeb23c3"
+      ],
+      "sources": [
+        "31610.asm",
+        "36516.asm"
+      ],
+      "fact": "PlayAttackAnim uses Action_Attack_1 if MainHand is absent; otherwise bool useOffhand selects ICharacter.MainHand(slot9) or OffHand(slot10), obtains EquipmentBalancingData.AnimationIndex, plays Action_Attack_<index>, and queues Idle. AttackSkillTemplate.Init sets useOffhand from SkillParameters.ContainsKey(use_offhandanim), without testing the parameter value. Current client applies the recovered default pig loadout's index for attack playback; player gear and original weapon sprite swaps remain unfinished."
+    },
+    {
+      "method": "AttackSkillTemplate+<DoAction>c__Iterator0::MoveNext / AttackSkillTemplate::IsMeeleAttack",
+      "addresses": [
+        "0xeb4cd3",
+        "0xeb49cc"
+      ],
+      "sources": [
+        "36525.asm",
+        "36522.asm",
+        "fields-36525-36516.json"
+      ],
+      "fact": "Verified metadata-registration field offsets identify iterator+0x6c as illusion, +0x70 as duration and +0x90 as WaitSlices. Normal non-melee path at0xeb6e96 yields full PlayAttackAnimation return length and sets PC9; illusion path at0xeb628a stores duration and yields half, PC7 spawns projectile then yields other half (PC8). Jump table at GOT-0x5de424 maps PC8/9 to0xeb50bc (ActionsOnImpact), while PC7 maps0xeb511f. SpawnProjectile's own tween duration is a visual clock; damage is later in the coroutine and extra action hooks may yield. IsMeeleAttack returns cached true at+0x40, otherwise rejects Targets.Count>1, then returns true for no main hand or !MainHand.IsRanged. Client now uses explicit target lists and pig main-hand ranged flags; cached-state semantics and player gear remain unfinished."
+    },
+    {
+      "method": "CHMotionTween::Update / QuadMeshCreator::BuildQuad / CHMeshSprite::UpdateSprite",
+      "addresses": [
+        "0x9078f4",
+        "0x81bd3f",
+        "0x905272"
+      ],
+      "sources": [
+        "39252.asm",
+        "39220.asm",
+        "39217.asm",
+        "fields-31610-39217.json"
+      ],
+      "fact": "Update at0x907d9c tests m_Inverted(+0x70); at0x907da2-0x907de1 swaps sampled X/Y progress, then computes start+(end-start)*progress componentwise. SpawnProjectile sets inversion when initial projectile X exceeds end-transform X. QuadMeshCreator uses X alignment0/1/2 as left/center/right and Y0/1/2 as top/center/bottom. CHMeshSprite passes authored width/height/color/alignment. Runtime packs52 original motion definitions and47 static quads, strips root pose overridden by InstantiateObject(identity quaternion), retains child transforms and original tint/UVs. Source hand and target body-center paths are read from actor controllers, validated against rig nodes. Static single-target direct pig weapon flight now plays at original Projectile cue; original focus/camera endpoints, trails/particles/animated clips and other launch paths remain unfinished."
+    },
+    {
+      "method": "AttackWithCollateralDamage::Init / <Init>m__0 / predicate",
+      "addresses": [
+        "0xeecd96",
+        "0xeed778",
+        "0xeede76"
+      ],
+      "sources": [
+        "36226.asm",
+        "36229.asm",
+        "36231.asm",
+        "fields-36226-36231.json",
+        "fields-34764.json"
+      ],
+      "fact": "Init divides collateral_damage_in_percent by100 into+0x94, stores additional_enemies_affected+0x9c, registers callback in ActionsOnDamageDealt(+0x70). Callback captures source/primary separately at closure+8/+c; filters BattleGameData.m_CombatantsByInitiative(+0x58) to different faction, not primary, nonnull CombatantView, then repeatedly Random.Range/list.Remove without replacement until configured count or empty. For each target it reads source.ModifiedAttack(slot28), multiplies by+0x94, saves/sets CurrentSkillAttackValue, applies trigger6 and2 multipliers, calls ReceiveDamage(slot111), DealDamageFromCurrentTurn, then restores CurrentSkillAttackValue. Incoming primary damage argument is unused. Base attack coroutine invokes ActionsOnDamageDealt after primary damage resolution without a source-health check in that interval. Current Rust callback uses living fighters as the initiative/view proxy and shared defense/retaliation model; full native effect/rage/rounding semantics and the stun variant remain unfinished."
+    },
+    {
+      "method": "AttackWithCollateralDamageAndStun::Init / damage callback / ShareableActionPart",
+      "addresses": [
+        "0xeee0fa",
+        "0xeef776",
+        "0xeee6c3",
+        "0xeefee4"
+      ],
+      "sources": [
+        "36233.asm",
+        "36237.asm",
+        "36234.asm",
+        "36238.asm",
+        "36242.asm",
+        "36232.asm",
+        "36513.asm",
+        "fields-36233-36242.json"
+      ],
+      "fact": "Init registers secondary damage in ActionsBeforeDamageDealt(+0x74), stun wrapper in ActionsAfterDamageDealt(+0x6c). Damage callback randomly removes candidates, appends each to+0xb4, uses source.ModifiedAttack*collateral ratio; extra trigger7 accompanies6/2. ShareableActionPart independently compares main chance(+0xa4)/100 and extra chance(+0xa8)/100 against Random.value, consuming rolls even at zero chance, iterating every retained entry. Stun duration is+0xac. Effects use trigger5, type18, curse2. Base at0xeb9e7b gates after-callbacks on primary accumulated damage or nodamage/alleffect, then primary.get_IsParticipating(slot86), with after-defeated exception+0x3f (unset by these constructors). Rust maps participation to living fighters and retained targets to one action; native lifetime/list reuse, other trigger effects and exact Unity RNG remain unfinished."
+    },
+    {
+      "method": "CharacterAssetController::GetAttackAnimationLength / CharacterControllerBattleGroundBase::PlayAttackAnimation",
+      "addresses": [
+        "0x8b9540",
+        "0x8deb1f"
+      ],
+      "sources": [
+        "31614.asm",
+        "50569.asm"
+      ],
+      "fact": "PlayAttackAnimation invokes asset PlayAttackAnim then obtains length. GetAttackAnimationLength selects Action_Attack_<MainHand.EquipmentBalancingData.AnimationIndex>, default Action_Attack_1. Client now selects configured default pig main/off-hand attack indices; player gear and visual weapon variants remain unfinished."
+    },
+    {
+      "method": "SmoothMoves.BoneAnimation::Awake",
+      "address": "0x1475f80",
+      "source": "25860.asm",
+      "fact": "At 0x147643a loads AnimationClipSM_Lite.fps from record+0xc and at 0x1476450 calls UnityEngine.AnimationState.set_speed. Then applies blendMode, layer and blendWeight from +0x18/+0x1c/+0x20. The recovered per-clip metadata array uniquely validates against all independent clip names and bone IDs. Red Idle max key time36 at speed24 gives1.5 seconds; Blink uses speed16. Static tracing establishes the assignment, not full Unity curve interpolation semantics."
+    }
+  ],
+  "next_native_work": [
+    "Trace SmoothMoves clip/frame triggers, texture/depth changes and playback state transitions",
+    "Trace exact character/equipment growth and level-stat calculations",
+    "Complete event ordering, stacking, rounding and reactive trigger reconstruction around the shared effect model",
+    "Weighted-wave code at 0x4fb23d has been disassembled; forced percentages and uniqueness need further reconstruction"
+  ]
+}
