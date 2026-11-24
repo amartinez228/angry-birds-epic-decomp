@@ -1,0 +1,324 @@
+//! Recovered class rules within the current integer combat/effect clock model.
+//! Exact native per-hit callbacks, RNG and fractional rounding remain pending.
+use super::*;
+
+fn battle(skin: &str, seed: u64) -> Battle {
+    let hat = HATS.iter().position(|hat| hat.id == skin).unwrap();
+    let bird = HATS[hat].bird;
+    let mut profile = Profile {
+        unlocked: 3,
+        party: [bird, (bird + 1) % 5, (bird + 2) % 5],
+        ..Default::default()
+    };
+    profile.buy_and_equip(hat).unwrap();
+    let mut battle = Battle::new_with_seed(&profile, 3, seed).unwrap();
+    for hero in &mut battle.heroes {
+        hero.max_hp = 1000;
+        hero.hp = 500;
+        hero.attack = 100;
+    }
+    for enemy in &mut battle.enemies {
+        enemy.max_hp = 10000;
+        enemy.hp = 10000;
+        enemy.attack = 200;
+    }
+    battle
+}
+
+#[test]
+fn cleric_heals_living_party_from_damage_after_defense_with_hp_caps() {
+    let mut battle = battle("skin_cleric", 7);
+    battle.heroes[1].hp = 995;
+    // A level refresh can refill HP while the bird remains knocked out.
+    battle.heroes[2].hp = 500;
+    battle.heroes[2].knocked_out = true;
+    battle.enemies[0]
+        .effects
+        .apply("shield", Source::pig(0), 3, EffectKind::Protection(50.));
+    battle.enable_presentation_trace();
+    battle.act(0, Action::Attack(0)).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9945); // 110% attack, then 50% defense.
+    assert_eq!(battle.heroes[0].hp, 514); // 25% of 55, integer model rounding.
+    assert_eq!(battle.heroes[1].hp, 1000);
+    assert_eq!(battle.heroes[2].hp, 500);
+    assert!(!battle.heroes[2].alive());
+    let events = battle.take_presentation_events();
+    assert!(
+        matches!(events.last(), Some(combat_events::CombatEvent::StateChanged(snapshot))
+        if snapshot.heroes[0].hp == 514 && snapshot.heroes[1].hp == 1000)
+    );
+}
+
+#[test]
+fn legacy_cleric_uses_its_own_twenty_percent_healing_coefficient() {
+    let mut battle = battle("skin_moonpriest", 7);
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9890);
+    assert!(battle.heroes.iter().all(|hero| hero.hp == 522));
+}
+
+#[test]
+fn cleric_shielded_and_overkill_attacks_cannot_manufacture_healing() {
+    let mut shielded = battle("skin_cleric", 7);
+    shielded.enemies[0]
+        .effects
+        .apply("shield", Source::pig(0), 3, EffectKind::Protection(100.));
+    shielded.strike(0, 0).unwrap();
+    assert!(shielded.heroes.iter().all(|hero| hero.hp == 500));
+    let mut overkill = battle("skin_cleric", 7);
+    overkill.enemies[0].hp = 4;
+    overkill.strike(0, 0).unwrap();
+    assert!(overkill.heroes.iter().all(|hero| hero.hp == 501));
+}
+
+#[test]
+fn cleric_healing_after_retaliation_does_not_revive_the_caster() {
+    let mut battle = battle("skin_cleric", 7);
+    battle.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 1000 }),
+    );
+    battle.strike(0, 0).unwrap();
+    assert!(!battle.heroes[0].alive());
+    assert_eq!(battle.heroes[0].hp, 0);
+    assert_eq!(battle.heroes[1].hp, 528);
+    assert_eq!(battle.heroes[2].hp, 528);
+}
+
+#[test]
+fn bard_uses_parameter_duration_and_seeded_fifteen_percent_chance() {
+    let mut successes = 0;
+    let mut misses = 0;
+    for seed in 0..100 {
+        let mut first = battle("skin_bard", seed);
+        let mut repeat = first.clone();
+        first.strike(0, 0).unwrap();
+        repeat.strike(0, 0).unwrap();
+        assert_eq!(first.enemies[0].hp, 9840);
+        assert_eq!(first.enemies[0].effects, repeat.enemies[0].effects);
+        assert_eq!(first.rng_state, repeat.rng_state);
+        if first.enemies[0].effects.is_stunned() {
+            successes += 1;
+            let effect = first.enemies[0]
+                .effects
+                .entries()
+                .iter()
+                .find(|effect| effect.kind == EffectKind::Stun)
+                .unwrap();
+            assert_eq!(effect.turns, 1); // Skill's main duration is zero.
+            assert_eq!(effect.source, Source::bird(0));
+            assert_eq!(effect.skill_id, "bird_attack_white_bard");
+        } else {
+            misses += 1;
+        }
+    }
+    assert!(successes > 0 && misses > 0);
+}
+
+#[test]
+fn bard_stun_skips_one_enemy_phase_then_expires() {
+    let mut battle = (0..100)
+        .find_map(|seed| {
+            let mut trial = battle("skin_bard", seed);
+            trial.enemies.truncate(1);
+            trial.strike(0, 0).unwrap();
+            trial.enemies[0].effects.is_stunned().then_some(trial)
+        })
+        .unwrap();
+    battle.enemy_turn();
+    assert_eq!(battle.round, 2);
+    assert!(battle.heroes.iter().all(|hero| hero.hp == 500));
+    assert!(!battle.enemies[0].effects.is_stunned());
+    battle.enemy_turn();
+    assert!(battle.heroes.iter().any(|hero| hero.hp < 500));
+}
+
+#[test]
+fn thunderbird_damages_every_enemy_but_only_curses_selected_target() {
+    let mut battle = battle("skin_thunderbird", 7);
+    battle.strike(0, 1).unwrap();
+    assert!(battle.enemies.iter().all(|enemy| enemy.hp == 9950));
+    assert_eq!(battle.enemies[0].effects.vulnerability(), 0.);
+    assert_eq!(battle.enemies[1].effects.vulnerability(), 25.);
+    let effect = &battle.enemies[1].effects.entries()[0];
+    assert_eq!(effect.turns, 3);
+    assert_eq!(effect.source, Source::bird(0));
+    battle.strike(0, 1).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9900);
+    assert_eq!(battle.enemies[1].hp, 9887);
+    assert_eq!(battle.enemies[1].effects.entries().len(), 1);
+}
+
+#[test]
+fn defeated_thunderbird_target_does_not_redirect_its_curse() {
+    let mut battle = battle("skin_thunderbird", 7);
+    battle.enemies[1].hp = 1;
+    battle.strike(0, 1).unwrap();
+    assert!(battle
+        .enemies
+        .iter()
+        .all(|enemy| enemy.effects.vulnerability() == 0.));
+    assert_eq!(battle.enemies[0].hp, 9950);
+}
+
+#[test]
+fn stone_guard_bonus_applies_once_per_hit_for_any_curse_category() {
+    for curse in [
+        EffectKind::Poison(10),
+        EffectKind::Weakness(20.),
+        EffectKind::Vulnerability(0.),
+        EffectKind::Stun,
+        EffectKind::Taunt(0),
+    ] {
+        let mut battle = battle("skin_stoneguard", 7);
+        battle.heroes[0].attack = 200;
+        battle.enemies[0]
+            .effects
+            .apply("curse", Source::bird(1), 3, curse);
+        // A second curse does not apply the conditional multiplier twice.
+        battle.enemies[0].effects.apply(
+            "another-curse",
+            Source::bird(2),
+            3,
+            EffectKind::Weakness(10.),
+        );
+        battle.act(0, Action::Attack(0)).unwrap();
+        assert_eq!(battle.enemies[0].hp, 9610); // 2 * (200 * .65 * 1.5).
+        assert_eq!(battle.enemies[1].hp, 10000);
+    }
+}
+
+#[test]
+fn stone_guard_positive_effects_do_not_activate_the_bonus() {
+    let mut battle = battle("skin_stoneguard", 7);
+    battle.heroes[0].attack = 200;
+    for blessing in [
+        EffectKind::AttackBonus(100.),
+        EffectKind::Regeneration(50),
+        EffectKind::Protection(0.),
+    ] {
+        battle.enemies[0]
+            .effects
+            .apply("blessing", Source::pig(0), 3, blessing);
+    }
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9740);
+}
+
+#[test]
+fn stone_guard_bonus_stops_on_cleanse_or_expiry_but_survives_purge() {
+    let mut battle = battle("skin_stoneguard", 7);
+    battle.heroes[0].attack = 200;
+    battle.enemies[0]
+        .effects
+        .apply("curse", Source::bird(1), 1, EffectKind::Weakness(10.));
+    battle.enemies[0].effects.purge();
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9610);
+    battle.enemies[0].effects.advance_source_turn(Side::Birds);
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9350);
+    battle.enemies[0]
+        .effects
+        .apply("curse", Source::bird(1), 3, EffectKind::Poison(10));
+    battle.enemies[0].effects.cleanse();
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9090);
+}
+
+#[test]
+fn frost_savage_requires_stun_and_loses_bonus_when_it_expires() {
+    let mut battle = battle("skin_winterfighter", 7);
+    battle.heroes[0].attack = 200;
+    battle.enemies[0]
+        .effects
+        .apply("poison", Source::bird(1), 3, EffectKind::Poison(10));
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9820); // Poison alone is not the stun condition.
+    battle.enemies[0]
+        .effects
+        .apply("stun", Source::bird(1), 1, EffectKind::Stun);
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9550);
+    battle.enemies[0].effects.advance_source_turn(Side::Birds);
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9370);
+}
+
+#[test]
+fn conditional_damage_keeps_attack_buffs_and_target_defenses() {
+    let mut battle = battle("skin_winterfighter", 7);
+    battle.heroes[0].attack = 200;
+    battle.heroes[0]
+        .effects
+        .apply("buff", Source::bird(0), 3, EffectKind::AttackBonus(50.));
+    for effect in [
+        EffectKind::Stun,
+        EffectKind::Vulnerability(100.),
+        EffectKind::Protection(50.),
+    ] {
+        battle.enemies[0]
+            .effects
+            .apply("defense", Source::pig(0), 3, effect);
+    }
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9595); // 200 *1.5 *.9 *1.5 *2 *.5.
+    battle.enemies[0]
+        .effects
+        .apply("immunity", Source::pig(0), 3, EffectKind::Protection(100.));
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9595);
+}
+
+#[test]
+fn stone_guard_multihit_stops_on_knockout_or_retaliation() {
+    let mut battle = battle("skin_stoneguard", 7);
+    battle.heroes[0].attack = 200;
+    battle.enemies[0]
+        .effects
+        .apply("curse", Source::bird(1), 3, EffectKind::Weakness(10.));
+    battle.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 1000 }),
+    );
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9805);
+    assert!(!battle.heroes[0].alive());
+    let mut battle = self::battle("skin_stoneguard", 7);
+    battle.enemies[0].hp = 1;
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 0);
+}
+
+#[test]
+fn bard_stun_enables_frost_savage_bonus_through_real_party_actions() {
+    let mut profile = Profile {
+        unlocked: 3,
+        party: [2, 3, 0],
+        ..Default::default()
+    };
+    for skin in ["skin_bard", "skin_winterfighter"] {
+        profile
+            .buy_and_equip(HATS.iter().position(|hat| hat.id == skin).unwrap())
+            .unwrap();
+    }
+    let mut battle = Battle::new_with_seed(&profile, 3, 3).unwrap();
+    for hero in &mut battle.heroes {
+        hero.attack = 200;
+    }
+    for enemy in &mut battle.enemies {
+        enemy.hp = 10000;
+        enemy.max_hp = 10000;
+    }
+    battle.act(0, Action::Attack(0)).unwrap();
+    assert!(battle.enemies[0].effects.is_stunned());
+    assert_eq!(battle.enemies[0].hp, 9680);
+    battle.act(1, Action::Attack(0)).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9410);
+    assert_eq!(battle.round, 1);
+    assert!(battle.heroes[2].can_act());
+}

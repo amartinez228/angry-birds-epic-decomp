@@ -43,14 +43,14 @@ def main():
         if result.returncode or result.stderr:
             raise AssertionError(f"Client failed: {result.returncode} {result.stderr.decode(errors='replace')}")
         images = sorted(folder.glob("screen-*.png"))
-        assert len(images) == 38
+        assert len(images) == 46
         hashes = set()
         for image in images:
             data = image.read_bytes()
             assert data.startswith(b"\x89PNG\r\n\x1a\n")
             assert struct.unpack_from(">II", data, 16) == (1100, 720)
             hashes.add(hashlib.sha256(data).digest())
-        assert len(hashes) == 38, "Expected distinct battle, inventory, wheel and player-projectile screens"
+        assert len(hashes) == 46, "Expected distinct battle, inventory, wheel, projectile and class-effect screens"
 
     run(directory / "first-launch", exercise=True)
     saved = (directory / "local.data").read_bytes()
@@ -243,7 +243,7 @@ def main():
     print("PASS: free first full-party revive, persisted entitlement, later ten-gold revive, exact v4 migration backup and read-only reloads.")
     print("PASS: original 24,000-point victory, three stars claimed through UI, v5 migration and read-only reload without duplicate gold/XP/stars.")
     print("PASS: v6 mastery migration preserves stars/revive entitlement; real attack after 100 stars ranks Knight up, updates HP and saves shared class progress exactly once.")
-    print("PASS: 836 captures across twenty-two launches, including player bomb/bow launch, flight and expiry, inventory and reward-wheel presentation.")
+    print("PASS: 1012 captures across twenty-two launches, including class effects, Stone Guard curse bonus and Frost Savage stun bonus.")
     print("PASS: original tutorial wheel sword, vial and seashell saved with unchanged loadout; read-only reload does not duplicate victory rewards.")
     print("PASS: exact v7 backup, ten original starter instances, real Equipment button saves a separately owned copy, read-only reload preserves loadout and progress.")
     print("Evidence:", directory)

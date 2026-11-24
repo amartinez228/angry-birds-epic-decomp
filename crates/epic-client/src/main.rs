@@ -555,6 +555,7 @@ async fn main() {
                         + 0.125
                 }
                 21 => 5.,
+                39..=45 => 100.,
                 31..=33 | 35..=37 => {
                     let (asset, clip, id) = if capture_index < 34 {
                         (
@@ -673,6 +674,70 @@ async fn main() {
                     mode = Mode::Attack;
                 }
                 31..=33 | 35..=37 => {}
+                38 | 40..=45 => {
+                    // Class-rule previews use a cloned profile and never save
+                    // purchased hats or synthetic battle stats to the play save.
+                    let skin = match capture_index {
+                        38 => "skin_cleric",
+                        40 => "skin_bard",
+                        41 => "skin_thunderbird",
+                        42 | 43 => "skin_stoneguard",
+                        _ => "skin_winterfighter",
+                    };
+                    let mut fixture = profile.clone();
+                    fixture.gold = 10000;
+                    fixture.unlocked = 3;
+                    let hat = HATS.iter().position(|hat| hat.id == skin).unwrap();
+                    fixture.buy_and_equip(hat).unwrap();
+                    fixture.party = match capture_index {
+                        41 => [1, 0, 2],
+                        42 | 43 => [0, 1, 2],
+                        44 | 45 => [3, 0, 1],
+                        _ => [2, 0, 1],
+                    };
+                    let mut fight = Battle::new_with_seed(&fixture, 3, 3).unwrap();
+                    for hero in &mut fight.heroes {
+                        hero.max_hp = 1000;
+                        hero.hp = 500;
+                        hero.attack = if capture_index >= 42 { 200 } else { 100 };
+                    }
+                    if capture_index == 38 {
+                        fight.heroes[1].hp = 995;
+                        fight.heroes[2].hp = 400;
+                    }
+                    for enemy in &mut fight.enemies {
+                        enemy.max_hp = 10000;
+                        enemy.hp = 10000;
+                    }
+                    if capture_index == 43 {
+                        fight.enemies[0].effects.apply(
+                            "preview-poison",
+                            Source::bird(1),
+                            3,
+                            epic_core::effects::EffectKind::Poison(10),
+                        );
+                    }
+                    if capture_index == 45 {
+                        fight.enemies[0].effects.apply(
+                            "preview-stun",
+                            Source::bird(1),
+                            3,
+                            epic_core::effects::EffectKind::Stun,
+                        );
+                    }
+                    fight.enable_presentation_trace();
+                    presentation.reset(fight.snapshot());
+                    fight
+                        .act(0, Action::Attack(usize::from(capture_index == 41)))
+                        .unwrap();
+                    presentation.enqueue(fight.take_presentation_events());
+                    presentation.tick(0., hat_art.animations());
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                    selected = 0;
+                    mode = Mode::Attack;
+                }
+                39 => {}
                 2 => {
                     screen = Screen::Shop;
                     shop_bird = 0;
@@ -1557,6 +1622,17 @@ async fn main() {
                         if enemy.effects.is_stunned() {
                             text("STUN", x - 85., y - 15., 14., PURPLE);
                         }
+                        let vulnerability = enemy.effects.vulnerability();
+                        if vulnerability > 0. {
+                            battle_backdrop(x - 99., y + 84., 198., 20.);
+                            text(
+                                &format!("VULNERABLE +{vulnerability:.0}%"),
+                                x - 85.,
+                                y + 99.,
+                                14.,
+                                PURPLE,
+                            );
+                        }
                         if ui.hit(
                             Rect::new(x - 55., y - 45., 110., 120.),
                             enemy.alive() && !busy,
@@ -1953,7 +2029,41 @@ async fn main() {
                     "Player projectile expires after original travel duration"
                 );
             }
-            if capture_index == 38 {
+            if capture_index == 40 {
+                assert_eq!(
+                    presentation
+                        .view()
+                        .heroes
+                        .iter()
+                        .map(|hero| hero.hp)
+                        .collect::<Vec<_>>(),
+                    vec![528, 1000, 428]
+                );
+            }
+            if capture_index == 41 {
+                assert!(presentation.view().enemies[0].effects.is_stunned());
+            }
+            if capture_index == 42 {
+                let enemies = &presentation.view().enemies;
+                assert!(enemies.iter().all(|enemy| enemy.hp == 9950));
+                assert_eq!(enemies[0].effects.vulnerability(), 0.);
+                assert_eq!(enemies[1].effects.vulnerability(), 25.);
+            }
+            if (43..=46).contains(&capture_index) {
+                let expected = match capture_index {
+                    43 => 9740,
+                    44 => 9610,
+                    45 => 9820,
+                    _ => 9730,
+                };
+                assert_eq!(
+                    presentation.view().enemies[0].hp,
+                    expected,
+                    "Conditional class damage in native UI"
+                );
+                assert_eq!(presentation.view().enemies[1].hp, 10000);
+            }
+            if capture_index == 46 {
                 break;
             }
         }

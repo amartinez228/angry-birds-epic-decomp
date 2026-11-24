@@ -19,6 +19,36 @@ mod tests {
     use super::*;
     use crate::{effects::Effects, Profile};
     #[test]
+    fn enemy_conditional_damage_uses_the_same_curse_rules_as_birds() {
+        let mut battle = battle("pig_minion_rogue_bird1_1hit");
+        battle.enemies[0].attack = 200;
+        let skill = SKILLS
+            .iter()
+            .find(|skill| skill.id == "pig_attack_pigmies_spectators_b")
+            .copied()
+            .unwrap();
+        battle.heroes[0]
+            .effects
+            .apply("curse", Source::pig(0), 2, EffectKind::Weakness(10.));
+        battle.execute_enemy_skill(0, 0, skill);
+        assert_eq!(battle.heroes[0].hp, 9685); // Three 70 * 1.5 hits.
+        battle.heroes[0].effects.cleanse();
+        battle.execute_enemy_skill(0, 0, skill);
+        assert_eq!(battle.heroes[0].hp, 9475);
+        // Wet/ink/etc. have no engine status model yet: a stun must not stand
+        // in for one of those unrelated conditional flags.
+        let wet = SKILLS
+            .iter()
+            .find(|skill| skill.id == "pig_attack_drone_blue")
+            .copied()
+            .unwrap();
+        battle.heroes[0]
+            .effects
+            .apply("stun", Source::pig(0), 1, EffectKind::Stun);
+        battle.execute_enemy_skill(0, 0, wet);
+        assert_eq!(battle.heroes[0].hp, 9275);
+    }
+    #[test]
     fn collateral_stun_executes_secondary_damage_before_primary_then_stuns_primary() {
         let mut battle = battle("pig_brute_brute_bird1");
         for hero in &mut battle.heroes {
@@ -464,7 +494,6 @@ impl Battle {
         }
         let source = Source::pig(enemy);
         let power = self.enemies[enemy].attack_value();
-        let amount = percent(power, skill.parameter("damage_in_percent", 100.));
         let mut collateral_targets = Vec::new();
         let mut primary_damage = 0;
         let mut total = 0;
@@ -482,6 +511,7 @@ impl Battle {
                     skill,
                     &mut collateral_targets,
                 );
+                let amount = skill.damage_against(power, &self.heroes[i].effects);
                 let damage = self.heroes[i].damage(amount);
                 primary_damage += damage;
                 total += damage;

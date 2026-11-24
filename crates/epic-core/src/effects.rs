@@ -107,6 +107,9 @@ impl Effects {
     pub fn purge(&mut self) {
         self.entries.retain(|effect| effect.kind.is_curse());
     }
+    pub fn has_curse(&self) -> bool {
+        self.entries.iter().any(|effect| effect.kind.is_curse())
+    }
     pub fn is_stunned(&self) -> bool {
         self.entries.iter().any(|e| e.kind == EffectKind::Stun)
     }

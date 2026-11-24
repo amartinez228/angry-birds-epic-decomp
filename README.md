@@ -399,6 +399,33 @@ remain unfinished. Unimplemented support actions report that they are unavailabl
 and do not consume a turn. Status timing and native execution semantics are not
 yet fully reconstructed.
 
+Three additional class attack rules now run from their recovered configuration
+and English descriptions. Cleric's Healing Strike heals every living bird for
+25% of damage dealt (Moon Priest uses its configured 20%). The current integer
+engine uses HP actually removed after defense, caps healing at maximum HP and
+does not revive knocked-out birds. Bard's Heavy Metal rolls the configured 15%
+stun chance and uses the separate one-turn duration parameter; its top-level
+skill duration is zero. Thunderbird's Thunderclap still damages all enemies,
+but its three-turn 25% vulnerability now applies only to the selected survivor.
+The battle UI labels vulnerable enemies. The native bodies for these callbacks
+are not included in the supplied disassembly: exact hook order, overkill and
+fractional damage/heal rounding, RNG parity and interactions remain unverified
+against the original runtime. These implementations extend the current engine
+model rather than establishing exact native equivalence.
+
+Conditional attack damage now covers Stone Guard and Frost Savage, using their
+recovered coefficients and descriptions. Stone Guard's Feral Assault applies
+150% of its normal per-hit damage when the target has a curse in the current
+effect model; multiple curses activate the multiplier once. Frost Savage's
+Frost Strike applies its 150% multiplier only to stunned targets. Cleansing or
+expiry removes eligibility, and positive effects do not qualify. Birds and pigs
+share this calculation, with normal attack buffs, defenses, retaliation and
+multihit stopping rules retained. A seeded Bard-to-Frost-Savage party sequence
+checks the interaction through real battle actions. Wet, goo, ink and other
+unimplemented conditions retain ordinary damage. Native callback order,
+affliction classification and exact fractional rounding remain unverified;
+this uses the existing integer combat and curse/stun model. Save format stays v9.
+
 Thorn shields now capture a fixed amount from the caster's modified attack,
 following the native `ThornSkill` coroutine's virtual call to
 `ICombatant.get_ModifiedAttack`. This is distinct from Rogue-style reflection
@@ -586,7 +613,22 @@ Extracted game files and generated evidence are local inputs, excluded by
 
 ## Verification so far
 
-Current equipment-presentation milestone on macOS arm64: 152 Rust tests,
+Current conditional-attack milestone on macOS arm64: 168 Rust tests, Clippy and
+the release build pass. Eight new regressions cover curse categories, positive
+effects, cleanse/purge/expiry, stun eligibility, defense and retaliation,
+bird/pig consistency and the Bard-to-Frost-Savage combination. Native UI/save
+checks produce 1,012 captures across 22 launches, including normal and boosted
+Stone Guard/Frost Savage damage. Native behavior equivalence remains unverified.
+
+The preceding class-attack milestone passed 160 Rust tests, Clippy and the
+release build pass. Regression checks cover defense/overkill healing, HP caps,
+knockout and retaliation behavior, deterministic Bard chance and one skipped
+enemy phase, plus Thunderbird's selected-target-only vulnerability. Native
+UI/save checks produce 924 captures across 22 launches, adding Cleric HP
+before/after, Bard stun and Thunderbird vulnerability previews. Exact native
+callback and rounding equivalence remains unverified.
+
+The preceding equipment-presentation milestone passed 152 Rust tests,
 Clippy and the release build pass. The native UI/save suite produces 836 captures
 across 22 launches, including Bomb's level-cycled projectile and the Blues'
 starter arrow before launch, in flight and after expiry. Those captures were

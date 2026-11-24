@@ -34,7 +34,7 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
-- Current baseline: 152 Rust tests, Clippy and macOS arm64 release build pass.
+- Current baseline: 168 Rust tests, Clippy and macOS arm64 release build pass.
   The audio follow-up adds native Mac music: all nine buffers pass NSSound
   decoding/playback/loop checks, with mute/unmute, track changes, silent captures
   and object cleanup verified through `python3 tools/smoke_audio.py`. It writes
@@ -42,8 +42,8 @@ and backs up replaced files. Do not commit that package or its previous-builds.
   mixer equivalence are not established by API acceptance.
   Native UI/save checks cover v9 resources, exact v8 backup and changed-stack
   persistence in addition to the existing shop/combat/gear/revival checks
-  (836 captures across 22 launches, including player bomb/bow launch, flight and
-  expiry). Inventory screens, wheel and player projectiles visually reviewed.
+  (1,012 captures across 22 launches, including player projectiles, class effects
+  and Stone Guard/Frost Savage normal-versus-bonus damage).
   Claims save the tutorial sword, vial and seashell
   once, with unchanged loadouts and read-only reopening.
   The previous Windows baseline had 139 Rust tests and 38 recovery tests;
@@ -56,6 +56,22 @@ and backs up replaced files. Do not commit that package or its previous-builds.
   selects Attack_3 and Bomb_02, and the Blues' starter bow launches Bow_01.
   Full actor weapon-art swaps, skill overrides, repeated/multiple-target launches
   and animated/missing projectile visuals remain unfinished. No save bump.
+- Cleric/Moon Priest attacks now heal living allies using configured dealt-damage
+  percentages; Bard rolls its 15% one-turn stun; Thunderbird's area damage only
+  applies vulnerability to the selected surviving target. Current integer
+  damage/HP caps, knockout exclusions and source-faction effect clock apply.
+  These rules come from recovered configuration/descriptions; their callback
+  bodies are absent from the supplied native disassembly. Exact native order,
+  overkill/rounding and RNG interactions remain unverified. See the dedicated
+  class_attack_tests.rs regressions. No save format change.
+- Conditional damage now uses shared bird/pig logic: Stone Guard's two hits get
+  their configured 150% multiplier against curses; Frost Savage gets its 150%
+  multiplier against stun. Multiple curses do not multiply the bonus again.
+  Cleanse/expiry disable the bonus, and ordinary defense/retaliation still apply.
+  Tests include a Bard stun followed by a Frost Savage attack through real
+  party actions. Wet/goo/ink and other missing condition types retain base
+  damage. Native callback/affliction classification/rounding need comparison
+  with original execution. Save v9 and profile data remain unchanged.
 - Base wheel reward delivery is live through Spin & collect rewards. All 167
   imported roots use eight slots, with stars determining the wrapped slot count
   and pending XP settled before choosing equipment level. Equipment copies,

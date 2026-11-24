@@ -15,6 +15,7 @@ local.data
 /web/sapp_jsutils.js
 
 # Local caches, executables, credentials and editor state
+.DS_Store
 __pycache__/
 *.py[cod]
 *.exe

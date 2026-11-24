@@ -3,6 +3,7 @@
 //! Original base-stat formulas are in stats; XP/inventory progression, enemy
 //! difficulty, status timing and incomplete templates remain provisional.
 
+mod attack_damage;
 pub mod collateral;
 pub mod combat_events;
 pub mod effects;
@@ -10,6 +11,8 @@ pub mod equipment;
 pub mod inventory;
 pub mod metadata;
 use effects::{EffectKind, Effects, Side, Source};
+#[cfg(test)]
+mod class_attack_tests;
 pub mod defeat_rewards;
 pub mod enemy;
 pub mod loot;
@@ -620,7 +623,6 @@ impl Battle {
             attack.parameter("all", 0.) > 0.,
         );
         let hits = attack.parameter("attack_count", 1.) as u32;
-        let damage_per_hit = percent(power, attack.parameter("damage_in_percent", 100.));
         let mut collateral_targets = Vec::new();
         let mut primary_damage = 0;
         let all = attack.parameter("all", 0.) > 0.;
@@ -639,6 +641,7 @@ impl Battle {
                     attack,
                     &mut collateral_targets,
                 );
+                let damage_per_hit = attack.damage_against(power, &self.enemies[i].effects);
                 let damage = self.enemies[i].damage(damage_per_hit);
                 primary_damage += damage;
                 total += damage;
@@ -682,6 +685,7 @@ impl Battle {
                 );
             }
             if attack.template == "AttackWithIncreaseDamageReceived"
+                && (!attack.has_parameter("effect_only_target") || i == target)
                 && self.roll_percent(attack.parameter("chance", 100.))
             {
                 self.enemies[i].effects.apply(
@@ -689,6 +693,16 @@ impl Battle {
                     source,
                     attack.duration,
                     EffectKind::Vulnerability(attack.parameter("increase_in_percent", 0.)),
+                );
+            }
+            if attack.template == "AttackWithStunChanceSkill"
+                && self.roll_percent(attack.parameter("chance", 0.))
+            {
+                self.enemies[i].effects.apply(
+                    attack.id,
+                    source,
+                    attack.parameter("duration", 1.) as i32,
+                    EffectKind::Stun,
                 );
             }
             if attack.template == "AttackWithPurgeSkill"
@@ -704,7 +718,12 @@ impl Battle {
             &collateral_targets,
             primary_damage,
         );
-        if attack.template == "AttackWithHealWeakerAlly" {
+        if attack.template == "AttackWithHealAlly" {
+            let healing = percent(primary_damage, attack.parameter("heal_ally", 0.));
+            for ally in self.heroes.iter_mut().filter(|ally| ally.alive()) {
+                ally.heal(healing);
+            }
+        } else if attack.template == "AttackWithHealWeakerAlly" {
             if let Some(ally) = self
                 .heroes
                 .iter_mut()
