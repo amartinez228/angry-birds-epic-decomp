@@ -1,4 +1,6 @@
 """Exercise the real native UI and save migration in a fresh isolated folder."""
+import argparse
+import difflib
 import hashlib
 import json
 import os
@@ -11,6 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--read-only-fixture', type=Path,
+                        help='Copy this local.data into isolation and verify two read-only launches')
+    parser.add_argument('--migrate-first', action='store_true',
+                        help='Exercise the Camp Red-selection migration action before isolated reload checks')
+    args = parser.parse_args()
+    if args.migrate_first and not args.read_only_fixture:
+        parser.error('--migrate-first requires --read-only-fixture')
     binary = ROOT / "target/release" / ("epic-client.exe" if os.name == "nt" else "epic-client")
     directory = ROOT / "analysis" / ("smoke-client-" + str(time.time_ns()))
     directory.mkdir(parents=True)
@@ -43,14 +53,31 @@ def main():
         if result.returncode or result.stderr:
             raise AssertionError(f"Client failed: {result.returncode} {result.stderr.decode(errors='replace')}")
         images = sorted(folder.glob("screen-*.png"))
-        assert len(images) == 46
+        assert len(images) == 52
         hashes = set()
         for image in images:
             data = image.read_bytes()
             assert data.startswith(b"\x89PNG\r\n\x1a\n")
             assert struct.unpack_from(">II", data, 16) == (1100, 720)
             hashes.add(hashlib.sha256(data).digest())
-        assert len(hashes) == 46, "Expected distinct battle, inventory, wheel, projectile and class-effect screens"
+        assert len(hashes) == 52, "Expected distinct battle, inventory, wheel, projectile, class-effect, pepper and health HUD screens"
+
+    if args.read_only_fixture:
+        fixture = args.read_only_fixture.read_bytes()
+        (directory / 'local.data').write_bytes(fixture)
+        if args.migrate_first:
+            run(directory / 'fixture-migration', migration=True)
+            fixture = (directory / 'local.data').read_bytes()
+        (directory / 'before-read-only.data').write_bytes(fixture)
+        for index in range(2):
+            run(directory / f'read-only-{index}')
+            actual = (directory / 'local.data').read_bytes()
+            difference = '\n'.join(difflib.unified_diff(
+                fixture.decode().splitlines(), actual.decode().splitlines(),
+                fromfile='before', tofile='after'))
+            assert actual == fixture, 'Read-only launch changed save:\n' + difference
+        print('PASS: two read-only launches, 104 captures, unchanged save. Evidence:', directory)
+        return
 
     run(directory / "first-launch", exercise=True)
     saved = (directory / "local.data").read_bytes()
@@ -192,7 +219,10 @@ def main():
     assert len(gear_profile[11].split(','))==10
     assert gear_profile[12]=='0,1,2,3,4,5,6,7,8,9'
     run(directory/'v7-inventory-reload')
-    assert (directory/'local.data').read_bytes()==migrated_gear_save
+    actual_reload = (directory/'local.data').read_bytes()
+    if actual_reload != migrated_gear_save:
+        (directory/'before-v7-reload.data').write_bytes(migrated_gear_save)
+        raise AssertionError('Read-only v7 reload changed save; before-v7-reload.data retains the expected bytes')
     # Seed a distinct owned copy, then use the actual Equipment screen button.
     # Acquisition isn't implemented yet; this isolated fixture never touches
     # the player's Desktop save or gifts equipment during normal play.
@@ -243,7 +273,7 @@ def main():
     print("PASS: free first full-party revive, persisted entitlement, later ten-gold revive, exact v4 migration backup and read-only reloads.")
     print("PASS: original 24,000-point victory, three stars claimed through UI, v5 migration and read-only reload without duplicate gold/XP/stars.")
     print("PASS: v6 mastery migration preserves stars/revive entitlement; real attack after 100 stars ranks Knight up, updates HP and saves shared class progress exactly once.")
-    print("PASS: 1012 captures across twenty-two launches, including class effects, Stone Guard curse bonus and Frost Savage stun bonus.")
+    print("PASS: 1144 captures across twenty-two launches, including class effects, pepper states and six-enemy health HUD edge cases.")
     print("PASS: original tutorial wheel sword, vial and seashell saved with unchanged loadout; read-only reload does not duplicate victory rewards.")
     print("PASS: exact v7 backup, ten original starter instances, real Equipment button saves a separately owned copy, read-only reload preserves loadout and progress.")
     print("Evidence:", directory)

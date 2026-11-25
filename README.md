@@ -5,6 +5,172 @@ of Angry Birds Epic. A Windows release executable has been built successfully.
 The current source also builds and runs on macOS arm64. See the macOS commands
 below. Recovered original music now plays on Windows and macOS.
 
+The user's final visual reference is [DarkTerraYT/EpicWeb](https://github.com/DarkTerraYT/EpicWeb),
+a WebGL build identifying its game version as 3.0.1. The first visual pass
+recovers 17 original NGUI sprites from its pinned data package: glossy normal
+and disabled buttons, nine parchment pieces, coin/XP/star/lock icons and XP-bar
+art. These now skin the Rust controls, panels, battle labels and map indicators.
+The game header uses the game name instead of development branding. Artwork is
+packed without resampling into one GPU atlas, with extruded edge padding to
+prevent filtering seams. Text uses one cached glyph size, primed at the display
+DPI and scaled per label, to prevent font-atlas repacking from corrupting text.
+This begins the visual transition: the current map route, camp arrangement,
+remaining battle HUD placement, actor scale and camera framing remain provisional.
+Matching those layouts to the reference is the next presentation priority.
+
+`content/reference-ui.json` records the EpicWeb commit, downloaded data hash,
+Unity version, source object identities, sprite rectangles/borders, output PNG
+hashes and runtime atlas packing. The WebGL data was built with Unity 6000.3.4f1
+and is kept separate from the original Unity 5.6 APK evidence. Its gameplay
+tables/code are not silently substituted for the original reconstruction.
+The compiled WebAssembly game has not been executed as part of asset recovery.
+The downloaded package and analysis caches stay outside Git. Normal Rust builds
+use only the committed PNGs and generated data, with no new runtime dependency.
+
+Verify the prepared UI data without installing extraction tools:
+
+```sh
+python3 tools/recover_reference_ui.py --check
+```
+
+To repeat extraction, use a separate Python environment with UnityPy 1.25.4 and
+pass the `EpicWeb.data` download identified by the manifest:
+
+```sh
+python tools/recover_reference_ui.py --data /path/to/EpicWeb.data
+```
+
+The importer checks the pinned package digest, atlas/material/texture identity,
+serialized atlas tail, sprite bounds and selected borders before exporting.
+These images remain original game material; see THIRD_PARTY_NOTICES.md.
+
+The next recovery pass records 518 saved UI transforms from the reference's
+world-map menu (268), camp menu (38) and battle menu (212) in
+`content/reference-layouts.json`. It preserves parent/child links, active flags,
+local positions/rotations/scales, component/script identities, camera projection
+and source-object hashes. Layout-controller bytes are retained for further
+decoding. All three preview cameras are orthographic with saved size 360.
+These are saved scene coordinates: layout controllers and animations still
+need evaluation before they can replace the Rust screen positions correctly.
+This pass does not change the game's current screens or save format.
+
+```sh
+python3 tools/recover_reference_layouts.py --check
+python3 -m unittest discover -s tools -p test_reference_layouts.py
+```
+
+To regenerate, use the same separate UnityPy environment and the `data.unity3d`
+member of the pinned reference download:
+
+```sh
+python tools/recover_reference_layouts.py --bundle /path/to/data.unity3d
+```
+
+The tool checks the bundle SHA before reading it and rejects inconsistent or
+cyclic transform hierarchies. Source-only checks need no original download.
+
+The next visible battle pass uses the reference's top-center progress anchor
+(50 units from the top) and bottom-center rage anchor (66 from the bottom).
+The inferred nine-point anchor ordering reproduces the saved battle-menu
+corner/edge positions on its authored 1280x720 canvas. The original enter clips
+confirm that the offscreen saved child positions settle to zero; this pass
+renders that settled state. The original pepper body/fill/stem and ready burst
+replace the large center panel, and clicking a full pepper invokes the existing
+rage action. Half-full and busy peppers reject input. Nine additional original
+sprites supply the pepper and wave-track art. The stage heading and combat log
+are narrower to keep these widgets clear. Track span and bird movement adapt
+to the current imported wave counts; original transition/glow choreography,
+drag gestures, gold pepper, remaining HUD, actor layout and camera are pending.
+`content/battle-hud.json` preserves anchors, selected widgets, enter-clip keys,
+art identities and atlas hashes. No gameplay-rule or save-format change.
+
+```sh
+python3 tools/recover_battle_hud.py --check
+# Preparation only, in the separate UnityPy environment:
+python tools/recover_battle_hud.py --bundle /path/to/data.unity3d
+```
+
+Birds and pigs now use the reference's standard health-bar frame and fill,
+replacing the parchment HP boxes. The recovered `HealthBar_Small` prefab uses
+centered 164x32 and 152x20 widgets, with the frame two units below the fill.
+The importer verifies their original atlas/sprite bindings, dimensions and
+pivots, retaining widget/transform/controller hashes in `content/battle-hud.json`.
+These two additional images share the existing battle atlas (11 sprites total).
+Displayed fill follows the combat presentation snapshot, including damage,
+healing and revival, with empty/invalid maximum HP handled and excess HP capped
+visually. Outlined numbers/names stay readable on the scenery. Enemy overlays
+draw after all enemy actors so adjacent rigs cannot cover health text.
+Bar positions are adapted to the current actor arrangement. Native visibility,
+actor-following anchors, change trails, spacers and segmented boss bars remain
+unfinished; original controller timing is not claimed.
+
+Native captures include isolated six-enemy previews with zero, one-point,
+partial and full HP, in addition to the real attack/healing/revival scenarios.
+Synthetic preview rewards settle into a disposable profile. Automated captures
+accept only scripted input, preventing desktop mouse/keyboard activity from
+changing test saves or music preferences. To diagnose a particular save without
+changing the supplied file, copy it into the isolated reload checks:
+
+```sh
+python3 tools/smoke_client.py --read-only-fixture /path/to/local.data
+# For migration fixtures with Red in the first party slot, exercise the Camp selection first:
+python3 tools/smoke_client.py --read-only-fixture /path/to/local.data --migrate-first
+```
+
+The battle pause button now uses its original round artwork at (55,55).
+The pause scene's continue/retry/map controls occupy the recovered left sidebar,
+with the music control anchored 50 units from the bottom. Its original board,
+header and nine-piece paper panel show local battle help; remote news is not
+reconstructed. Original pause entry/exit curves drive the sidebar overshoot and
+overlay fade. Continue resumes, retry creates a fresh battle from the current
+profile, and the map button returns to Adventure. Escape also opens/closes pause.
+The battle clock freezes queued skills, projectiles, idle poses and health motion
+through the popup's entry/exit, then resumes without adding the paused wall time.
+The existing music backend remains independently controllable and persists mute.
+
+`content/ui-motion.json` records 33 prepared sprite entries, 19 original clips,
+79 scalar channels and 242 keys, including their original Hermite tangents and
+stepped alpha keys. `tools/recover_ui_motion.py` checks the pinned bundle before
+extracting source widget geometry, atlas bindings, placements and curves.
+The runtime replays standard and campaign-boss show/damage/heal/hide motion:
+small bars rest at 0.5 scale, boss bars at 0.75, with expansion to 1.0, damage
+shake, healing lift, change indication and fade-out/revival. Boss frames retain
+the authored 218x64 body and offset 152x20 fill. As an explicit provisional
+presentation policy, the eleven campaign pigs with recovered `size_type=3`
+receive that frame; the badge currently shows level. This does not establish the
+original prefab-selection or badge-assignment branch. World-event segmented
+boss bars need their separate battle models and remain unfinished.
+
+The saved motion keys are reproduced, but **exact native health-controller
+equivalence is not established**. Current fill/trail interpolation uses the
+original 0.125/0.4/0.25-second pacing values with a provisional schedule. Native
+coroutine order, overlapping-hit behavior, visibility/following, spacers and
+initiative text still need comparison. The original ELF and the bodies for
+`CharacterHealthBar.ChangeHealthBar`/`ChangeValueOverTime` are absent here.
+Unity6 visual-reference evidence remains separate from Unity5.6 gameplay evidence.
+
+The pause button, rage meter and wave tracker now play their original entrance
+curves. Their control bounds move with the artwork; pause/pepper pointer input
+is disabled until entry settles. Retry and new battles restart the entrance.
+The wave tracker plays `BattleProgress_Update` when the displayed wave changes,
+using its original movement and 0.75-to-1.0 scale curve. A real combat regression
+checks that this waits for the defeated actor's clip before the next wave is
+published. All HUD motion uses the paused battle clock. Leave clips are recovered
+but exit choreography remains pending; wave-track span and trigger integration
+remain adaptations to this renderer, not proof of native controller equivalence.
+
+The spacer follow-up preserves the original `HealthBar_Spacer` hierarchy and
+controller bytes/hashes in `unresolved_health_spacer` within that manifest.
+Its count/spacing rule remains unresolved because the relevant native bodies
+are missing. No spacer count or HP threshold is invented from those bytes.
+
+```sh
+python3 tools/recover_ui_motion.py --check
+python3 tools/smoke_hud.py
+# Preparation only, using the same separate UnityPy environment:
+python tools/recover_ui_motion.py --bundle /path/to/data.unity3d
+```
+
 In the Desktop package, double-click `Play Epic Rust.cmd` to launch the game.
 The launcher keeps save data (`local.data`) beside the executable. The packaged
 `Epic Rust.exe` can also be launched directly. Rust and Visual Studio are needed
@@ -613,7 +779,25 @@ Extracted game files and generated evidence are local inputs, excluded by
 
 ## Verification so far
 
-Current conditional-attack milestone on macOS arm64: 168 Rust tests, Clippy and
+Current HUD-transition milestone on macOS arm64: 183 Rust tests, Clippy, release
+build, source-only UI/HUD provenance checks and four hierarchy regressions pass.
+Tests cover original nine-slice geometry, small panels and anchor offsets across
+different viewport sizes, safe HP ranges and original health-frame geometry.
+Native UI/save checks pass across 22 launches and 1,144 captures, including
+zero/one-point/partial/full HP in six-enemy layouts, plus half-full, ready,
+clicked and settled pepper states.
+Clicking a partial pepper leaves rage unchanged; clicking a full pepper spends
+rage and runs the existing attack through the real UI. Camp, inventory and
+battle captures were also visually reviewed. This is not a claim of
+pixel-equivalent layout or full visual parity with EpicWeb.
+The dedicated pause/boss/motion suite adds two launches and 76 captures, checking
+authored motion keys, frozen pause time, rejected background input, continue,
+music toggles, retry and map return without changing the fixture's profile.
+Additional states check original HUD entrances/wave updates, rejected moving/
+offscreen control input and successful settled input (1,220 captures/24 launches
+across both native suites).
+
+The preceding conditional-attack milestone passed 168 Rust tests, Clippy and
 the release build pass. Eight new regressions cover curse categories, positive
 effects, cleanse/purge/expiry, stun eligibility, defense and retaliation,
 bird/pig consistency and the Bard-to-Frost-Savage combination. Native UI/save

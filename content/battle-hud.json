@@ -1,0 +1,408 @@
+{
+  "reference": "https://github.com/DarkTerraYT/EpicWeb",
+  "revision": "d6ff01fcd9497a95abc40be955957a3447b55227",
+  "bundle_sha256": "f245e9efc2d0a47a17cbe31fea622a6224460b9d4d2da78c4d54db533f7952b0",
+  "anchors": [
+    {
+      "key": "progress",
+      "name": "2_BattleProgress",
+      "anchor": 1,
+      "offset": [
+        0.0,
+        -50.0,
+        0.0
+      ],
+      "transform_id": 217,
+      "component_id": 503,
+      "raw_sha256": "4d5e943d60e55d5bd351c446743a6bd1ba271da876f8e75ef886ef9955d7962b"
+    },
+    {
+      "key": "rage",
+      "name": "5_RageOMeter",
+      "anchor": 7,
+      "offset": [
+        0.0,
+        66.0,
+        0.0
+      ],
+      "transform_id": 306,
+      "component_id": 586,
+      "raw_sha256": "477641b9ffdcb9943009c4a80d04759aecae415e3230b635a14b0ff70bf5dc6d"
+    }
+  ],
+  "anchor_interpretation": "Inferred 3x3 row-major top-left through bottom-right; selected rows reproduce 1280x720 saved positions",
+  "atlas": {
+    "file": "resources.assets",
+    "id": 43932,
+    "raw_sha256": "57c04d19ba32dd478580bf014f3eecfb51dedf692297e91c5711f25878b5fb0a",
+    "material_id": 19,
+    "texture_id": 861,
+    "texture_raw_sha256": "25f783758914c0a6a8f639330c5d992efbd2fd5bdbb83c98ebfcfaef05e060aa"
+  },
+  "image": {
+    "path": "assets/ui/battle_atlas.png",
+    "sha256": "6de3a33fdcc323c7c38b67baf5efae2b6bf7f6890c3a5513bb52d157a6b2c0fe",
+    "size": [
+      512,
+      512
+    ]
+  },
+  "sprites": [
+    {
+      "key": "bird",
+      "name": "BattleProgress_RedBird_Idle",
+      "source_rect": [
+        413,
+        617,
+        56,
+        52
+      ],
+      "source_rgba_sha256": "3e68816e8c5503332f8de7c8fee0513a6bbdad2640a9ffb0feda3eb98475a071",
+      "runtime_rect": [
+        2,
+        2,
+        56,
+        52
+      ]
+    },
+    {
+      "key": "bird_shadow",
+      "name": "BattleProgress_RedBird_Shadow",
+      "source_rect": [
+        86,
+        791,
+        40,
+        14
+      ],
+      "source_rgba_sha256": "adbaf92c7d892cb06afc1c24d10252e785486bc45d4dc5338c28711c035e98b6",
+      "runtime_rect": [
+        62,
+        2,
+        40,
+        14
+      ]
+    },
+    {
+      "key": "health_body",
+      "name": "Healthbar_Small_Body",
+      "source_rect": [
+        232,
+        672,
+        164,
+        32
+      ],
+      "source_rgba_sha256": "93f8476a1addb808dce01feae0ec77153640b8e4d5fb7198eaebc15fe1e200dc",
+      "runtime_rect": [
+        106,
+        2,
+        164,
+        32
+      ]
+    },
+    {
+      "key": "health_fill",
+      "name": "Healthbar_Small_Bar_Health",
+      "source_rect": [
+        653,
+        716,
+        152,
+        20
+      ],
+      "source_rgba_sha256": "2a2367603884638828a180b286e573d371ea1d552f00fcc3e1cbb31fed2f54ed",
+      "runtime_rect": [
+        274,
+        2,
+        152,
+        20
+      ]
+    },
+    {
+      "key": "rage_body",
+      "name": "RageOMeter_Body",
+      "source_rect": [
+        86,
+        945,
+        146,
+        78
+      ],
+      "source_rgba_sha256": "1bf692c5ba85da747b2f7dcfbfb6f51ce223b2ff2278f4a63b0a56779b457d25",
+      "runtime_rect": [
+        2,
+        58,
+        146,
+        78
+      ]
+    },
+    {
+      "key": "rage_fill",
+      "name": "RageOMeter_Fill",
+      "source_rect": [
+        469,
+        792,
+        134,
+        68
+      ],
+      "source_rgba_sha256": "9c2fd0c47678f603acc6e8ee49924b816d60d126ed01d6fbdae1da490b84b175",
+      "runtime_rect": [
+        152,
+        58,
+        134,
+        68
+      ]
+    },
+    {
+      "key": "rage_ready",
+      "name": "RageOMeter_Ready",
+      "source_rect": [
+        264,
+        58,
+        206,
+        166
+      ],
+      "source_rgba_sha256": "f5561e2d8f1066508d42163cefa1d7b3fac674a66b74d0c5d589c8a723fcb5be",
+      "runtime_rect": [
+        290,
+        58,
+        206,
+        166
+      ]
+    },
+    {
+      "key": "rage_stem",
+      "name": "RageOMeter_Stipe",
+      "source_rect": [
+        604,
+        956,
+        42,
+        62
+      ],
+      "source_rgba_sha256": "4eee42f98a4fe794eb4b473cecd24d51462da66d22a052ed0ffb0f32cdb9f4e4",
+      "runtime_rect": [
+        2,
+        228,
+        42,
+        62
+      ]
+    },
+    {
+      "key": "track_end",
+      "name": "BattleProgress_Track_End",
+      "source_rect": [
+        225,
+        897,
+        86,
+        44
+      ],
+      "source_rgba_sha256": "9de7869b7b59ee2df222936309c0ff665f93589174723f2785a89fcd4d8715b0",
+      "runtime_rect": [
+        48,
+        228,
+        86,
+        44
+      ]
+    },
+    {
+      "key": "track_middle",
+      "name": "BattleProgress_Track_Middle",
+      "source_rect": [
+        160,
+        767,
+        64,
+        44
+      ],
+      "source_rgba_sha256": "0365924bcac6c3168704921e8995ae8fe898a1d604675813935e17ac56604aa7",
+      "runtime_rect": [
+        138,
+        228,
+        64,
+        44
+      ]
+    },
+    {
+      "key": "wheel",
+      "name": "BattleProgress_WheelOfFortune",
+      "source_rect": [
+        606,
+        792,
+        62,
+        60
+      ],
+      "source_rgba_sha256": "864d129daa54986eb0e920f1de76307d50e9db457c4e0652f6d5c81bccd1b6fc",
+      "runtime_rect": [
+        206,
+        228,
+        62,
+        60
+      ]
+    }
+  ],
+  "enter_clips": [
+    {
+      "file": "sharedassets10.assets",
+      "id": 9,
+      "name": "BattleProgress_Enter",
+      "raw_sha256": "3180beccdeffe39551bbbea680b99b56e020f64627e4cc3a59f1a6fb0d51a101",
+      "path": "Animation",
+      "keys": [
+        {
+          "time": 0.0,
+          "value": [
+            0.0,
+            100.0,
+            0.0
+          ]
+        },
+        {
+          "time": 0.125,
+          "value": [
+            -4.145311828642623e-18,
+            -20.0,
+            0.0
+          ]
+        },
+        {
+          "time": 0.25,
+          "value": [
+            -9.474998229131534e-18,
+            10.0,
+            0.0
+          ]
+        },
+        {
+          "time": 0.4166666567325592,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sharedassets10.assets",
+      "id": 47,
+      "name": "RageOMeter_Enter",
+      "raw_sha256": "8b559da913f6bdf39a607d8f50b6a0378632eebceae014df330a6c92a797712b",
+      "path": "Animation",
+      "keys": [
+        {
+          "time": 0.0,
+          "value": [
+            0.0,
+            -200.0,
+            0.0
+          ]
+        },
+        {
+          "time": 0.125,
+          "value": [
+            0.0,
+            20.0,
+            0.0
+          ]
+        },
+        {
+          "time": 0.25,
+          "value": [
+            0.0,
+            -10.0,
+            0.0
+          ]
+        },
+        {
+          "time": 0.4166666567325592,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  ],
+  "rage_widgets": [
+    {
+      "key": "rage_body",
+      "id": 611,
+      "width": 146,
+      "height": 78,
+      "pivot": 4,
+      "raw_sha256": "a1b2a71e0c968acba2b4c309e42c875297aabaa50bb73e12fce9c46a145c5f62"
+    },
+    {
+      "key": "rage_fill",
+      "id": 589,
+      "width": 134,
+      "height": 68,
+      "pivot": 4,
+      "raw_sha256": "ae2ca1836822740f9968e8a1ab882c3597e84126a4c8fe328dcc3f358b602158"
+    },
+    {
+      "key": "rage_stem",
+      "id": 572,
+      "width": 42,
+      "height": 62,
+      "pivot": 4,
+      "raw_sha256": "1e31406f024ec93391b46e84baee2c7cfc0424e8640aff991c0b62b73ebe4ec4"
+    }
+  ],
+  "health_widgets": [
+    {
+      "key": "health_body",
+      "file": "sharedassets27.assets",
+      "id": 1179,
+      "size": [
+        164,
+        32
+      ],
+      "pivot": 4,
+      "depth": 0,
+      "sprite_name": "Healthbar_Small_Body",
+      "atlas_file": "resources.assets",
+      "atlas_id": 43932,
+      "position": [
+        0.0,
+        -2.0,
+        0.0
+      ],
+      "raw_sha256": "015cc59f5af8e466b287983908f55725e24e0d959b5cef74d70adcd44ffa5bb3",
+      "transform_id": 807,
+      "transform_sha256": "87b7d4df7f1be4be40154144443f8c0c54a92e6019f11d989504961697cf9dfd"
+    },
+    {
+      "key": "health_fill",
+      "file": "sharedassets27.assets",
+      "id": 1198,
+      "size": [
+        152,
+        20
+      ],
+      "pivot": 4,
+      "depth": 3,
+      "sprite_name": "Healthbar_Small_Bar_Health",
+      "atlas_file": "resources.assets",
+      "atlas_id": 43932,
+      "position": [
+        0.0,
+        0.0,
+        -2.9999399185180664
+      ],
+      "raw_sha256": "4e2f3223d0ec9fa433ad987d35258d562b3323c4d1cd8308a3e222d8236df877",
+      "transform_id": 709,
+      "transform_sha256": "9277c2fb154b210702389e8516affdfb9603ddcbc6526cbe6ce99231965c2444"
+    }
+  ],
+  "health_prefab": {
+    "file": "sharedassets27.assets",
+    "game_object_id": 317,
+    "transform_id": 825,
+    "controller_id": 1167,
+    "controller_raw_sha256": "5b2542bb083daec19081a0e5624e461e86c521fb7641db28bf5533900341043c"
+  },
+  "limitations": [
+    "Settled HUD placement only; enter/leave animations are not played",
+    "Wave-track width and wave icon motion are adapted to current battles",
+    "Rage glow timing, particles, gold variant and drag gestures remain unfinished",
+    "Health bars use the current actor placement; original following/visibility, change trails, spacers and boss segments remain unfinished"
+  ]
+}

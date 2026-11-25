@@ -1,5 +1,47 @@
 # Local reconstruction inputs and tools
 
+The user supplied [DarkTerraYT/EpicWeb](https://github.com/DarkTerraYT/EpicWeb)
+as the final visual reference. The selected original NGUI artwork under
+`assets/ui/` comes from its `Build/EpicWeb.data` at commit
+`d6ff01fcd9497a95abc40be955957a3447b55227` (data SHA256
+`0606bf5e355b335bee30bb4001b8a978720729122ac280af380c24183ad6506f`).
+It is original game artwork, not newly authored or generated art; no blanket
+open-source license is asserted over it or inferred from GitHub hosting.
+`content/reference-ui.json` retains the full extraction identities, pixel
+rectangles, borders and image hashes. The runtime atlas copies these recovered
+pixels without resampling. The reference package identifies product version
+3.0.1 and Unity 6000.3.4f1; it is separate from the original APK evidence below.
+
+`tools/recover_reference_ui.py` uses [UnityPy](https://github.com/K0lb3/UnityPy)
+1.25.4 and its preparation-time dependencies to read/decode that reference
+package. UnityPy is MIT-licensed; the package is installed separately and is
+not vendored or linked into the Rust runtime. The local NGUI atlas reader,
+selection, provenance checks and runtime skin code are separate project code.
+`tools/recover_reference_layouts.py` uses the same separately installed reader
+for the pinned bundle's original menu hierarchies. Their identities, transforms,
+camera projection, component hashes and selected serialized layout-controller
+bytes are retained in `content/reference-layouts.json` as reconstruction
+evidence, under the same original-game-material distinction above.
+The eleven battle HUD sprites in `assets/ui/battle_atlas.png` are
+unscaled pixel copies from the same pinned package's `BattleElements` atlas.
+`content/battle-hud.json` preserves source object and pixel hashes, crop bounds,
+runtime packing, selected widget identities, anchor evidence and enter-clip
+key values. `tools/recover_battle_hud.py` uses the same preparation-time reader.
+The health-frame/fill follow-up also records the original `HealthBar_Small`
+prefab's widget, transform and controller identities and hashes, with validated
+external links to that atlas. Recovered image pixels are not resampled.
+`assets/ui/motion_atlas.png` contains 33 selected widget/sprite entries from the
+same reference's GenericElements, GenericElements_Additional and BattleElements
+atlases, including pause controls/board/paper and standard/boss health artwork.
+`content/ui-motion.json` retains widget and atlas identities, image hashes,
+authored placements and 19 clips' selected scalar channels with original keys
+and tangents. `tools/recover_ui_motion.py` uses the same separate UnityPy reader.
+These remain original game artwork and animation evidence, not newly authored
+art or material placed under a blanket open-source license.
+The motion manifest also retains the original health-spacer prefab/controller
+bytes and hashes as unresolved evidence; no native count/spacing behavior is
+asserted from that data alone.
+
 The game images, font, localization, and balancing content are extracted from
 the user's supplied Angry Birds Epic package, `com.rovio.gold` version
 3.0.27463.4821. They are original game material, not new artwork made for this

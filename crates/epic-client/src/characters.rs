@@ -108,7 +108,7 @@ pub struct CharacterArt {
     textures: Vec<Option<Texture2D>>,
     backs: Vec<Option<Texture2D>>,
     animations: AnimationLibrary,
-    capture_time: Option<f32>,
+    animation_time: Option<f32>,
     capture_clip: Option<&'static str>,
 }
 impl Deref for CharacterArt {
@@ -131,14 +131,14 @@ impl CharacterArt {
             textures: vec![None; CHARACTER_TEXTURES.len()],
             backs: vec![None; hats.len()],
             animations: AnimationLibrary::embedded(),
-            capture_time: None,
+            animation_time: None,
             capture_clip: None,
         }
     }
 
     #[cfg(not(target_arch = "wasm32"))]
-    pub fn set_capture_time(&mut self, seconds: Option<f32>) {
-        self.capture_time = seconds;
+    pub fn set_animation_time(&mut self, seconds: Option<f32>) {
+        self.animation_time = seconds;
     }
     #[cfg(not(target_arch = "wasm32"))]
     pub fn set_capture_clip(&mut self, clip: Option<&'static str>) {
@@ -203,7 +203,7 @@ impl CharacterArt {
         let seconds = if let Some((_, seconds)) = playback {
             seconds
         } else if alive {
-            self.capture_time.unwrap_or_else(|| get_time() as f32)
+            self.animation_time.unwrap_or_else(|| get_time() as f32)
         } else {
             0.
         };

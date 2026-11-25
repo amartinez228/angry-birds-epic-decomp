@@ -3,12 +3,17 @@ use epic_core::{
 };
 use macroquad::prelude::*;
 mod animation;
+mod battle_hud;
 mod characters;
+mod health_display;
 mod music;
+mod pause;
 mod presentation;
 mod projectiles;
 mod rewards;
 mod scenery;
+mod ui_motion;
+mod ui_skin;
 use characters::{Actor, CharacterArt};
 use epic_core::effects::{Side, Source};
 use presentation::Presentation;
@@ -19,6 +24,7 @@ const INK: Color = Color::new(0.11, 0.16, 0.22, 1.);
 const CREAM: Color = Color::new(1., 0.96, 0.83, 1.);
 const GOLD: Color = Color::new(1., 0.74, 0.16, 1.);
 const GREEN: Color = Color::new(0.25, 0.55, 0.28, 1.);
+const UI_FONT_SIZE: u16 = 40;
 include!("art_generated.rs");
 
 thread_local! {
@@ -26,12 +32,19 @@ thread_local! {
 }
 
 fn measure_ui(value: &str, size: u16) -> TextDimensions {
-    GAME_FONT.with(|font| measure_text(value, font.borrow().as_ref(), size, 1.))
+    GAME_FONT.with(|font| {
+        measure_text(
+            value,
+            font.borrow().as_ref(),
+            UI_FONT_SIZE,
+            size as f32 / UI_FONT_SIZE as f32,
+        )
+    })
 }
 
 const SAVE_KEY: &str = "epic-rust-profile-v1";
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 enum Screen {
     Map,
     Camp,
@@ -54,20 +67,7 @@ struct Ui {
 impl Ui {
     fn button(&mut self, rect: Rect, label: &str, enabled: bool) -> bool {
         let hover = enabled && rect.contains(self.pointer);
-        draw_rectangle(rect.x, rect.y + 4., rect.w, rect.h, INK);
-        draw_rectangle(
-            rect.x,
-            rect.y,
-            rect.w,
-            rect.h,
-            if !enabled {
-                GRAY
-            } else if hover {
-                WHITE
-            } else {
-                GOLD
-            },
-        );
+        ui_skin::button(rect, enabled, hover);
         let size = 21.;
         let width = measure_ui(label, size as u16).width;
         text(
@@ -97,7 +97,8 @@ fn text(value: &str, x: f32, y: f32, size: f32, color: Color) {
             y,
             TextParams {
                 font: font.borrow().as_ref(),
-                font_size: size as u16,
+                font_size: UI_FONT_SIZE,
+                font_scale: size / UI_FONT_SIZE as f32,
                 color,
                 ..Default::default()
             },
@@ -137,8 +138,7 @@ fn wrapped_label(value: &str, center: f32, baseline: f32, width: f32, size: f32,
 }
 
 fn panel(x: f32, y: f32, w: f32, h: f32) {
-    draw_rectangle(x + 3., y + 5., w, h, Color::new(0., 0., 0., 0.15));
-    draw_rectangle(x, y, w, h, CREAM);
+    ui_skin::paper(Rect::new(x, y, w, h), 1.);
 }
 
 fn bird_color(bird: usize) -> Color {
@@ -294,18 +294,81 @@ fn scenery() {
 }
 
 fn battle_backdrop(x: f32, y: f32, width: f32, height: f32) {
-    draw_rectangle(
-        x,
-        y,
-        width,
-        height,
-        Color::new(CREAM.r, CREAM.g, CREAM.b, 0.9),
+    ui_skin::paper(Rect::new(x, y, width, height), 0.95);
+}
+
+fn battle_label(value: &str, center: Vec2, width: f32, size: u16, color: Color, edge: Color) {
+    let size = ((size as f32 * width / measure_ui(value, size).width.max(1.))
+        .min(size as f32)
+        .floor()
+        .max(1.)) as u16;
+    let x = center.x - measure_ui(value, size).width / 2.;
+    for offset in [vec2(-1., 0.), vec2(1., 0.), vec2(0., -1.), vec2(0., 1.)] {
+        text(value, x + offset.x, center.y + offset.y, size as f32, edge);
+    }
+    text(value, x, center.y, size as f32, color);
+}
+
+fn combat_health(
+    displays: &mut health_display::HealthDisplays,
+    source: Source,
+    center: Vec2,
+    unit: &epic_core::Fighter,
+    now: f32,
+    animated: bool,
+) {
+    let label = displays.draw(source, unit, center, now, animated);
+    if label.alpha <= 0.001 {
+        return;
+    }
+    battle_label(
+        &format!("{} / {}", unit.hp, unit.max_hp),
+        label.center,
+        label.width,
+        label.size,
+        Color {
+            a: label.alpha,
+            ..CREAM
+        },
+        Color {
+            a: label.alpha,
+            ..INK
+        },
     );
+    // The campaign badge uses level as a provisional label; native label
+    // assignment is not present in the supplied CharacterHealthBar disassembly.
+    if let Some(center) = label.badge {
+        battle_label(
+            &unit.level.to_string(),
+            center + vec2(0., 5.),
+            24.,
+            13,
+            Color {
+                a: label.alpha,
+                ..CREAM
+            },
+            Color {
+                a: label.alpha,
+                ..INK
+            },
+        );
+    }
+}
+
+fn enemy_position(index: usize, count: usize) -> Vec2 {
+    vec2(
+        if count > 3 {
+            715. + (index / 3) as f32 * 230.
+        } else {
+            830.
+        },
+        168. + (index % 3) as f32 * 128.,
+    )
 }
 
 fn header(ui: &mut Ui, profile: &Profile, screen: &mut Screen) {
-    text("EPIC / RUST", 35., 48., 35., INK);
-    text("RECONSTRUCTION PROTOTYPE", 37., 72., 15., INK);
+    text("ANGRY BIRDS", 37., 34., 21., INK);
+    text("EPIC", 35., 72., 40., INK);
     for (i, (label, dest)) in [
         ("Adventure", Screen::Map),
         ("Camp", Screen::Camp),
@@ -322,29 +385,21 @@ fn header(ui: &mut Ui, profile: &Profile, screen: &mut Screen) {
             *screen = *dest;
         }
     }
-    draw_circle(925., 43., 17., GOLD);
+    ui_skin::icon("coin", Rect::new(904., 22., 42., 42.), WHITE);
     text(&profile.gold.to_string(), 950., 51., 27., INK);
-    text(&format!("Level {}", profile.level()), 936., 77., 18., INK);
-    text(
-        &format!("Stars: {}", profile.collected_stars()),
-        355.,
-        96.,
-        18.,
-        INK,
-    );
+    ui_skin::icon("xp", Rect::new(905., 60., 26., 26.), WHITE);
+    text(&format!("Level {}", profile.level()), 936., 79., 18., INK);
+    ui_skin::icon("star", Rect::new(355., 78., 25., 25.), WHITE);
+    text(&profile.collected_stars().to_string(), 387., 96., 18., INK);
     if let Some(cost) = profile.experience.next_cost() {
-        draw_rectangle(930., 133., 145., 8., CREAM);
-        draw_rectangle(
-            930.,
-            133.,
-            145. * (profile.experience.points as f32 / cost as f32).min(1.),
-            8.,
-            GOLD,
+        ui_skin::experience(
+            Rect::new(930., 127., 145., 27.),
+            profile.experience.points as f32 / cost as f32,
         );
         text(
             &format!("{} / {} XP", profile.experience.points, cost),
             930.,
-            159.,
+            170.,
             15.,
             INK,
         );
@@ -405,7 +460,7 @@ fn save(profile: &Profile) -> Result<(), &'static str> {
 
 fn config() -> Conf {
     Conf {
-        window_title: "Epic Rust / Reconstruction Prototype".into(),
+        window_title: "Angry Birds Epic".into(),
         window_width: 1100,
         window_height: 720,
         high_dpi: true,
@@ -427,6 +482,17 @@ async fn main() {
         "../../../assets/fonts/AngryBirdsText-Regular.ttf"
     ))
     .expect("Bundled game font");
+    // Use one supersampled glyph size for the interface. Macroquad multiplies
+    // font_size by display DPI internally; prime both current and standard DPI
+    // before any drawing so later labels cannot invalidate earlier glyph UVs.
+    ui_skin::initialize();
+    battle_hud::initialize();
+    ui_motion::initialize();
+    let mut glyphs: Vec<_> = (' '..='~').collect();
+    glyphs.extend(['\u{a0}', '’', '–', '—', '…', '×']);
+    for dpi in [1., screen_dpi_scale()] {
+        original_font.populate_font_cache(&glyphs, (UI_FONT_SIZE as f32 * dpi).ceil() as u16);
+    }
     GAME_FONT.with(|font| *font.borrow_mut() = Some(original_font));
     let mut notice = String::new();
     let saved = quad_storage::STORAGE
@@ -447,6 +513,10 @@ async fn main() {
     let mut screen = Screen::Map;
     let mut battle: Option<Battle> = None;
     let mut presentation = Presentation::default();
+    let mut health_displays = health_display::HealthDisplays::default();
+    let mut hud_motion = battle_hud::HudMotion::default();
+    let mut paused = pause::Pause::default();
+    let mut battle_clock = pause::BattleClock::default();
     let mut selected = 0usize;
     let mut hat_art = CharacterArt::new(&HAT_IMAGES);
     let mut projectile_art = projectiles::ProjectileArt::default();
@@ -457,8 +527,8 @@ async fn main() {
         .and_then(|storage| storage.get("epic-rust-music-muted"))
         .is_some_and(|value| value == "1");
     #[cfg(not(target_arch = "wasm32"))]
-    let silent_capture =
-        std::env::args().any(|arg| arg == "--capture-ui" || arg == "--capture-scenery");
+    let silent_capture = std::env::args()
+        .any(|arg| arg == "--capture-ui" || arg == "--capture-hud" || arg == "--capture-scenery");
     #[cfg(target_arch = "wasm32")]
     let silent_capture = false;
     let mut music = music::MusicPlayer::new(silent_capture, music_muted, get_time().to_bits());
@@ -502,11 +572,21 @@ async fn main() {
     let capture_dir = {
         let args: Vec<_> = std::env::args().collect();
         args.windows(2)
-            .find(|pair| pair[0] == "--capture-ui")
+            .find(|pair| pair[0] == "--capture-ui" || pair[0] == "--capture-hud")
             .map(|pair| std::path::PathBuf::from(&pair[1]))
     };
     #[cfg(not(target_arch = "wasm32"))]
-    let mut capture_index = 0usize;
+    let automated_capture = capture_dir.is_some();
+    #[cfg(target_arch = "wasm32")]
+    let automated_capture = false;
+    #[cfg(not(target_arch = "wasm32"))]
+    let hud_capture = std::env::args().any(|arg| arg == "--capture-hud");
+    #[cfg(target_arch = "wasm32")]
+    let hud_capture = false;
+    #[cfg(not(target_arch = "wasm32"))]
+    let mut capture_index = if hud_capture { 52usize } else { 0usize };
+    #[cfg(not(target_arch = "wasm32"))]
+    let mut hud_target = 0usize;
     #[cfg(not(target_arch = "wasm32"))]
     let mut capture_opened_resources = false;
     #[cfg(not(target_arch = "wasm32"))]
@@ -524,9 +604,63 @@ async fn main() {
     #[cfg(not(target_arch = "wasm32"))]
     let exercise_migration = std::env::args().any(|arg| arg == "--exercise-migration");
     loop {
+        let wall_now = get_time();
+        let game_now = battle_clock.advance(wall_now, paused.blocks());
+        #[cfg(not(target_arch = "wasm32"))]
+        let ui_now = if hud_capture {
+            match capture_index {
+                67 => 10.,
+                68 => 10.125,
+                69 => 10.5,
+                70 => 10.75,
+                71 => 10.85,
+                72 => 11.,
+                73 => 11.1,
+                74 => 11.5,
+                75 => 11.6,
+                76 => 11.7,
+                77 => 12.,
+                78 => 12.1,
+                79 => 12.5,
+                80 => 12.75,
+                81 => 13.,
+                _ => 0.,
+            }
+        } else {
+            wall_now as f32
+        };
+        #[cfg(target_arch = "wasm32")]
+        let ui_now = wall_now as f32;
+        let pause_action = paused.advance(ui_now);
         #[cfg(not(target_arch = "wasm32"))]
         let presentation_now = if capture_dir.is_some() {
             match capture_index {
+                52 => 0.,
+                53 => 0.125,
+                54 => 0.25,
+                55 => 1.,
+                56 => 1.125,
+                57 => 1.5,
+                58 => 1.875,
+                59 => 2.,
+                60 => 2.5,
+                61 => 2.875,
+                62 => 3.,
+                63 => 3.5,
+                64 => 4.2,
+                65 => 5.,
+                66 => 5.25,
+                67..=72 => 6.,
+                73..=77 => 6.1,
+                78..=81 => 7.,
+                82 => 0.,
+                83 => 0.125,
+                84 => 0.5,
+                85 => 1.,
+                86 => 1. + 1. / 6.,
+                87 => 2.2,
+                88 => 2.3,
+                89 => 100.,
                 6 if exercise_score || exercise_mastery => 100.,
                 6 if exercise_revival || exercise_party_revival => 0.125,
                 15 => 0.374,
@@ -555,7 +689,7 @@ async fn main() {
                         + 0.125
                 }
                 21 => 5.,
-                39..=45 => 100.,
+                39..=45 | 49 => 100.,
                 31..=33 | 35..=37 => {
                     let (asset, clip, id) = if capture_index < 34 {
                         (
@@ -588,10 +722,13 @@ async fn main() {
                 _ => 0.,
             }
         } else {
-            get_time() as f32
+            game_now
         };
         #[cfg(target_arch = "wasm32")]
-        let presentation_now = get_time() as f32;
+        let presentation_now = game_now;
+        if !automated_capture {
+            hat_art.set_animation_time((screen == Screen::Battle).then_some(presentation_now));
+        }
         #[cfg(not(target_arch = "wasm32"))]
         if capture_dir.is_some() {
             let (clip, time) = match capture_index {
@@ -601,9 +738,158 @@ async fn main() {
                 13 => (Some("Defeated"), 999.),
                 _ => (None, 0.),
             };
-            hat_art.set_capture_time(Some(time));
+            hat_art.set_animation_time(Some(time));
             hat_art.set_capture_clip(clip);
+            if hud_capture {
+                hat_art.set_animation_time(Some(presentation_now));
+            }
             match capture_index {
+                82 if hud_capture => {
+                    let fixture = Profile {
+                        unlocked: 3,
+                        ..profile.clone()
+                    };
+                    let mut fight = Battle::new(&fixture, 3).expect("HUD transition preview");
+                    fight.waves = 2;
+                    fight.rage = 100;
+                    for enemy in &mut fight.enemies {
+                        enemy.max_hp = 1000;
+                        enemy.hp = 1000;
+                    }
+                    presentation.reset(fight.snapshot());
+                    health_displays.clear();
+                    paused.reset();
+                    hud_motion.restart(fight.stage, 1, presentation_now);
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                    selected = 0;
+                    mode = Mode::Attack;
+                }
+                85 if hud_capture => {
+                    let fight = battle.as_mut().unwrap();
+                    fight.wave = 2;
+                    presentation.reset(fight.snapshot());
+                }
+                83..=89 if hud_capture => {}
+                52 => {
+                    let stage = ENCOUNTERS
+                        .iter()
+                        .position(|e| {
+                            e.waves[0]
+                                .spawns
+                                .iter()
+                                .any(|s| ui_motion::is_boss(PIGS[s.pig].id))
+                        })
+                        .expect("Boss encounter");
+                    let fixture = Profile {
+                        unlocked: stage,
+                        ..profile.clone()
+                    };
+                    let mut fight = Battle::new(&fixture, stage).expect("Boss HUD preview");
+                    hud_target = fight
+                        .enemies
+                        .iter()
+                        .position(|e| ui_motion::is_boss(PIGS[e.pig.unwrap()].id))
+                        .expect("Boss fighter");
+                    for hero in &mut fight.heroes {
+                        hero.max_hp = 1000;
+                        hero.hp = 400;
+                    }
+                    for enemy in &mut fight.enemies {
+                        enemy.max_hp = 1000;
+                        enemy.hp = 1000;
+                    }
+                    presentation.reset(fight.snapshot());
+                    health_displays.clear();
+                    hud_motion.restart(fight.stage, fight.wave, presentation_now);
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                    selected = 0;
+                    mode = Mode::Attack;
+                }
+                55 | 59 | 62 | 65 => {
+                    let fight = battle.as_mut().unwrap();
+                    match capture_index {
+                        55 => fight.enemies[hud_target].hp = 400,
+                        59 => fight.heroes[0].hp = 800,
+                        62 => fight.enemies[hud_target].hp = 0,
+                        _ => fight.enemies[hud_target].hp = 1000,
+                    }
+                    let mut fixture = profile.clone();
+                    fight.settle_experience(&mut fixture);
+                    fight.settle_mastery(&mut fixture);
+                    presentation.reset(fight.snapshot());
+                }
+                53..=81 if hud_capture => {}
+                50 => {
+                    // Source-independent edge-case layout preview on an isolated
+                    // battle. It never awards loot or changes the player save.
+                    let mut fixture = Profile {
+                        unlocked: 3,
+                        ..Profile::default()
+                    };
+                    let mut fight = Battle::new(&fixture, 3).expect("Health HUD battle");
+                    for (hero, hp) in fight.heroes.iter_mut().zip([0, 1, 500]) {
+                        hero.max_hp = 1000;
+                        hero.hp = hp;
+                        hero.knocked_out = hp == 0;
+                    }
+                    let originals = fight.enemies.clone();
+                    fight.enemies = (0..6)
+                        .map(|i| originals[i % originals.len()].clone())
+                        .collect();
+                    for (enemy, hp) in fight.enemies.iter_mut().zip([0, 1, 250, 500, 750, 1000]) {
+                        enemy.max_hp = 1000;
+                        enemy.hp = hp;
+                    }
+                    // Consume synthetic defeat rewards against the fixture,
+                    // before the ordinary frame settles into the player profile.
+                    fight.settle_experience(&mut fixture);
+                    fight.settle_mastery(&mut fixture);
+                    presentation.reset(fight.snapshot());
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                    selected = 1;
+                    mode = Mode::Attack;
+                }
+                51 => {
+                    let fight = battle.as_mut().expect("Health HUD battle");
+                    for (hero, hp) in fight.heroes.iter_mut().zip([1000, 250, 1]) {
+                        hero.hp = hp;
+                        hero.knocked_out = false;
+                    }
+                    for (enemy, hp) in fight.enemies.iter_mut().zip([1000, 750, 500, 250, 1, 0]) {
+                        enemy.hp = hp;
+                    }
+                    let mut fixture = Profile::default();
+                    fight.settle_experience(&mut fixture);
+                    fight.settle_mastery(&mut fixture);
+                    presentation.reset(fight.snapshot());
+                }
+                46 => {
+                    // Isolated HUD/input fixture; never mutate the player profile.
+                    let fixture = Profile {
+                        unlocked: 3,
+                        ..Profile::default()
+                    };
+                    let mut fight = Battle::new(&fixture, 3).expect("HUD battle");
+                    for enemy in &mut fight.enemies {
+                        enemy.hp = 10000;
+                        enemy.max_hp = 10000;
+                    }
+                    fight.rage = 50;
+                    presentation.reset(fight.snapshot());
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                    selected = 0;
+                    mode = Mode::Attack;
+                }
+                47 => {
+                    let fight = battle.as_mut().expect("HUD battle");
+                    fight.rage = 100;
+                    presentation.reset(fight.snapshot());
+                }
+                48 | 49 => {}
                 0 => screen = Screen::Map,
                 1 => screen = Screen::Camp,
                 22 => screen = Screen::Equipment,
@@ -935,9 +1221,48 @@ async fn main() {
         );
         let (mx, my) = mouse_position();
         let mut ui = Ui {
-            pointer: (vec2(mx, my) - origin) / scale,
-            pressed: is_mouse_button_pressed(MouseButton::Left),
+            pointer: if automated_capture {
+                vec2(-1., -1.)
+            } else {
+                (vec2(mx, my) - origin) / scale
+            },
+            pressed: !automated_capture && is_mouse_button_pressed(MouseButton::Left),
         };
+        #[cfg(not(target_arch = "wasm32"))]
+        if hud_capture {
+            ui.pointer = match capture_index {
+                67 | 73 | 78 => vec2(55., 55.),
+                69 => enemy_position(hud_target, battle.as_ref().unwrap().enemies.len()),
+                70 => vec2(100., 70.),
+                74 | 75 => vec2(100., H - 50.),
+                76 => vec2(100., 210.),
+                79 => vec2(100., 350.),
+                82 | 88 => vec2(W / 2., H - 66.),
+                83 => vec2(75., 75.),
+                _ => vec2(-1., -1.),
+            };
+            ui.pressed = matches!(
+                capture_index,
+                67 | 69 | 70 | 73 | 74 | 75 | 76 | 78 | 79 | 82 | 83 | 88
+            );
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        if capture_dir.is_some() && matches!(capture_index, 46 | 48) {
+            // Half-full pepper rejects input; full pepper invokes the real action.
+            ui.pointer =
+                battle_hud::rage_hitbox(vec2(W, H), battle_hud::HudPose::settled()).center();
+            ui.pressed = true;
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        if capture_dir.is_some() && capture_index == 47 {
+            ui.pointer = vec2(-1., -1.);
+            ui.pressed = false;
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        if capture_dir.is_some() && matches!(capture_index, 50 | 51) {
+            ui.pointer = vec2(-1., -1.);
+            ui.pressed = false;
+        }
         #[cfg(not(target_arch = "wasm32"))]
         if capture_dir.is_some()
             && ((capture_index == 23 && !capture_opened_resources) || capture_index == 26)
@@ -1009,6 +1334,7 @@ async fn main() {
             header(&mut ui, &profile, &mut screen);
         }
         let mut changed = false;
+        let mut toggle_music = false;
         match screen {
             Screen::Map => {
                 text("PIGGY ISLAND", 45., 142., 31., INK);
@@ -1050,23 +1376,40 @@ async fn main() {
                         29.,
                         if unlocked { GOLD } else { GRAY },
                     );
-                    let number = (i + 1).to_string();
-                    text(
-                        &number,
-                        position.x - measure_ui(&number, 28).width / 2.,
-                        position.y + 6.,
-                        28.,
-                        INK,
-                    );
+                    if unlocked {
+                        let number = (i + 1).to_string();
+                        text(
+                            &number,
+                            position.x - measure_ui(&number, 28).width / 2.,
+                            position.y + 6.,
+                            28.,
+                            INK,
+                        );
+                    } else {
+                        ui_skin::icon(
+                            "lock",
+                            Rect::new(position.x - 12., position.y - 20., 24., 33.),
+                            WHITE,
+                        );
+                    }
                     let title = STAGE_NAMES[i];
-                    let best = format!("{} / 3 stars", profile.stars[i]);
-                    text(
-                        &best,
-                        position.x - measure_ui(&best, 14).width / 2.,
-                        position.y - 45.,
-                        14.,
-                        INK,
-                    );
+                    for star in 0..3 {
+                        let tint = if star < profile.stars[i] {
+                            WHITE
+                        } else {
+                            Color::new(0.35, 0.38, 0.4, 0.65)
+                        };
+                        ui_skin::icon(
+                            "star",
+                            Rect::new(
+                                position.x - 34. + star as f32 * 23.,
+                                position.y - 62.,
+                                22.,
+                                22.,
+                            ),
+                            tint,
+                        );
+                    }
                     wrapped_label(title, position.x, position.y + 58., 155., 17., 3);
                     if ui.hit(
                         Rect::new(position.x - 40., position.y - 40., 80., 85.),
@@ -1075,6 +1418,9 @@ async fn main() {
                         match Battle::new_with_seed(&profile, i, get_time().to_bits()) {
                             Ok(value) => {
                                 presentation.reset(value.snapshot());
+                                health_displays.clear();
+                                hud_motion.restart(value.stage, value.wave, presentation_now);
+                                paused.reset();
                                 battle = Some(value);
                                 selected = 0;
                                 mode = Mode::Attack;
@@ -1514,25 +1860,58 @@ async fn main() {
                     presentation.tick(presentation_now, hat_art.animations());
                     presentation.synchronize(fight, presentation_now);
                     let view = presentation.view().clone();
-                    let busy = presentation.busy(presentation_now);
-                    battle_backdrop(25., 12., 840., 77.);
+                    health_displays.begin(fight.stage, view.wave, presentation_now);
+                    hud_motion.observe(fight.stage, view.wave, presentation_now);
+                    let hud_pose =
+                        hud_motion.pose(presentation_now, !automated_capture || hud_capture);
+                    battle_backdrop(125., 12., 275., 77.);
                     battle_backdrop(306., 94., 560., 34.);
                     let title_size =
-                        (800. / measure_ui(STAGE_NAMES[fight.stage], 33).width * 33.).min(33.);
-                    text(STAGE_NAMES[fight.stage], 40., 50., title_size, INK);
+                        (245. / measure_ui(STAGE_NAMES[fight.stage], 27).width * 27.).min(27.);
+                    text(STAGE_NAMES[fight.stage], 140., 50., title_size, INK);
+                    battle_hud::progress(
+                        vec2(W, H),
+                        view.wave as usize,
+                        fight.waves as usize,
+                        hud_pose,
+                    );
                     text(
                         &format!(
                             "Wave {}/{}  /  Round {}",
                             view.wave, fight.waves, view.round
                         ),
-                        40.,
+                        140.,
                         83.,
                         21.,
                         INK,
                     );
-                    if ui.button(Rect::new(895., 28., 165., 42.), "Retreat", true) {
-                        screen = Screen::Map;
+                    let mut pause_button =
+                        ui_motion::placement_rect("pause_button", vec2(W, H), 0.);
+                    pause_button.x += hud_pose.pause_offset.x;
+                    pause_button.y += hud_pose.pause_offset.y;
+                    ui_motion::paint("pause_button", pause_button, 1., WHITE);
+                    let mut pause_icon = ui_motion::placement_rect("pause_icon", vec2(W, H), 0.);
+                    pause_icon.x += hud_pose.pause_offset.x;
+                    pause_icon.y += hud_pose.pause_offset.y;
+                    ui_motion::paint("pause_icon", pause_icon, 1., WHITE);
+                    if ui.hit(
+                        pause_button,
+                        !paused.blocks()
+                            && fight.outcome == Outcome::Active
+                            && hud_pose.buttons_ready,
+                    ) {
+                        paused.open(ui_now);
                     }
+                    if !automated_capture && is_key_pressed(KeyCode::Escape) {
+                        if paused.blocks() {
+                            paused.close(ui_now);
+                        } else if fight.outcome == Outcome::Active {
+                            paused.open(ui_now);
+                        }
+                    }
+                    let busy = presentation.busy(presentation_now)
+                        || paused.blocks()
+                        || pause_action.is_some();
                     if !busy
                         && (selected >= fight.heroes.len() || !fight.heroes[selected].can_act())
                     {
@@ -1558,14 +1937,14 @@ async fn main() {
                                 || (!busy && selected == i),
                             presentation.clip_for(Source::bird(i), presentation_now),
                         );
-                        battle_backdrop(35., y - 35., 137., 61.);
-                        text(&hero.name, 50., y - 10., 23., INK);
-                        text(
-                            &format!("{}/{} HP", hero.hp, hero.max_hp),
-                            50.,
-                            y + 16.,
-                            18.,
-                            INK,
+                        battle_label(&hero.name, vec2(98., y - 24.), 170., 20, INK, CREAM);
+                        combat_health(
+                            &mut health_displays,
+                            Source::bird(i),
+                            vec2(98., y),
+                            hero,
+                            presentation_now,
+                            !automated_capture || hud_capture,
                         );
                         if hero.acted {
                             text("RESTING", 305., y, 17., INK);
@@ -1592,15 +1971,10 @@ async fn main() {
                         }
                     }
                     for (i, enemy) in view.enemies.iter().enumerate() {
-                        let x = if view.enemies.len() > 3 {
-                            715. + (i / 3) as f32 * 230.
-                        } else {
-                            830.
-                        };
-                        let y = 168. + (i % 3) as f32 * 128.;
+                        let position = enemy_position(i, view.enemies.len());
                         character(
                             &mut hat_art,
-                            vec2(x, y),
+                            position,
                             Actor::Pig {
                                 asset: PIGS[enemy.pig.expect("Encounter pig")].asset_id,
                             },
@@ -1608,11 +1982,20 @@ async fn main() {
                             false,
                             presentation.clip_for(Source::pig(i), presentation_now),
                         );
-                        battle_backdrop(x - 99., y + 38., 198., 45.);
-                        wrapped_label(&enemy.name, x, y + 57., 185., 17., 1);
-                        let hp = format!("{} / {} HP", enemy.hp, enemy.max_hp);
-                        let width = measure_ui(&hp, 16).width;
-                        text(&hp, x - width / 2., y + 77., 16., INK);
+                    }
+                    // Actor rigs can extend into neighboring rows. Draw all
+                    // enemy health/status overlays after every enemy actor.
+                    for (i, enemy) in view.enemies.iter().enumerate() {
+                        let Vec2 { x, y } = enemy_position(i, view.enemies.len());
+                        battle_label(&enemy.name, vec2(x, y + 47.), 185., 17, INK, CREAM);
+                        combat_health(
+                            &mut health_displays,
+                            Source::pig(i),
+                            vec2(x, y + 68.),
+                            enemy,
+                            presentation_now,
+                            !automated_capture || hud_capture,
+                        );
                         if enemy.effects.is_poisoned() {
                             text("POISON", x - 85., y - 35., 14., DARKGREEN);
                         }
@@ -1624,11 +2007,11 @@ async fn main() {
                         }
                         let vulnerability = enemy.effects.vulnerability();
                         if vulnerability > 0. {
-                            battle_backdrop(x - 99., y + 84., 198., 20.);
+                            battle_backdrop(x - 99., y + 88., 198., 20.);
                             text(
                                 &format!("VULNERABLE +{vulnerability:.0}%"),
                                 x - 85.,
-                                y + 99.,
+                                y + 103.,
                                 14.,
                                 PURPLE,
                             );
@@ -1649,10 +2032,6 @@ async fn main() {
                         &hat_art,
                         &mut projectile_art,
                     );
-                    battle_backdrop(428., 214., 214., 80.);
-                    text(&format!("RAGE  {} / 100", view.rage), 448., 244., 25., INK);
-                    draw_rectangle(440., 265., 190., 17., INK);
-                    draw_rectangle(443., 268., 184. * view.rage as f32 / 100., 11., ORANGE);
                     let active = fight.outcome == Outcome::Active && !busy;
                     for (i, (label, value)) in [
                         ("Attack pig", Mode::Attack),
@@ -1669,10 +2048,10 @@ async fn main() {
                             mode = *value;
                         }
                     }
-                    if ui.button(
-                        Rect::new(715., 534., 285., 46.),
-                        "Rage pepper",
-                        active && fight.rage >= 100,
+                    let pepper = battle_hud::rage_hitbox(vec2(W, H), hud_pose);
+                    if ui.hit(
+                        pepper,
+                        active && fight.rage >= 100 && hud_pose.buttons_ready,
                     ) {
                         pending = Some(Action::Pepper);
                     }
@@ -1699,7 +2078,22 @@ async fn main() {
                             }
                         }
                     }
-                    panel(35., 600., 1030., 89.);
+                    panel(35., 600., 405., 89.);
+                    battle_hud::rage(
+                        vec2(W, H),
+                        view.rage as u16,
+                        active && fight.rage >= 100 && hud_pose.buttons_ready,
+                        pepper.contains(ui.pointer),
+                        hud_pose,
+                    );
+                    let rage_label = format!("Rage pepper  {} / 100", view.rage);
+                    text(
+                        &rage_label,
+                        W / 2. + hud_pose.rage_offset.x - measure_ui(&rage_label, 16).width / 2.,
+                        711. + hud_pose.rage_offset.y,
+                        16.,
+                        INK,
+                    );
                     if let Some(name) = presentation.active_name() {
                         text(name, 320., 119., 19., INK);
                     } else if active {
@@ -1710,7 +2104,7 @@ async fn main() {
                         text(hint, 320., 119., 19., INK);
                     }
                     for (i, line) in view.log.iter().rev().take(3).rev().enumerate() {
-                        text(line, 52., 624. + i as f32 * 24., 18., INK);
+                        wrapped_label(line, 237.5, 624. + i as f32 * 24., 375., 16., 1);
                     }
                     if (fight.outcome == Outcome::Won || fight.outcome == Outcome::Lost)
                         && !presentation.busy(presentation_now)
@@ -1817,10 +2211,41 @@ async fn main() {
                 }
             }
         }
+        if screen == Screen::Battle && paused.blocks() {
+            let caption = battle
+                .as_ref()
+                .map(|b| STAGE_NAMES[b.stage])
+                .unwrap_or("Battle");
+            toggle_music = paused.draw(&mut ui, vec2(W, H), ui_now, music.muted(), caption);
+        }
         if let Some(fight) = battle.as_mut() {
             changed |= fight.settle_experience(&mut profile) > 0;
             changed |= fight.settle_mastery(&mut profile);
             presentation.enqueue(fight.take_presentation_events());
+        }
+        if let Some(action) = pause_action {
+            match action {
+                pause::Action::Resume => {}
+                pause::Action::Map => {
+                    screen = Screen::Map;
+                }
+                pause::Action::Retry => {
+                    if let Some(stage) = battle.as_ref().map(|b| b.stage) {
+                        match Battle::new_with_seed(&profile, stage, get_time().to_bits()) {
+                            Ok(fight) => {
+                                presentation.reset(fight.snapshot());
+                                health_displays.clear();
+                                hud_motion.restart(fight.stage, fight.wave, presentation_now);
+                                battle = Some(fight);
+                                selected = 0;
+                                mode = Mode::Attack;
+                                notice.clear();
+                            }
+                            Err(error) => notice = error.into(),
+                        }
+                    }
+                }
+            }
         }
         if changed {
             if let Err(error) = save(&profile) {
@@ -1893,8 +2318,10 @@ async fn main() {
                 .unwrap_or("music_worldmap"),
         };
         music.request(music_id);
-        if ui.button(Rect::new(920., 91., 165., 30.), music.label(), true)
-            || is_key_pressed(KeyCode::M)
+        if toggle_music
+            || (screen != Screen::Battle
+                && ui.button(Rect::new(920., 91., 165., 30.), music.label(), true))
+            || (!automated_capture && is_key_pressed(KeyCode::M))
         {
             music.toggle();
             if let Ok(mut storage) = quad_storage::STORAGE.lock() {
@@ -2063,8 +2490,97 @@ async fn main() {
                 );
                 assert_eq!(presentation.view().enemies[1].hp, 10000);
             }
-            if capture_index == 46 {
+            if capture_index == 47 {
+                assert_eq!(
+                    battle.as_ref().unwrap().rage,
+                    50,
+                    "Partial pepper must reject input"
+                );
+                assert!(!presentation.busy(presentation_now));
+            }
+            if capture_index == 48 {
+                assert_eq!(presentation.view().rage, 100, "Ready pepper preview");
+            }
+            if capture_index == 49 {
+                assert_eq!(
+                    battle.as_ref().unwrap().rage,
+                    0,
+                    "Clicking the full pepper spends rage"
+                );
+                assert!(presentation.busy(presentation_now));
+            }
+            if capture_index == 50 {
+                assert_eq!(
+                    presentation.view().rage,
+                    0,
+                    "Settled pepper shows spent rage"
+                );
+                assert!(presentation
+                    .view()
+                    .enemies
+                    .iter()
+                    .any(|enemy| enemy.hp < 10000));
+            }
+            if capture_index == 51 {
+                assert_eq!(presentation.view().heroes[0].hp, 0);
+                assert_eq!(presentation.view().heroes[1].hp, 1);
+                assert_eq!(presentation.view().enemies.len(), 6);
+                assert_eq!(presentation.view().enemies[5].hp, 1000);
+            }
+            if capture_index == 52 && !hud_capture {
+                assert_eq!(presentation.view().heroes[0].hp, 1000);
+                assert_eq!(presentation.view().enemies[5].hp, 0);
                 break;
+            }
+            if hud_capture {
+                if matches!(capture_index, 68..=72) {
+                    assert!(paused.blocks());
+                }
+                if capture_index == 70 {
+                    let fight = battle.as_ref().unwrap();
+                    assert_eq!(
+                        fight.enemies[hud_target].hp, 1000,
+                        "Paused background click must not attack"
+                    );
+                    assert!(fight.heroes.iter().all(|h| !h.acted));
+                }
+                if capture_index == 73 {
+                    assert!(!paused.blocks(), "Continue closes pause");
+                }
+                if capture_index == 78 {
+                    assert!(!paused.blocks());
+                    assert!(
+                        battle
+                            .as_ref()
+                            .unwrap()
+                            .heroes
+                            .iter()
+                            .all(|h| h.hp == h.max_hp && !h.acted),
+                        "Retry starts a fresh battle"
+                    );
+                }
+                if capture_index == 81 {
+                    assert_eq!(screen, Screen::Map, "Pause map button leaves battle");
+                }
+                if matches!(capture_index, 83 | 84) {
+                    assert!(!paused.blocks(), "Entering pause button must reject input");
+                    assert_eq!(
+                        battle.as_ref().unwrap().rage,
+                        100,
+                        "Offscreen pepper must reject input"
+                    );
+                }
+                if capture_index == 89 {
+                    assert_eq!(
+                        battle.as_ref().unwrap().rage,
+                        0,
+                        "Settled pepper accepts input after entry"
+                    );
+                }
+                if capture_index == 90 {
+                    assert_eq!(presentation.view().rage, 0);
+                    break;
+                }
             }
         }
     }

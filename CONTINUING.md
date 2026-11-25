@@ -34,7 +34,128 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
-- Current baseline: 168 Rust tests, Clippy and macOS arm64 release build pass.
+- Authored battle-HUD entrances and wave-update motion are live. The pause
+  button enters diagonally from the top-left; the pepper enters from below;
+  the wave tracker enters from above. Their original Hermite overshoots are
+  sampled, and pause/pepper hitboxes follow the artwork. Pointer input waits
+  for the entrance to settle. New battles/retries restart it; paused game time
+  freezes all HUD channels. `BattleProgress_Update` plays once per displayed
+  wave change, including its original drop/return and 0.75-to-1 scale. An actual
+  combat/presentation regression verifies it starts after the defeated actor
+  finishes and the next wave is published. Native callback choreography is
+  still unverified; leave curves are retained but not played on scene exit.
+  The shared motion manifest now has 19 clips/79 channels/242 keys (33 sprite
+  entries unchanged). `unresolved_health_spacer` retains prefab/controller
+  bytes, object identities and hashes; native count/spacing bodies are absent,
+  so no spacer rule was invented. Runtime: `battle_hud::HudMotion`/`HudPose`.
+  Native evidence: `analysis/smoke-hud-1795576222890343000` and
+  `analysis/smoke-client-1795576264371283000` (both ignored by Git).
+- Pause/options, campaign-boss frames and authored health motion are live.
+  `content/ui-motion.json` and `tools/recover_ui_motion.py` preserve 33 sprite
+  entries, 19 clips, 79 scalar curves and 242 keys with source identities and
+  Hermite/step tangents. `ui_motion.rs` renders the 1024x1024 shared atlas and
+  samples curves; `pause.rs` uses original sidebar/board/control positions and
+  enter/leave overshoot/alpha; `health_display.rs` owns per-combatant motion.
+  Continue/retry/map/music controls work. Escape opens/closes pause. A separate
+  battle clock freezes presentation, idle poses, projectiles and health motion
+  throughout pause transitions without a resume jump. The pause scene's former
+  news board shows local battle help; online news/SFX toggling are not restored.
+  Retry uses the current profile and existing fresh-battle rules.
+  Original standard/boss show/damage/heal/hide curves control expansion, damage
+  shake, heal lift, flash and fade/revive. Resting scales are 0.5/0.75. Original
+  boss frame is 218x64 with fill at x+10; level is a provisional badge label.
+  Largest campaign size_type=3 pigs (11 IDs) select that frame as an explicit
+  provisional policy, not a verified native SpawnHealthBars branch. World-event
+  segmented/chunk bars still require missing event battle models.
+  Exact health-controller sequencing is NOT established: current fill/trail
+  scheduling uses original pacing 0.125/0.4/0.25 seconds, but coroutine ordering,
+  interruption/visibility/following/spacers and initiative text need native
+  bodies. Original ELF/cache is absent. Relevant indexed methods: 32116
+  SpawnHealthBars, 43875 SetModel, 43892 ChangeHealthBar.MoveNext, 43904
+  ChangeValueOverTime.MoveNext, 43916 ChangeBarAfterDelay.MoveNext, 43922
+  SetHealthBarSpacer.MoveNext. Preserve the Unity6/Unity5.6 evidence distinction.
+  `tools/smoke_hud.py` runs 38 isolated capture states twice, exercising real
+  pause clicks/blocked background click, music toggles, continue/retry/map,
+  boss and health show/damage/heal/KO/revive, without changing the play profile.
+  The added states cover HUD entry, moved input bounds and wave transitions.
+- Standard health bars now replace bird/pig parchment HP boxes. Recovered
+  `HealthBar_Small` widgets use a 164x32 centered body at (0,-2) and 152x20 fill
+  at (0,0), retaining original geometry and atlas/sprite links. Two new sprite
+  crops share the battle atlas (11 sprites total). Recovery/generation stays in
+  `tools/recover_battle_hud.py`; provenance in `content/battle-hud.json`.
+  Numbers/names use outlined text. All enemy actors draw before health/status
+  overlays, keeping bars readable in six-enemy layouts. HP uses presentation
+  snapshots, clamped fill and safe zero/invalid maxima; two new geometry/range
+  regressions cover this. The current actor-relative placement remains adapted;
+  original visibility/following, change trails/spacers and boss segments remain
+  unfinished. No core gameplay-rule/save-format change.
+  Two added captures preview six enemies with zero/one-point/partial/full HP;
+  synthetic defeat rewards are consumed by disposable profiles. Automated
+  captures ignore live mouse/keyboard input. `tools/smoke_client.py` also accepts
+  `--read-only-fixture PATH` and optional `--migrate-first` for isolated reload
+  diagnostics, retaining the original input file. The follow-up above adds
+  pause/options and authored health motion; remaining native controller/camera
+  behavior still needs recovery.
+- The preceding battle-HUD artwork pass added original pepper body/fill/
+  stem and ready burst at bottom-center (66 units from bottom), and original
+  wave-track/bird/wheel artwork at top-center (50 from top). Nine-point anchor
+  enum inference matches all direct battle-root controllers' saved coordinates
+  at 1280x720, including corner/edge examples. Original enter clips end at zero
+  child offset, overriding the saved offscreen positions. That pass used the
+  settled state; the follow-up above adds entry/wave-update playback. Exit
+  choreography remains pending. Original pepper geometry
+  and 0.9 scale retained; clickable pepper replaces the separate rage button.
+  Stage heading/log are narrower, leaving the center scenery open. Wave-track
+  width/icon movement is adapted; exact native choreography, gold variant,
+  drag gestures, remaining HUD and camera framing remain unfinished.
+  `content/battle-hud.json` retains anchors, widget hashes, enter-clip key values,
+  atlas identities and image hashes; `tools/recover_battle_hud.py --bundle`
+  reproduces from the pinned bundle. Its stdlib `--check` needs no source input.
+  New runtime: `crates/epic-client/src/battle_hud.rs` plus generated data and
+  `assets/ui/battle_atlas.png`. No core gameplay-rule or save-format change.
+- The reference-layout recovery now records 518 transforms in
+  `content/reference-layouts.json`: world-map menu 268, camp menu 38 and battle
+  menu 212. Reproduce with `tools/recover_reference_layouts.py --bundle` and the
+  pinned UnityFS `data.unity3d`; `--check` and `tools/test_reference_layouts.py`
+  run without UnityPy or original inputs. Saved hierarchy, active state,
+  transforms, script identities, camera projections and object hashes are
+  retained, plus raw layout-controller bytes. All three preview cameras use
+  orthographic size 360. Battle nodes include `1_Pause` at (-585,305),
+  `2_BattleProgress` at (0,310) and `5_RageOMeter` at (0,-294), in local Unity
+  coordinates. Decode LayoutControl/LockToScreenSize/ContainerControl and
+  animation updates before treating these as final screen pixels. Current
+  gameplay, screen positions and save format are unchanged by this recovery.
+- The user supplied https://github.com/DarkTerraYT/EpicWeb as the final visual
+  target. Prioritize original UI layouts/art, map/camp/battle HUD and camera
+  framing toward that reference alongside the gameplay reconstruction.
+  The first pass skins current controls with 17 recovered original NGUI sprites:
+  glossy buttons, parchment panels, currency/XP/stars/locks and XP-bar artwork.
+  Positions, route layout and camera remain provisional. No gameplay/save change.
+- Current baseline: 183 Rust tests, Clippy and macOS arm64 release build pass.
+  The health-HUD build passes all 22 native UI/save launches (1,144 captures),
+  including zero/one-point/partial/full HP in six-enemy previews and
+  half-full/ready/clicked/settled pepper states. Partial pepper input
+  is rejected; full pepper input spends rage and performs the action. Four
+  source-only hierarchy tests and all three UI/layout/HUD manifest checks pass.
+  Camp, inventory and battle captures were visually reviewed, including the
+  new bottom pepper, top wave tracker and standard health bars. Final evidence:
+  `analysis/smoke-client-1795576264371283000` (ignored by Git). The dedicated
+  pause/boss/motion suite adds 76 captures across two launches (24 launches and
+  1,220 captures total). Unit regressions check original key values/steps, curve
+  finiteness, damage/heal/death/revive, interrupted fill, popup anchors and
+  paused-clock continuity. `recover_ui_motion.py --check` is source-only.
+  `python3 tools/recover_reference_ui.py --check` verifies all prepared images,
+  hashes and generated Rust without UnityPy or the downloaded input. Repeating
+  extraction needs the pinned `EpicWeb.data` and UnityPy 1.25.4 in a separate
+  environment. The input hash, commit and object identities are recorded in
+  `content/reference-ui.json`. Analysis/downloads are ignored by Git; the
+  temporary Python environment and `/private/tmp` download are disposable.
+  The prepared PNGs and runtime atlas are committed inputs. All UI sprites
+  share one texture with extruded edge padding to prevent filtering seams.
+  Text uses one cached glyph size, scaled for each label and primed at the
+  current display DPI before drawing to prevent font-atlas corruption.
+  EpicWeb's Unity 6000.3.4f1 package is separate reference evidence, not a silent
+  replacement for the original Unity 5.6 APK or its gameplay balancing.
   The audio follow-up adds native Mac music: all nine buffers pass NSSound
   decoding/playback/loop checks, with mute/unmute, track changes, silent captures
   and object cleanup verified through `python3 tools/smoke_audio.py`. It writes
@@ -99,8 +220,11 @@ and backs up replaced files. Do not commit that package or its previous-builds.
   crafting execution still needs original inputs. Do not invent costs or
   interpret CraftingItemBalancingData.ValueOfBaseItem as a complete recipe cost.
 
-The full remaining scope and next steps are in RECONSTRUCTION.json. A rough
-previous scope estimate was 30–35%; it is not a measured completion statistic.
+The full remaining scope and next steps are in RECONSTRUCTION.json. The current
+rough planning estimate is 35–40% of the full recreation, with low confidence;
+this is not measured native decompilation coverage. The first artwork pass
+does not establish original layout or gameplay parity. Remaining skills,
+progression, crafting, game modes and original presentation are substantial.
 
 ## Helper work
 

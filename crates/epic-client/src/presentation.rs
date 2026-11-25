@@ -802,6 +802,8 @@ mod tests {
             .unwrap();
         let impact = attack.impact.unwrap();
         let mut presentation = Presentation::default();
+        let mut hud = crate::battle_hud::HudMotion::default();
+        hud.restart(stage, original.wave, -1.);
         presentation.reset(original.clone());
         fight.enable_presentation_trace();
         fight.act(0, Action::Attack(0)).unwrap();
@@ -810,6 +812,11 @@ mod tests {
         presentation.tick(0., &library);
         presentation.tick(impact, &library);
         assert_eq!(presentation.view().wave, original.wave);
+        hud.observe(stage, presentation.view().wave, impact);
+        assert_eq!(
+            hud.pose(impact, true),
+            crate::battle_hud::HudPose::settled()
+        );
         assert!(!presentation.view().enemies[0].alive());
         presentation.tick(
             (attack.duration.max(impact + defeated_duration) - 0.001).max(impact),
@@ -819,6 +826,11 @@ mod tests {
         presentation.tick(100., &library);
         assert_eq!(presentation.view().wave, fight.wave);
         assert!(presentation.view().enemies.iter().all(Fighter::alive));
+        hud.observe(stage, presentation.view().wave, 100.);
+        assert!(
+            hud.pose(100. + 1. / 6., true).progress_offset.y > 199.9,
+            "Wave HUD update waits for the defeated actor's presentation to finish"
+        );
     }
 
     #[test]

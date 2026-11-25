@@ -1,0 +1,556 @@
+{
+  "reference": "https://github.com/DarkTerraYT/EpicWeb",
+  "revision": "d6ff01fcd9497a95abc40be955957a3447b55227",
+  "data_url": "https://media.githubusercontent.com/media/DarkTerraYT/EpicWeb/d6ff01fcd9497a95abc40be955957a3447b55227/Build/EpicWeb.data",
+  "data_sha256": "0606bf5e355b335bee30bb4001b8a978720729122ac280af380c24183ad6506f",
+  "bundle_sha256": "f245e9efc2d0a47a17cbe31fea622a6224460b9d4d2da78c4d54db533f7952b0",
+  "reference_product_version": "3.0.1",
+  "unity_version": "6000.3.4f1",
+  "decoder": "UnityPy 1.25.4",
+  "runtime_atlas": {
+    "output": "assets/ui/atlas.png",
+    "size": [
+      512,
+      512
+    ],
+    "sha256": "bbbc87dcdeca1e3298a5e807542b80324aa6c745b348ce17ab1080dc1f57ec84",
+    "padding": 2,
+    "packing": "unscaled RGBA copies with 2px edge extrusion; no source resampling"
+  },
+  "atlas": {
+    "file": "sharedassets0.assets",
+    "path_id": 230,
+    "raw_sha256": "f2d0404c0038b5c4f166ca2f1cc63df7e711cb162bc6a4afcf91f52ca38db9f0",
+    "material_path_id": 4,
+    "texture_path_id": 23,
+    "texture_size": [
+      1024,
+      1024
+    ],
+    "coordinate_origin": "top_left",
+    "border_order": [
+      "left",
+      "right",
+      "top",
+      "bottom"
+    ],
+    "texture_object_sha256": "d5eb1226f37243e17ddc59d7cf2970f525247ef3fbd0b2548a57fdd54eb5e9ce"
+  },
+  "sprites": [
+    {
+      "key": "button",
+      "name": "Button_Rectangle_Medium",
+      "rect": [
+        510,
+        78,
+        142,
+        112
+      ],
+      "border": [
+        70,
+        70,
+        41,
+        62
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        2,
+        2,
+        142,
+        112
+      ],
+      "output": "assets/ui/button.png",
+      "png_sha256": "fa8d2a928a130e0b4a8a35f1f77c1ccc63158bffbc0d1dc5988ad0bf2a81ecd6"
+    },
+    {
+      "key": "button_disabled",
+      "name": "Button_Rectangle_Medium_D",
+      "rect": [
+        760,
+        81,
+        142,
+        112
+      ],
+      "border": [
+        70,
+        70,
+        36,
+        67
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        148,
+        2,
+        142,
+        112
+      ],
+      "output": "assets/ui/button_disabled.png",
+      "png_sha256": "29a378d30ba2e1b6d1cd393ea9146a1f3c27e6d5c103d5f76d06ff5b850e8fae"
+    },
+    {
+      "key": "coin",
+      "name": "Resource_Coin",
+      "rect": [
+        316,
+        943,
+        80,
+        80
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        294,
+        2,
+        80,
+        80
+      ],
+      "output": "assets/ui/coin.png",
+      "png_sha256": "0ce59f254af98fdafb61e94b09347c0ca8647e87cf286fb56dd8b446993a9cfd"
+    },
+    {
+      "key": "lock",
+      "name": "Lock",
+      "rect": [
+        455,
+        282,
+        68,
+        92
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        378,
+        2,
+        68,
+        92
+      ],
+      "output": "assets/ui/lock.png",
+      "png_sha256": "7187394cd3a2b1b5b35a955dd24e7dd6c314e186e2c98d269be326f07d4d1a66"
+    },
+    {
+      "key": "paper_b",
+      "name": "PaperLabel_B",
+      "rect": [
+        981,
+        587,
+        42,
+        44
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        450,
+        2,
+        42,
+        44
+      ],
+      "output": "assets/ui/paper_b.png",
+      "png_sha256": "2d8e307945b89f32587dc3d7f80470534152ab26f3f520bee2b6339ed4be1a23"
+    },
+    {
+      "key": "paper_bl",
+      "name": "PaperLabel_BL",
+      "rect": [
+        352,
+        235,
+        122,
+        44
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        2,
+        118,
+        122,
+        44
+      ],
+      "output": "assets/ui/paper_bl.png",
+      "png_sha256": "311d669e49d5dcfc2dd1533efa15eeb1be322b3850a4214a692cab8a632a26a3"
+    },
+    {
+      "key": "paper_br",
+      "name": "PaperLabel_BR",
+      "rect": [
+        526,
+        363,
+        100,
+        44
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        128,
+        118,
+        100,
+        44
+      ],
+      "output": "assets/ui/paper_br.png",
+      "png_sha256": "ede363783eeab847ff63497b857e667e4f7de4115209ba318044bb75583df3d1"
+    },
+    {
+      "key": "paper_c",
+      "name": "PaperLabel_C",
+      "rect": [
+        814,
+        504,
+        42,
+        16
+      ],
+      "border": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        232,
+        118,
+        42,
+        16
+      ],
+      "output": "assets/ui/paper_c.png",
+      "png_sha256": "712857e1b294eeca9e079b42cad7778b56fe20a1d6ff438aaaa67c008a84a0a7"
+    },
+    {
+      "key": "paper_l",
+      "name": "PaperLabel_L",
+      "rect": [
+        744,
+        259,
+        122,
+        16
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        278,
+        118,
+        122,
+        16
+      ],
+      "output": "assets/ui/paper_l.png",
+      "png_sha256": "55ff5a546919d31f562bc1c7b938c2681e1def4244f2cc3204c4a906d495ae64"
+    },
+    {
+      "key": "paper_r",
+      "name": "PaperLabel_R",
+      "rect": [
+        712,
+        428,
+        100,
+        16
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        404,
+        118,
+        100,
+        16
+      ],
+      "output": "assets/ui/paper_r.png",
+      "png_sha256": "0dfe28b95a71a59101d283aba1031231306f1fb64515463854fc90c051b3cdea"
+    },
+    {
+      "key": "paper_t",
+      "name": "PaperLabel_T",
+      "rect": [
+        677,
+        481,
+        42,
+        60
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        2,
+        166,
+        42,
+        60
+      ],
+      "output": "assets/ui/paper_t.png",
+      "png_sha256": "f544e9e01162994893b47ba7f926e70190672fb7dc48a52d75466a6bed462555"
+    },
+    {
+      "key": "paper_tl",
+      "name": "PaperLabel_TL",
+      "rect": [
+        744,
+        196,
+        122,
+        60
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        48,
+        166,
+        122,
+        60
+      ],
+      "output": "assets/ui/paper_tl.png",
+      "png_sha256": "c6d5f9e4a0e2f10604c16f15ae4f85364b91ec51cc84a92155967c518c146e45"
+    },
+    {
+      "key": "paper_tr",
+      "name": "PaperLabel_TR",
+      "rect": [
+        712,
+        365,
+        100,
+        60
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        174,
+        166,
+        100,
+        60
+      ],
+      "output": "assets/ui/paper_tr.png",
+      "png_sha256": "f02963c40eaccfded2a48e75ffa192e3598f68002e98657919374c40145eac8c"
+    },
+    {
+      "key": "star",
+      "name": "BattleStars_Small",
+      "rect": [
+        674,
+        446,
+        32,
+        32
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        278,
+        166,
+        32,
+        32
+      ],
+      "output": "assets/ui/star.png",
+      "png_sha256": "f10bccf78e8b52932eb4f4f0c371a0dacc3455dd5d43a9d0362d1132c71cf68e"
+    },
+    {
+      "key": "xp",
+      "name": "Resource_XP",
+      "rect": [
+        448,
+        540,
+        80,
+        80
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        314,
+        166,
+        80,
+        80
+      ],
+      "output": "assets/ui/xp.png",
+      "png_sha256": "9a2a6ae33e958f5feecd31ac425ac6ae8c7e657391fc29ce267616245fa1d844"
+    },
+    {
+      "key": "xp_body",
+      "name": "XPBar_Body",
+      "rect": [
+        319,
+        1,
+        244,
+        56
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        2,
+        250,
+        244,
+        56
+      ],
+      "output": "assets/ui/xp_body.png",
+      "png_sha256": "2b9a5c34e4992b5a28c7f8795e3f9f1af3617c1e66ecfb99656a41b8ffdb0d88"
+    },
+    {
+      "key": "xp_fill",
+      "name": "XPBar_Fill",
+      "rect": [
+        566,
+        30,
+        228,
+        26
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "runtime_rect": [
+        250,
+        250,
+        228,
+        26
+      ],
+      "output": "assets/ui/xp_fill.png",
+      "png_sha256": "3a2c60daf97d01a5b04f24bead70ff63e1b724c087171c2c5d64b0737d90c056"
+    }
+  ],
+  "limitations": [
+    "Visual reference supplied by the user; separate from the original APK evidence",
+    "UI artwork recovery, not a full scene/layout or behavior reconstruction",
+    "Original game artwork retains its original rights; no repository-wide license inferred"
+  ]
+}
