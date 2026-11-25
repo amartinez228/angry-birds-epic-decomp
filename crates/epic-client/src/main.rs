@@ -3,6 +3,7 @@ use epic_core::{
 };
 use macroquad::prelude::*;
 mod animation;
+mod battle_exit;
 mod battle_hud;
 mod characters;
 mod health_display;
@@ -10,10 +11,12 @@ mod music;
 mod pause;
 mod presentation;
 mod projectiles;
+mod reward_motion;
 mod rewards;
 mod scenery;
 mod ui_motion;
 mod ui_skin;
+mod victory_stars;
 use characters::{Actor, CharacterArt};
 use epic_core::effects::{Side, Source};
 use presentation::Presentation;
@@ -486,6 +489,8 @@ async fn main() {
     // font_size by display DPI internally; prime both current and standard DPI
     // before any drawing so later labels cannot invalidate earlier glyph UVs.
     ui_skin::initialize();
+    rewards::initialize();
+    victory_stars::initialize();
     battle_hud::initialize();
     ui_motion::initialize();
     let mut glyphs: Vec<_> = (' '..='~').collect();
@@ -515,6 +520,7 @@ async fn main() {
     let mut presentation = Presentation::default();
     let mut health_displays = health_display::HealthDisplays::default();
     let mut hud_motion = battle_hud::HudMotion::default();
+    let mut battle_exit = battle_exit::BattleExit::default();
     let mut paused = pause::Pause::default();
     let mut battle_clock = pause::BattleClock::default();
     let mut selected = 0usize;
@@ -541,6 +547,8 @@ async fn main() {
     let mut resource_page = 0usize;
     let mut reward_page = 0usize;
     let mut reward_started_at = 0.;
+    let mut reward_motion = reward_motion::RewardMotion::default();
+    let mut victory_clock = victory_stars::VictoryClock::default();
     let mut mode = Mode::Attack;
     let target = render_target(W as u32, H as u32);
     target.texture.set_filter(FilterMode::Linear);
@@ -605,7 +613,7 @@ async fn main() {
     let exercise_migration = std::env::args().any(|arg| arg == "--exercise-migration");
     loop {
         let wall_now = get_time();
-        let game_now = battle_clock.advance(wall_now, paused.blocks());
+        let game_now = battle_clock.advance(wall_now, paused.blocks() || battle_exit.blocks());
         #[cfg(not(target_arch = "wasm32"))]
         let ui_now = if hud_capture {
             match capture_index {
@@ -624,6 +632,28 @@ async fn main() {
                 79 => 12.5,
                 80 => 12.75,
                 81 => 13.,
+                90 => 20.,
+                91 => 20.5,
+                92 => 20.7,
+                93 => 20.8,
+                94 => 21.,
+                95 => 22.,
+                96 => 22.5,
+                97 => 22.7,
+                98 => 22.8,
+                99 => 23.,
+                108 => 30.,
+                109 => 30. + 7. / 24.,
+                110 => 30. + 10. / 24.,
+                111 => 30. + 14. / 24.,
+                112 => 30. + 14. / 24. + 0.5,
+                113 => 30. + 14. / 24. + 1.225,
+                114 => 32.,
+                115 => 32.1,
+                116 => 32.1 + 1. / 12.,
+                117 => 32.25,
+                118 => 32.35,
+                119 => 32.5,
                 _ => 0.,
             }
         } else {
@@ -661,6 +691,9 @@ async fn main() {
                 87 => 2.2,
                 88 => 2.3,
                 89 => 100.,
+                90..=94 => 1.,
+                95..=98 => 1.5,
+                99 => 2.5,
                 6 if exercise_score || exercise_mastery => 100.,
                 6 if exercise_revival || exercise_party_revival => 0.125,
                 15 => 0.374,
@@ -744,6 +777,32 @@ async fn main() {
                 hat_art.set_animation_time(Some(presentation_now));
             }
             match capture_index {
+                90 | 95 if hud_capture => {
+                    let fixture = Profile {
+                        unlocked: 3,
+                        ..profile.clone()
+                    };
+                    let mut fight = Battle::new(&fixture, 3).expect("HUD exit preview");
+                    for hero in &mut fight.heroes {
+                        hero.max_hp = 1000;
+                        hero.hp = 400;
+                    }
+                    for enemy in &mut fight.enemies {
+                        enemy.max_hp = 1000;
+                        enemy.hp = 1000;
+                    }
+                    presentation.reset(fight.snapshot());
+                    health_displays.clear();
+                    paused.reset();
+                    battle_exit.reset();
+                    hud_motion.restart(fight.stage, fight.wave, 0.);
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                    selected = 0;
+                    mode = Mode::Attack;
+                    hud_target = 0;
+                }
+                91..=99 if hud_capture => {}
                 82 if hud_capture => {
                     let fixture = Profile {
                         unlocked: 3,
@@ -771,6 +830,56 @@ async fn main() {
                     presentation.reset(fight.snapshot());
                 }
                 83..=89 if hud_capture => {}
+                100 | 103 | 104 | 120 if hud_capture => {
+                    // Disposable result fixtures: a won tutorial provides two/
+                    // three stars. A synthetic no-kill victory exercises one.
+                    let mut fixture_profile = Profile::default();
+                    let mut fight = Battle::new_with_seed(&fixture_profile, 0, 7).unwrap();
+                    let stars = match capture_index {
+                        100 => 1,
+                        103 => 2,
+                        _ => 3,
+                    };
+                    if stars == 1 {
+                        fight.outcome = Outcome::Won;
+                    } else {
+                        fight.enemies[0].hp = 1;
+                        fight.enemies[1].hp = 0;
+                        fight.act(0, Action::Attack(0)).unwrap();
+                    }
+                    if stars < 3 {
+                        for hero in &mut fight.heroes {
+                            hero.hp = 0;
+                            hero.knocked_out = true;
+                        }
+                    }
+                    assert_eq!(fight.result_score().unwrap().stars, stars);
+                    fight.settle_experience(&mut fixture_profile);
+                    fight.settle_mastery(&mut fixture_profile);
+                    assert_eq!(fight.result_score().unwrap().stars, stars);
+                    presentation.reset(fight.snapshot());
+                    health_displays.clear();
+                    paused.reset();
+                    battle_exit.reset();
+                    battle = Some(fight);
+                    screen = Screen::Battle;
+                }
+                101..=107 if hud_capture => {}
+                108 if hud_capture => {
+                    let mut fixture_profile = Profile::default();
+                    let mut fight = Battle::new_with_seed(&fixture_profile, 0, 7).unwrap();
+                    fight.enemies[0].hp = 1;
+                    fight.enemies[1].hp = 0;
+                    fight.act(0, Action::Attack(0)).unwrap();
+                    fight.claim(&mut fixture_profile).unwrap();
+                    // All settlement belongs to this disposable profile.
+                    battle = Some(fight);
+                    screen = Screen::Rewards;
+                    reward_started_at = get_time();
+                    reward_page = 0;
+                    reward_motion.reset();
+                }
+                109..=119 | 121..=125 if hud_capture => {}
                 52 => {
                     let stage = ENCOUNTERS
                         .iter()
@@ -918,7 +1027,13 @@ async fn main() {
                     battle = Some(fixture);
                     screen = Screen::Rewards;
                     reward_page = 0;
-                    reward_started_at = get_time() - if capture_index == 28 { 2. } else { 0.5 };
+                    reward_started_at = get_time()
+                        - if capture_index == 28 {
+                            2.
+                        } else {
+                            0.5 + reward_motion::entry_duration() as f64
+                        };
+                    reward_motion.reset();
                 }
                 30 | 34 => {
                     let mut fixture = profile.clone();
@@ -1214,6 +1329,17 @@ async fn main() {
                 }
             }
         }
+        let completed_exit = battle_exit.advance(ui_now, paused.blocks());
+        if let Some(action @ (pause::Action::Retry | pause::Action::Map)) = pause_action {
+            battle_exit.begin(
+                action,
+                ui_now,
+                hud_motion.pose(presentation_now, !automated_capture || hud_capture),
+            );
+        }
+        let navigation_action = completed_exit
+            .or(pause_action
+                .filter(|action| *action == pause::Action::Resume && !battle_exit.blocks()));
         let scale = (screen_width() / W).min(screen_height() / H).max(0.001);
         let origin = vec2(
             (screen_width() - W * scale) / 2.,
@@ -1231,7 +1357,7 @@ async fn main() {
         #[cfg(not(target_arch = "wasm32"))]
         if hud_capture {
             ui.pointer = match capture_index {
-                67 | 73 | 78 => vec2(55., 55.),
+                67 | 73 | 78 | 90 | 95 => vec2(55., 55.),
                 69 => enemy_position(hud_target, battle.as_ref().unwrap().enemies.len()),
                 70 => vec2(100., 70.),
                 74 | 75 => vec2(100., H - 50.),
@@ -1239,11 +1365,30 @@ async fn main() {
                 79 => vec2(100., 350.),
                 82 | 88 => vec2(W / 2., H - 66.),
                 83 => vec2(75., 75.),
+                91 => vec2(100., 350.),
+                96 => vec2(100., 210.),
+                92 | 97 => enemy_position(0, battle.as_ref().unwrap().enemies.len()),
                 _ => vec2(-1., -1.),
             };
             ui.pressed = matches!(
                 capture_index,
-                67 | 69 | 70 | 73 | 74 | 75 | 76 | 78 | 79 | 82 | 83 | 88
+                67 | 69
+                    | 70
+                    | 73
+                    | 74
+                    | 75
+                    | 76
+                    | 78
+                    | 79
+                    | 82
+                    | 83
+                    | 88
+                    | 90
+                    | 91
+                    | 92
+                    | 95
+                    | 96
+                    | 97
             );
         }
         #[cfg(not(target_arch = "wasm32"))]
@@ -1317,8 +1462,22 @@ async fn main() {
         }
         #[cfg(not(target_arch = "wasm32"))]
         if capture_dir.is_some() && exercise_score && capture_index == 6 {
-            ui.pointer = vec2(550., 399.);
+            ui.pointer = vec2(550., 517.);
             ui.pressed = true;
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        if hud_capture {
+            match capture_index {
+                108 | 115 => {
+                    ui.pointer = vec2(900., 655.);
+                    ui.pressed = true;
+                }
+                109 | 117 => {
+                    ui.pointer = vec2(420., 47.);
+                    ui.pressed = true;
+                }
+                _ => {}
+            }
         }
         let mut camera = Camera2D::from_display_rect(Rect::new(0., 0., W, H));
         camera.render_target = Some(target.clone());
@@ -1330,8 +1489,21 @@ async fn main() {
         if !background.is_some_and(|id| scenery_art.draw(id, W, H)) {
             scenery();
         }
+        let reward_elapsed = (get_time() - reward_started_at) as f32;
+        #[cfg(not(target_arch = "wasm32"))]
+        let reward_elapsed = if hud_capture && (108..=119).contains(&capture_index) {
+            ui_now - 30.
+        } else {
+            reward_elapsed
+        };
+        if screen == Screen::Rewards && !reward_motion.pose(reward_elapsed, ui_now).controls_ready {
+            ui.pressed = false;
+        }
         if screen != Screen::Battle {
             header(&mut ui, &profile, &mut screen);
+        }
+        if screen != Screen::Battle {
+            victory_clock.observe(false, ui_now);
         }
         let mut changed = false;
         let mut toggle_music = false;
@@ -1421,6 +1593,7 @@ async fn main() {
                                 health_displays.clear();
                                 hud_motion.restart(value.stage, value.wave, presentation_now);
                                 paused.reset();
+                                battle_exit.reset();
                                 battle = Some(value);
                                 selected = 0;
                                 mode = Mode::Attack;
@@ -1635,8 +1808,10 @@ async fn main() {
                         &mut ui,
                         receipt,
                         fight.reward(),
-                        (get_time() - reward_started_at) as f32,
+                        reward_elapsed,
                         &mut reward_page,
+                        &mut reward_motion,
+                        ui_now,
                     ) {
                         screen = Screen::Camp;
                     }
@@ -1862,8 +2037,9 @@ async fn main() {
                     let view = presentation.view().clone();
                     health_displays.begin(fight.stage, view.wave, presentation_now);
                     hud_motion.observe(fight.stage, view.wave, presentation_now);
-                    let hud_pose =
-                        hud_motion.pose(presentation_now, !automated_capture || hud_capture);
+                    let hud_pose = battle_exit.pose(ui_now).unwrap_or_else(|| {
+                        hud_motion.pose(presentation_now, !automated_capture || hud_capture)
+                    });
                     battle_backdrop(125., 12., 275., 77.);
                     battle_backdrop(306., 94., 560., 34.);
                     let title_size =
@@ -1897,6 +2073,8 @@ async fn main() {
                     if ui.hit(
                         pause_button,
                         !paused.blocks()
+                            && !battle_exit.blocks()
+                            && navigation_action.is_none()
                             && fight.outcome == Outcome::Active
                             && hud_pose.buttons_ready,
                     ) {
@@ -1905,13 +2083,18 @@ async fn main() {
                     if !automated_capture && is_key_pressed(KeyCode::Escape) {
                         if paused.blocks() {
                             paused.close(ui_now);
-                        } else if fight.outcome == Outcome::Active {
+                        } else if fight.outcome == Outcome::Active
+                            && !battle_exit.blocks()
+                            && navigation_action.is_none()
+                        {
                             paused.open(ui_now);
                         }
                     }
                     let busy = presentation.busy(presentation_now)
                         || paused.blocks()
-                        || pause_action.is_some();
+                        || battle_exit.blocks()
+                        || pause_action.is_some()
+                        || navigation_action.is_some();
                     if !busy
                         && (selected >= fight.heroes.len() || !fight.heroes[selected].can_act())
                     {
@@ -2106,23 +2289,50 @@ async fn main() {
                     for (i, line) in view.log.iter().rev().take(3).rev().enumerate() {
                         wrapped_label(line, 237.5, 624. + i as f32 * 24., 375., 16., 1);
                     }
+                    let victory_elapsed = victory_clock.observe(
+                        fight.outcome == Outcome::Won && !presentation.busy(presentation_now),
+                        ui_now,
+                    );
+                    #[cfg(not(target_arch = "wasm32"))]
+                    let victory_elapsed = if automated_capture && !hud_capture {
+                        2.
+                    } else {
+                        victory_elapsed
+                    };
+                    #[cfg(not(target_arch = "wasm32"))]
+                    let victory_elapsed = if hud_capture {
+                        match capture_index {
+                            100 | 120 => 0.,
+                            121 => 1. / 3.,
+                            101 | 122 => 11. / 24.,
+                            123 => 14. / 24.,
+                            124 => 0.875,
+                            125 => 1.,
+                            104 => 0.75 + 1. / 12.,
+                            105 => 1. + 1. / 12.,
+                            106 => 1.25 + 1. / 12.,
+                            102 | 103 | 107 => 2.,
+                            _ => victory_elapsed,
+                        }
+                    } else {
+                        victory_elapsed
+                    };
                     if (fight.outcome == Outcome::Won || fight.outcome == Outcome::Lost)
                         && !presentation.busy(presentation_now)
                     {
                         draw_rectangle(0., 0., W, H, Color::new(0., 0., 0., 0.45));
                         let won = fight.outcome == Outcome::Won;
-                        panel(310., 210., 480., if won { 270. } else { 315. });
-                        text(
-                            if won {
-                                "VICTORY!"
-                            } else {
-                                "TRY ANOTHER STRATEGY"
-                            },
-                            345.,
-                            265.,
-                            32.,
-                            INK,
+                        panel(
+                            310.,
+                            if won { 140. } else { 210. },
+                            480.,
+                            if won { 430. } else { 315. },
                         );
+                        if won {
+                            victory_stars::draw_header(victory_elapsed);
+                        } else {
+                            text("TRY ANOTHER STRATEGY", 345., 265., 32., INK);
+                        }
                         text(
                             &if won {
                                 if profile.experience.next_cost().is_some() {
@@ -2138,21 +2348,30 @@ async fn main() {
                                 "Revive your party or return to camp.".into()
                             },
                             343.,
-                            312.,
+                            if won { 425. } else { 312. },
                             21.,
                             INK,
                         );
                         if won {
                             if let Some(score) = fight.result_score() {
+                                victory_stars::draw(
+                                    score.stars,
+                                    victory_elapsed,
+                                    vec2(550., 390.),
+                                    0.65,
+                                );
                                 text(
                                     &format!(
                                         "{} / 3 stars  |  {} points",
                                         score.stars, score.points
                                     ),
                                     345.,
-                                    345.,
+                                    455.,
                                     20.,
-                                    INK,
+                                    Color {
+                                        a: victory_stars::score_alpha(victory_elapsed),
+                                        ..INK
+                                    },
                                 );
                             }
                         }
@@ -2182,7 +2401,7 @@ async fn main() {
                             }
                         }
                         if ui.button(
-                            Rect::new(345., if won { 372. } else { 442. }, 410., 55.),
+                            Rect::new(345., if won { 490. } else { 442. }, 410., 55.),
                             if won {
                                 "Spin & collect rewards"
                             } else {
@@ -2197,6 +2416,7 @@ async fn main() {
                                         map_page = profile.unlocked / 12;
                                         reward_page = 0;
                                         reward_started_at = get_time();
+                                        reward_motion.reset();
                                         screen = Screen::Rewards;
                                     }
                                     Err(error) => notice = error.into(),
@@ -2217,13 +2437,20 @@ async fn main() {
                 .map(|b| STAGE_NAMES[b.stage])
                 .unwrap_or("Battle");
             toggle_music = paused.draw(&mut ui, vec2(W, H), ui_now, music.muted(), caption);
+            if let Some(action) = paused.departure() {
+                battle_exit.begin(
+                    action,
+                    ui_now,
+                    hud_motion.pose(presentation_now, !automated_capture || hud_capture),
+                );
+            }
         }
         if let Some(fight) = battle.as_mut() {
             changed |= fight.settle_experience(&mut profile) > 0;
             changed |= fight.settle_mastery(&mut profile);
             presentation.enqueue(fight.take_presentation_events());
         }
-        if let Some(action) = pause_action {
+        if let Some(action) = navigation_action {
             match action {
                 pause::Action::Resume => {}
                 pause::Action::Map => {
@@ -2246,6 +2473,7 @@ async fn main() {
                     }
                 }
             }
+            battle_exit.reset();
         }
         if changed {
             if let Err(error) = save(&profile) {
@@ -2579,6 +2807,80 @@ async fn main() {
                 }
                 if capture_index == 90 {
                     assert_eq!(presentation.view().rage, 0);
+                }
+                if matches!(capture_index, 93 | 98) {
+                    assert_eq!(screen, Screen::Battle, "Exit must not route early");
+                    assert!(battle_exit.blocks());
+                    assert!(!paused.blocks());
+                    let fight = battle.as_ref().unwrap();
+                    assert_eq!(
+                        fight.enemies[0].hp, 1000,
+                        "Background input blocked through HUD leave"
+                    );
+                    assert!(fight.heroes.iter().all(|h| h.hp == 400 && !h.acted));
+                }
+                if capture_index == 94 {
+                    assert_eq!(screen, Screen::Map);
+                    assert!(!battle_exit.blocks());
+                }
+                if capture_index == 99 {
+                    assert!(!battle_exit.blocks());
+                    assert!(
+                        battle
+                            .as_ref()
+                            .unwrap()
+                            .heroes
+                            .iter()
+                            .all(|h| h.hp == h.max_hp && !h.acted),
+                        "Retry waits for HUD leave then starts fresh"
+                    );
+                }
+                if (101..=108).contains(&capture_index) {
+                    assert_eq!(screen, Screen::Battle);
+                    assert_eq!(battle.as_ref().unwrap().outcome, Outcome::Won);
+                    assert_eq!(
+                        battle.as_ref().unwrap().result_score().unwrap().stars,
+                        if capture_index <= 103 {
+                            1
+                        } else if capture_index == 104 {
+                            2
+                        } else {
+                            3
+                        }
+                    );
+                }
+                if (109..=118).contains(&capture_index) {
+                    assert_eq!(
+                        screen,
+                        Screen::Rewards,
+                        "No early or background receipt navigation"
+                    );
+                    assert_eq!(battle.as_ref().unwrap().outcome, Outcome::Claimed);
+                }
+                if (109..=115).contains(&capture_index) {
+                    assert!(
+                        !reward_motion.leaving(),
+                        "Entering receipt ignores early continue/header clicks"
+                    );
+                }
+                if (116..=118).contains(&capture_index) {
+                    assert!(reward_motion.leaving());
+                }
+                if capture_index == 117 {
+                    let pose = reward_motion.pose(2.2, 32.1 + 1. / 12.);
+                    assert!((pose.scale.x - 0.5).abs() < 0.0001);
+                    assert!(!pose.controls_ready);
+                }
+                if matches!(capture_index, 119 | 120) {
+                    assert_eq!(screen, Screen::Camp, "Camp follows completed wheel leave");
+                    assert_eq!(battle.as_ref().unwrap().outcome, Outcome::Claimed);
+                }
+                if (121..=126).contains(&capture_index) {
+                    assert_eq!(screen, Screen::Battle);
+                    assert_eq!(battle.as_ref().unwrap().outcome, Outcome::Won);
+                    assert_eq!(battle.as_ref().unwrap().result_score().unwrap().stars, 3);
+                }
+                if capture_index == 126 {
                     break;
                 }
             }

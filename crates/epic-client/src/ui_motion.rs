@@ -37,7 +37,40 @@ pub fn initialize() {
     });
 }
 
-fn sample_keys(keys: &[[f32; 4]], time: f32) -> f32 {
+/// Apply a hierarchy transform to all drawing in a scope, including text and
+/// rotated sprites. Model state is restored on ordinary return and unwinding.
+pub(crate) fn transformed<T>(
+    origin: Vec2,
+    offset: Vec2,
+    scale: Vec2,
+    draw: impl FnOnce() -> T,
+) -> T {
+    struct Restore;
+    impl Drop for Restore {
+        fn drop(&mut self) {
+            // SAFETY: balances the push below on Macroquad's rendering thread.
+            unsafe {
+                macroquad::window::get_internal_gl()
+                    .quad_gl
+                    .pop_model_matrix();
+            }
+        }
+    }
+    let matrix = Mat4::from_translation((origin + offset).extend(0.))
+        * Mat4::from_scale(scale.extend(1.))
+        * Mat4::from_translation((-origin).extend(0.));
+    // SAFETY: used only on Macroquad's rendering thread. No internal GL borrow
+    // survives this statement or crosses calls to normal drawing functions.
+    unsafe {
+        macroquad::window::get_internal_gl()
+            .quad_gl
+            .push_model_matrix(matrix);
+    }
+    let _restore = Restore;
+    draw()
+}
+
+pub(crate) fn sample_keys(keys: &[[f32; 4]], time: f32) -> f32 {
     let upper = keys.partition_point(|k| k[0] <= time);
     if upper == 0 {
         return keys[0][1];

@@ -155,9 +155,47 @@ is disabled until entry settles. Retry and new battles restart the entrance.
 The wave tracker plays `BattleProgress_Update` when the displayed wave changes,
 using its original movement and 0.75-to-1.0 scale curve. A real combat regression
 checks that this waits for the defeated actor's clip before the next wave is
-published. All HUD motion uses the paused battle clock. Leave clips are recovered
-but exit choreography remains pending; wave-track span and trigger integration
-remain adaptations to this renderer, not proof of native controller equivalence.
+published. Entrance/wave motion uses the paused battle clock. Map/retry choices
+now start the pause button, pepper and wave track's authored leave curves while
+the pause panel closes. Navigation waits for both to finish, dispatches once,
+and retains the final offscreen pose through the outgoing frame. Combat, health
+motion, projectiles and idle poses stay frozen; background input remains blocked.
+Continue resumes without a HUD exit. Interrupted entry/wave motion keeps its
+initial position before converging to the authored leave endpoint; unanimated
+scale is retained. This scheduling/continuity policy and wave-track span/trigger
+integration are renderer adaptations, not verified native controller order.
+Other scene-exit and victory/reward choreography remain unfinished.
+
+The victory panel now shows the original left, center and right result stars,
+including their desaturated variants. Saved outer/inner offsets and widget sizes
+preserve the original arrangement at an adapted overall scale. The original
+`BattleWon_Step1_Enter` star-group scale and `Star_Gained` scale/saturation curves
+play after the defeated-actor presentation finishes. Each gain scales the parent
+pivot, so the inner star moves with its authored hierarchy. Unearned stars stay
+desaturated. The victory parchment and overall layout remain adapted. The renderer
+schedules gains left-to-right from 0.75 seconds, 0.25 seconds apart; native
+callback timing is unverified. Saturation blends the two original images, with
+original material shader equivalence still unverified. Score counting, effects,
+sounds and full victory/reward transitions remain unfinished.
+
+The victory heading now also plays the original delayed movement, nonuniform
+stretch/undershoot and alpha from `BattleWon_Step1_Enter`. Its text is centered
+in the current parchment; source translation is scaled0.65 with the star layout.
+The score line uses its independent original fade from0.75s to1s. Both follow
+the same victory visibility clock, after defeated-actor playback. Numeric score
+counting remains unfinished; the displayed value is the final computed score.
+The scoped drawing transform restores model state after both title and wheel
+rendering, including on unwinding.
+
+`content/victory-stars.json` retains the six sprites, three widgets and their
+transform evidence, plus eleven channels/48 keys and serialized source clips.
+Normal builds use one prepared atlas and no new runtime dependency:
+
+```sh
+python3 tools/recover_victory_stars.py --check
+# Separate UnityPy environment, pinned reference bundle:
+python tools/recover_victory_stars.py --bundle /path/to/data.unity3d
+```
 
 The spacer follow-up preserves the original `HealthBar_Spacer` hierarchy and
 controller bytes/hashes in `unresolved_health_spacer` within that manifest.
@@ -424,8 +462,45 @@ consumables, lucky coins and chest markers go into saved resource stacks; origin
 wheel gold goes to the gold wallet in addition to the existing easier battle
 gold. The two tutorial equipment rewards become separate owned copies with
 their rolled level/quality/ancient state and no enchantment. Chosen loadouts do
-not change. The provisional reward screen animates the selected slots and lists
-the collected items; original artwork/choreography remain unfinished.
+not change. The receipt screen now uses six recovered original wheel sprites:
+wooden static halves, blurred spinning halves, cog, mirrored reward highlights
+and active/inactive markers. Original pivots assemble the halves; the three
+fixed markers sit 45 degrees apart. Selected wrapped slots land under those
+markers. The screen still uses adapted placement, ordinal slot labels and a
+provisional 1.4-second spin; the right-hand list shows the actual collected loot.
+Original loot previews, controller timing and victory transitions remain unfinished.
+
+`content/reward-wheel.json` records source sprite rectangles/pixel hashes,
+38 selected scene transforms and component hashes/serialized widget bytes.
+The six images share one extruded atlas with no new runtime dependency.
+Regenerate with the pinned bundle and the same separate UnityPy environment:
+
+```sh
+python tools/recover_reward_wheel.py --bundle /path/to/data.unity3d
+python3 tools/recover_reward_wheel.py --check
+```
+
+The wheel now plays original entrance and leave scale curves, including its
+nonuniform overshoot. The whole wheel hierarchy scales together, including
+rotated halves, markers, cog and labels. Original start/end-spin alpha channels
+blend the blurred wheel over the static halves and fade the ordinal slot labels.
+Renderer scheduling starts the provisional 1.4-second spin after entrance and
+runs the end-spin fade during its final 0.375 seconds. Continue and navigation
+input wait for settlement. Continue plays the shrink-out before returning to
+Camp, dispatching once and blocking background clicks through completion.
+These triggers are renderer policy; native controller scheduling is unverified.
+The current receipt header/list and victory-panel leave remain adapted or pending.
+
+`content/reward-motion.json` preserves four clips/16 channels/47 keys, serialized
+source bytes/hashes and original events. Six header channels are evidence only;
+sound/particle events are not dispatched. No new artwork or runtime dependency
+is required:
+
+```sh
+python3 tools/recover_reward_motion.py --check
+# Separate UnityPy environment, pinned reference bundle:
+python tools/recover_reward_motion.py --bundle /path/to/data.unity3d
+```
 
 Claims update the profile and mark the battle claimed together. Unknown rewards,
 quantity overflow or a full equipment inventory leave the whole profile, RNG
@@ -779,8 +854,10 @@ Extracted game files and generated evidence are local inputs, excluded by
 
 ## Verification so far
 
-Current HUD-transition milestone on macOS arm64: 183 Rust tests, Clippy, release
-build, source-only UI/HUD provenance checks and four hierarchy regressions pass.
+Current victory-heading milestone on macOS arm64: 197 Rust tests, Clippy, release
+build, all seven source-only UI/layout/HUD/motion/wheel/star/reward-motion checks and
+four hierarchy regressions pass.
+Tests also cover wrapped reward-slot alignment with all three markers.
 Tests cover original nine-slice geometry, small panels and anchor offsets across
 different viewport sizes, safe HP ranges and original health-frame geometry.
 Native UI/save checks pass across 22 launches and 1,144 captures, including
@@ -790,12 +867,24 @@ Clicking a partial pepper leaves rage unchanged; clicking a full pepper spends
 rage and runs the existing attack through the real UI. Camp, inventory and
 battle captures were also visually reviewed. This is not a claim of
 pixel-equivalent layout or full visual parity with EpicWeb.
-The dedicated pause/boss/motion suite adds two launches and 76 captures, checking
+The dedicated pause/boss/motion/star/reward suite adds two launches and 148 captures, checking
 authored motion keys, frozen pause time, rejected background input, continue,
 music toggles, retry and map return without changing the fixture's profile.
 Additional states check original HUD entrances/wave updates, rejected moving/
-offscreen control input and successful settled input (1,220 captures/24 launches
-across both native suites).
+offscreen control input and successful settled input (1,292 captures/24 launches
+across both native suites). Current evidence is under
+`analysis/smoke-client-1795582832636326000` and
+`analysis/smoke-hud-1795582804592414000` (ignored by Git). Spinning and landed
+original-art wheel captures were visually reviewed.
+Star states additionally cover one/two/three-star results, group entrance and
+the gain overshoot of each star, title translation/stretch/undershoot and score
+alpha reveal, without changing saved rewards. Those panels
+and overshoots were visually reviewed.
+Reward states cover entrance/blur/landing/shrink-out, rejected early Continue
+and header clicks, and Camp navigation only after the wheel leaves. Entrance,
+spin-crossfade and half-size exit captures were visually reviewed.
+Exit states also verify that map/retry cannot route early, clicks stay blocked
+after the popup closes, and retry starts fresh only after the HUD has left.
 
 The preceding conditional-attack milestone passed 168 Rust tests, Clippy and
 the release build pass. Eight new regressions cover curse categories, positive

@@ -33,6 +33,12 @@ impl Pause {
     pub fn reset(&mut self) {
         self.state = State::Closed;
     }
+    pub fn departure(&self) -> Option<Action> {
+        match self.state {
+            State::Leave(_, action @ (Action::Retry | Action::Map)) => Some(action),
+            _ => None,
+        }
+    }
     pub fn advance(&mut self, now: f32) -> Option<Action> {
         match self.state {
             State::Enter(start) if now - start >= art::duration("pause_enter") => {

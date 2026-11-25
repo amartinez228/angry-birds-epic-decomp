@@ -42,6 +42,27 @@ The motion manifest also retains the original health-spacer prefab/controller
 bytes and hashes as unresolved evidence; no native count/spacing behavior is
 asserted from that data alone.
 
+The six original wheel sprites in `assets/ui/reward_atlas.png` also come from
+that pinned BattleElements atlas. `tools/recover_reward_wheel.py` uses the same
+separate preparation reader; `content/reward-wheel.json` preserves sprite/pixel
+hashes and selected level11 transform/widget evidence. These are original game
+pixels, with the same rights distinction above.
+
+The six result-star sprites in `assets/ui/victory_atlas.png` are original
+BattleElements artwork from the same pinned reference. `content/victory-stars.json`
+retains the three widget/transform identities, sprite rectangles/pixel hashes
+and selected channels with serialized original clips. The preparation helper
+`tools/recover_victory_stars.py` uses the same separately installed UnityPy;
+these pixels and animation evidence retain the original-game-material status.
+The selected channels now also include original victory-title translation,
+nonuniform scale/alpha and the independent score-alpha reveal.
+
+`content/reward-motion.json` retains four additional original clips from the
+same pinned reference, including serialized bytes/hashes, selected scale/alpha
+channels and original event records. `tools/recover_reward_motion.py` uses the
+same separate UnityPy reader. These retain the original animation evidence status;
+this does not assert native controller or sound/particle callback equivalence.
+
 The game images, font, localization, and balancing content are extracted from
 the user's supplied Angry Birds Epic package, `com.rovio.gold` version
 3.0.27463.4821. They are original game material, not new artwork made for this

@@ -34,6 +34,106 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
+- The victory title now plays its original delayed translation, nonuniform
+  stretch/undershoot and alpha from `BattleWon_Step1_Enter`; the score line plays
+  the original independent alpha reveal from0.75s to1s. Header text is centered
+  in the adapted parchment; source translation uses the existing0.65 layout
+  scale. Font, overall layout and native popup equivalence remain adapted.
+  The existing victory clock still waits for defeated-actor presentation.
+  `content/victory-stars.json` / its recovery tool now retain11channels/48keys
+  (six additional header/score channels; same six sprites/three widgets/atlas).
+  No new artwork/runtime dependency. The full final score is shown with the
+  original fade; numeric counting and `Value_Counting` trigger rules are still
+  unknown. No score/payout/RNG/save-format change, and claim semantics unchanged.
+  `ui_motion::transformed` now provides scoped hierarchy drawing; a guard restores
+  model state on return/unwinding. Reward wheel rendering uses the same helper.
+  Two new unit regressions cover original title/fade keys. Native HUD states
+  120..125 cover hidden/delayed title, stretch peak, undershoot, half-score fade
+  and settled title/score; fixture rewards stay in a disposable profile.
+  Verified: 197 Rust tests, Clippy, release build, seven prepared-manifest checks,
+  four hierarchy tests and both native suites (24 launches/1,292 captures) pass.
+  Title stretch, score fade and settled panel were visually reviewed. Evidence:
+  `analysis/smoke-hud-1795582804592414000` and
+  `analysis/smoke-client-1795582832636326000` (ignored by Git).
+
+- Reward wheel entry, spin crossfades and leave are live. New `reward_motion.rs`
+  samples four original clips/16 channels/47 keys from `content/reward-motion.json`;
+  six header channels are retained as evidence but not rendered by the adapted
+  receipt header. Nonuniform wheel entrance scale applies around the complete
+  hierarchy (rotated halves, markers, cog and labels); the caption sits below the
+  overshoot. Static halves remain underneath alpha-animated blurred halves; the
+  original Loot alpha channels currently fade ordinal slot labels.
+  Renderer policy: entry completes before the provisional 1.4-second spin starts;
+  end-spin alpha overlaps its final 0.375s. Header, pagination and Continue input
+  wait for settlement. Continue starts the authored shrink-out, then routes to
+  Camp once, retaining final zero scale/input lock through the outgoing frame.
+  Claims still deposit atomically before receipt display; no payout/RNG/save or
+  combat change. Native scheduling, victory-panel leave, complete scene/header
+  transitions, actual loot icons, sound/particle callbacks remain unverified or
+  unfinished. `tools/recover_reward_motion.py --check` is source-only; regenerate
+  with `--bundle` in the same separate UnityPy environment. Four new unit tests
+  cover original motion keys, alpha phases, deferred spin and single route.
+  Native HUD states108..119 cover entry peak/undershoot, spin, landing, half-size
+  exit and Camp, including early Continue/header clicks and a header click during
+  exit. Rewards settle only in a disposable profile. Verified: 195 Rust tests,
+  Clippy, release build, seven source-only manifest checks, four hierarchy tests
+  and both native suites pass (24 launches/1,280 captures). Entrance, spin and
+  leave captures were visually reviewed. Evidence:
+  `analysis/smoke-hud-1795582517160881000` and
+  `analysis/smoke-client-1795582540153329000` (ignored by Git).
+
+- The victory panel now uses six original result-star images and recovered
+  three-widget hierarchy geometry. Five original channels/23 keys supply group
+  entrance scale, gain scale and saturation. Parent-pivot scaling includes inner
+  star movement. `victory_stars.rs` starts its UI clock after defeated-actor
+  presentation finishes, resets on leave/time reversal, and keeps unearned stars
+  desaturated. Native callback order/delays are absent: left-to-right gains from
+  0.75s, 0.25s apart are renderer policy. Saturation blends the two original images;
+  original shader equivalence remains unverified. Full popup layout/header,
+  native header layout, score counting, effects, sounds and victory/reward transitions remain pending.
+  `tools/recover_victory_stars.py --check` verifies committed outputs and source
+  evidence; `--bundle` regenerates with the same separate UnityPy environment.
+  No score/payout/RNG/save-format change. The claim button moves to y490 to fit
+  the stars; the native real-claim fixture clicks the new position.
+  HUD captures now include states100..107 for one/two/three-star results,
+  entrance overshoot and all three gain peaks. Fixtures settle pending rewards
+  into disposable profiles; the synthetic one-star/no-kill result never deposits
+  into the player's profile. The no-kill result keeps enemies alive deliberately;
+  marking them dead would award pig score during automatic XP settlement.
+  Verified: 191 Rust tests, Clippy, release build, six source-only manifest checks,
+  four hierarchy tests and both native suites (24 launches/1,256 captures) pass.
+  One/two/three-star panels and gain overshoots were visually reviewed. Evidence:
+  `analysis/smoke-hud-1795582068539946000` and
+  `analysis/smoke-client-1795582084333514000` (ignored by Git).
+
+- The receipt screen now renders six original reward-wheel sprites: static and
+  blurred spinning halves, cog, highlight and active/inactive marker art. The
+  original half pivots/mirroring and three 45-degree-spaced markers are retained;
+  placement, marker activation order and 1.4-second spin remain adaptations.
+  Slots are still numbered; the right-hand list shows actual deposited items.
+  No payout/RNG/save changes. `tools/recover_reward_wheel.py --check` checks the
+  prepared atlas, generated Rust and 38 selected scene transforms/component
+  evidence in `content/reward-wheel.json`. Regenerate using `--bundle` with
+  the pinned cached bundle and separate UnityPy environment. One new regression
+  checks every wrapped starting slot against one/two/three consecutive markers.
+  Native original controller timing, loot previews, effects and victory
+  transition remain unfinished.
+
+- Pause-triggered map/retry HUD exits are implemented in `battle_exit.rs`.
+  Choosing map/retry starts the three original HUD leave clips alongside popup
+  leave. The coordinator waits for both, dispatches navigation once, and keeps
+  the final offscreen pose/input lock through the outgoing rendered frame.
+  Continue does not start a HUD exit. The battle clock remains frozen during
+  the entire exit; only UI time advances leave animation. Interrupted entry/
+  wave poses are initially continuous, then converge to the original endpoints;
+  scale is retained because the leave clips do not animate it. Concurrent
+  scheduling and interruption correction are explicit renderer policies, not
+  verified native coroutine behavior. Other exit/victory/reward choreography
+  remains unfinished. No core combat rules or save-format change.
+  `tools/smoke_hud.py` now runs 48 states twice, including visible HUD leave,
+  blocked background clicks after popup closure, delayed map navigation and
+  retry restoration. Evidence: `analysis/smoke-hud-1795580999435217000` and
+  `analysis/smoke-client-1795581041117820000` (ignored by Git).
 - Authored battle-HUD entrances and wave-update motion are live. The pause
   button enters diagonally from the top-left; the pepper enters from below;
   the wave tracker enters from above. Their original Hermite overshoots are
@@ -43,7 +143,7 @@ and backs up replaced files. Do not commit that package or its previous-builds.
   wave change, including its original drop/return and 0.75-to-1 scale. An actual
   combat/presentation regression verifies it starts after the defeated actor
   finishes and the next wave is published. Native callback choreography is
-  still unverified; leave curves are retained but not played on scene exit.
+  still unverified; the follow-up above integrates leave curves for map/retry.
   The shared motion manifest now has 19 clips/79 channels/242 keys (33 sprite
   entries unchanged). `unresolved_health_spacer` retains prefab/controller
   bytes, object identities and hashes; native count/spacing bodies are absent,
@@ -74,7 +174,7 @@ and backs up replaced files. Do not commit that package or its previous-builds.
   SpawnHealthBars, 43875 SetModel, 43892 ChangeHealthBar.MoveNext, 43904
   ChangeValueOverTime.MoveNext, 43916 ChangeBarAfterDelay.MoveNext, 43922
   SetHealthBarSpacer.MoveNext. Preserve the Unity6/Unity5.6 evidence distinction.
-  `tools/smoke_hud.py` runs 38 isolated capture states twice, exercising real
+  `tools/smoke_hud.py` runs 48 isolated capture states twice, exercising real
   pause clicks/blocked background click, music toggles, continue/retry/map,
   boss and health show/damage/heal/KO/revive, without changing the play profile.
   The added states cover HUD entry, moved input bounds and wave transitions.
@@ -131,19 +231,21 @@ and backs up replaced files. Do not commit that package or its previous-builds.
   The first pass skins current controls with 17 recovered original NGUI sprites:
   glossy buttons, parchment panels, currency/XP/stars/locks and XP-bar artwork.
   Positions, route layout and camera remain provisional. No gameplay/save change.
-- Current baseline: 183 Rust tests, Clippy and macOS arm64 release build pass.
+- Current baseline: 197 Rust tests, Clippy and macOS arm64 release build pass.
   The health-HUD build passes all 22 native UI/save launches (1,144 captures),
   including zero/one-point/partial/full HP in six-enemy previews and
   half-full/ready/clicked/settled pepper states. Partial pepper input
   is rejected; full pepper input spends rage and performs the action. Four
-  source-only hierarchy tests and all three UI/layout/HUD manifest checks pass.
+  source-only hierarchy tests and all seven UI/layout/HUD/motion/wheel/star/reward-motion manifest checks pass.
   Camp, inventory and battle captures were visually reviewed, including the
   new bottom pepper, top wave tracker and standard health bars. Final evidence:
-  `analysis/smoke-client-1795576264371283000` (ignored by Git). The dedicated
-  pause/boss/motion suite adds 76 captures across two launches (24 launches and
-  1,220 captures total). Unit regressions check original key values/steps, curve
+  `analysis/smoke-client-1795582832636326000` (ignored by Git). The dedicated
+  pause/boss/motion/star/reward suite adds 148 captures across two launches (24 launches and
+  1,292 captures total). Unit regressions check original key values/steps, curve
   finiteness, damage/heal/death/revive, interrupted fill, popup anchors and
   paused-clock continuity. `recover_ui_motion.py --check` is source-only.
+  Exit regressions additionally cover wait-for-both timing, single dispatch,
+  interrupted pose continuity, retained scale, resume and frozen combat time.
   `python3 tools/recover_reference_ui.py --check` verifies all prepared images,
   hashes and generated Rust without UnityPy or the downloaded input. Repeating
   extraction needs the pinned `EpicWeb.data` and UnityPy 1.25.4 in a separate
