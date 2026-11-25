@@ -381,3 +381,33 @@ Keep the repository private unless you have decided what extracted game material
 you intend to share. Original archives and local saves remain outside Git even
 for a private repository. GitHub authentication is performed by your Git tools;
 do not paste access tokens into source files or chat.
+
+
+## Windows continuation from f4e5111
+
+The four GitHub commits after e482be8 were imported with their exact Git object
+hashes and original history verified. Shell Git networking was unavailable;
+the connected GitHub API supplied the objects, and git fsck verified connectivity.
+Local original Unity5.6 inputs and native ELF/metadata caches are still available
+on this Windows machine, although they were absent in the Mac checkout.
+
+AttackWithBonusDamage / AttackWithBonusDamageVsDebuff Init and damage callback
+bodies have now been recovered (36202/36205/36207/36210). They gate coefficients
+on >0 and multiply floats without an intermediate integer round. Runtime now
+keeps base fractional damage through an enabled conditional multiplier and
+bypasses nonpositive coefficients. Native effect classification for the debuff
+callback is any current effect of SkillEffectTypes.Curse (2), applied once.
+Regression: Stone Guard at23 attack now delivers two22-point cursed hits rather
+than two23-point hits. Final rounding, full defense/callback order and missing
+wet/goo/paint/chocolate/pumpkin/spotlight/ink statuses remain unfinished.
+
+Recovered bodies/field layouts and provenance are under analysis/native/.
+No save-format or reward/economy change in this continuation.
+
+Windows verification for this continuation: 200 Rust tests, 42 Python tests
+(original recovery plus reference layouts), Clippy with warnings denied, release
+build and all seven prepared UI-manifest checks pass. Native suites pass:
+1,144 client captures across22 launches and148 HUD captures across2 launches.
+Evidence: analysis/smoke-client-1795584087275930700 and
+analysis/smoke-hud-1795584086903184800. The original Mac milestones above are
+historical; this continuation was verified on Windows x86_64.

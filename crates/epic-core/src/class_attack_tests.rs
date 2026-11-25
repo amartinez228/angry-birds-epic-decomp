@@ -208,6 +208,17 @@ fn stone_guard_positive_effects_do_not_activate_the_bonus() {
 }
 
 #[test]
+fn stone_guard_low_attack_keeps_the_base_fraction_through_each_bonus_hit() {
+    let mut battle = battle("skin_stoneguard", 7);
+    battle.heroes[0].attack = 23;
+    battle.enemies[0]
+        .effects
+        .apply("curse", Source::bird(1), 3, EffectKind::Weakness(10.));
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9956); // Two rounded 22.425 hits, not two 22.5 hits.
+}
+
+#[test]
 fn stone_guard_bonus_stops_on_cleanse_or_expiry_but_survives_purge() {
     let mut battle = battle("skin_stoneguard", 7);
     battle.heroes[0].attack = 200;

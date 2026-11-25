@@ -338,6 +338,21 @@
         "41915.asm"
       ],
       "fact": "Player creation constructs player_inventory at 0x704d08. At 0x706332 reads its DefaultInventoryContent, at 0x706348 reads PlayerData.Level, passes both to GenerateLoot at 0x706377. Recipe constructor preserves provided level, name, value, quality and sets IsNew. Original loot_starting_inventory has recipe_weapon_red_lance_01 level delta+1 and duplicate recipe_vial entries; recovery retains this information rather than flattening every starting item to an untyped count."
+    },
+    {
+      "method": "AttackWithBonusDamage / AttackWithBonusDamageVsDebuff damage callbacks",
+      "addresses": [
+        "0xee9a90",
+        "0xeea8e0"
+      ],
+      "sources": [
+        "36202.asm",
+        "36205.asm",
+        "36207.asm",
+        "36210.asm",
+        "fields-36202-36207-34737.json"
+      ],
+      "fact": "Bonus fields are enabled only when greater than zero. Stun callback tests ICombatant slot123 get_IsStunned and multiplies incoming float by m_DamageBonusVsStun/100 without integer rounding (0xee9ae2..0xee9b78). Debuff callback reads slot49 get_CurrrentEffects, walks values and enables one multiplier when any BattleEffectGameData.m_EffectType (+0x10) equals2, then returns incomingFloat*(m_DamageVsDebuff/100) at0xeeaa98..0xeeaac1. Metadata field type resolves to SkillEffectTypes: None0,Blessing1,Curse2,Passive3,Environmental4,SetPassive5,SetHit6. Init converts damage_in_percent/100 to float m_DamageMod(+0x88). Other condition multipliers in36205 are successive independent checks, not else-if; runtime still lacks corresponding status types. Whole-pipeline defense/hook timing/fractional stats remain unfinished."
     }
   ],
   "enemy_ai_observations": [

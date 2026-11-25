@@ -952,3 +952,13 @@ button. `--exercise-score` finishes a weakened first battle and collects its
 score/stars through the real UI. `--exercise-mastery` uses a seeded one-point
 drop after a 100-star fixture unlock to check a real rank-up and save write.
 These flags are for isolated test fixtures; do not use them with your play save.
+
+
+Windows continuation from GitHub commit `f4e5111`: the original conditional
+damage callback bodies are now available under `analysis/native/`. Enabled
+Stone Guard/Frost Savage multipliers retain fractional base damage through the
+conditional stage, and nonpositive conditional coefficients are bypassed.
+Whole-pipeline fractional damage/defense order and missing status conditions
+remain unfinished. Validation: 200 Rust tests, 42 Python recovery/layout tests,
+Clippy, release, seven prepared UI-manifest checks and both native UI suites
+(1,292 captures across 24 launches) pass on Windows x86_64.
