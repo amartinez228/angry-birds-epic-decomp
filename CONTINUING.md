@@ -411,3 +411,28 @@ build and all seven prepared UI-manifest checks pass. Native suites pass:
 Evidence: analysis/smoke-client-1795584087275930700 and
 analysis/smoke-hud-1795584086903184800. The original Mac milestones above are
 historical; this continuation was verified on Windows x86_64.
+
+
+## Native healing/stun continuation
+
+Recovered original HealAlly Init/closures36255/36259/36261 and StunChance
+Init/ShareableActionPart36288/36289, with verified native field offsets. Healing
+is a per-hit ActionsOnDamageDealt callback over normalized damage, including
+overkill, and selects source-faction CurrentHealth>0 rather than IsParticipating.
+Runtime now follows those rules and retains the knockout flag while healing.
+Stun callback gates zero damage, always draws on eligible0/100 chance, and
+uses an inclusive comparison. The wet-only presence flag requires WaterBomb;
+that status remains unavailable and the callback now skips it without RNG.
+Both faction loops share the helpers in class_actions.rs.
+
+Core remains integer HP/damage; fractional healing, queued heal/perk lifecycle,
+full trigger order, Unity RNG and wet/freeze/tentacle are pending. Source evidence
+and exact callback addresses are in analysis/native/findings.json. No save-format
+change. Historical class notes above describe the earlier approximation and are
+superseded by this native follow-up.
+
+Verified for healing/stun: 206 Rust tests, Clippy with warnings denied, Windows
+release build, client native suite (1,144 captures/22 launches) and HUD native
+suite (148 captures/2 launches) pass. Evidence:
+analysis/smoke-client-1795585790112339400 and
+analysis/smoke-hud-1795585790490605200. Player saves were not used by fixtures.

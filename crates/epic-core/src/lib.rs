@@ -4,6 +4,7 @@
 //! difficulty, status timing and incomplete templates remain provisional.
 
 mod attack_damage;
+mod class_actions;
 pub mod collateral;
 pub mod combat_events;
 pub mod effects;
@@ -449,14 +450,18 @@ impl Fighter {
         percent(self.attack, self.effects.attack_percent()).max(0)
     }
     fn damage(&mut self, amount: i32) -> i32 {
-        let amount = percent(amount, 100. + self.effects.vulnerability());
-        let amount = percent(amount, 100. - self.effects.protection());
-        let removed = self.hp.min(amount.max(0));
+        let amount = self.damage_amount(amount);
+        let removed = self.hp.min(amount);
         self.hp -= removed;
         if self.hp <= 0 && self.bird.is_some() {
             self.knocked_out = true;
         }
         removed
+    }
+    fn damage_amount(&self, amount: i32) -> i32 {
+        let amount = percent(amount, 100. + self.effects.vulnerability());
+        let amount = percent(amount, 100. - self.effects.protection());
+        amount.max(0)
     }
     fn heal(&mut self, amount: i32) {
         self.hp = (self.hp + amount).min(self.max_hp);
@@ -608,10 +613,19 @@ impl Battle {
     }
 
     fn strike(&mut self, hero: usize, target: usize) -> Result<(), &'static str> {
+        let attack = SKILLS[HATS[self.heroes[hero].hat].attack];
+        self.strike_with(hero, target, attack)
+    }
+
+    fn strike_with(
+        &mut self,
+        hero: usize,
+        target: usize,
+        attack: SkillDefinition,
+    ) -> Result<(), &'static str> {
         let actor = &self.heroes[hero];
         let name = actor.name.clone();
         let power = actor.attack_value();
-        let attack = SKILLS[HATS[actor.hat].attack];
         if !self.enemies.get(target).is_some_and(Fighter::alive) {
             return Err("Choose a living pig");
         }
@@ -631,6 +645,7 @@ impl Battle {
             if (i != target && !all) || !self.enemies[i].alive() {
                 continue;
             }
+            let mut normalized_damage = 0;
             for _ in 0..hits {
                 if !self.heroes[hero].alive() || !self.enemies[i].alive() {
                     break;
@@ -642,11 +657,14 @@ impl Battle {
                     &mut collateral_targets,
                 );
                 let damage_per_hit = attack.damage_against(power, &self.enemies[i].effects);
+                let normalized_hit = self.enemies[i].damage_amount(damage_per_hit);
+                normalized_damage += normalized_hit;
                 let damage = self.enemies[i].damage(damage_per_hit);
                 primary_damage += damage;
                 total += damage;
                 let reaction = self.enemies[i].effects.retaliation_damage(damage);
                 self.heroes[hero].damage(reaction);
+                self.healing_attack_hit(Source::bird(hero), attack, normalized_hit);
                 total += self.collateral_hit(Source::bird(hero), Source::pig(i), attack);
             }
             if !self.enemies[i].alive() {
@@ -695,16 +713,7 @@ impl Battle {
                     EffectKind::Vulnerability(attack.parameter("increase_in_percent", 0.)),
                 );
             }
-            if attack.template == "AttackWithStunChanceSkill"
-                && self.roll_percent(attack.parameter("chance", 0.))
-            {
-                self.enemies[i].effects.apply(
-                    attack.id,
-                    source,
-                    attack.parameter("duration", 1.) as i32,
-                    EffectKind::Stun,
-                );
-            }
+            self.stunning_attack_finish(source, Source::pig(i), attack, normalized_damage);
             if attack.template == "AttackWithPurgeSkill"
                 && self.roll_percent(attack.parameter("purge_chance", 0.))
             {
@@ -718,12 +727,7 @@ impl Battle {
             &collateral_targets,
             primary_damage,
         );
-        if attack.template == "AttackWithHealAlly" {
-            let healing = percent(primary_damage, attack.parameter("heal_ally", 0.));
-            for ally in self.heroes.iter_mut().filter(|ally| ally.alive()) {
-                ally.heal(healing);
-            }
-        } else if attack.template == "AttackWithHealWeakerAlly" {
+        if attack.template == "AttackWithHealWeakerAlly" {
             if let Some(ally) = self
                 .heroes
                 .iter_mut()

@@ -501,6 +501,7 @@ impl Battle {
             if i != target && !skill.has_parameter("all") {
                 continue;
             }
+            let mut normalized_damage = 0;
             for _ in 0..skill.parameter("attack_count", 1.) as u32 {
                 if !self.heroes[i].alive() || !self.enemies[enemy].alive() {
                     break;
@@ -512,11 +513,14 @@ impl Battle {
                     &mut collateral_targets,
                 );
                 let amount = skill.damage_against(power, &self.heroes[i].effects);
+                let normalized_hit = self.heroes[i].damage_amount(amount);
+                normalized_damage += normalized_hit;
                 let damage = self.heroes[i].damage(amount);
                 primary_damage += damage;
                 total += damage;
                 let reaction = self.heroes[i].effects.retaliation_damage(damage);
                 self.enemies[enemy].damage(reaction);
+                self.healing_attack_hit(source, skill, normalized_hit);
                 total += self.collateral_hit(source, Source::bird(i), skill);
             }
             if !self.heroes[i].alive() {
@@ -541,11 +545,6 @@ impl Battle {
                     )),
                     skill.parameter("dot_chance", 100.),
                 )),
-                "AttackWithStunChanceSkill" => Some((
-                    skill.parameter("duration", 1.) as i32,
-                    EffectKind::Stun,
-                    skill.parameter("chance", 0.),
-                )),
                 _ => None,
             };
             if let Some((duration, kind, chance)) = effect {
@@ -555,6 +554,7 @@ impl Battle {
                         .apply(skill.id, source, duration, kind);
                 }
             }
+            self.stunning_attack_finish(source, Source::bird(i), skill, normalized_damage);
             if skill.template == "AttackWithPurgeSkill"
                 && self.roll_percent(skill.parameter("purge_chance", 0.))
             {

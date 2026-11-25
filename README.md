@@ -640,19 +640,20 @@ remain unfinished. Unimplemented support actions report that they are unavailabl
 and do not consume a turn. Status timing and native execution semantics are not
 yet fully reconstructed.
 
-Three additional class attack rules now run from their recovered configuration
-and English descriptions. Cleric's Healing Strike heals every living bird for
-25% of damage dealt (Moon Priest uses its configured 20%). The current integer
-engine uses HP actually removed after defense, caps healing at maximum HP and
-does not revive knocked-out birds. Bard's Heavy Metal rolls the configured 15%
-stun chance and uses the separate one-turn duration parameter; its top-level
-skill duration is zero. Thunderbird's Thunderclap still damages all enemies,
-but its three-turn 25% vulnerability now applies only to the selected survivor.
-The battle UI labels vulnerable enemies. The native bodies for these callbacks
-are not included in the supplied disassembly: exact hook order, overkill and
-fractional damage/heal rounding, RNG parity and interactions remain unverified
-against the original runtime. These implementations extend the current engine
-model rather than establishing exact native equivalence.
+Three additional class attack rules now run from recovered configuration and
+verified native healing/stun callbacks. Cleric's Healing Strike heals
+positive-health allies in the source faction per hit for25% of normalized
+damage (Moon Priest20%), including ordinary overkill. Healing caps at max HP
+and does not clear knockout; a knocked-out bird with refilled positive HP can
+receive healing while remaining unable to act. Bard's Heavy Metal uses the
+separate one-turn duration and an inclusive random comparison; eligible rolls
+consume RNG even at0/100%. Zero-damage targets require an explicit effect flag.
+Wet-only attacks require WaterBomb, which is still unimplemented, so they skip
+that callback without drawing. The seeded RNG is provisional, not Unity parity.
+Thunderbird's selected-survivor vulnerability remains as described previously.
+The integer engine still rounds healing per hit. Native fractional HP, queued
+healing/perks, complete trigger ordering, freeze/tentacle behavior and
+Thunderbird callback equivalence remain unfinished.
 
 Conditional attack damage now covers Stone Guard and Frost Savage, using their
 recovered coefficients and descriptions. Stone Guard's Feral Assault applies
@@ -962,3 +963,11 @@ Whole-pipeline fractional damage/defense order and missing status conditions
 remain unfinished. Validation: 200 Rust tests, 42 Python recovery/layout tests,
 Clippy, release, seven prepared UI-manifest checks and both native UI suites
 (1,292 captures across 24 launches) pass on Windows x86_64.
+
+
+The subsequent native healing/stun continuation passes206 Rust tests, Clippy,
+Windows release build and both native UI suites (1,292 captures/24 launches).
+It fixes per-hit normalized-damage healing (including overkill), positive-HP
+healing eligibility with retained knockout, and inclusive stun RNG/zero-damage
+gating. See class_actions.rs and the native findings for evidence and remaining
+fractional HP/trigger/RNG limitations.

@@ -1,5 +1,5 @@
-//! Recovered class rules within the current integer combat/effect clock model.
-//! Exact native per-hit callbacks, RNG and fractional rounding remain pending.
+//! Native healing/stun callbacks within the current integer combat/effect clock.
+//! Remaining trigger/perk order, Unity RNG and fractional HP remain pending.
 use super::*;
 
 fn battle(skin: &str, seed: u64) -> Battle {
@@ -26,7 +26,7 @@ fn battle(skin: &str, seed: u64) -> Battle {
 }
 
 #[test]
-fn cleric_heals_living_party_from_damage_after_defense_with_hp_caps() {
+fn cleric_heals_positive_health_party_without_clearing_knockout() {
     let mut battle = battle("skin_cleric", 7);
     battle.heroes[1].hp = 995;
     // A level refresh can refill HP while the bird remains knocked out.
@@ -40,7 +40,7 @@ fn cleric_heals_living_party_from_damage_after_defense_with_hp_caps() {
     assert_eq!(battle.enemies[0].hp, 9945); // 110% attack, then 50% defense.
     assert_eq!(battle.heroes[0].hp, 514); // 25% of 55, integer model rounding.
     assert_eq!(battle.heroes[1].hp, 1000);
-    assert_eq!(battle.heroes[2].hp, 500);
+    assert_eq!(battle.heroes[2].hp, 514);
     assert!(!battle.heroes[2].alive());
     let events = battle.take_presentation_events();
     assert!(
@@ -58,7 +58,7 @@ fn legacy_cleric_uses_its_own_twenty_percent_healing_coefficient() {
 }
 
 #[test]
-fn cleric_shielded_and_overkill_attacks_cannot_manufacture_healing() {
+fn cleric_uses_normalized_damage_including_overkill_but_shields_prevent_healing() {
     let mut shielded = battle("skin_cleric", 7);
     shielded.enemies[0]
         .effects
@@ -68,7 +68,32 @@ fn cleric_shielded_and_overkill_attacks_cannot_manufacture_healing() {
     let mut overkill = battle("skin_cleric", 7);
     overkill.enemies[0].hp = 4;
     overkill.strike(0, 0).unwrap();
-    assert!(overkill.heroes.iter().all(|hero| hero.hp == 501));
+    assert!(overkill.heroes.iter().all(|hero| hero.hp == 528));
+}
+
+#[test]
+fn cleric_heals_per_hit_before_the_next_retaliation_can_knock_out_the_caster() {
+    let mut battle = battle("skin_cleric", 7);
+    let original = SKILLS[HATS[battle.heroes[0].hat].attack];
+    let skill = SkillDefinition {
+        parameters: &[
+            ("damage_in_percent", 110.),
+            ("heal_ally", 25.),
+            ("attack_count", 2.),
+        ],
+        ..original
+    };
+    battle.heroes[0].hp = 200;
+    battle.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 110 }),
+    );
+    battle.strike_with(0, 0, skill).unwrap();
+    assert!(battle.heroes[0].alive());
+    assert_eq!(battle.heroes[0].hp, 36); // 200-110+28-110+28.
+    assert_eq!(battle.heroes[1].hp, 556);
 }
 
 #[test]
@@ -133,6 +158,18 @@ fn bard_stun_skips_one_enemy_phase_then_expires() {
     assert!(!battle.enemies[0].effects.is_stunned());
     battle.enemy_turn();
     assert!(battle.heroes.iter().any(|hero| hero.hp < 500));
+}
+
+#[test]
+fn shielded_bard_attack_does_not_roll_or_apply_a_stun() {
+    let mut battle = battle("skin_bard", 7);
+    battle.enemies[0]
+        .effects
+        .apply("shield", Source::pig(0), 3, EffectKind::Protection(100.));
+    let rng = battle.rng_state;
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.rng_state, rng);
+    assert!(!battle.enemies[0].effects.is_stunned());
 }
 
 #[test]

@@ -353,6 +353,39 @@
         "fields-36202-36207-34737.json"
       ],
       "fact": "Bonus fields are enabled only when greater than zero. Stun callback tests ICombatant slot123 get_IsStunned and multiplies incoming float by m_DamageBonusVsStun/100 without integer rounding (0xee9ae2..0xee9b78). Debuff callback reads slot49 get_CurrrentEffects, walks values and enables one multiplier when any BattleEffectGameData.m_EffectType (+0x10) equals2, then returns incomingFloat*(m_DamageVsDebuff/100) at0xeeaa98..0xeeaac1. Metadata field type resolves to SkillEffectTypes: None0,Blessing1,Curse2,Passive3,Environmental4,SetPassive5,SetHit6. Init converts damage_in_percent/100 to float m_DamageMod(+0x88). Other condition multipliers in36205 are successive independent checks, not else-if; runtime still lacks corresponding status types. Whole-pipeline defense/hook timing/fractional stats remain unfinished."
+    },
+    {
+      "method": "AttackWithHealAlly::Init / nested damage callback",
+      "addresses": [
+        "0x148df2c",
+        "0x148e5c7",
+        "0x148ec66"
+      ],
+      "sources": [
+        "36255.asm",
+        "36259.asm",
+        "36261.asm",
+        "fields-36255-36288-34737.json",
+        "fields-36525-36516.json",
+        "36525.asm",
+        "40965.asm",
+        "40967.asm"
+      ],
+      "fact": "Init appends the healing delegate to ActionsOnDamageDealt at AttackSkillTemplate+0x70. DoAction invokes that list per hit at0xeb962c, passing the integer return of DealDamageFromCurrentTurn converted to float, not HP-removed min(health,damage). DealDamageFromCurrentTurn normalizes through Mathf.RoundToInt and retains its normalized amount through the ordinary overkill path (fatal-trigger modification is separate). Healing callback requires positive incoming damage, selects same CombatantFaction (ICombatant slot47), then CurrentHealth>0 (slot31); it calls HealDamage (slot112) with incomingDamage*m_Percent/100 and HealCurrentTurn. Knockout participation is not the eligibility predicate. Native HealDamage accumulates a float at +0x84; full queued healing/trigger/float-HP behavior remains unfinished in the integer runtime."
+    },
+    {
+      "method": "AttackWithStunChanceSkill::Init / ShareableActionPart",
+      "addresses": [
+        "0x1491e49",
+        "0x149234e"
+      ],
+      "sources": [
+        "36288.asm",
+        "36289.asm",
+        "fields-36255-36288-34737.json",
+        "36525.asm"
+      ],
+      "fact": "Init appends an ActionsAfterDamageDealt delegate at +0x6c. Framework invokes per participating target with nonzero accumulated normalized damage or explicit effect/no-damage flags. ShareableActionPart always draws UnityEngine.Random.value at0x149244b and skips only when draw>m_StunChance/100 (inclusive success), including 0/100 thresholds. Duration is m_StunDuration(+0x9c). Presence of chance_to_stun_vs_wet sets m_StunVsWet(+0xa1); this branch requires current effects key WaterBomb and returns before RNG if absent. Freeze/tentacle presence flags, art, cleanup and wet application still need runtime reconstruction; do not substitute poison/stun for WaterBomb."
     }
   ],
   "enemy_ai_observations": [
