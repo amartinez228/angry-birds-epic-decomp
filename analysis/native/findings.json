@@ -429,6 +429,25 @@
         "36525.asm"
       ],
       "fact": "Original Shaman/Witch Doctor curses now apply to surviving damaged targets from either faction. Native inclusive chance draw retained, including0/100 after the shared damage/participation gate. Each curse multiplies running heal by (100-reduction)/100; initial queued heal and completed trigger pass normalize separately with ties-to-even. Curse classification, cleanse/purge, recast and source-turn expiry use the shared effect owner. Tests cover50/70/100%, float stacking, rounding stages and shield/knockout exclusion. Full healing-increase/passive/environmental/consumable/support-trigger/perk ordering, Unity RNG, fractional HP and same-type native dictionary enumeration remain pending."
+    },
+    {
+      "method": "AttackWithHealWeakerAlly::Init / per-hit callback / candidate predicate",
+      "addresses": [
+        "0x148edc7",
+        "0x148f46f",
+        "0x148fc8f"
+      ],
+      "sources": [
+        "weakest-healing-evidence.json",
+        "36262.asm",
+        "36263.asm",
+        "36267.asm",
+        "36269.asm",
+        "fields-36263-36267-36269-36513.json",
+        "36525.asm",
+        "40966.asm"
+      ],
+      "fact": "Per-hit ActionsOnDamageDealt(+0x70) callback replaces the old end-of-attack Paladin approximation and also runs for pig skills. Seeds target with source, filters same faction and positive CurrentHealth, replaces only on strictly lower float CurrentHealth/ModifiedHealth ratio. Equal ratios retain the attacker; positive-HP knockout targets can be healed without revival. Dead attacker remains minimum and prevents redirect. Heals normalized damage*m_Percent/100, including overkill, through HealDamage then HealCurrentTurn. No RNG; intensity affects only visual selection. Current faction-vector ordering remains a proxy for native initiative order; fractional HP, exact retaliation/perk scheduling and heal visuals remain incomplete."
     }
   ],
   "enemy_ai_observations": [

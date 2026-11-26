@@ -757,16 +757,6 @@ impl Battle {
             &collateral_targets,
             primary_damage,
         );
-        if attack.template == "AttackWithHealWeakerAlly" {
-            if let Some(ally) = self
-                .heroes
-                .iter_mut()
-                .filter(|h| h.alive())
-                .min_by_key(|h| h.hp * 100 / h.max_hp)
-            {
-                ally.heal_percent(total, attack.parameter("heal_ally", 0.));
-            }
-        }
         self.say(format!("{name}: {} deals {total} damage.", attack.name));
         self.trace_state();
         Ok(())

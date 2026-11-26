@@ -658,6 +658,34 @@ mod healing_curse_tests {
     use super::*;
 
     #[test]
+    fn drone_attack_heals_weakest_pig_per_hit_using_original_coefficient() {
+        let profile = crate::Profile {
+            unlocked: 3,
+            ..Default::default()
+        };
+        let mut battle = Battle::new(&profile, 3).unwrap();
+        let skill = *SKILLS
+            .iter()
+            .find(|s| s.id == "pig_attack_drone_snatch_01")
+            .unwrap();
+        let mut ally = battle.enemies[0].clone();
+        ally.hp = 1;
+        ally.max_hp = 1000;
+        battle.enemies.push(ally);
+        let selected = battle.enemies.len() - 1;
+        battle.enemies[0].attack = 10;
+        for hero in &mut battle.heroes {
+            hero.hp = 1000;
+            hero.max_hp = 1000;
+        }
+        battle.heroes[0].hp = 1;
+        battle.execute_enemy_skill(0, 0, skill);
+        assert_eq!(battle.heroes[0].hp, 0);
+        assert_eq!(battle.heroes[1].hp, 1000);
+        assert_eq!(battle.enemies[selected].hp, 6); // Ten normalized damage *50%, even on overkill.
+    }
+
+    #[test]
     fn shaman_area_attack_curses_survivors_but_skips_shields_and_knockouts() {
         let profile = crate::Profile {
             unlocked: 3,

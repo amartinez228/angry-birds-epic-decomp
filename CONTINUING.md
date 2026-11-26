@@ -34,6 +34,26 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
+- Latest continuation: original Paladin/Drone weakest-ally healing now runs per
+  hit through the shared bird/pig callback. The former player-only end-of-attack
+  heal is removed. Native callback selects by float CurrentHealth/ModifiedHealth
+  ratio, seeds selection with attacker and replaces only on strictly lower
+  ratio. It heals normalized hit damage including ordinary overkill through the
+  existing queue and healing reductions. Positive-HP knockout targets retain
+  knockout; dead attacker prevents redirect. Eight new Rust regressions include
+  sub-percent targeting, tie priority, per-hit reselection/rounding, shield and
+  knockout cases, retaliation survival and the original Drone50% coefficient.
+  Native Init/callback/predicate, fields and interface slots are retained in
+  `analysis/native/weakest-healing-evidence.json`. Disassembly hashes use UTF-8
+  with LF endings. Remaining limits: native initiative order is represented by
+  faction vector order (non-attacker ties may differ), HP remains integer and
+  full damage/retaliation/perk scheduling and heal visuals are incomplete.
+  No save-format or economy change. Rust227/Python45, Clippy and Windows release
+  build pass. Both native UI suites pass:1,292 captures across24 launches.
+  Evidence: `analysis/smoke-client-1795662368037315700` and
+  `analysis/smoke-hud-1795662368052436200` (ignored by Git).
+
+
 - Latest Windows continuation: Shaman/Witch Doctor healing-reduction attacks now
   apply the original 50/70/100% curses. Shared after-damage gates skip defeated
   targets; shields skip callbacks unless a skill explicitly allows zero damage.

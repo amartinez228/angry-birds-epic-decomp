@@ -55,6 +55,29 @@ impl Battle {
         skill: SkillDefinition,
         normalized_damage: i32,
     ) {
+        if skill.template == "AttackWithHealWeakerAlly" {
+            let allies = match source.side {
+                Side::Birds => &mut self.heroes,
+                Side::Pigs => &mut self.enemies,
+            };
+            // Native callback seeds the choice with the attacker. A strictly
+            // lower CurrentHealth/ModifiedHealth ratio replaces it; ties keep
+            // the current choice. Eligibility tests HP, not participation.
+            let mut selected = source.index;
+            for (index, ally) in allies.iter().enumerate().filter(|(_, ally)| ally.hp > 0) {
+                if (ally.hp as f32 / ally.max_hp as f32)
+                    < (allies[selected].hp as f32 / allies[selected].max_hp as f32)
+                {
+                    selected = index;
+                }
+            }
+            if allies[selected].hp > 0 {
+                let amount = (normalized_damage as f32 * skill.parameter("heal_ally", 0.)) / 100.;
+                allies[selected].queue_healing(amount);
+                allies[selected].resolve_healing();
+            }
+            return;
+        }
         if skill.template != "AttackWithHealAlly" || normalized_damage <= 0 {
             return;
         }

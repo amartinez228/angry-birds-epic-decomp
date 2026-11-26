@@ -27,6 +27,39 @@ from recover_loot import entry as decode_loot_entry
 
 
 class RecoveryTests(unittest.TestCase):
+    def test_weakest_healing_native_methods_fields_and_interface_slots(self):
+        import hashlib
+        report = json.loads((ROOT/'analysis/native/weakest-healing-evidence.json').read_text())
+        native = (ROOT/'analysis/libil2cpp-x86.so').read_bytes()
+        meta = (ROOT/'analysis/global-metadata.dat').read_bytes()
+        self.assertEqual(hashlib.sha256(native).hexdigest(), report['native_sha256'])
+        self.assertEqual(hashlib.sha256(meta).hexdigest(), report['metadata_sha256'])
+        linked = json.loads((ROOT/'analysis/native-methods.json').read_text())
+        self.assertEqual(report['disassembly_hash_format'], 'UTF-8 text with LF line endings')
+        expected = {36262:0x148ed8e, 36263:0x148edc7, 36267:0x148f46f,
+                    36269:0x148fc8f, 36525:0xeb4cd3, 40966:0x50a1af}
+        for entry in report['methods']:
+            row = linked['methods'][entry['metadata_index']]
+            for key in ['class', 'method', 'address']:
+                self.assertEqual(row[key], entry[key])
+            self.assertEqual(row['address'], expected[entry['metadata_index']])
+            text = (ROOT/'analysis/native'/entry['disassembly']).read_text(encoding='utf-8')
+            self.assertEqual(hashlib.sha256(text.encode()).hexdigest(), entry['sha256'])
+        stored = json.loads((ROOT/'analysis/native'/report['field_layouts']).read_text())
+        self.assertEqual(layouts([36263, 36267, 36269, 36513]), stored)
+        fields_by_method = {row['method_index']:{f['name']:f['offset'] for f in row['fields']}
+                            for row in stored['layouts']}
+        self.assertEqual(fields_by_method[36263]['m_Percent'], 0x8c)
+        self.assertEqual(fields_by_method[36269]['healTarget'], 8)
+        self.assertEqual(fields_by_method[36513]['ActionsOnDamageDealt'], 0x70)
+        methods_at = struct.unpack_from('<I', meta, 48)[0]
+        for name, entry in report['interface_slots'].items():
+            row = linked['methods'][entry['metadata_index']]
+            self.assertEqual(row['class'], 'ABH.GameDatas.Interfaces.ICombatant')
+            self.assertEqual(row['method'], name)
+            slot = struct.unpack_from('<H', meta, methods_at+entry['metadata_index']*56+52)[0]
+            self.assertEqual(slot, entry['slot'])
+
     def test_healing_reduction_evidence_binds_native_handler_and_original_enums(self):
         import hashlib
         report = json.loads((ROOT/'analysis/native/healing-reduction-evidence.json').read_text())

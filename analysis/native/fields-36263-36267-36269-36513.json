@@ -1,0 +1,309 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 36263,
+      "declaring_type_index": 4575,
+      "declaring_type": "ABH.GameDatas.Battle.Skills.AttackWithHealWeakerAlly",
+      "fields": [
+        {
+          "metadata_index": 20493,
+          "name": "m_DamageMod",
+          "offset": 136,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20494,
+          "name": "m_Percent",
+          "offset": 140,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20495,
+          "name": "m_AttackCount",
+          "offset": 144,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        }
+      ]
+    },
+    {
+      "method_index": 36267,
+      "declaring_type_index": 4576,
+      "declaring_type": "ABH.GameDatas.Battle.Skills.AttackWithHealWeakerAlly+<Init>c__AnonStorey1",
+      "fields": [
+        {
+          "metadata_index": 20496,
+          "name": "model",
+          "offset": 8,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20497,
+          "name": "$this",
+          "offset": 12,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        }
+      ]
+    },
+    {
+      "method_index": 36269,
+      "declaring_type_index": 4577,
+      "declaring_type": "ABH.GameDatas.Battle.Skills.AttackWithHealWeakerAlly+<Init>c__AnonStorey1+<Init>c__AnonStorey0",
+      "fields": [
+        {
+          "metadata_index": 20498,
+          "name": "healTarget",
+          "offset": 8,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 20499,
+          "name": "<>f__ref$1",
+          "offset": 12,
+          "attributes": 3,
+          "static": false,
+          "type_kind": 18
+        }
+      ]
+    },
+    {
+      "method_index": 36513,
+      "declaring_type_index": 4622,
+      "declaring_type": "ABH.GameDatas.Battle.AttackSkillTemplate",
+      "fields": [
+        {
+          "metadata_index": 20713,
+          "name": "m_Stopped",
+          "offset": 60,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20714,
+          "name": "m_BlockMovement",
+          "offset": 61,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20715,
+          "name": "m_NoDamage",
+          "offset": 62,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20716,
+          "name": "m_AfterDamageEvenIfDefeated",
+          "offset": 63,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20717,
+          "name": "m_IsMelee",
+          "offset": 64,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20718,
+          "name": "m_UseCenterPosition",
+          "offset": 65,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20719,
+          "name": "m_UseFocusPosition",
+          "offset": 66,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20720,
+          "name": "m_ApplyPerks",
+          "offset": 67,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20721,
+          "name": "m_Break",
+          "offset": 68,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20722,
+          "name": "m_IgnoreRage",
+          "offset": 69,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20723,
+          "name": "m_Shared",
+          "offset": 70,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20724,
+          "name": "m_FallBackTime",
+          "offset": 72,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20725,
+          "name": "m_AttackAnimation",
+          "offset": 76,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20726,
+          "name": "ActionsBeforeTargetSelection",
+          "offset": 80,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20727,
+          "name": "ActionsAfterTargetSelection",
+          "offset": 84,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20728,
+          "name": "ActionsOnStartSkill",
+          "offset": 88,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20729,
+          "name": "ActionsOnMovementBegan",
+          "offset": 92,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20730,
+          "name": "ActionsOnImpact",
+          "offset": 96,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20731,
+          "name": "ActionsOnEnd",
+          "offset": 100,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20732,
+          "name": "ActionsToDelayEnd",
+          "offset": 104,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20733,
+          "name": "ActionsAfterDamageDealt",
+          "offset": 108,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20734,
+          "name": "ActionsOnDamageDealt",
+          "offset": 112,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20735,
+          "name": "ActionsBeforeDamageDealt",
+          "offset": 116,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20736,
+          "name": "ModificationsOnDamageCalculation",
+          "offset": 120,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20737,
+          "name": "ModificationsOnDamageDealtCalculation",
+          "offset": 124,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20738,
+          "name": "ModificationsOnEarlyDamageDealtCalculation",
+          "offset": 128,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20739,
+          "name": "m_UseOffhandAnim",
+          "offset": 132,
+          "attributes": 4,
+          "static": false,
+          "type_kind": 2
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}

@@ -1002,3 +1002,16 @@ Healing-reduction milestone verified on Windows:219 Rust tests,44 Python
 tests, Clippy, release, seven prepared-manifest checks and both native UI suites
 (1,292 captures across24 launches) pass. Desktop packaging now includes the
 current `CONTINUING.md` handoff.
+
+
+Paladin/Drone weakest-ally healing now runs after each hit from either faction,
+using normalized damage including overkill. Native targeting compares float
+health ratios, starts with the attacker and retains its choice on ties. The
+existing queue applies rounding and healing reductions per hit. Eight new Rust
+regressions cover targeting, rounding, healing timing, survival and pig support.
+Native initiative ordering, fractional HP, full trigger/perk scheduling and heal
+visuals remain incomplete. Evidence: `analysis/native/weakest-healing-evidence.json`.
+Save format remains v9 and the gold/hat overrides are unchanged.
+
+Weakest-ally healing milestone verified on Windows:227 Rust tests,45 Python
+tests, Clippy, release and both native UI suites (1,292 captures/24 launches) pass.

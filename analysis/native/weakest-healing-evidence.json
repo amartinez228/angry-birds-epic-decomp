@@ -1,0 +1,96 @@
+{
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "disassembly_hash_format": "UTF-8 text with LF line endings",
+  "methods": [
+    {
+      "metadata_index": 36262,
+      "class": "ABH.GameDatas.Battle.Skills.AttackWithHealWeakerAlly",
+      "method": ".ctor",
+      "address": 21556622,
+      "disassembly": "36262.asm",
+      "sha256": "35026fb18ad656fea4ecef317c73cf44e4f1ad2bcc68f8a9cdb229ebc815da1f"
+    },
+    {
+      "metadata_index": 36263,
+      "class": "ABH.GameDatas.Battle.Skills.AttackWithHealWeakerAlly",
+      "method": "Init",
+      "address": 21556679,
+      "disassembly": "36263.asm",
+      "sha256": "6a99ea4d36fe839196f6340b12cdc63f64e00aca77f36b04ac290d082e9ce126"
+    },
+    {
+      "metadata_index": 36267,
+      "class": "ABH.GameDatas.Battle.Skills.AttackWithHealWeakerAlly+<Init>c__AnonStorey1",
+      "method": "<>m__0",
+      "address": 21558383,
+      "disassembly": "36267.asm",
+      "sha256": "adba249897f197bdccb2db1a5dfc9f262fecc1a023823b36414c35979c0c6adc"
+    },
+    {
+      "metadata_index": 36269,
+      "class": "ABH.GameDatas.Battle.Skills.AttackWithHealWeakerAlly+<Init>c__AnonStorey1+<Init>c__AnonStorey0",
+      "method": "<>m__0",
+      "address": 21560463,
+      "disassembly": "36269.asm",
+      "sha256": "e31f09e01c053da856fce696f4183cd022fe5e73249ed644f4f8fe27f2304448"
+    },
+    {
+      "metadata_index": 36525,
+      "class": "ABH.GameDatas.Battle.AttackSkillTemplate+<DoAction>c__Iterator0",
+      "method": "MoveNext",
+      "address": 15420627,
+      "disassembly": "36525.asm",
+      "sha256": "ae20b899970aaf9107282bd9d863de1c8a1f804047f7f239c620093c102615e0"
+    },
+    {
+      "metadata_index": 40966,
+      "class": "ABH.Services.Logic.BattleService",
+      "method": "HealCurrentTurn",
+      "address": 5284271,
+      "disassembly": "40966.asm",
+      "sha256": "0c5c789f3326bc2117a1ce6587d89a3c1591cb233efe5f2d6008f6e2276ee1ac"
+    }
+  ],
+  "field_layouts": "fields-36263-36267-36269-36513.json",
+  "interface_slots": {
+    "get_ModifiedHealth": {
+      "metadata_index": 35296,
+      "slot": 25
+    },
+    "get_CurrentHealth": {
+      "metadata_index": 35302,
+      "slot": 31
+    },
+    "get_CombatantFaction": {
+      "metadata_index": 35318,
+      "slot": 47
+    },
+    "HealDamage": {
+      "metadata_index": 35383,
+      "slot": 112
+    }
+  },
+  "callback_registration": {
+    "field": "ActionsOnDamageDealt",
+    "offset": 112,
+    "callback_got_offset": 304264,
+    "callback_metadata_index": 36267,
+    "predicate_got_offset": 304268,
+    "predicate_metadata_index": 36269
+  },
+  "behavior": [
+    "Init stores heal_ally at m_Percent(+0x8c), registers callback36267 in ActionsOnDamageDealt(+0x70) at0x148ef90..0x148eff4.",
+    "Callback seeds healTarget with the source argument at0x148f4e8..0x148f4f4, filters BattleGameData combatants by source faction and positive CurrentHealth via predicate36269.",
+    "For each candidate at0x148f860..0x148f881, compares candidate CurrentHealth/ModifiedHealth with current choice using float divisions and replaces only for strictly lower ratio. Equal ratios retain attacker initially, then first strictly weaker candidate in initiative enumeration.",
+    "Selected target must still have CurrentHealth>0 at0x148f973..0x148f97f. A zero-health attacker remains the initial minimum and stops healing rather than redirecting to a surviving ally.",
+    "Incoming normalized hit damage is multiplied by m_Percent and divided by100 at0x148f9a0..0x148f9df; intensity only selects visual effects.",
+    "Calls selected.HealDamage at0x148fbd1 then HealCurrentTurn(ignoreZero=true, all other flags/source=false/null) at0x148fc38. Per-hit hook passes normalized damage (including ordinary overkill), not HP removed.",
+    "No random draw occurs in callback or predicate. Native source/candidate eligibility uses health, not knockout participation."
+  ],
+  "limitations": [
+    "Base HP remains integer; runtime compares f32 ratios of current integer HP/maxHP, not full native fractional stats.",
+    "Native enumerates BattleGameData initiative order; runtime uses existing faction vector order. Ties between equally weak allies other than the attacker can differ until full initiative ordering is recovered.",
+    "Complete damage/retaliation/healing trigger and perk sequencing, visual intensity, action timing, Unity RNG and full-game/platform parity remain unfinished."
+  ]
+}
