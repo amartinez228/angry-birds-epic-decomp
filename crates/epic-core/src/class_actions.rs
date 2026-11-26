@@ -2,7 +2,7 @@
 //! Fractional HP, complete trigger order and wet/freeze/tentacle effects pending.
 use crate::{
     effects::{EffectKind, Side, Source},
-    percent, Battle, SkillDefinition,
+    Battle, SkillDefinition,
 };
 
 /// Native Random.value comparison is inclusive and runs even at 0/100 percent.
@@ -20,7 +20,7 @@ impl Battle {
         if skill.template != "AttackWithHealAlly" || normalized_damage <= 0 {
             return;
         }
-        let amount = percent(normalized_damage, skill.parameter("heal_ally", 0.));
+        let amount = (normalized_damage as f32 * skill.parameter("heal_ally", 0.)) / 100.;
         let allies = match source.side {
             Side::Birds => &mut self.heroes,
             Side::Pigs => &mut self.enemies,
@@ -28,7 +28,8 @@ impl Battle {
         // Native callback explicitly tests CurrentHealth > 0, independently
         // of the knockout/participation flag. Healing never clears that flag.
         for ally in allies.iter_mut().filter(|ally| ally.hp > 0) {
-            ally.heal(amount);
+            ally.queue_healing(amount);
+            ally.resolve_healing();
         }
     }
 

@@ -436,3 +436,32 @@ release build, client native suite (1,144 captures/22 launches) and HUD native
 suite (148 captures/2 launches) pass. Evidence:
 analysis/smoke-client-1795585790112339400 and
 analysis/smoke-hud-1795585790490605200. Player saves were not used by fixtures.
+
+
+## Native normalization and healing queue
+
+Original Mathf.RoundToInt19597 and HealCurrentTurn40966 are now inspected.
+RoundToInt uses ties-to-even (including signed midpoints) and x86 integer-
+indefinite conversion outside range. HealCurrentTurn drains a float summed-heal
+queue, normalizes it before application, then clears it. Contrary to the earlier
+assumption, ordinary HealAlly healing amounts need not remain fractional in HP
+after this service boundary. Native optional heal triggers/perks still matter.
+
+Runtime attack buff/base/conditional/defense factors now stay float until damage
+normalization. Percentage heals enter a float queue; normal flush rounds once,
+caps HP, clears nonpositive/consumed values and retains knockout. Existing integer
+regeneration values use the same drain but their earlier magnitude computation
+is still approximate. Root HP/base attack/max HP fields remain integer: complete
+fractional base-stat storage, remaining effect magnitudes and native trigger
+order are pending. This is not a claim of full native combat precision.
+
+combat_math.rs and analysis/native/combat-rounding-evidence.json retain code,
+source hashes, addresses and normalization evidence. Seven new tests bring the
+Rust suite to213. One older Thunderbird expectation changes from63 to62 for a
+62.5 hit. Other existing native-class/action expectations pass. No save bump.
+
+Verified normalization milestone: 213 Rust tests,43 Python recovery/layout tests,
+Clippy with warnings denied, Windows release build and both native UI suites
+pass. Evidence: analysis/smoke-client-1795661003694636700 (1,144 captures/22
+launches), analysis/smoke-hud-1795661003709950900 (148 captures/2 launches).
+All fixtures use isolated saves.

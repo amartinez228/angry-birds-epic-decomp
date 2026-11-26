@@ -494,6 +494,7 @@ impl Battle {
         }
         let source = Source::pig(enemy);
         let power = self.enemies[enemy].attack_value();
+        let primary_power = self.enemies[enemy].attack_float_value();
         let mut collateral_targets = Vec::new();
         let mut primary_damage = 0;
         let mut total = 0;
@@ -512,10 +513,10 @@ impl Battle {
                     skill,
                     &mut collateral_targets,
                 );
-                let amount = skill.damage_against(power, &self.heroes[i].effects);
+                let amount = skill.damage_against(primary_power, &self.heroes[i].effects);
                 let normalized_hit = self.heroes[i].damage_amount(amount);
                 normalized_damage += normalized_hit;
-                let damage = self.heroes[i].damage(amount);
+                let damage = self.heroes[i].receive_normalized_damage(normalized_hit);
                 primary_damage += damage;
                 total += damage;
                 let reaction = self.heroes[i].effects.retaliation_damage(damage);
@@ -569,7 +570,7 @@ impl Battle {
             primary_damage,
         );
         if skill.template == "AttackWithLeech" && self.enemies[enemy].alive() {
-            self.enemies[enemy].heal(percent(total, skill.parameter("heal", 0.)));
+            self.enemies[enemy].heal_percent(total, skill.parameter("heal", 0.));
         }
         self.rage = (self.rage + 8).min(100);
         if skill.template == "ReduceRageAttackSkill" {
@@ -638,10 +639,8 @@ impl Battle {
                 } else {
                     0.
                 };
-                self.enemies[i].heal(percent(
-                    health,
-                    skill.parameter("health_in_percent", 0.) + extra,
-                ));
+                self.enemies[i]
+                    .heal_percent(health, skill.parameter("health_in_percent", 0.) + extra);
             }
             if (!skill.has_parameter("cleanse_target") || i == target)
                 && self.roll_percent(skill.parameter("cleanse_chance", 0.))

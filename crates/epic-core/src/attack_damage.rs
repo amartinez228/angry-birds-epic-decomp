@@ -1,15 +1,15 @@
 //! Conditional attack coefficients traced in original Init/damage callbacks.
-//! Final combat rounding/defense ordering remain incomplete. Wet, goo, ink and other
+//! Float coefficients flow into target defenses before native normalization.
+//! Remaining perk/hook ordering, wet, goo, ink and other
 //! unimplemented status conditions deliberately retain ordinary attack damage.
-use crate::{effects::Effects, percent, SkillDefinition};
+use crate::{effects::Effects, SkillDefinition};
 
 impl SkillDefinition {
     /// Native conditional callbacks return a float and only enable positive
-    /// coefficients. Keep the base fraction through that multiplication instead
-    /// of rounding twice. Conversion to integer here remains a runtime boundary;
-    /// native final combat rounding and defense/callback order need more work.
-    pub(crate) fn damage_against(&self, power: i32, target: &Effects) -> i32 {
-        let base = percent(power, self.parameter("damage_in_percent", 100.));
+    /// coefficients. Keep base and conditional fractions through this method;
+    /// the target's damage boundary performs ties-to-even normalization later.
+    pub(crate) fn damage_against(&self, power: f32, target: &Effects) -> f32 {
+        let base = power * (self.parameter("damage_in_percent", 100.) / 100.);
         let multiplier = match self.template {
             "AttackWithBonusDamageVsDebuff" if target.has_curse() => {
                 self.parameter("damage_against_debuff", 0.)
@@ -22,8 +22,7 @@ impl SkillDefinition {
         if multiplier <= 0. {
             return base;
         }
-        let fraction = power as f32 * (self.parameter("damage_in_percent", 100.) / 100.);
-        (fraction * (multiplier / 100.)).round() as i32
+        base * (multiplier / 100.)
     }
 }
 
@@ -47,7 +46,10 @@ mod tests {
             parameters: &[("damage_in_percent", 65.), ("damage_against_debuff", 150.)],
             ..*stone
         };
-        assert_eq!(stone.damage_against(23, &target), 22); // 14.95 * 1.5, not 15 * 1.5.
+        assert_eq!(
+            crate::combat_math::normalize(stone.damage_against(23., &target)),
+            22
+        );
         let frost = SKILLS
             .iter()
             .find(|s| s.template == "AttackWithBonusDamage")
@@ -56,8 +58,14 @@ mod tests {
             parameters: &[("damage_in_percent", 90.), ("bonus_damage_vs_stun", 150.)],
             ..*frost
         };
-        assert_eq!(frost.damage_against(3, &target), 4); // 2.7 * 1.5, not 3 * 1.5.
-        assert_eq!(stone.damage_against(23, &Effects::default()), 15);
+        assert_eq!(
+            crate::combat_math::normalize(frost.damage_against(3., &target)),
+            4
+        );
+        assert_eq!(
+            crate::combat_math::normalize(stone.damage_against(23., &Effects::default())),
+            15
+        );
     }
 
     #[test]
@@ -77,7 +85,7 @@ mod tests {
                 parameters,
                 ..*prototype
             };
-            assert_eq!(skill.damage_against(100, &target), 65);
+            assert_eq!(skill.damage_against(100., &target), 65.);
         }
     }
 }

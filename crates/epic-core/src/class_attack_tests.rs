@@ -184,7 +184,7 @@ fn thunderbird_damages_every_enemy_but_only_curses_selected_target() {
     assert_eq!(effect.source, Source::bird(0));
     battle.strike(0, 1).unwrap();
     assert_eq!(battle.enemies[0].hp, 9900);
-    assert_eq!(battle.enemies[1].hp, 9887);
+    assert_eq!(battle.enemies[1].hp, 9888); // 62.5 normalizes to even 62.
     assert_eq!(battle.enemies[1].effects.entries().len(), 1);
 }
 
@@ -253,6 +253,31 @@ fn stone_guard_low_attack_keeps_the_base_fraction_through_each_bonus_hit() {
         .apply("curse", Source::bird(1), 3, EffectKind::Weakness(10.));
     battle.strike(0, 0).unwrap();
     assert_eq!(battle.enemies[0].hp, 9956); // Two rounded 22.425 hits, not two 22.5 hits.
+}
+
+#[test]
+fn stone_guard_preserves_skill_and_attack_buff_fractions_until_after_defense() {
+    for (attack, buff) in [(10, 0.), (7, 50.)] {
+        let mut battle = battle("skin_stoneguard", 7);
+        battle.heroes[0].attack = attack;
+        battle.heroes[0]
+            .effects
+            .apply("buff", Source::bird(0), 3, EffectKind::AttackBonus(buff));
+        battle.enemies[0]
+            .effects
+            .apply("shield", Source::pig(0), 3, EffectKind::Protection(50.));
+        battle.strike(0, 0).unwrap();
+        assert_eq!(battle.enemies[0].hp, 9994); // Two 3-point normalized hits.
+    }
+}
+
+#[test]
+fn cleric_normalizes_half_healing_to_even_after_queuing() {
+    let mut battle = battle("skin_cleric", 7);
+    battle.heroes[0].attack = 9; // 110% normalizes to 10 damage.
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9990);
+    assert!(battle.heroes.iter().all(|h| h.hp == 502)); // 25% = 2.5 -> 2.
 }
 
 #[test]

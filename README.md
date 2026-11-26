@@ -651,8 +651,8 @@ consume RNG even at0/100%. Zero-damage targets require an explicit effect flag.
 Wet-only attacks require WaterBomb, which is still unimplemented, so they skip
 that callback without drawing. The seeded RNG is provisional, not Unity parity.
 Thunderbird's selected-survivor vulnerability remains as described previously.
-The integer engine still rounds healing per hit. Native fractional HP, queued
-healing/perks, complete trigger ordering, freeze/tentacle behavior and
+Healing now rounds through the traced service boundary per hit. Native
+fractional base HP, optional healing triggers/perks, full trigger ordering, freeze/tentacle behavior and
 Thunderbird callback equivalence remain unfinished.
 
 Conditional attack damage now covers Stone Guard and Frost Savage, using their
@@ -971,3 +971,17 @@ It fixes per-hit normalized-damage healing (including overkill), positive-HP
 healing eligibility with retained knockout, and inclusive stun RNG/zero-damage
 gating. See class_actions.rs and the native findings for evidence and remaining
 fractional HP/trigger/RNG limitations.
+
+
+A native normalization follow-up now keeps primary attack modifiers and defenses
+in float until the traced Mathf.RoundToInt boundary. Half values round to even.
+Healing queues accumulate float values and drain through the same rounding
+boundary before applying/capping HP; the queue then clears. Percentage-based
+healing avoids earlier integer rounding. This includes the basic queue lifecycle,
+not original heal triggers/perks/PvP modifiers. Base HP/attack storage and several
+other effect magnitudes remain integer approximations. Original disassembly and
+source hashes are retained in analysis/native/combat-rounding-evidence.json.
+
+Normalization milestone verified on Windows:213 Rust tests,43 Python tests,
+Clippy, release build and both native UI suites (1,292 captures/24 launches).
+Save format remains v9; no economy or acquisition changes.

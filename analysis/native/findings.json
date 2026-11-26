@@ -386,6 +386,27 @@
         "36525.asm"
       ],
       "fact": "Init appends an ActionsAfterDamageDealt delegate at +0x6c. Framework invokes per participating target with nonzero accumulated normalized damage or explicit effect/no-damage flags. ShareableActionPart always draws UnityEngine.Random.value at0x149244b and skips only when draw>m_StunChance/100 (inclusive success), including 0/100 thresholds. Duration is m_StunDuration(+0x9c). Presence of chance_to_stun_vs_wet sets m_StunVsWet(+0xa1); this branch requires current effects key WaterBomb and returns before RNG if absent. Freeze/tentacle presence flags, art, cleanup and wet application still need runtime reconstruction; do not substitute poison/stun for WaterBomb."
+    },
+    {
+      "method": "Mathf::RoundToInt / BattleService::NormalizeDamage",
+      "addresses": [
+        "0x139b0e7",
+        "0x509d43"
+      ],
+      "sources": [
+        "19597.asm",
+        "40967.asm"
+      ],
+      "fact": "RoundToInt converts input float to double. On exact fractional+0.5/-0.5 it tests integral parity and increments/decrements only an odd integer, then converts with cvttsd2si: ties to even. Verified x86 GOT-relative doubles: -0x6b2884=-0.5, -0x6b2894=+0.5, -0x64f9b4=-1, -0x6b28a4=+1. Native NormalizeDamage delegates to this routine. combat_math.rs models the finite rounding and x86 invalid/out-of-range integer-indefinite result. Runtime primary attack/buff/conditional/defense factors now stay float until this boundary; unrelated modifier trigger ordering and initial fractional stat/HP storage remain unfinished."
+    },
+    {
+      "method": "BattleService::HealCurrentTurn",
+      "address": "0x50a1af",
+      "sources": [
+        "40966.asm",
+        "34650-generic-2026.asm"
+      ],
+      "fact": "Reads ICombatant slot39 get_SummedHealPerTurn; normalizes at0x50a2df, then conditionally applies healing trigger IDs15,10,35 with additional NormalizeDamage calls. Adds normalized integer to CurrentHealth at0x50a4c5..0x50a4cb and writes it through slot32. Clears summed-heal with slot40 at0x50a59d and returns the normalized amount (not HP actually restored). HealAlly calls with its first boolean true: a nonpositive initial normalized amount skips application and clears the queue. Basic ordinary queue/normalization/drain is now implemented; optional flags, healing trigger modifiers/PvP/perks and complete fractional HP remain unfinished."
     }
   ],
   "enemy_ai_observations": [

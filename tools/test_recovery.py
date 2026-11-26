@@ -27,6 +27,33 @@ from recover_loot import entry as decode_loot_entry
 
 
 class RecoveryTests(unittest.TestCase):
+    def test_native_rounding_constants_and_method_bindings_match_original_binary(self):
+        import hashlib
+        report = json.loads((ROOT/'analysis/native/combat-rounding-evidence.json').read_text())
+        native = (ROOT/'analysis/libil2cpp-x86.so').read_bytes()
+        metadata = (ROOT/'analysis/global-metadata.dat').read_bytes()
+        self.assertEqual(hashlib.sha256(native).hexdigest(), report['native_sha256'])
+        self.assertEqual(hashlib.sha256(metadata).hexdigest(), report['metadata_sha256'])
+        linked = json.loads((ROOT/'analysis/native-methods.json').read_text())
+        phoff = struct.unpack_from('<I',native,28)[0]
+        phsize, phcount = struct.unpack_from('<HH',native,42)
+        segments = [struct.unpack_from('<8I',native,phoff+i*phsize) for i in range(phcount)]
+        def offset(address):
+            for kind,start,virtual,_,length,*_ in segments:
+                if kind == 1 and virtual <= address and address+8 <= virtual+length:
+                    return start+address-virtual
+            self.fail('Constant outside file-backed ELF segment')
+        for location, expected in report['tie_constants'].items():
+            address = linked['global_offset_table']-int(location.split('-')[1],16)
+            self.assertEqual(struct.unpack_from('<d',native,offset(address))[0],expected)
+        expected = {19597:('UnityEngine.Mathf','RoundToInt',0x139b0e7),
+                    40966:('ABH.Services.Logic.BattleService','HealCurrentTurn',0x50a1af),
+                    40967:('ABH.Services.Logic.BattleService','NormalizeDamage',0x509d43)}
+        for method in report['methods']:
+            row = next(r for r in linked['methods'] if r['metadata_index']==method['metadata_index'])
+            self.assertEqual((row['class'],row['method'],row['address']),expected[method['metadata_index']])
+            self.assertEqual(hashlib.sha256((ROOT/'analysis/native'/method['disassembly']).read_bytes()).hexdigest(),method['sha256'])
+
     def test_original_resource_catalog_and_starting_recipe_delta_are_preserved(self):
         tables, _ = load_tables()
         data = json.loads((ROOT/'content/resources.json').read_text(encoding='utf-8'))
