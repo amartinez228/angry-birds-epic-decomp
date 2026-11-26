@@ -51,6 +51,60 @@ fn battle(skin: &str, seed: u64) -> Battle {
 }
 
 #[test]
+fn leech_shared_bird_callback_heals_each_hit_without_rng_or_party_healing() {
+    let mut battle = battle("skin_paladin", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+        .unwrap();
+    battle.heroes[0].attack = 5;
+    let rng = battle.rng_state;
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9985);
+    assert_eq!(battle.heroes[0].hp, 506); // Three separate 2.5 ->2 heals, not8 at attack end.
+    assert_eq!(battle.heroes[1].hp, 500);
+    assert_eq!(battle.heroes[2].hp, 500);
+    assert_eq!(battle.rng_state, rng);
+}
+
+#[test]
+fn leech_after_retaliation_refills_hp_without_clearing_bird_knockout() {
+    let mut battle = battle("skin_paladin", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+        .unwrap();
+    battle.heroes[0].hp = 200;
+    battle.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 110 }),
+    );
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9700);
+    assert_eq!(battle.heroes[0].hp, 50); // 200-110+50-110+50-80+50.
+    assert!(battle.heroes[0].knocked_out);
+    assert!(!battle.heroes[0].alive());
+    assert_eq!(battle.heroes[1].hp, 500);
+}
+
+#[test]
+fn leech_fully_blocked_hits_do_not_manufacture_healing() {
+    let mut battle = battle("skin_paladin", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+        .unwrap();
+    battle.enemies[0]
+        .effects
+        .apply("shield", Source::pig(0), 3, EffectKind::Protection(100.));
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.enemies[0].hp, 10000);
+    assert!(battle.heroes.iter().all(|hero| hero.hp == 500));
+}
+
+#[test]
 fn paladin_heals_from_normalized_overkill_damage_and_does_not_use_randomness() {
     let mut battle = battle("skin_paladin", 7);
     battle.enemies[0].hp = 4;

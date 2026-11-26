@@ -302,13 +302,13 @@ mod tests {
     }
 
     #[test]
-    fn leech_uses_actual_health_removed_and_does_not_revive_dead_attacker() {
+    fn raging_storm_leeches_normalized_hit_including_overkill() {
         let mut battle = battle("pig_ghost_shipkobold_boss");
         battle.enemies[0].hp = 100;
         battle.heroes[0].hp = 12;
         battle.enemy_action(0);
         assert_eq!(battle.heroes[0].hp, 0);
-        assert_eq!(battle.enemies[0].hp, 112);
+        assert_eq!(battle.enemies[0].hp, 120); // Full20-damage hit *100%, not12 HP removed.
     }
 
     #[test]
@@ -570,9 +570,6 @@ impl Battle {
             &collateral_targets,
             primary_damage,
         );
-        if skill.template == "AttackWithLeech" && self.enemies[enemy].alive() {
-            self.enemies[enemy].heal_percent(total, skill.parameter("heal", 0.));
-        }
         self.rage = (self.rage + 8).min(100);
         if skill.template == "ReduceRageAttackSkill" {
             self.rage = self
@@ -656,6 +653,74 @@ impl Battle {
 #[cfg(test)]
 mod healing_curse_tests {
     use super::*;
+
+    fn leech_battle() -> Battle {
+        let profile = crate::Profile {
+            unlocked: 3,
+            ..Default::default()
+        };
+        let mut battle = Battle::new(&profile, 3).unwrap();
+        battle.enemies[0].max_hp = 1000;
+        battle.enemies[0].hp = 1;
+        for hero in &mut battle.heroes {
+            hero.max_hp = 1000;
+            hero.hp = 1000;
+        }
+        battle
+    }
+
+    #[test]
+    fn recovering_strike_heals_original_two_hundred_percent_of_overkill_hit() {
+        let mut battle = leech_battle();
+        battle.enemies[0].attack = 10;
+        battle.heroes[0].hp = 1;
+        let skill = *SKILLS
+            .iter()
+            .find(|s| s.id == "pig_attack_knight_royal_guard_boss")
+            .unwrap();
+        battle.execute_enemy_skill(0, 0, skill);
+        assert_eq!(battle.heroes[0].hp, 0);
+        assert_eq!(battle.enemies[0].hp, 21); // Ten normalized damage *200%, not one HP removed.
+    }
+
+    #[test]
+    fn draining_punch_rounds_and_applies_healing_curses_after_each_of_three_hits() {
+        let skill = *SKILLS
+            .iter()
+            .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+            .unwrap();
+        for (reduction, expected) in [(0., 7), (50., 4), (100., 1)] {
+            let mut battle = leech_battle();
+            battle.enemies[0].attack = 5;
+            if reduction > 0. {
+                battle.enemies[0].effects.apply(
+                    "curse",
+                    Source::bird(0),
+                    3,
+                    EffectKind::HealingReduction(reduction),
+                );
+            }
+            battle.execute_enemy_skill(0, 0, skill);
+            assert_eq!(battle.heroes[0].hp, 985);
+            assert_eq!(battle.enemies[0].hp, expected);
+        }
+    }
+
+    #[test]
+    fn black_storm_leeches_each_area_target_including_overkill() {
+        let mut battle = leech_battle();
+        battle.enemies[0].attack = 10;
+        battle.heroes[0].hp = 1;
+        let skill = *SKILLS
+            .iter()
+            .find(|s| s.id == "pig_attack_wizpig_01")
+            .unwrap();
+        battle.execute_enemy_skill(0, 0, skill);
+        assert_eq!(battle.heroes[0].hp, 0);
+        assert_eq!(battle.heroes[1].hp, 980);
+        assert_eq!(battle.heroes[2].hp, 980);
+        assert_eq!(battle.enemies[0].hp, 31); // Three20-damage hits *50%.
+    }
 
     #[test]
     fn drone_attack_heals_weakest_pig_per_hit_using_original_coefficient() {

@@ -34,6 +34,26 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
+- Latest continuation: native `AttackWithLeech` now runs per hit/area target in
+  the shared bird/pig healing callback. Removed the pig-only end-of-attack heal
+  and source-alive gate. Native damage includes ordinary overkill, then original
+  heal coefficient flows through the existing queue/rounding/healing reductions.
+  No source-health/participation/positive-damage/RNG predicate exists in this
+  callback; runtime bird knockout flags stay set if HP refills. Seven new Rust
+  tests cover original Royal Guard200%, Ninja three-hit50%, Wizpig area50%,
+  shielding, healing curses, rounding, retained knockout, cap/queue drain and
+  RNG. Old Raging Storm fixture is corrected to normalized damage, not HP removed.
+  Evidence: `analysis/native/leech-healing-evidence.json`, Init/callback and
+  `fields-36277-36513.json`; disassembly checksums use UTF-8/LF Git-stable text.
+  No new bird skill is added to the catalog; tests exercise faction-neutral
+  routing directly. Full fractional HP, native pig death/participation handling,
+  complete reactive/perk/trigger order and life-steal visuals remain incomplete.
+  No save-format or gold/hat override change. Rust234/Python46, Clippy and
+  Windows release build pass. Both native UI suites pass:1,292 captures across
+  24 launches. Evidence: `analysis/smoke-client-1795662817637065300` and
+  `analysis/smoke-hud-1795662818109980900` (ignored by Git).
+
+
 - Latest continuation: original Paladin/Drone weakest-ally healing now runs per
   hit through the shared bird/pig callback. The former player-only end-of-attack
   heal is removed. Native callback selects by float CurrentHealth/ModifiedHealth

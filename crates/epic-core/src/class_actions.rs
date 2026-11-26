@@ -55,6 +55,19 @@ impl Battle {
         skill: SkillDefinition,
         normalized_damage: i32,
     ) {
+        if skill.template == "AttackWithLeech" {
+            let attacker = match source.side {
+                Side::Birds => &mut self.heroes[source.index],
+                Side::Pigs => &mut self.enemies[source.index],
+            };
+            // Native ActionsOnDamageDealt callback has no source-health or
+            // positive-damage predicate. HealCurrentTurn handles the queue;
+            // restoring HP does not clear a retained bird knockout flag.
+            let amount = (normalized_damage as f32 * skill.parameter("heal", 0.)) / 100.;
+            attacker.queue_healing(amount);
+            attacker.resolve_healing();
+            return;
+        }
         if skill.template == "AttackWithHealWeakerAlly" {
             let allies = match source.side {
                 Side::Birds => &mut self.heroes,
@@ -138,6 +151,25 @@ impl Battle {
 mod tests {
     use super::*;
     use crate::{Profile, SKILLS};
+    #[test]
+    fn leech_callback_flushes_existing_queue_even_for_zero_damage_and_zero_hp() {
+        let skill = *SKILLS
+            .iter()
+            .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+            .unwrap();
+        let mut battle = Battle::new(&Profile::default(), 0).unwrap();
+        battle.heroes[0].hp = 0;
+        battle.heroes[0].knocked_out = true;
+        battle.heroes[0].queue_healing(2.5);
+        battle.healing_attack_hit(Source::bird(0), skill, 0);
+        assert_eq!(battle.heroes[0].hp, 2);
+        assert!(battle.heroes[0].knocked_out);
+        assert_eq!(battle.heroes[0].resolve_healing(), 0);
+        battle.heroes[0].hp = battle.heroes[0].max_hp - 1;
+        battle.healing_attack_hit(Source::bird(0), skill, 100);
+        assert_eq!(battle.heroes[0].hp, battle.heroes[0].max_hp);
+        assert_eq!(battle.heroes[0].resolve_healing(), 0);
+    }
     #[test]
     fn healing_curse_callback_obeys_damage_participation_and_random_draw_gates() {
         let skill = *SKILLS

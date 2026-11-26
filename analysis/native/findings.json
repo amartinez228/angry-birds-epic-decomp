@@ -448,6 +448,22 @@
         "40966.asm"
       ],
       "fact": "Per-hit ActionsOnDamageDealt(+0x70) callback replaces the old end-of-attack Paladin approximation and also runs for pig skills. Seeds target with source, filters same faction and positive CurrentHealth, replaces only on strictly lower float CurrentHealth/ModifiedHealth ratio. Equal ratios retain the attacker; positive-HP knockout targets can be healed without revival. Dead attacker remains minimum and prevents redirect. Heals normalized damage*m_Percent/100, including overkill, through HealDamage then HealCurrentTurn. No RNG; intensity affects only visual selection. Current faction-vector ordering remains a proxy for native initiative order; fractional HP, exact retaliation/perk scheduling and heal visuals remain incomplete."
+    },
+    {
+      "method": "AttackWithLeech::Init / <Init>m__0",
+      "addresses": [
+        "0x1490bb8",
+        "0x14912be"
+      ],
+      "sources": [
+        "36277.asm",
+        "36280.asm",
+        "fields-36277-36513.json",
+        "leech-healing-evidence.json",
+        "36525.asm",
+        "40966.asm"
+      ],
+      "fact": "Init stores heal at m_Percent+0x8c and registers callback in ActionsOnDamageDealt+0x70. Callback uses incoming per-hit normalized damage*m_Percent/100 and invokes source.HealDamage(amount,source) then HealCurrentTurn(ignoreZero=true, other flags false/source null). No health/participation/positive-damage/RNG predicate. Rust removes pig-only end-of-attack healing and routes both factions through the existing per-hit helper and native rounding/reduction queue. Seven new regressions cover original Royal Guard200%, Ninja three-hit50%, Wizpig area50%, overkill, shielding, healing reduction, retained bird knockout, capping/queue drain and RNG preservation. Old HP-removed-only Raging Storm fixture superseded. Full fractional HP, native pig death/participation bookkeeping, reactive sequencing and life-steal visuals remain unfinished."
     }
   ],
   "enemy_ai_observations": [

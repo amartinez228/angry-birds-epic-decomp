@@ -1015,3 +1015,19 @@ Save format remains v9 and the gold/hat overrides are unchanged.
 
 Weakest-ally healing milestone verified on Windows:227 Rust tests,45 Python
 tests, Clippy, release and both native UI suites (1,292 captures/24 launches) pass.
+
+
+Life-steal attacks (`AttackWithLeech`) now heal after each hit/area target from
+normalized damage including overkill. The shared callback replaces the old
+pig-only end-of-attack heal, applies original coefficients and queued rounding/
+healing reductions, and keeps existing bird knockout flags if HP refills.
+Seven new Rust regressions cover original Royal Guard, Ninja and Wizpig attacks,
+shields, rounding, healing curses and queue/knockout behavior. The old Raging
+Storm HP-removed expectation is corrected from native evidence. No new bird
+skill is added. Full fractional HP, pig death/participation state, reactive/perk
+sequencing and life-steal visuals remain incomplete. Evidence:
+`analysis/native/leech-healing-evidence.json`. Save format remains v9;
+the gold and hat-purchase overrides are unchanged.
+
+Life-steal milestone verified on Windows:234 Rust tests,46 Python tests,
+Clippy, release and both native UI suites (1,292 captures/24 launches) pass.
