@@ -1,0 +1,66 @@
+{
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "disassembly_hash_format": "UTF-8 text with LF line endings",
+  "methods": [
+    {
+      "metadata_index": 36277,
+      "class": "ABH.GameDatas.Battle.Skills.AttackWithLeech",
+      "method": "Init",
+      "address": 21564344,
+      "disassembly": "36277.asm",
+      "sha256": "fd2372269fa8af408801a38c0f6a3fb0d543c2f77ac07f69af1be8d472d96345"
+    },
+    {
+      "metadata_index": 36280,
+      "class": "ABH.GameDatas.Battle.Skills.AttackWithLeech",
+      "method": "<Init>m__0",
+      "address": 21566142,
+      "disassembly": "36280.asm",
+      "sha256": "96ae77cc2c1851b50f2a1f2f704c0a717cb83eb9919c75630b7462f3025d663b"
+    },
+    {
+      "metadata_index": 36525,
+      "class": "ABH.GameDatas.Battle.AttackSkillTemplate+<DoAction>c__Iterator0",
+      "method": "MoveNext",
+      "address": 15420627,
+      "disassembly": "36525.asm",
+      "sha256": "ae20b899970aaf9107282bd9d863de1c8a1f804047f7f239c620093c102615e0"
+    },
+    {
+      "metadata_index": 40966,
+      "class": "ABH.Services.Logic.BattleService",
+      "method": "HealCurrentTurn",
+      "address": 5284271,
+      "disassembly": "40966.asm",
+      "sha256": "0c5c789f3326bc2117a1ce6587d89a3c1591cb233efe5f2d6008f6e2276ee1ac"
+    }
+  ],
+  "field_layouts": "fields-36277-36513.json",
+  "callback_registration": {
+    "field": "ActionsOnDamageDealt",
+    "offset": 112,
+    "callback_got_offset": 304276,
+    "callback_metadata_index": 36280
+  },
+  "interface_slots": {
+    "HealDamage": {
+      "metadata_index": 35383,
+      "slot": 112
+    }
+  },
+  "behavior": [
+    "Init reads heal into m_Percent(+0x8c); attack_count defaults to1 if missing. At0x1490d99 registers callback36280 in ActionsOnDamageDealt(+0x70), using method usage GOT+0x4a494.",
+    "Callback0x14912be obtains source from argument at ebp+0x14, computes incomingNormalizedHit*m_Percent/100 at0x1491302..0x149131a, then invokes source.HealDamage(amount, source) through ICombatant slot112.",
+    "Callback calls HealCurrentTurn(target=source, ignoreZero=true, all remaining flags/source=false/null). There is no source-health, participation, positive-damage or random predicate in this callback.",
+    "AttackSkillTemplate iterator invokes ActionsOnDamageDealt at0xeb962c for each hit with normalized damage from DealDamageFromCurrentTurn, including ordinary overkill. It is not total HP removed from all hits/targets.",
+    "HealCurrentTurn normalizes the accumulated queue before and after the currently implemented healing-reduction trigger pass and caps HP. The runtime retains bird knockout flags when HP refills.",
+    "The former pig-only attack-end heal and alive predicate are removed; the same per-hit callback routes source by faction."
+  ],
+  "limitations": [
+    "Full native fractional HP and full damage/retaliation/heal/perk/trigger order remain unfinished.",
+    "Runtime bird knockout flags are retained on healing; complete native death/participation/despawn/revival state transitions, particularly for pigs, still require recovery.",
+    "Current shield/retaliation and presentation sequencing remain partial reconstructions; original life-steal visual effects and timing are not claimed complete.",
+    "The callback supports both factions, but no new bird skill or class is invented or added to the original catalog."
+  ]
+}

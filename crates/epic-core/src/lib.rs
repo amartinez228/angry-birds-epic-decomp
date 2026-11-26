@@ -4,8 +4,10 @@
 //! difficulty, status timing and incomplete templates remain provisional.
 
 mod attack_damage;
+mod class_actions;
 pub mod collateral;
 pub mod combat_events;
+mod combat_math;
 pub mod effects;
 pub mod equipment;
 pub mod inventory;
@@ -418,6 +420,8 @@ impl Profile {
 
 #[derive(Clone, Debug)]
 pub struct Fighter {
+    /// Native HealDamage accumulates this float until HealCurrentTurn drains it.
+    summed_heal_per_turn: f32,
     /// Bird equipment captured at battle entry, including each owned copy's
     /// level. Pig loadouts continue to resolve from their recovered definition.
     pub gear: Option<[inventory::Gear; 2]>,
@@ -448,18 +452,45 @@ impl Fighter {
     pub fn attack_value(&self) -> i32 {
         percent(self.attack, self.effects.attack_percent()).max(0)
     }
+    fn attack_float_value(&self) -> f32 {
+        (self.attack as f32 * (self.effects.attack_percent() / 100.)).max(0.)
+    }
     fn damage(&mut self, amount: i32) -> i32 {
-        let amount = percent(amount, 100. + self.effects.vulnerability());
-        let amount = percent(amount, 100. - self.effects.protection());
-        let removed = self.hp.min(amount.max(0));
+        let amount = self.damage_amount(amount as f32);
+        self.receive_normalized_damage(amount)
+    }
+    fn receive_normalized_damage(&mut self, amount: i32) -> i32 {
+        let removed = self.hp.min(amount);
         self.hp -= removed;
         if self.hp <= 0 && self.bird.is_some() {
             self.knocked_out = true;
         }
         removed
     }
+    fn damage_amount(&self, amount: f32) -> i32 {
+        let amount = amount * ((100. + self.effects.vulnerability()) / 100.);
+        let amount = amount * ((100. - self.effects.protection()) / 100.);
+        combat_math::normalize(amount).max(0)
+    }
     fn heal(&mut self, amount: i32) {
-        self.hp = (self.hp + amount).min(self.max_hp);
+        self.queue_healing(amount as f32);
+        self.resolve_healing();
+    }
+    fn heal_percent(&mut self, base: i32, percentage: f32) {
+        self.queue_healing((base as f32 * percentage) / 100.);
+        self.resolve_healing();
+    }
+    fn queue_healing(&mut self, amount: f32) {
+        self.summed_heal_per_turn += amount;
+    }
+    fn resolve_healing(&mut self) -> i32 {
+        let mut normalized = combat_math::normalize(self.summed_heal_per_turn);
+        self.summed_heal_per_turn = 0.;
+        if normalized > 0 {
+            normalized = combat_math::normalize(self.effects.reduce_healing(normalized as f32));
+            self.hp = self.hp.saturating_add(normalized).min(self.max_hp);
+        }
+        normalized
     }
 }
 
@@ -517,6 +548,7 @@ impl Battle {
                 // exact native damage/HP precision remains separate work.
                 let max_hp = (stats.health.round_ties_even() as i32).max(1);
                 Fighter {
+                    summed_heal_per_turn: 0.,
                     gear: Some(
                         profile
                             .inventory
@@ -580,6 +612,7 @@ impl Battle {
                 let stats = pig.character_stats(level);
                 let max_hp = (stats.health as i32).max(1);
                 (0..spawn.amount).map(move |_| Fighter {
+                    summed_heal_per_turn: 0.,
                     gear: None,
                     mastery_rank: 0,
                     knocked_out: false,
@@ -608,10 +641,20 @@ impl Battle {
     }
 
     fn strike(&mut self, hero: usize, target: usize) -> Result<(), &'static str> {
+        let attack = SKILLS[HATS[self.heroes[hero].hat].attack];
+        self.strike_with(hero, target, attack)
+    }
+
+    fn strike_with(
+        &mut self,
+        hero: usize,
+        target: usize,
+        attack: SkillDefinition,
+    ) -> Result<(), &'static str> {
         let actor = &self.heroes[hero];
         let name = actor.name.clone();
         let power = actor.attack_value();
-        let attack = SKILLS[HATS[actor.hat].attack];
+        let primary_power = actor.attack_float_value();
         if !self.enemies.get(target).is_some_and(Fighter::alive) {
             return Err("Choose a living pig");
         }
@@ -631,6 +674,7 @@ impl Battle {
             if (i != target && !all) || !self.enemies[i].alive() {
                 continue;
             }
+            let mut normalized_damage = 0;
             for _ in 0..hits {
                 if !self.heroes[hero].alive() || !self.enemies[i].alive() {
                     break;
@@ -641,12 +685,15 @@ impl Battle {
                     attack,
                     &mut collateral_targets,
                 );
-                let damage_per_hit = attack.damage_against(power, &self.enemies[i].effects);
-                let damage = self.enemies[i].damage(damage_per_hit);
+                let damage_per_hit = attack.damage_against(primary_power, &self.enemies[i].effects);
+                let normalized_hit = self.enemies[i].damage_amount(damage_per_hit);
+                normalized_damage += normalized_hit;
+                let damage = self.enemies[i].receive_normalized_damage(normalized_hit);
                 primary_damage += damage;
                 total += damage;
                 let reaction = self.enemies[i].effects.retaliation_damage(damage);
                 self.heroes[hero].damage(reaction);
+                self.healing_attack_hit(Source::bird(hero), attack, normalized_hit);
                 total += self.collateral_hit(Source::bird(hero), Source::pig(i), attack);
             }
             if !self.enemies[i].alive() {
@@ -695,16 +742,8 @@ impl Battle {
                     EffectKind::Vulnerability(attack.parameter("increase_in_percent", 0.)),
                 );
             }
-            if attack.template == "AttackWithStunChanceSkill"
-                && self.roll_percent(attack.parameter("chance", 0.))
-            {
-                self.enemies[i].effects.apply(
-                    attack.id,
-                    source,
-                    attack.parameter("duration", 1.) as i32,
-                    EffectKind::Stun,
-                );
-            }
+            self.stunning_attack_finish(source, Source::pig(i), attack, normalized_damage);
+            self.healing_debuff_attack_finish(source, Source::pig(i), attack, normalized_damage);
             if attack.template == "AttackWithPurgeSkill"
                 && self.roll_percent(attack.parameter("purge_chance", 0.))
             {
@@ -718,21 +757,6 @@ impl Battle {
             &collateral_targets,
             primary_damage,
         );
-        if attack.template == "AttackWithHealAlly" {
-            let healing = percent(primary_damage, attack.parameter("heal_ally", 0.));
-            for ally in self.heroes.iter_mut().filter(|ally| ally.alive()) {
-                ally.heal(healing);
-            }
-        } else if attack.template == "AttackWithHealWeakerAlly" {
-            if let Some(ally) = self
-                .heroes
-                .iter_mut()
-                .filter(|h| h.alive())
-                .min_by_key(|h| h.hp * 100 / h.max_hp)
-            {
-                ally.heal(percent(total, attack.parameter("heal_ally", 0.)));
-            }
-        }
         self.say(format!("{name}: {} deals {total} damage.", attack.name));
         self.trace_state();
         Ok(())
@@ -916,7 +940,7 @@ impl Battle {
                                     } else {
                                         0.
                                     };
-                                self.heroes[i].heal(percent(base, amount));
+                                self.heroes[i].heal_percent(base, amount);
                                 if (!support.has_parameter("cleanse_target") || i == target)
                                     && self.roll_percent(support.parameter("cleanse_chance", 0.))
                                 {
@@ -1009,10 +1033,10 @@ impl Battle {
                     }
                     2 => {
                         for ally in self.heroes.iter_mut().filter(|h| h.alive()) {
-                            ally.heal(percent(
+                            ally.heal_percent(
                                 ally.max_hp,
                                 rage_skill.parameter("health_in_percent", 0.),
-                            ));
+                            );
                             ally.effects.cleanse();
                         }
                     }
@@ -1497,6 +1521,17 @@ mod tests {
             assert!(!ally.effects.is_poisoned());
             assert!(!ally.effects.is_stunned());
         }
+    }
+
+    #[test]
+    fn matilda_percentage_healing_reaches_the_native_rounding_boundary_as_float() {
+        let mut battle = rage_test_battle();
+        for ally in &mut battle.heroes {
+            ally.hp = 1;
+            ally.max_hp = 30;
+        }
+        battle.act(2, Action::Pepper).unwrap();
+        assert!(battle.heroes.iter().all(|ally| ally.hp == 11)); // 35% of30 =10.5 ->10.
     }
 
     #[test]

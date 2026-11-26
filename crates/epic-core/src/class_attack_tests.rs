@@ -1,6 +1,31 @@
-//! Recovered class rules within the current integer combat/effect clock model.
-//! Exact native per-hit callbacks, RNG and fractional rounding remain pending.
+//! Native healing/stun callbacks within the current integer combat/effect clock.
+//! Remaining trigger/perk order, Unity RNG and fractional HP remain pending.
 use super::*;
+
+#[test]
+fn healing_curse_uses_shared_bird_attack_callback_and_reduces_cleric_healing() {
+    let mut battle = battle("skin_cleric", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_shaman_shaman")
+        .unwrap();
+    battle.strike_with(0, 0, skill).unwrap();
+    assert!(battle.enemies[0].effects.has_curse());
+    battle.heroes[1].effects.apply(
+        "shaman",
+        Source::pig(0),
+        3,
+        EffectKind::HealingReduction(50.),
+    );
+    let cleric = *SKILLS
+        .iter()
+        .find(|s| s.id == "bird_attack_white_cleric")
+        .unwrap();
+    battle.strike_with(0, 0, cleric).unwrap();
+    assert_eq!(battle.heroes[0].hp, 528); // 110 normalized damage *25% ->28.
+    assert_eq!(battle.heroes[1].hp, 514); // Initial28 *50% ->14.
+    assert_eq!(battle.heroes[2].hp, 528);
+}
 
 fn battle(skin: &str, seed: u64) -> Battle {
     let hat = HATS.iter().position(|hat| hat.id == skin).unwrap();
@@ -26,7 +51,194 @@ fn battle(skin: &str, seed: u64) -> Battle {
 }
 
 #[test]
-fn cleric_heals_living_party_from_damage_after_defense_with_hp_caps() {
+fn leech_shared_bird_callback_heals_each_hit_without_rng_or_party_healing() {
+    let mut battle = battle("skin_paladin", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+        .unwrap();
+    battle.heroes[0].attack = 5;
+    let rng = battle.rng_state;
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9985);
+    assert_eq!(battle.heroes[0].hp, 506); // Three separate 2.5 ->2 heals, not8 at attack end.
+    assert_eq!(battle.heroes[1].hp, 500);
+    assert_eq!(battle.heroes[2].hp, 500);
+    assert_eq!(battle.rng_state, rng);
+}
+
+#[test]
+fn leech_after_retaliation_refills_hp_without_clearing_bird_knockout() {
+    let mut battle = battle("skin_paladin", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+        .unwrap();
+    battle.heroes[0].hp = 200;
+    battle.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 110 }),
+    );
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9700);
+    assert_eq!(battle.heroes[0].hp, 50); // 200-110+50-110+50-80+50.
+    assert!(battle.heroes[0].knocked_out);
+    assert!(!battle.heroes[0].alive());
+    assert_eq!(battle.heroes[1].hp, 500);
+}
+
+#[test]
+fn leech_fully_blocked_hits_do_not_manufacture_healing() {
+    let mut battle = battle("skin_paladin", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_ninja_black_boss_02")
+        .unwrap();
+    battle.enemies[0]
+        .effects
+        .apply("shield", Source::pig(0), 3, EffectKind::Protection(100.));
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.enemies[0].hp, 10000);
+    assert!(battle.heroes.iter().all(|hero| hero.hp == 500));
+}
+
+#[test]
+fn paladin_heals_from_normalized_overkill_damage_and_does_not_use_randomness() {
+    let mut battle = battle("skin_paladin", 7);
+    battle.enemies[0].hp = 4;
+    let rng = battle.rng_state;
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 0);
+    assert_eq!(battle.heroes[0].hp, 540); // 135 normalized *30% =40.5 ->40.
+    assert_eq!(battle.heroes[1].hp, 500);
+    assert_eq!(battle.rng_state, rng);
+}
+
+#[test]
+fn paladin_compares_float_health_ratios_instead_of_whole_percentages() {
+    let mut battle = battle("skin_paladin", 7);
+    battle.heroes[0].hp = 700;
+    battle.heroes[1].hp = 499;
+    battle.heroes[2].hp = 498;
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.heroes[1].hp, 499);
+    assert_eq!(battle.heroes[2].hp, 538);
+}
+
+#[test]
+fn weakest_heal_ties_favor_attacker_then_keep_first_strictly_weaker_candidate() {
+    let mut battle = battle("skin_paladin", 7);
+    let skill = SKILLS[HATS[battle.heroes[0].hat].attack];
+    battle.healing_attack_hit(Source::bird(2), skill, 100);
+    assert_eq!(battle.heroes[0].hp, 500);
+    assert_eq!(battle.heroes[2].hp, 530);
+    battle.heroes[2].hp = 700;
+    battle.healing_attack_hit(Source::bird(2), skill, 100);
+    assert_eq!(battle.heroes[0].hp, 530);
+    assert_eq!(battle.heroes[1].hp, 500);
+}
+
+#[test]
+fn weakest_heal_reselects_after_each_hit_and_normalizes_each_heal_separately() {
+    let mut battle = battle("skin_paladin", 7);
+    let original = SKILLS[HATS[battle.heroes[0].hat].attack];
+    let skill = SkillDefinition {
+        parameters: &[
+            ("damage_in_percent", 100.),
+            ("heal_ally", 30.),
+            ("attack_count", 2.),
+        ],
+        ..original
+    };
+    battle.heroes[0].hp = 700;
+    battle.heroes[1].hp = 400;
+    battle.heroes[2].hp = 410;
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.heroes[1].hp, 430);
+    assert_eq!(battle.heroes[2].hp, 440);
+    let small_hits = SkillDefinition {
+        parameters: &[
+            ("damage_in_percent", 5.),
+            ("heal_ally", 30.),
+            ("attack_count", 2.),
+        ],
+        ..original
+    };
+    battle.heroes[1].hp = 1;
+    battle.strike_with(0, 0, small_hits).unwrap();
+    assert_eq!(battle.heroes[1].hp, 5); // Two separate 1.5 ->2 heals, not3 at attack end.
+}
+
+#[test]
+fn weakest_heal_uses_positive_hp_even_when_knockout_flag_remains_set() {
+    let mut battle = battle("skin_paladin", 7);
+    battle.heroes[1].hp = 0;
+    battle.heroes[1].knocked_out = true;
+    battle.heroes[2].hp = 1;
+    battle.heroes[2].knocked_out = true;
+    battle.heroes[2].effects.apply(
+        "shaman",
+        Source::pig(0),
+        3,
+        EffectKind::HealingReduction(50.),
+    );
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.heroes[1].hp, 0);
+    assert_eq!(battle.heroes[2].hp, 21); // 40.5 ->40, then50% ->20.
+    assert!(battle.heroes[2].knocked_out);
+}
+
+#[test]
+fn weakest_heal_skips_shielded_damage_and_does_not_redirect_from_dead_caster() {
+    let mut shielded = battle("skin_paladin", 7);
+    shielded.enemies[0]
+        .effects
+        .apply("shield", Source::pig(0), 3, EffectKind::Protection(100.));
+    shielded.strike(0, 0).unwrap();
+    assert!(shielded.heroes.iter().all(|hero| hero.hp == 500));
+    let mut retaliation = battle("skin_paladin", 7);
+    retaliation.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 1000 }),
+    );
+    retaliation.strike(0, 0).unwrap();
+    assert_eq!(retaliation.heroes[0].hp, 0);
+    assert_eq!(retaliation.heroes[1].hp, 500);
+    assert_eq!(retaliation.heroes[2].hp, 500);
+}
+
+#[test]
+fn paladin_per_hit_self_healing_can_survive_the_next_retaliation() {
+    let mut battle = battle("skin_paladin", 7);
+    let original = SKILLS[HATS[battle.heroes[0].hat].attack];
+    let skill = SkillDefinition {
+        parameters: &[
+            ("damage_in_percent", 100.),
+            ("heal_ally", 30.),
+            ("attack_count", 2.),
+        ],
+        ..original
+    };
+    battle.heroes[0].hp = 200;
+    battle.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 110 }),
+    );
+    battle.strike_with(0, 0, skill).unwrap();
+    assert_eq!(battle.heroes[0].hp, 40); // 200-110+30-110+30.
+    assert!(battle.heroes[0].alive());
+    assert_eq!(battle.enemies[0].hp, 9800);
+    assert_eq!(battle.heroes[1].hp, 500);
+}
+
+#[test]
+fn cleric_heals_positive_health_party_without_clearing_knockout() {
     let mut battle = battle("skin_cleric", 7);
     battle.heroes[1].hp = 995;
     // A level refresh can refill HP while the bird remains knocked out.
@@ -40,7 +252,7 @@ fn cleric_heals_living_party_from_damage_after_defense_with_hp_caps() {
     assert_eq!(battle.enemies[0].hp, 9945); // 110% attack, then 50% defense.
     assert_eq!(battle.heroes[0].hp, 514); // 25% of 55, integer model rounding.
     assert_eq!(battle.heroes[1].hp, 1000);
-    assert_eq!(battle.heroes[2].hp, 500);
+    assert_eq!(battle.heroes[2].hp, 514);
     assert!(!battle.heroes[2].alive());
     let events = battle.take_presentation_events();
     assert!(
@@ -58,7 +270,7 @@ fn legacy_cleric_uses_its_own_twenty_percent_healing_coefficient() {
 }
 
 #[test]
-fn cleric_shielded_and_overkill_attacks_cannot_manufacture_healing() {
+fn cleric_uses_normalized_damage_including_overkill_but_shields_prevent_healing() {
     let mut shielded = battle("skin_cleric", 7);
     shielded.enemies[0]
         .effects
@@ -68,7 +280,32 @@ fn cleric_shielded_and_overkill_attacks_cannot_manufacture_healing() {
     let mut overkill = battle("skin_cleric", 7);
     overkill.enemies[0].hp = 4;
     overkill.strike(0, 0).unwrap();
-    assert!(overkill.heroes.iter().all(|hero| hero.hp == 501));
+    assert!(overkill.heroes.iter().all(|hero| hero.hp == 528));
+}
+
+#[test]
+fn cleric_heals_per_hit_before_the_next_retaliation_can_knock_out_the_caster() {
+    let mut battle = battle("skin_cleric", 7);
+    let original = SKILLS[HATS[battle.heroes[0].hat].attack];
+    let skill = SkillDefinition {
+        parameters: &[
+            ("damage_in_percent", 110.),
+            ("heal_ally", 25.),
+            ("attack_count", 2.),
+        ],
+        ..original
+    };
+    battle.heroes[0].hp = 200;
+    battle.enemies[0].effects.apply(
+        "thorns",
+        Source::pig(0),
+        3,
+        EffectKind::Retaliation(Retaliation::Fixed { damage: 110 }),
+    );
+    battle.strike_with(0, 0, skill).unwrap();
+    assert!(battle.heroes[0].alive());
+    assert_eq!(battle.heroes[0].hp, 36); // 200-110+28-110+28.
+    assert_eq!(battle.heroes[1].hp, 556);
 }
 
 #[test]
@@ -136,6 +373,18 @@ fn bard_stun_skips_one_enemy_phase_then_expires() {
 }
 
 #[test]
+fn shielded_bard_attack_does_not_roll_or_apply_a_stun() {
+    let mut battle = battle("skin_bard", 7);
+    battle.enemies[0]
+        .effects
+        .apply("shield", Source::pig(0), 3, EffectKind::Protection(100.));
+    let rng = battle.rng_state;
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.rng_state, rng);
+    assert!(!battle.enemies[0].effects.is_stunned());
+}
+
+#[test]
 fn thunderbird_damages_every_enemy_but_only_curses_selected_target() {
     let mut battle = battle("skin_thunderbird", 7);
     battle.strike(0, 1).unwrap();
@@ -147,7 +396,7 @@ fn thunderbird_damages_every_enemy_but_only_curses_selected_target() {
     assert_eq!(effect.source, Source::bird(0));
     battle.strike(0, 1).unwrap();
     assert_eq!(battle.enemies[0].hp, 9900);
-    assert_eq!(battle.enemies[1].hp, 9887);
+    assert_eq!(battle.enemies[1].hp, 9888); // 62.5 normalizes to even 62.
     assert_eq!(battle.enemies[1].effects.entries().len(), 1);
 }
 
@@ -205,6 +454,42 @@ fn stone_guard_positive_effects_do_not_activate_the_bonus() {
     }
     battle.strike(0, 0).unwrap();
     assert_eq!(battle.enemies[0].hp, 9740);
+}
+
+#[test]
+fn stone_guard_low_attack_keeps_the_base_fraction_through_each_bonus_hit() {
+    let mut battle = battle("skin_stoneguard", 7);
+    battle.heroes[0].attack = 23;
+    battle.enemies[0]
+        .effects
+        .apply("curse", Source::bird(1), 3, EffectKind::Weakness(10.));
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9956); // Two rounded 22.425 hits, not two 22.5 hits.
+}
+
+#[test]
+fn stone_guard_preserves_skill_and_attack_buff_fractions_until_after_defense() {
+    for (attack, buff) in [(10, 0.), (7, 50.)] {
+        let mut battle = battle("skin_stoneguard", 7);
+        battle.heroes[0].attack = attack;
+        battle.heroes[0]
+            .effects
+            .apply("buff", Source::bird(0), 3, EffectKind::AttackBonus(buff));
+        battle.enemies[0]
+            .effects
+            .apply("shield", Source::pig(0), 3, EffectKind::Protection(50.));
+        battle.strike(0, 0).unwrap();
+        assert_eq!(battle.enemies[0].hp, 9994); // Two 3-point normalized hits.
+    }
+}
+
+#[test]
+fn cleric_normalizes_half_healing_to_even_after_queuing() {
+    let mut battle = battle("skin_cleric", 7);
+    battle.heroes[0].attack = 9; // 110% normalizes to 10 damage.
+    battle.strike(0, 0).unwrap();
+    assert_eq!(battle.enemies[0].hp, 9990);
+    assert!(battle.heroes.iter().all(|h| h.hp == 502)); // 25% = 2.5 -> 2.
 }
 
 #[test]

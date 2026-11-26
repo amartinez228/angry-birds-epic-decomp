@@ -1,0 +1,38 @@
+{
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "methods": [
+    {
+      "metadata_index": 19597,
+      "disassembly": "19597.asm",
+      "sha256": "5dc8a3f33ad94be553f68f7bc008aed0f4c4bf856e9ceb87e21f43239a100a4f"
+    },
+    {
+      "metadata_index": 40966,
+      "disassembly": "40966.asm",
+      "sha256": "0c5c789f3326bc2117a1ce6587d89a3c1591cb233efe5f2d6008f6e2276ee1ac"
+    },
+    {
+      "metadata_index": 40967,
+      "disassembly": "40967.asm",
+      "sha256": "f4a80701eb8fe4e8780bb591b479dd4c51e32d60090182f13deca12cebcbecba"
+    }
+  ],
+  "tie_constants": {
+    "GOT-0x6b2884": -0.5,
+    "GOT-0x6b2894": 0.5,
+    "GOT-0x64f9b4": -1.0,
+    "GOT-0x6b28a4": 1.0
+  },
+  "interface_slots": {
+    "get_SummedHealPerTurn": 39,
+    "set_SummedHealPerTurn": 40,
+    "get_CurrentHealth": 31,
+    "set_CurrentHealth": 32
+  },
+  "limitations": [
+    "Base native heal path without trigger/perk/PvP modifiers",
+    "Runtime HP/base attack remain integer; full fractional stats and other skill rounding stages unfinished"
+  ],
+  "disassembly_hash_format": "UTF-8 text with LF line endings"
+}

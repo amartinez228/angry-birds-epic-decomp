@@ -1,0 +1,110 @@
+{
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "methods": [
+    {
+      "metadata_index": 36123,
+      "class": "ABH.GameDatas.Battle.Skills.AttackAndApplyHealingDebuffSkill",
+      "method": ".ctor",
+      "address": 15568587,
+      "disassembly": "36123.asm",
+      "sha256": "ddec62d9992109f93aba0f5eda3dfcc1a0c4fc362ae1db63129fb4b5fbba6cc8"
+    },
+    {
+      "metadata_index": 36124,
+      "class": "ABH.GameDatas.Battle.Skills.AttackAndApplyHealingDebuffSkill",
+      "method": "Init",
+      "address": 15568626,
+      "disassembly": "36124.asm",
+      "sha256": "be4a1077960a25f8033865a16a89f1f9ac9350b00c24ce3f0f0ee1dbed4c5b95"
+    },
+    {
+      "metadata_index": 36125,
+      "class": "ABH.GameDatas.Battle.Skills.AttackAndApplyHealingDebuffSkill",
+      "method": "ShareableActionPart",
+      "address": 15569236,
+      "disassembly": "36125.asm",
+      "sha256": "9b7f916dab7bc69025891068d981a6dbf5c1dffb97ead1d110b73e0f31534dc5"
+    },
+    {
+      "metadata_index": 36128,
+      "class": "ABH.GameDatas.Battle.Skills.AttackAndApplyHealingDebuffSkill",
+      "method": "<Init>m__0",
+      "address": 15571778,
+      "disassembly": "36128.asm",
+      "sha256": "1722f7d9b4962ae920704b8970313cb531e838a0f527a1a754af66b1ef60e38d"
+    },
+    {
+      "metadata_index": 40966,
+      "class": "ABH.Services.Logic.BattleService",
+      "method": "HealCurrentTurn",
+      "address": 5284271,
+      "disassembly": "40966.asm",
+      "sha256": "0c5c789f3326bc2117a1ce6587d89a3c1591cb233efe5f2d6008f6e2276ee1ac"
+    },
+    {
+      "metadata_index": 40972,
+      "class": "ABH.Services.Logic.BattleService",
+      "method": "InitializeBattleEffects",
+      "address": 5178258,
+      "disassembly": "40972.asm",
+      "sha256": "629fb5e08d63614b2410a9f751655e3a5d7c9f820d7cc5ea0c7b6554b82c6ef4"
+    },
+    {
+      "metadata_index": 40978,
+      "class": "ABH.Services.Logic.BattleService",
+      "method": "ApplyEffectsOnTriggerType",
+      "address": 5277763,
+      "disassembly": "40978.asm",
+      "sha256": "90cb2b28473f7f1d5c908f02e43fd7e68b9243dfa779133b71b95a1e01cb0165"
+    },
+    {
+      "metadata_index": 41071,
+      "class": "ABH.Services.Logic.BattleService",
+      "method": "<InitializeBattleEffects>m__12",
+      "address": 5351423,
+      "disassembly": "41071.asm",
+      "sha256": "44589f2be52ea74992bf38701d1e6b0c0ccef95eda526ada1407c1a4de193c21"
+    },
+    {
+      "metadata_index": 36525,
+      "class": "ABH.GameDatas.Battle.AttackSkillTemplate+<DoAction>c__Iterator0",
+      "method": "MoveNext",
+      "address": 15420627,
+      "disassembly": "36525.asm",
+      "sha256": "ae20b899970aaf9107282bd9d863de1c8a1f804047f7f239c620093c102615e0"
+    }
+  ],
+  "enums": {
+    "BattleEffectType": {
+      "ReduceHealingReceived": 43
+    },
+    "EffectTriggerType": {
+      "OnReceiveHealing": 10
+    }
+  },
+  "registration": {
+    "got_offset": 307248,
+    "metadata_usage_kind": 3,
+    "metadata_method_index": 41071
+  },
+  "percent_constant": {
+    "got_offset": -6618156,
+    "value": 100.0
+  },
+  "behavior": [
+    "Init reads chance and healing_debuff into +0x94/+0x98 and registers the ShareableActionPart wrapper in +0x6c (ActionsAfterDamageDealt).",
+    "Shared attack iterator at 0xeb9e7b gates after-damage callbacks on nonzero accumulated damage or nodamage/alleffect presence, and target participation (slot86). Runtime participation remains mapped to alive().",
+    "ShareableActionPart draws Random.value once, succeeds on sample <= chance/100, and constructs effect43 on trigger10 with the original skill duration and healing_debuff value.",
+    "InitializeBattleEffects at 0x4f099e..0x4f0a3f registers trigger10/effect43 using method usage GOT+0x4b030, resolved to metadata41071.",
+    "Effect43 handler0x51a7ff returns ((100-value[0])*runningHeal)/100 without intermediate integer conversion. EvaluateEffect is a visual callback.",
+    "ApplyEffectsOnTriggerType sorts effect groups and their operations by BattleEffectType and feeds each float result into the next. HealCurrentTurn normalizes the complete trigger10 pass before HP application."
+  ],
+  "limitations": [
+    "Only the ordinary healing-reduction attack template is added; healing-increase/passive/environmental skills, consumable bypass and full trigger/perk ordering are pending.",
+    "Unity RNG parity, full native participation and source/dictionary lifetime semantics remain incomplete.",
+    "The existing effect owner retains insertion order among same-type curses. Native dictionary enumeration order is not established; floating-point edge cases may differ.",
+    "HP and base attack remain integer; full-game and cross-platform parity are not claimed."
+  ],
+  "disassembly_hash_format": "UTF-8 text with LF line endings"
+}

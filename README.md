@@ -640,19 +640,20 @@ remain unfinished. Unimplemented support actions report that they are unavailabl
 and do not consume a turn. Status timing and native execution semantics are not
 yet fully reconstructed.
 
-Three additional class attack rules now run from their recovered configuration
-and English descriptions. Cleric's Healing Strike heals every living bird for
-25% of damage dealt (Moon Priest uses its configured 20%). The current integer
-engine uses HP actually removed after defense, caps healing at maximum HP and
-does not revive knocked-out birds. Bard's Heavy Metal rolls the configured 15%
-stun chance and uses the separate one-turn duration parameter; its top-level
-skill duration is zero. Thunderbird's Thunderclap still damages all enemies,
-but its three-turn 25% vulnerability now applies only to the selected survivor.
-The battle UI labels vulnerable enemies. The native bodies for these callbacks
-are not included in the supplied disassembly: exact hook order, overkill and
-fractional damage/heal rounding, RNG parity and interactions remain unverified
-against the original runtime. These implementations extend the current engine
-model rather than establishing exact native equivalence.
+Three additional class attack rules now run from recovered configuration and
+verified native healing/stun callbacks. Cleric's Healing Strike heals
+positive-health allies in the source faction per hit for25% of normalized
+damage (Moon Priest20%), including ordinary overkill. Healing caps at max HP
+and does not clear knockout; a knocked-out bird with refilled positive HP can
+receive healing while remaining unable to act. Bard's Heavy Metal uses the
+separate one-turn duration and an inclusive random comparison; eligible rolls
+consume RNG even at0/100%. Zero-damage targets require an explicit effect flag.
+Wet-only attacks require WaterBomb, which is still unimplemented, so they skip
+that callback without drawing. The seeded RNG is provisional, not Unity parity.
+Thunderbird's selected-survivor vulnerability remains as described previously.
+Healing now rounds through the traced service boundary per hit. Native
+fractional base HP, optional healing triggers/perks, full trigger ordering, freeze/tentacle behavior and
+Thunderbird callback equivalence remain unfinished.
 
 Conditional attack damage now covers Stone Guard and Frost Savage, using their
 recovered coefficients and descriptions. Stone Guard's Feral Assault applies
@@ -952,3 +953,81 @@ button. `--exercise-score` finishes a weakened first battle and collects its
 score/stars through the real UI. `--exercise-mastery` uses a seeded one-point
 drop after a 100-star fixture unlock to check a real rank-up and save write.
 These flags are for isolated test fixtures; do not use them with your play save.
+
+
+Windows continuation from GitHub commit `f4e5111`: the original conditional
+damage callback bodies are now available under `analysis/native/`. Enabled
+Stone Guard/Frost Savage multipliers retain fractional base damage through the
+conditional stage, and nonpositive conditional coefficients are bypassed.
+Whole-pipeline fractional damage/defense order and missing status conditions
+remain unfinished. Validation: 200 Rust tests, 42 Python recovery/layout tests,
+Clippy, release, seven prepared UI-manifest checks and both native UI suites
+(1,292 captures across 24 launches) pass on Windows x86_64.
+
+
+The subsequent native healing/stun continuation passes206 Rust tests, Clippy,
+Windows release build and both native UI suites (1,292 captures/24 launches).
+It fixes per-hit normalized-damage healing (including overkill), positive-HP
+healing eligibility with retained knockout, and inclusive stun RNG/zero-damage
+gating. See class_actions.rs and the native findings for evidence and remaining
+fractional HP/trigger/RNG limitations.
+
+
+A native normalization follow-up now keeps primary attack modifiers and defenses
+in float until the traced Mathf.RoundToInt boundary. Half values round to even.
+Healing queues accumulate float values and drain through the same rounding
+boundary before applying/capping HP; the queue then clears. Percentage-based
+healing avoids earlier integer rounding. This includes the basic queue lifecycle,
+not original heal triggers/perks/PvP modifiers. Base HP/attack storage and several
+other effect magnitudes remain integer approximations. Original disassembly and
+source hashes are retained in analysis/native/combat-rounding-evidence.json.
+
+Normalization milestone verified on Windows:213 Rust tests,43 Python tests,
+Clippy, release build and both native UI suites (1,292 captures/24 launches).
+Save format remains v9; no economy or acquisition changes.
+
+
+Shaman/Witch Doctor healing-reduction attacks now apply their original
+50/70/100% curses. They obey the shared after-damage/participation gate and
+consume one inclusive chance roll when eligible. Each curse multiplies the
+running healing value; rounding occurs before the healing-trigger pass and
+after all its reductions. Cleansing, refresh and source-turn expiry use the
+shared effect model. This supersedes the earlier no-healing-triggers limitation
+only for ordinary healing-reduction curses. Healing increases, passive and
+environmental modifiers, consumable bypass, full trigger/perk ordering, native
+same-type dictionary order, Unity RNG and fractional HP remain unfinished.
+Evidence: `analysis/native/healing-reduction-evidence.json`. Save format stays v9.
+
+Healing-reduction milestone verified on Windows:219 Rust tests,44 Python
+tests, Clippy, release, seven prepared-manifest checks and both native UI suites
+(1,292 captures across24 launches) pass. Desktop packaging now includes the
+current `CONTINUING.md` handoff.
+
+
+Paladin/Drone weakest-ally healing now runs after each hit from either faction,
+using normalized damage including overkill. Native targeting compares float
+health ratios, starts with the attacker and retains its choice on ties. The
+existing queue applies rounding and healing reductions per hit. Eight new Rust
+regressions cover targeting, rounding, healing timing, survival and pig support.
+Native initiative ordering, fractional HP, full trigger/perk scheduling and heal
+visuals remain incomplete. Evidence: `analysis/native/weakest-healing-evidence.json`.
+Save format remains v9 and the gold/hat overrides are unchanged.
+
+Weakest-ally healing milestone verified on Windows:227 Rust tests,45 Python
+tests, Clippy, release and both native UI suites (1,292 captures/24 launches) pass.
+
+
+Life-steal attacks (`AttackWithLeech`) now heal after each hit/area target from
+normalized damage including overkill. The shared callback replaces the old
+pig-only end-of-attack heal, applies original coefficients and queued rounding/
+healing reductions, and keeps existing bird knockout flags if HP refills.
+Seven new Rust regressions cover original Royal Guard, Ninja and Wizpig attacks,
+shields, rounding, healing curses and queue/knockout behavior. The old Raging
+Storm HP-removed expectation is corrected from native evidence. No new bird
+skill is added. Full fractional HP, pig death/participation state, reactive/perk
+sequencing and life-steal visuals remain incomplete. Evidence:
+`analysis/native/leech-healing-evidence.json`. Save format remains v9;
+the gold and hat-purchase overrides are unchanged.
+
+Life-steal milestone verified on Windows:234 Rust tests,46 Python tests,
+Clippy, release and both native UI suites (1,292 captures/24 launches) pass.

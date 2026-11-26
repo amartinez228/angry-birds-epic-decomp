@@ -35,7 +35,7 @@ foreach ($folder in @('crates', 'tools', 'content', 'assets', 'analysis', 'origi
         Copy-PackageFile $file.FullName $relative
     }
 }
-foreach ($name in @('Cargo.toml', 'Cargo.lock', '.gitignore', 'README.md', 'THIRD_PARTY_NOTICES.md', 'RECONSTRUCTION.json')) {
+foreach ($name in @('Cargo.toml', 'Cargo.lock', '.gitignore', 'README.md', 'CONTINUING.md', 'THIRD_PARTY_NOTICES.md', 'RECONSTRUCTION.json')) {
     Copy-PackageFile (Join-Path $projectRoot $name) $name
 }
 Copy-PackageFile $release 'Epic Rust.exe'

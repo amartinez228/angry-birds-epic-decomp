@@ -34,6 +34,69 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
+- Latest continuation: native `AttackWithLeech` now runs per hit/area target in
+  the shared bird/pig healing callback. Removed the pig-only end-of-attack heal
+  and source-alive gate. Native damage includes ordinary overkill, then original
+  heal coefficient flows through the existing queue/rounding/healing reductions.
+  No source-health/participation/positive-damage/RNG predicate exists in this
+  callback; runtime bird knockout flags stay set if HP refills. Seven new Rust
+  tests cover original Royal Guard200%, Ninja three-hit50%, Wizpig area50%,
+  shielding, healing curses, rounding, retained knockout, cap/queue drain and
+  RNG. Old Raging Storm fixture is corrected to normalized damage, not HP removed.
+  Evidence: `analysis/native/leech-healing-evidence.json`, Init/callback and
+  `fields-36277-36513.json`; disassembly checksums use UTF-8/LF Git-stable text.
+  No new bird skill is added to the catalog; tests exercise faction-neutral
+  routing directly. Full fractional HP, native pig death/participation handling,
+  complete reactive/perk/trigger order and life-steal visuals remain incomplete.
+  No save-format or gold/hat override change. Rust234/Python46, Clippy and
+  Windows release build pass. Both native UI suites pass:1,292 captures across
+  24 launches. Evidence: `analysis/smoke-client-1795662817637065300` and
+  `analysis/smoke-hud-1795662818109980900` (ignored by Git).
+
+
+- Latest continuation: original Paladin/Drone weakest-ally healing now runs per
+  hit through the shared bird/pig callback. The former player-only end-of-attack
+  heal is removed. Native callback selects by float CurrentHealth/ModifiedHealth
+  ratio, seeds selection with attacker and replaces only on strictly lower
+  ratio. It heals normalized hit damage including ordinary overkill through the
+  existing queue and healing reductions. Positive-HP knockout targets retain
+  knockout; dead attacker prevents redirect. Eight new Rust regressions include
+  sub-percent targeting, tie priority, per-hit reselection/rounding, shield and
+  knockout cases, retaliation survival and the original Drone50% coefficient.
+  Native Init/callback/predicate, fields and interface slots are retained in
+  `analysis/native/weakest-healing-evidence.json`. Disassembly hashes use UTF-8
+  with LF endings. Remaining limits: native initiative order is represented by
+  faction vector order (non-attacker ties may differ), HP remains integer and
+  full damage/retaliation/perk scheduling and heal visuals are incomplete.
+  No save-format or economy change. Rust227/Python45, Clippy and Windows release
+  build pass. Both native UI suites pass:1,292 captures across24 launches.
+  Evidence: `analysis/smoke-client-1795662368037315700` and
+  `analysis/smoke-hud-1795662368052436200` (ignored by Git).
+
+
+- Latest Windows continuation: Shaman/Witch Doctor healing-reduction attacks now
+  apply the original 50/70/100% curses. Shared after-damage gates skip defeated
+  targets; shields skip callbacks unless a skill explicitly allows zero damage.
+  Native effect43/trigger10 multiplies running healing by (100-value)/100;
+  queued healing normalizes before the pass and again after all reductions.
+  Curse refresh, cleanse/purge and source-turn expiry use the shared owner.
+  Six additional Rust regressions cover original curse values, stacking and
+  rounding, Cleric healing, both attack factions and damage/participation/RNG
+  gates. Recovery checks validate original enum IDs and the registered handler.
+  Evidence: `analysis/native/healing-reduction-evidence.json` and native findings.
+  Both healing/rounding evidence manifests hash disassembly as UTF-8 with LF
+  endings; hashes match committed Git blobs as well as Windows working files.
+  Healing increases, passive/environmental modifiers, consumable bypass,
+  support/perk triggers, native same-type dictionary order, full participation,
+  Unity RNG and fractional HP remain incomplete. Earlier statements below that
+  healing has no trigger modifiers are superseded only for this curse path.
+  No save-format or economy change. Windows checks:219 Rust tests,44 Python
+  tests, Clippy, release and all seven prepared-manifest checks pass. Both
+  native suites pass:1,292 captures across24 launches, using disposable saves.
+  Evidence: `analysis/smoke-client-1795661705912714500` and
+  `analysis/smoke-hud-1795661705876701400` (ignored by Git).
+
+
 - The victory title now plays its original delayed translation, nonuniform
   stretch/undershoot and alpha from `BattleWon_Step1_Enter`; the score line plays
   the original independent alpha reveal from0.75s to1s. Header text is centered
@@ -381,3 +444,87 @@ Keep the repository private unless you have decided what extracted game material
 you intend to share. Original archives and local saves remain outside Git even
 for a private repository. GitHub authentication is performed by your Git tools;
 do not paste access tokens into source files or chat.
+
+
+## Windows continuation from f4e5111
+
+The four GitHub commits after e482be8 were imported with their exact Git object
+hashes and original history verified. Shell Git networking was unavailable;
+the connected GitHub API supplied the objects, and git fsck verified connectivity.
+Local original Unity5.6 inputs and native ELF/metadata caches are still available
+on this Windows machine, although they were absent in the Mac checkout.
+
+AttackWithBonusDamage / AttackWithBonusDamageVsDebuff Init and damage callback
+bodies have now been recovered (36202/36205/36207/36210). They gate coefficients
+on >0 and multiply floats without an intermediate integer round. Runtime now
+keeps base fractional damage through an enabled conditional multiplier and
+bypasses nonpositive coefficients. Native effect classification for the debuff
+callback is any current effect of SkillEffectTypes.Curse (2), applied once.
+Regression: Stone Guard at23 attack now delivers two22-point cursed hits rather
+than two23-point hits. Final rounding, full defense/callback order and missing
+wet/goo/paint/chocolate/pumpkin/spotlight/ink statuses remain unfinished.
+
+Recovered bodies/field layouts and provenance are under analysis/native/.
+No save-format or reward/economy change in this continuation.
+
+Windows verification for this continuation: 200 Rust tests, 42 Python tests
+(original recovery plus reference layouts), Clippy with warnings denied, release
+build and all seven prepared UI-manifest checks pass. Native suites pass:
+1,144 client captures across22 launches and148 HUD captures across2 launches.
+Evidence: analysis/smoke-client-1795584087275930700 and
+analysis/smoke-hud-1795584086903184800. The original Mac milestones above are
+historical; this continuation was verified on Windows x86_64.
+
+
+## Native healing/stun continuation
+
+Recovered original HealAlly Init/closures36255/36259/36261 and StunChance
+Init/ShareableActionPart36288/36289, with verified native field offsets. Healing
+is a per-hit ActionsOnDamageDealt callback over normalized damage, including
+overkill, and selects source-faction CurrentHealth>0 rather than IsParticipating.
+Runtime now follows those rules and retains the knockout flag while healing.
+Stun callback gates zero damage, always draws on eligible0/100 chance, and
+uses an inclusive comparison. The wet-only presence flag requires WaterBomb;
+that status remains unavailable and the callback now skips it without RNG.
+Both faction loops share the helpers in class_actions.rs.
+
+Core remains integer HP/damage; fractional healing, queued heal/perk lifecycle,
+full trigger order, Unity RNG and wet/freeze/tentacle are pending. Source evidence
+and exact callback addresses are in analysis/native/findings.json. No save-format
+change. Historical class notes above describe the earlier approximation and are
+superseded by this native follow-up.
+
+Verified for healing/stun: 206 Rust tests, Clippy with warnings denied, Windows
+release build, client native suite (1,144 captures/22 launches) and HUD native
+suite (148 captures/2 launches) pass. Evidence:
+analysis/smoke-client-1795585790112339400 and
+analysis/smoke-hud-1795585790490605200. Player saves were not used by fixtures.
+
+
+## Native normalization and healing queue
+
+Original Mathf.RoundToInt19597 and HealCurrentTurn40966 are now inspected.
+RoundToInt uses ties-to-even (including signed midpoints) and x86 integer-
+indefinite conversion outside range. HealCurrentTurn drains a float summed-heal
+queue, normalizes it before application, then clears it. Contrary to the earlier
+assumption, ordinary HealAlly healing amounts need not remain fractional in HP
+after this service boundary. Native optional heal triggers/perks still matter.
+
+Runtime attack buff/base/conditional/defense factors now stay float until damage
+normalization. Percentage heals enter a float queue; normal flush rounds once,
+caps HP, clears nonpositive/consumed values and retains knockout. Existing integer
+regeneration values use the same drain but their earlier magnitude computation
+is still approximate. Root HP/base attack/max HP fields remain integer: complete
+fractional base-stat storage, remaining effect magnitudes and native trigger
+order are pending. This is not a claim of full native combat precision.
+
+combat_math.rs and analysis/native/combat-rounding-evidence.json retain code,
+source hashes, addresses and normalization evidence. Seven new tests bring the
+Rust suite to213. One older Thunderbird expectation changes from63 to62 for a
+62.5 hit. Other existing native-class/action expectations pass. No save bump.
+
+Verified normalization milestone: 213 Rust tests,43 Python recovery/layout tests,
+Clippy with warnings denied, Windows release build and both native UI suites
+pass. Evidence: analysis/smoke-client-1795661003694636700 (1,144 captures/22
+launches), analysis/smoke-hud-1795661003709950900 (148 captures/2 launches).
+All fixtures use isolated saves.

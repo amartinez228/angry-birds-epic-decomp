@@ -1,0 +1,366 @@
+{
+  "metadata_sha256": "a4dcf49bce8425947cc92980cefcd99cb8eb1ebfa2e865957faa7a00866934cf",
+  "native_sha256": "d2f3744be679b3cb3cae4095799225dc0d677ab8e8a30e7d67e0079cf179fe19",
+  "layouts": [
+    {
+      "method_index": 36255,
+      "declaring_type_index": 4572,
+      "declaring_type": "ABH.GameDatas.Battle.Skills.AttackWithHealAlly",
+      "fields": [
+        {
+          "metadata_index": 20486,
+          "name": "m_DamageMod",
+          "offset": 136,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20487,
+          "name": "m_Percent",
+          "offset": 140,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20488,
+          "name": "m_AttackCount",
+          "offset": 144,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        }
+      ]
+    },
+    {
+      "method_index": 36288,
+      "declaring_type_index": 4581,
+      "declaring_type": "ABH.GameDatas.Battle.Skills.AttackWithStunChanceSkill",
+      "fields": [
+        {
+          "metadata_index": 20512,
+          "name": "m_DamageMod",
+          "offset": 136,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20513,
+          "name": "m_ChargeTurns",
+          "offset": 140,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20514,
+          "name": "m_AttackCount",
+          "offset": 144,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20515,
+          "name": "m_StunChance",
+          "offset": 148,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20516,
+          "name": "m_StunVsWetChance",
+          "offset": 152,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20517,
+          "name": "m_StunDuration",
+          "offset": 156,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 12
+        },
+        {
+          "metadata_index": 20518,
+          "name": "m_UseSkillAssetId",
+          "offset": 160,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20519,
+          "name": "m_StunVsWet",
+          "offset": 161,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20520,
+          "name": "m_Freeze",
+          "offset": 162,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20521,
+          "name": "m_TentacleGrab",
+          "offset": 163,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20522,
+          "name": "m_CleanseAfterDeath",
+          "offset": 164,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 20523,
+          "name": "<>f__am$cache0",
+          "offset": 0,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 20524,
+          "name": "<>f__am$cache1",
+          "offset": 4,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        }
+      ]
+    },
+    {
+      "method_index": 34737,
+      "declaring_type_index": 4471,
+      "declaring_type": "ABH.GameDatas.Battle.BattleEffectGameData",
+      "fields": [
+        {
+          "metadata_index": 19878,
+          "name": "m_Effects",
+          "offset": 8,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19879,
+          "name": "m_Battle",
+          "offset": 12,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19880,
+          "name": "m_EffectType",
+          "offset": 16,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 17
+        },
+        {
+          "metadata_index": 19881,
+          "name": "EffectRemovedAction",
+          "offset": 20,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19882,
+          "name": "EffectAppliedAction",
+          "offset": 24,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19883,
+          "name": "m_EffectIdent",
+          "offset": 28,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19884,
+          "name": "m_Target",
+          "offset": 32,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19885,
+          "name": "m_Source",
+          "offset": 36,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19886,
+          "name": "m_SkillIdent",
+          "offset": 40,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19887,
+          "name": "m_LocalizedName",
+          "offset": 44,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19888,
+          "name": "m_IconAssetId",
+          "offset": 48,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19889,
+          "name": "m_IconAtlasId",
+          "offset": 52,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 14
+        },
+        {
+          "metadata_index": 19890,
+          "name": "m_IsRemoved",
+          "offset": 56,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19891,
+          "name": "m_HasManualTurns",
+          "offset": 57,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19892,
+          "name": "m_TargetAll",
+          "offset": 58,
+          "attributes": 6,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19893,
+          "name": "m_PersistIfDefeated",
+          "offset": 59,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 2
+        },
+        {
+          "metadata_index": 19894,
+          "name": "m_StartTurn",
+          "offset": 60,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19895,
+          "name": "m_EndTurn",
+          "offset": 64,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19896,
+          "name": "m_Duration",
+          "offset": 68,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19897,
+          "name": "m_LastTurn",
+          "offset": 72,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19898,
+          "name": "currentTurn",
+          "offset": 76,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 8
+        },
+        {
+          "metadata_index": 19899,
+          "name": "EffectRemoved",
+          "offset": 80,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19900,
+          "name": "m_LinkedEffect",
+          "offset": 84,
+          "attributes": 1,
+          "static": false,
+          "type_kind": 18
+        },
+        {
+          "metadata_index": 19901,
+          "name": "<>f__am$cache0",
+          "offset": 0,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19902,
+          "name": "<>f__am$cache1",
+          "offset": 4,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        },
+        {
+          "metadata_index": 19903,
+          "name": "<>f__am$cache2",
+          "offset": 8,
+          "attributes": 17,
+          "static": true,
+          "type_kind": 21
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Declared fields only; inherited fields remain in base layouts. Static offsets refer to static storage, not the object instance."
+  ]
+}
