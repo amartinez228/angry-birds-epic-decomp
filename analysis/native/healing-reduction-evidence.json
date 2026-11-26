@@ -8,7 +8,7 @@
       "method": ".ctor",
       "address": 15568587,
       "disassembly": "36123.asm",
-      "sha256": "e5fc88678199ba784285736ac48da47b78156b3266d9891d3c1d80d7b336cb4b"
+      "sha256": "ddec62d9992109f93aba0f5eda3dfcc1a0c4fc362ae1db63129fb4b5fbba6cc8"
     },
     {
       "metadata_index": 36124,
@@ -16,7 +16,7 @@
       "method": "Init",
       "address": 15568626,
       "disassembly": "36124.asm",
-      "sha256": "77b2b0ee8bd4a731b2dccd5fbe1b3a8ed252ca279588319f18b57b2ad9836d8b"
+      "sha256": "be4a1077960a25f8033865a16a89f1f9ac9350b00c24ce3f0f0ee1dbed4c5b95"
     },
     {
       "metadata_index": 36125,
@@ -24,7 +24,7 @@
       "method": "ShareableActionPart",
       "address": 15569236,
       "disassembly": "36125.asm",
-      "sha256": "7f1c8ad746677a6fbc4a6a9bac1de8fc66d703c1fe2540c5351cac7a286cf648"
+      "sha256": "9b7f916dab7bc69025891068d981a6dbf5c1dffb97ead1d110b73e0f31534dc5"
     },
     {
       "metadata_index": 36128,
@@ -32,7 +32,7 @@
       "method": "<Init>m__0",
       "address": 15571778,
       "disassembly": "36128.asm",
-      "sha256": "672796e9a6ddb7cae8fe9b3b965886d0565b1c9862faeb8c0f3738dc7c7874f4"
+      "sha256": "1722f7d9b4962ae920704b8970313cb531e838a0f527a1a754af66b1ef60e38d"
     },
     {
       "metadata_index": 40966,
@@ -40,7 +40,7 @@
       "method": "HealCurrentTurn",
       "address": 5284271,
       "disassembly": "40966.asm",
-      "sha256": "6bb77feb283a801c71a491b2bf4b64b8d3d15bfe0e38aa0cada97722e0d058ec"
+      "sha256": "0c5c789f3326bc2117a1ce6587d89a3c1591cb233efe5f2d6008f6e2276ee1ac"
     },
     {
       "metadata_index": 40972,
@@ -48,7 +48,7 @@
       "method": "InitializeBattleEffects",
       "address": 5178258,
       "disassembly": "40972.asm",
-      "sha256": "6b36c2212562568010298a197c10cd71c52ff34bad473c536c1c820e765e6007"
+      "sha256": "629fb5e08d63614b2410a9f751655e3a5d7c9f820d7cc5ea0c7b6554b82c6ef4"
     },
     {
       "metadata_index": 40978,
@@ -56,7 +56,7 @@
       "method": "ApplyEffectsOnTriggerType",
       "address": 5277763,
       "disassembly": "40978.asm",
-      "sha256": "a3885091f462bc72114e413c8a4fed3ff79db6f7f20bc1e819f7590bb9212799"
+      "sha256": "90cb2b28473f7f1d5c908f02e43fd7e68b9243dfa779133b71b95a1e01cb0165"
     },
     {
       "metadata_index": 41071,
@@ -64,7 +64,7 @@
       "method": "<InitializeBattleEffects>m__12",
       "address": 5351423,
       "disassembly": "41071.asm",
-      "sha256": "949539ec2ddbeb816b9a89667b0079563731d3b8d198122af91ed4aedb11f005"
+      "sha256": "44589f2be52ea74992bf38701d1e6b0c0ccef95eda526ada1407c1a4de193c21"
     },
     {
       "metadata_index": 36525,
@@ -72,7 +72,7 @@
       "method": "MoveNext",
       "address": 15420627,
       "disassembly": "36525.asm",
-      "sha256": "fddb21c22cfadd8f55d4043ea89c5efa4c54e684722bae6a76e0739851405aeb"
+      "sha256": "ae20b899970aaf9107282bd9d863de1c8a1f804047f7f239c620093c102615e0"
     }
   ],
   "enums": {
@@ -105,5 +105,6 @@
     "Unity RNG parity, full native participation and source/dictionary lifetime semantics remain incomplete.",
     "The existing effect owner retains insertion order among same-type curses. Native dictionary enumeration order is not established; floating-point edge cases may differ.",
     "HP and base attack remain integer; full-game and cross-platform parity are not claimed."
-  ]
+  ],
+  "disassembly_hash_format": "UTF-8 text with LF line endings"
 }

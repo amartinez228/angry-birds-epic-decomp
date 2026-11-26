@@ -5,17 +5,17 @@
     {
       "metadata_index": 19597,
       "disassembly": "19597.asm",
-      "sha256": "f86b659b7204e7e613d59a09d271bfce6b05551fadf655738b159883aa2b837d"
+      "sha256": "5dc8a3f33ad94be553f68f7bc008aed0f4c4bf856e9ceb87e21f43239a100a4f"
     },
     {
       "metadata_index": 40966,
       "disassembly": "40966.asm",
-      "sha256": "6bb77feb283a801c71a491b2bf4b64b8d3d15bfe0e38aa0cada97722e0d058ec"
+      "sha256": "0c5c789f3326bc2117a1ce6587d89a3c1591cb233efe5f2d6008f6e2276ee1ac"
     },
     {
       "metadata_index": 40967,
       "disassembly": "40967.asm",
-      "sha256": "57f1ad980f28f51dc8cf0b5360d90a94fe1c227de7852a46490909fae8a11bd1"
+      "sha256": "f4a80701eb8fe4e8780bb591b479dd4c51e32d60090182f13deca12cebcbecba"
     }
   ],
   "tie_constants": {
@@ -33,5 +33,6 @@
   "limitations": [
     "Base native heal path without trigger/perk/PvP modifiers",
     "Runtime HP/base attack remain integer; full fractional stats and other skill rounding stages unfinished"
-  ]
+  ],
+  "disassembly_hash_format": "UTF-8 text with LF line endings"
 }

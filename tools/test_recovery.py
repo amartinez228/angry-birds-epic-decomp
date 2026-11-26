@@ -47,7 +47,9 @@ class RecoveryTests(unittest.TestCase):
             row = linked['methods'][entry['metadata_index']]
             for key in ['class', 'method', 'address']:
                 self.assertEqual(row[key], entry[key])
-            self.assertEqual(hashlib.sha256((ROOT/'analysis/native'/entry['disassembly']).read_bytes()).hexdigest(), entry['sha256'])
+            self.assertEqual(report['disassembly_hash_format'], 'UTF-8 text with LF line endings')
+            text = (ROOT/'analysis/native'/entry['disassembly']).read_text(encoding='utf-8')
+            self.assertEqual(hashlib.sha256(text.encode('utf-8')).hexdigest(), entry['sha256'])
         constant = report['percent_constant']
         self.assertEqual(struct.unpack_from('<f', native, offset(linked['global_offset_table']+constant['got_offset']))[0], 100.)
         count, pointer = struct.unpack_from('<II', native, linked['metadata_registration_file_offset']+7*8)
@@ -107,7 +109,9 @@ class RecoveryTests(unittest.TestCase):
         for method in report['methods']:
             row = next(r for r in linked['methods'] if r['metadata_index']==method['metadata_index'])
             self.assertEqual((row['class'],row['method'],row['address']),expected[method['metadata_index']])
-            self.assertEqual(hashlib.sha256((ROOT/'analysis/native'/method['disassembly']).read_bytes()).hexdigest(),method['sha256'])
+            self.assertEqual(report['disassembly_hash_format'], 'UTF-8 text with LF line endings')
+            text = (ROOT/'analysis/native'/method['disassembly']).read_text(encoding='utf-8')
+            self.assertEqual(hashlib.sha256(text.encode('utf-8')).hexdigest(),method['sha256'])
 
     def test_original_resource_catalog_and_starting_recipe_delta_are_preserved(self):
         tables, _ = load_tables()

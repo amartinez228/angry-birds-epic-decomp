@@ -44,6 +44,8 @@ and backs up replaced files. Do not commit that package or its previous-builds.
   rounding, Cleric healing, both attack factions and damage/participation/RNG
   gates. Recovery checks validate original enum IDs and the registered handler.
   Evidence: `analysis/native/healing-reduction-evidence.json` and native findings.
+  Both healing/rounding evidence manifests hash disassembly as UTF-8 with LF
+  endings; hashes match committed Git blobs as well as Windows working files.
   Healing increases, passive/environmental modifiers, consumable bypass,
   support/perk triggers, native same-type dictionary order, full participation,
   Unity RNG and fractional HP remain incomplete. Earlier statements below that
