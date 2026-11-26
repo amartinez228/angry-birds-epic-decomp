@@ -34,6 +34,27 @@ and backs up replaced files. Do not commit that package or its previous-builds.
 
 ## Where work stopped
 
+- Latest Windows continuation: Shaman/Witch Doctor healing-reduction attacks now
+  apply the original 50/70/100% curses. Shared after-damage gates skip defeated
+  targets; shields skip callbacks unless a skill explicitly allows zero damage.
+  Native effect43/trigger10 multiplies running healing by (100-value)/100;
+  queued healing normalizes before the pass and again after all reductions.
+  Curse refresh, cleanse/purge and source-turn expiry use the shared owner.
+  Six additional Rust regressions cover original curse values, stacking and
+  rounding, Cleric healing, both attack factions and damage/participation/RNG
+  gates. Recovery checks validate original enum IDs and the registered handler.
+  Evidence: `analysis/native/healing-reduction-evidence.json` and native findings.
+  Healing increases, passive/environmental modifiers, consumable bypass,
+  support/perk triggers, native same-type dictionary order, full participation,
+  Unity RNG and fractional HP remain incomplete. Earlier statements below that
+  healing has no trigger modifiers are superseded only for this curse path.
+  No save-format or economy change. Windows checks:219 Rust tests,44 Python
+  tests, Clippy, release and all seven prepared-manifest checks pass. Both
+  native suites pass:1,292 captures across24 launches, using disposable saves.
+  Evidence: `analysis/smoke-client-1795661705912714500` and
+  `analysis/smoke-hud-1795661705876701400` (ignored by Git).
+
+
 - The victory title now plays its original delayed translation, nonuniform
   stretch/undershoot and alpha from `BattleWon_Step1_Enter`; the score line plays
   the original independent alpha reveal from0.75s to1s. Header text is centered

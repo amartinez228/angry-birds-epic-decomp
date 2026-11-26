@@ -2,6 +2,31 @@
 //! Remaining trigger/perk order, Unity RNG and fractional HP remain pending.
 use super::*;
 
+#[test]
+fn healing_curse_uses_shared_bird_attack_callback_and_reduces_cleric_healing() {
+    let mut battle = battle("skin_cleric", 7);
+    let skill = *SKILLS
+        .iter()
+        .find(|s| s.id == "pig_attack_shaman_shaman")
+        .unwrap();
+    battle.strike_with(0, 0, skill).unwrap();
+    assert!(battle.enemies[0].effects.has_curse());
+    battle.heroes[1].effects.apply(
+        "shaman",
+        Source::pig(0),
+        3,
+        EffectKind::HealingReduction(50.),
+    );
+    let cleric = *SKILLS
+        .iter()
+        .find(|s| s.id == "bird_attack_white_cleric")
+        .unwrap();
+    battle.strike_with(0, 0, cleric).unwrap();
+    assert_eq!(battle.heroes[0].hp, 528); // 110 normalized damage *25% ->28.
+    assert_eq!(battle.heroes[1].hp, 514); // Initial28 *50% ->14.
+    assert_eq!(battle.heroes[2].hp, 528);
+}
+
 fn battle(skin: &str, seed: u64) -> Battle {
     let hat = HATS.iter().position(|hat| hat.id == skin).unwrap();
     let bird = HATS[hat].bird;

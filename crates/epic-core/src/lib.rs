@@ -484,9 +484,10 @@ impl Fighter {
         self.summed_heal_per_turn += amount;
     }
     fn resolve_healing(&mut self) -> i32 {
-        let normalized = combat_math::normalize(self.summed_heal_per_turn);
+        let mut normalized = combat_math::normalize(self.summed_heal_per_turn);
         self.summed_heal_per_turn = 0.;
         if normalized > 0 {
+            normalized = combat_math::normalize(self.effects.reduce_healing(normalized as f32));
             self.hp = self.hp.saturating_add(normalized).min(self.max_hp);
         }
         normalized
@@ -742,6 +743,7 @@ impl Battle {
                 );
             }
             self.stunning_attack_finish(source, Source::pig(i), attack, normalized_damage);
+            self.healing_debuff_attack_finish(source, Source::pig(i), attack, normalized_damage);
             if attack.template == "AttackWithPurgeSkill"
                 && self.roll_percent(attack.parameter("purge_chance", 0.))
             {

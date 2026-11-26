@@ -35,6 +35,7 @@ pub enum EffectKind {
     AttackBonus(f32),
     Weakness(f32),
     Vulnerability(f32),
+    HealingReduction(f32),
     Poison(i32),
     Regeneration(i32),
     Stun,
@@ -47,6 +48,7 @@ impl EffectKind {
             self,
             Self::Weakness(_)
                 | Self::Vulnerability(_)
+                | Self::HealingReduction(_)
                 | Self::Poison(_)
                 | Self::Stun
                 | Self::Taunt(_)
@@ -173,6 +175,18 @@ impl Effects {
                 _ => None,
             })
             .sum()
+    }
+    /// OnReceiveHealing (10), ReduceHealingReceived (43): each effect
+    /// multiplies the running float; HealCurrentTurn normalizes after the pass.
+    /// Native 0x51a7ff / 0x508843. Other healing trigger operations are pending.
+    pub(crate) fn reduce_healing(&self, amount: f32) -> f32 {
+        self.entries.iter().fold(amount, |amount, effect| {
+            if let EffectKind::HealingReduction(reduction) = effect.kind {
+                ((100. - reduction) * amount) / 100.
+            } else {
+                amount
+            }
+        })
     }
     pub fn taunt_target(&self) -> Option<usize> {
         self.entries.iter().rev().find_map(|e| match e.kind {

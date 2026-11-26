@@ -77,4 +77,98 @@ mod tests {
         assert_eq!(unit.resolve_healing(), 0);
         assert_eq!(unit.hp, hp);
     }
+
+    #[test]
+    fn original_healing_curses_reduce_normalized_heals_and_drain_queue() {
+        for (skill_id, expected) in [
+            ("pig_attack_shaman_shaman", 5),
+            ("pig_attack_shaman_witch_doctor_first", 3),
+            ("pig_attack_shaman_witch_doctor", 0),
+        ] {
+            let skill = crate::SKILLS.iter().find(|s| s.id == skill_id).unwrap();
+            let mut battle = crate::Battle::new(&crate::Profile::default(), 0).unwrap();
+            let unit = &mut battle.heroes[0];
+            unit.hp = 1;
+            unit.effects.apply(
+                skill.id,
+                crate::Source::pig(0),
+                skill.duration,
+                crate::EffectKind::HealingReduction(skill.parameter("healing_debuff", 0.)),
+            );
+            unit.queue_healing(10.);
+            assert_eq!(unit.resolve_healing(), expected, "{skill_id}");
+            assert_eq!(unit.hp, 1 + expected);
+            assert_eq!(unit.resolve_healing(), 0);
+        }
+    }
+
+    #[test]
+    fn healing_curses_multiply_without_rounding_between_effects() {
+        let mut battle = crate::Battle::new(&crate::Profile::default(), 0).unwrap();
+        let unit = &mut battle.heroes[0];
+        unit.max_hp = 1000;
+        unit.hp = 1;
+        unit.effects.apply(
+            "half",
+            crate::Source::pig(0),
+            3,
+            crate::EffectKind::HealingReduction(50.),
+        );
+        unit.effects.apply(
+            "seventy",
+            crate::Source::pig(1),
+            3,
+            crate::EffectKind::HealingReduction(70.),
+        );
+        unit.queue_healing(100.);
+        assert_eq!(unit.resolve_healing(), 15); // Multiplication, not additive reduction.
+        unit.queue_healing(3.);
+        assert_eq!(unit.resolve_healing(), 0); // 3 * .5 * .3 = .45; no intermediate 1.5 -> 2.
+        assert_eq!(unit.hp, 16);
+        unit.effects.cleanse();
+        unit.effects.apply(
+            "half",
+            crate::Source::pig(0),
+            3,
+            crate::EffectKind::HealingReduction(50.),
+        );
+        unit.queue_healing(2.6);
+        assert_eq!(unit.resolve_healing(), 2); // Initial 2.6 -> 3, then 1.5 -> 2.
+    }
+
+    #[test]
+    fn healing_curse_cleanse_purge_refresh_and_source_expiry() {
+        let mut battle = crate::Battle::new(&crate::Profile::default(), 0).unwrap();
+        let unit = &mut battle.heroes[0];
+        unit.hp = 1;
+        for _ in 0..2 {
+            unit.effects.apply(
+                "curse",
+                crate::Source::pig(0),
+                3,
+                crate::EffectKind::HealingReduction(50.),
+            );
+        }
+        assert_eq!(unit.effects.entries().len(), 1);
+        assert!(unit.effects.has_curse());
+        unit.effects.purge();
+        unit.effects.advance_source_turn(crate::Side::Birds);
+        unit.heal(10);
+        assert_eq!(unit.hp, 6);
+        for _ in 0..3 {
+            unit.effects.advance_source_turn(crate::Side::Pigs);
+        }
+        assert!(!unit.effects.has_curse());
+        unit.heal(10);
+        assert_eq!(unit.hp, 16);
+        unit.effects.apply(
+            "curse",
+            crate::Source::pig(0),
+            3,
+            crate::EffectKind::HealingReduction(100.),
+        );
+        unit.effects.cleanse();
+        unit.heal(10);
+        assert_eq!(unit.hp, 26);
+    }
 }

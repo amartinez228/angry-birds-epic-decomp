@@ -407,6 +407,28 @@
         "34650-generic-2026.asm"
       ],
       "fact": "Reads ICombatant slot39 get_SummedHealPerTurn; normalizes at0x50a2df, then conditionally applies healing trigger IDs15,10,35 with additional NormalizeDamage calls. Adds normalized integer to CurrentHealth at0x50a4c5..0x50a4cb and writes it through slot32. Clears summed-heal with slot40 at0x50a59d and returns the normalized amount (not HP actually restored). HealAlly calls with its first boolean true: a nonpositive initial normalized amount skips application and clears the queue. Basic ordinary queue/normalization/drain is now implemented; optional flags, healing trigger modifiers/PvP/perks and complete fractional HP remain unfinished."
+    },
+    {
+      "method": "AttackAndApplyHealingDebuffSkill / BattleService healing trigger10 effect43",
+      "addresses": [
+        "0xed8ef2",
+        "0xed9154",
+        "0x4f099e",
+        "0x51a7ff",
+        "0x508843",
+        "0x50a1af"
+      ],
+      "sources": [
+        "healing-reduction-evidence.json",
+        "36124.asm",
+        "36125.asm",
+        "40972.asm",
+        "41071.asm",
+        "40978.asm",
+        "40966.asm",
+        "36525.asm"
+      ],
+      "fact": "Original Shaman/Witch Doctor curses now apply to surviving damaged targets from either faction. Native inclusive chance draw retained, including0/100 after the shared damage/participation gate. Each curse multiplies running heal by (100-reduction)/100; initial queued heal and completed trigger pass normalize separately with ties-to-even. Curse classification, cleanse/purge, recast and source-turn expiry use the shared effect owner. Tests cover50/70/100%, float stacking, rounding stages and shield/knockout exclusion. Full healing-increase/passive/environmental/consumable/support-trigger/perk ordering, Unity RNG, fractional HP and same-type native dictionary enumeration remain pending."
     }
   ],
   "enemy_ai_observations": [

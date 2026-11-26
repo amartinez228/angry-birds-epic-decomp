@@ -556,6 +556,7 @@ impl Battle {
                 }
             }
             self.stunning_attack_finish(source, Source::bird(i), skill, normalized_damage);
+            self.healing_debuff_attack_finish(source, Source::bird(i), skill, normalized_damage);
             if skill.template == "AttackWithPurgeSkill"
                 && self.roll_percent(skill.parameter("purge_chance", 0.))
             {
@@ -649,5 +650,42 @@ impl Battle {
             }
         }
         self.say(format!("{} uses {}.", self.enemies[enemy].name, skill.name));
+    }
+}
+
+#[cfg(test)]
+mod healing_curse_tests {
+    use super::*;
+
+    #[test]
+    fn shaman_area_attack_curses_survivors_but_skips_shields_and_knockouts() {
+        let profile = crate::Profile {
+            unlocked: 3,
+            ..Default::default()
+        };
+        let mut battle = Battle::new(&profile, 3).unwrap();
+        let skill = *SKILLS
+            .iter()
+            .find(|s| s.id == "pig_attack_shaman_shaman")
+            .unwrap();
+        for hero in &mut battle.heroes {
+            hero.hp = 1000;
+            hero.max_hp = 1000;
+        }
+        battle.enemies[0].attack = 10;
+        battle.heroes[1]
+            .effects
+            .apply("shield", Source::bird(1), 3, EffectKind::Protection(100.));
+        battle.heroes[2].hp = 1;
+        let mut control = battle.clone();
+        control.random_index(1_000_000); // Only the unshielded surviving target rolls.
+        battle.execute_enemy_skill(0, 0, skill);
+        assert_eq!(battle.rng_state, control.rng_state);
+        assert!(battle.heroes[0].effects.has_curse());
+        assert!(!battle.heroes[1].effects.has_curse());
+        assert!(!battle.heroes[2].effects.has_curse());
+        assert!(battle.heroes[2].knocked_out);
+        battle.heroes[0].heal(10);
+        assert_eq!(battle.heroes[0].hp, 995);
     }
 }

@@ -27,6 +27,61 @@ from recover_loot import entry as decode_loot_entry
 
 
 class RecoveryTests(unittest.TestCase):
+    def test_healing_reduction_evidence_binds_native_handler_and_original_enums(self):
+        import hashlib
+        report = json.loads((ROOT/'analysis/native/healing-reduction-evidence.json').read_text())
+        native = (ROOT/'analysis/libil2cpp-x86.so').read_bytes()
+        meta = (ROOT/'analysis/global-metadata.dat').read_bytes()
+        self.assertEqual(hashlib.sha256(native).hexdigest(), report['native_sha256'])
+        self.assertEqual(hashlib.sha256(meta).hexdigest(), report['metadata_sha256'])
+        linked = json.loads((ROOT/'analysis/native-methods.json').read_text())
+        phoff = struct.unpack_from('<I', native, 28)[0]
+        phsize, phcount = struct.unpack_from('<HH', native, 42)
+        segments = [struct.unpack_from('<8I', native, phoff+i*phsize) for i in range(phcount)]
+        def offset(address):
+            for kind, start, virtual, _, length, *_ in segments:
+                if kind == 1 and virtual <= address < virtual+length:
+                    return start+address-virtual
+            self.fail('Address outside ELF')
+        for entry in report['methods']:
+            row = linked['methods'][entry['metadata_index']]
+            for key in ['class', 'method', 'address']:
+                self.assertEqual(row[key], entry[key])
+            self.assertEqual(hashlib.sha256((ROOT/'analysis/native'/entry['disassembly']).read_bytes()).hexdigest(), entry['sha256'])
+        constant = report['percent_constant']
+        self.assertEqual(struct.unpack_from('<f', native, offset(linked['global_offset_table']+constant['got_offset']))[0], 100.)
+        count, pointer = struct.unpack_from('<II', native, linked['metadata_registration_file_offset']+7*8)
+        slots = {struct.unpack_from('<I', native, offset(pointer)+i*4)[0]: i for i in range(count)}
+        binding = report['registration']
+        destination = slots[linked['global_offset_table']+binding['got_offset']]
+        pairs_at, pairs_size = struct.unpack_from('<II', meta, 200)
+        usages = dict(struct.unpack_from('<II', meta, at) for at in range(pairs_at, pairs_at+pairs_size, 8))
+        self.assertEqual(usages[destination], (3 << 29) | 41071)
+        self.assertEqual(binding['metadata_method_index'], 41071)
+        section = lambda number: struct.unpack_from('<II', meta, 8+number*8)
+        strings, _ = section(2)
+        def name(index):
+            return meta[strings+index:meta.index(b'\0', strings+index)].decode()
+        types_at, types_size = section(19)
+        fields_at, _ = section(11)
+        defaults_at, defaults_size = section(7)
+        blob, _ = section(8)
+        defaults = {field: value for field, _, value in
+                    (struct.unpack_from('<iii', meta, at) for at in range(defaults_at, defaults_at+defaults_size, 12))}
+        recovered = {}
+        for at in range(types_at, types_at+types_size, 104):
+            enum = name(struct.unpack_from('<I', meta, at)[0])
+            if enum not in report['enums']:
+                continue
+            start = struct.unpack_from('<i', meta, at+48)[0]
+            count = struct.unpack_from('<H', meta, at+84)[0]
+            recovered[enum] = {}
+            for index in range(start, start+count):
+                field = name(struct.unpack_from('<I', meta, fields_at+index*16)[0])
+                if field in report['enums'][enum]:
+                    recovered[enum][field] = struct.unpack_from('<i', meta, blob+defaults[index])[0]
+        self.assertEqual(recovered, report['enums'])
+
     def test_native_rounding_constants_and_method_bindings_match_original_binary(self):
         import hashlib
         report = json.loads((ROOT/'analysis/native/combat-rounding-evidence.json').read_text())

@@ -1,4 +1,4 @@
-//! Traced damage callbacks for party healing and ordinary stun attacks.
+//! Traced damage callbacks for healing, healing reduction and ordinary stun.
 //! Fractional HP, complete trigger order and wet/freeze/tentacle effects pending.
 use crate::{
     effects::{EffectKind, Side, Source},
@@ -11,6 +11,44 @@ fn stun_succeeds(chance: f32, sample: f32) -> bool {
 }
 
 impl Battle {
+    pub(crate) fn healing_debuff_attack_finish(
+        &mut self,
+        source: Source,
+        target: Source,
+        skill: SkillDefinition,
+        normalized_damage: i32,
+    ) {
+        if skill.template != "AttackAndApplyHealingDebuffSkill"
+            || (normalized_damage == 0
+                && !skill.has_parameter("alleffect")
+                && !skill.has_parameter("nodamage"))
+        {
+            return;
+        }
+        let living = match target.side {
+            Side::Birds => self.heroes[target.index].alive(),
+            Side::Pigs => self.enemies[target.index].alive(),
+        };
+        if !living {
+            return;
+        }
+        // Once the shared after-damage gate permits it, native
+        // ShareableActionPart (0xed9154) draws even at 0/100% chance.
+        let sample = self.random_index(1_000_000) as f32 / 999_999.;
+        if stun_succeeds(skill.parameter("chance", 0.), sample) {
+            let unit = match target.side {
+                Side::Birds => &mut self.heroes[target.index],
+                Side::Pigs => &mut self.enemies[target.index],
+            };
+            unit.effects.apply(
+                skill.id,
+                source,
+                skill.duration,
+                EffectKind::HealingReduction(skill.parameter("healing_debuff", 0.)),
+            );
+        }
+    }
+
     pub(crate) fn healing_attack_hit(
         &mut self,
         source: Source,
@@ -77,6 +115,45 @@ impl Battle {
 mod tests {
     use super::*;
     use crate::{Profile, SKILLS};
+    #[test]
+    fn healing_curse_callback_obeys_damage_participation_and_random_draw_gates() {
+        let skill = *SKILLS
+            .iter()
+            .find(|s| s.id == "pig_attack_shaman_shaman")
+            .unwrap();
+        let mut battle = Battle::new(&Profile::default(), 0).unwrap();
+        let initial = battle.rng_state;
+        battle.healing_debuff_attack_finish(Source::pig(0), Source::bird(0), skill, 0);
+        assert_eq!(battle.rng_state, initial);
+        assert!(!battle.heroes[0].effects.has_curse());
+        battle.heroes[0].knocked_out = true;
+        battle.healing_debuff_attack_finish(Source::pig(0), Source::bird(0), skill, 10);
+        assert_eq!(battle.rng_state, initial);
+        battle.heroes[0].knocked_out = false;
+        for chance in [0., 100.] {
+            let parameters = if chance == 0. {
+                &[("chance", 0.), ("healing_debuff", 50.), ("nodamage", 0.)][..]
+            } else {
+                &[("chance", 100.), ("healing_debuff", 50.), ("alleffect", 0.)][..]
+            };
+            let mut control = battle.clone();
+            control.random_index(1_000_000);
+            battle.healing_debuff_attack_finish(
+                Source::pig(0),
+                Source::bird(0),
+                SkillDefinition {
+                    parameters,
+                    ..skill
+                },
+                0,
+            );
+            assert_eq!(battle.rng_state, control.rng_state);
+        }
+        assert_eq!(
+            battle.heroes[0].effects.entries()[0].kind,
+            EffectKind::HealingReduction(50.)
+        );
+    }
     #[test]
     fn stun_comparison_includes_both_endpoints() {
         assert!(stun_succeeds(0., 0.));

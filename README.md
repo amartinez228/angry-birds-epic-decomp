@@ -985,3 +985,20 @@ source hashes are retained in analysis/native/combat-rounding-evidence.json.
 Normalization milestone verified on Windows:213 Rust tests,43 Python tests,
 Clippy, release build and both native UI suites (1,292 captures/24 launches).
 Save format remains v9; no economy or acquisition changes.
+
+
+Shaman/Witch Doctor healing-reduction attacks now apply their original
+50/70/100% curses. They obey the shared after-damage/participation gate and
+consume one inclusive chance roll when eligible. Each curse multiplies the
+running healing value; rounding occurs before the healing-trigger pass and
+after all its reductions. Cleansing, refresh and source-turn expiry use the
+shared effect model. This supersedes the earlier no-healing-triggers limitation
+only for ordinary healing-reduction curses. Healing increases, passive and
+environmental modifiers, consumable bypass, full trigger/perk ordering, native
+same-type dictionary order, Unity RNG and fractional HP remain unfinished.
+Evidence: `analysis/native/healing-reduction-evidence.json`. Save format stays v9.
+
+Healing-reduction milestone verified on Windows:219 Rust tests,44 Python
+tests, Clippy, release, seven prepared-manifest checks and both native UI suites
+(1,292 captures across24 launches) pass. Desktop packaging now includes the
+current `CONTINUING.md` handoff.
